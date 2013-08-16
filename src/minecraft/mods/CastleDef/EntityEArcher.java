@@ -18,18 +18,19 @@ public class EntityEArcher extends EntityMob
 
     public EntityEArcher(World var1)
     {
-        super(var1);
-        this.texture = "/mods/ArcherE.png";
-        this.health = 20;
-        this.moveSpeed = 0.0F;
-        this.setSize(1.1F, 1.8F);
-        this.tasks.addTask(1, new EntityArcherArrowAttack(this, this.moveSpeed, 1, 40));
-        this.tasks.addTask(2, new EntityAIWander(this, this.moveSpeed));
-        this.tasks.addTask(3, new EntityAISwimming(this));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 20.0F, 0, true));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityDefender.class, 20.0F, 0, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityMerc.class, 16.0F, 0, true));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget(this, EntityArcherM.class, 16.0F, 0, true));
+		super(var1);
+		// TODO
+//		this.texture = "/mods/ArcherE.png";
+//		this.health = 20;
+//		this.moveSpeed = 0.0F;
+		this.setSize(1.1F, 1.8F);
+//		this.tasks.addTask(1, new EntityArcherArrowAttack(this, this.moveSpeed, 1, 40));
+//		this.tasks.addTask(2, new EntityAIWander(this, this.moveSpeed));
+		this.tasks.addTask(3, new EntityAISwimming(this));
+//		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 20.0F, 0, true));
+//		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityDefender.class, 20.0F, 0, true));
+//		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityMerc.class, 16.0F, 0, true));
+//		this.targetTasks.addTask(4, new EntityAINearestAttackableTarget(this, EntityArcherM.class, 16.0F, 0, true));
     }
 
     /**

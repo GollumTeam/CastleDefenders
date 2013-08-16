@@ -19,18 +19,20 @@ public class EntityKnight extends EntityDefender
 
     public EntityKnight(World var1)
     {
-        super(var1);
-        this.texture = "/mods/Knight.png";
-        this.moveSpeed = 0.3F;
-        this.health = 25;
-        this.attackStrength = 6;
-        this.setSize(1.1F, 1.8F);
-        this.getNavigator().setBreakDoors(true);
-        this.tasks.addTask(1, new EntityAIAttackOnCollide(this, IMob.class, this.moveSpeed, true));
-        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityCreeper.class, this.moveSpeed, true));
-        this.tasks.addTask(3, new EntityAIWander(this, this.moveSpeed));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, IMob.class, 16.0F, 0, false, true));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityCreeper.class, 16.0F, 0, false, true));
+		super(var1);
+		
+		//TODO
+//		this.texture = "/mods/Knight.png";
+//		this.moveSpeed = 0.3F;
+//		this.health = 25;
+		this.attackStrength = 6;
+		this.setSize(1.1F, 1.8F);
+		this.getNavigator().setBreakDoors(true);
+//		this.tasks.addTask(1, new EntityAIAttackOnCollide(this, IMob.class, this.moveSpeed, true));
+//		this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityCreeper.class, this.moveSpeed, true));
+//		this.tasks.addTask(3, new EntityAIWander(this, this.moveSpeed));
+//		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, IMob.class, 16.0F, 0, false, true));
+//		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityCreeper.class, 16.0F, 0, false, true));
     }
 
     /**

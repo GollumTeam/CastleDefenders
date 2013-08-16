@@ -14,17 +14,18 @@ public class EntityArcher extends EntityDefender
 {
     private static final ItemStack defaultHeldItem = new ItemStack(Item.bow, 1);
 
-    public EntityArcher(World var1)
-    {
-        super(var1);
-        this.texture = "/mods/archer.png";
-        this.health = 20;
-        this.moveSpeed = 0.0F;
-        this.setSize(1.1F, 1.8F);
-        this.tasks.addTask(1, new EntityArcherArrowAttack(this, this.moveSpeed, 1, 30));
-        this.tasks.addTask(2, new EntityAIWander(this, this.moveSpeed));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, IMob.class, 30.0F, 0, true));
-    }
+	public EntityArcher(World var1) {
+		super(var1);
+		// TODO
+//		this.texture = "/mods/archer.png";
+//		this.health = 20;
+//		this.moveSpeed = 0.0F;
+		this.setSize(1.1F, 1.8F);
+//		this.tasks.addTask(1, new EntityArcherArrowAttack(this, this.moveSpeed,
+//				1, 30));
+//		this.tasks.addTask(2, new EntityAIWander(this, this.moveSpeed));
+//		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, IMob.class, 30.0F, 0, true));
+	}
 
     /**
      * Returns true if the newer Entity AI code should be run

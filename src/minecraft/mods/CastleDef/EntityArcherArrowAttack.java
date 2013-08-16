@@ -1,8 +1,10 @@
 package mods.CastleDef;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -13,7 +15,7 @@ public class EntityArcherArrowAttack extends EntityAIBase
 {
     World worldObj;
     EntityLiving entityHost;
-    EntityLiving attackTarget;
+    EntityLivingBase attackTarget;
     int rangedAttackTime = 0;
     float entityMoveSpeed;
     int field_75318_f = 0;
@@ -35,7 +37,7 @@ public class EntityArcherArrowAttack extends EntityAIBase
      */
     public boolean shouldExecute()
     {
-        EntityLiving var1 = this.entityHost.getAttackTarget();
+        EntityLivingBase var1 = this.entityHost.getAttackTarget();
 
         if (var1 == null)
         {

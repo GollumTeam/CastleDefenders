@@ -1,8 +1,7 @@
 package mods.CastleDef;
 
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod$Init;
-import cpw.mods.fml.common.Mod$PreInit;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -23,7 +22,7 @@ import net.minecraftforge.common.Configuration;
 @Mod(
     modid = "CastleDef",
     name = "Castle Defenders",
-    version = "1.0.0"
+    version = "1.2.0 - For 1.6.2 Build Smeagol"
 )
 @NetworkMod(
     clientSideRequired = true,
@@ -67,7 +66,7 @@ public class mod_castledef
     public static CommonProxyCastleDef proxy;
     static int startEntityId = 300;
 
-    @Mod$PreInit
+    @EventHandler
     public void PreLoad(FMLPreInitializationEvent var1)
     {
         Configuration var2 = new Configuration(var1.getSuggestedConfigurationFile());
@@ -95,7 +94,7 @@ public class mod_castledef
         var2.save();
     }
 
-    @Mod$Init
+    @EventHandler
     public void load(FMLInitializationEvent var1)
     {
         proxy.registerRenderThings();

@@ -1,8 +1,10 @@
 package mods.CastleDef;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.pathfinding.PathEntity;
@@ -13,7 +15,7 @@ public class EntityMageAttack extends EntityAIBase
 {
     World worldObj;
     EntityLiving attacker;
-    EntityLiving entityTarget;
+    EntityLivingBase entityTarget;
     int attackTick;
     float field_75440_e;
     boolean field_75437_f;
@@ -44,7 +46,7 @@ public class EntityMageAttack extends EntityAIBase
      */
     public boolean shouldExecute()
     {
-        EntityLiving var1 = this.attacker.getAttackTarget();
+        EntityLivingBase var1 = this.attacker.getAttackTarget();
 
         if (var1 == null)
         {
@@ -67,8 +69,10 @@ public class EntityMageAttack extends EntityAIBase
      */
     public boolean continueExecuting()
     {
-        EntityLiving var1 = this.attacker.getAttackTarget();
-        return var1 == null ? false : (!this.entityTarget.isEntityAlive() ? false : (!this.field_75437_f ? !this.attacker.getNavigator().noPath() : this.attacker.isWithinHomeDistance(MathHelper.floor_double(this.entityTarget.posX), MathHelper.floor_double(this.entityTarget.posY), MathHelper.floor_double(this.entityTarget.posZ))));
+        EntityLivingBase var1 = this.attacker.getAttackTarget();
+        return false;
+        // TODO
+        //return var1 == null ? false : (!this.entityTarget.isEntityAlive() ? false : (!this.field_75437_f ? !this.attacker.getNavigator().noPath() : this.attacker.isWithinHomeDistance(MathHelper.floor_double(this.entityTarget.posX), MathHelper.floor_double(this.entityTarget.posY), MathHelper.floor_double(this.entityTarget.posZ))));
     }
 
     /**
