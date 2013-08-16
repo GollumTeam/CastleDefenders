@@ -1,4 +1,4 @@
 CastleDefender
 ==============
 
-Ist source of decompiled mod Castle Defender
+It's source of decompiled mod Castle Defender
