@@ -15,20 +15,19 @@ public class EntityEMage extends EntityMob
     protected int attackStrength;
 
     public EntityEMage(World var1)
- {
-		super(var1);
-		// TODO
-//		this.texture = "/mods/EMage.png";
-//		this.health = 22;
-//		this.moveSpeed = 0.0F;
-		this.setSize(0.9F, 1.8F);
-		this.isImmuneToFire = true;
-		this.attackStrength = 0;
-//		this.tasks.addTask(1, new EntityArcherArrowAttack(this, this.moveSpeed, 2, 50));
-//		this.tasks.addTask(2, new EntityAIWander(this, this.moveSpeed));
-//		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 20.0F, 0, true));
-//		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityDefender.class, 20.0F, 0, true));
-//		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityMerc.class, 16.0F, 0, true));
+    {
+        super(var1);
+        this.texture = "/mods/EMage.png";
+        this.health = 22;
+        this.moveSpeed = 0.0F;
+        this.setSize(0.9F, 1.8F);
+        this.isImmuneToFire = true;
+        this.attackStrength = 0;
+        this.tasks.addTask(1, new EntityArcherArrowAttack(this, this.moveSpeed, 2, 50));
+        this.tasks.addTask(2, new EntityAIWander(this, this.moveSpeed));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 20.0F, 0, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityDefender.class, 20.0F, 0, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityMerc.class, 16.0F, 0, true));
     }
 
     /**

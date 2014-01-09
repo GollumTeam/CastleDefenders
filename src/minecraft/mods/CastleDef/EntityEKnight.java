@@ -19,22 +19,21 @@ public class EntityEKnight extends EntityMob
 
     public EntityEKnight(World var1)
     {
-		super(var1);
-		// TODO
-//		this.texture = "/mods/KnightE.png";
-//		this.health = 25;
-//		this.moveSpeed = 0.3F;
-		this.attackStrength = 6;
-		this.getNavigator().setBreakDoors(true);
-//		this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.moveSpeed, true));
-//		this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityDefender.class, this.moveSpeed, true));
-//		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityMerc.class, this.moveSpeed, true));
-//		this.tasks.addTask(4, new EntityAIAttackOnCollide(this, EntityArcherM.class, this.moveSpeed, true));
-//		this.tasks.addTask(5, new EntityAIWander(this, this.moveSpeed));
-//		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0, true));
-//		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityDefender.class, 16.0F, 0, true));
-//		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityArcherM.class, 16.0F, 0, true));
-//		this.targetTasks.addTask(4, new EntityAINearestAttackableTarget(this, EntityMerc.class, 16.0F, 0, true));
+        super(var1);
+        this.texture = "/mods/KnightE.png";
+        this.health = 25;
+        this.moveSpeed = 0.3F;
+        this.attackStrength = 6;
+        this.getNavigator().setBreakDoors(true);
+        this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.moveSpeed, true));
+        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityDefender.class, this.moveSpeed, true));
+        this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityMerc.class, this.moveSpeed, true));
+        this.tasks.addTask(4, new EntityAIAttackOnCollide(this, EntityArcherM.class, this.moveSpeed, true));
+        this.tasks.addTask(5, new EntityAIWander(this, this.moveSpeed));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityDefender.class, 16.0F, 0, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityArcherM.class, 16.0F, 0, true));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget(this, EntityMerc.class, 16.0F, 0, true));
     }
 
     /**

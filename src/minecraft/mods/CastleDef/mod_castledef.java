@@ -1,7 +1,8 @@
 package mods.CastleDef;
 
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Init;
+import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -22,7 +23,7 @@ import net.minecraftforge.common.Configuration;
 @Mod(
     modid = "CastleDef",
     name = "Castle Defenders",
-    version = "1.2.0 - For 1.6.2 Build Smeagol"
+    version = "1.0.0"
 )
 @NetworkMod(
     clientSideRequired = true,
@@ -66,7 +67,7 @@ public class mod_castledef
     public static CommonProxyCastleDef proxy;
     static int startEntityId = 300;
 
-    @EventHandler
+    @Mod.PreInit
     public void PreLoad(FMLPreInitializationEvent var1)
     {
         Configuration var2 = new Configuration(var1.getSuggestedConfigurationFile());
@@ -94,26 +95,26 @@ public class mod_castledef
         var2.save();
     }
 
-    @EventHandler
+    @Mod.Init
     public void load(FMLInitializationEvent var1)
     {
         proxy.registerRenderThings();
         ItemMedallion = (new ItemMedallion(MedallionID)).setUnlocalizedName("Medallion");
         LanguageRegistry.addName(ItemMedallion, "Medallion");
         BlockKnight = (new BlockKnight(BlockKnightID)).setUnlocalizedName("BlockKnight").setHardness(2.0F).setResistance(5.0F);
-        GameRegistry.registerBlock(BlockKnight);
+        GameRegistry.registerBlock(BlockKnight, "Knight Spawner");
         LanguageRegistry.addName(BlockKnight, "Knight Spawner");
         GameRegistry.registerTileEntity(TileEntityBlockKnight.class, "Knight Block");
         BlockArcher = (new BlockArcher(BlockArcherID)).setUnlocalizedName("BlockArcher").setHardness(2.0F).setResistance(5.0F);
-        GameRegistry.registerBlock(BlockArcher);
+        GameRegistry.registerBlock(BlockArcher, "Archer Spawner");
         LanguageRegistry.addName(BlockArcher, "Archer Spawner");
         GameRegistry.registerTileEntity(TileEntityBlockArcher.class, "BlockArcher");
         BlockMerc = (new BlockMerc(BlockMercID)).setUnlocalizedName("BlockMerc").setHardness(2.0F).setResistance(5.0F);
-        GameRegistry.registerBlock(BlockMerc);
+        GameRegistry.registerBlock(BlockMerc, "Merc Spawner");
         LanguageRegistry.addName(BlockMerc, "Merc Spawner");
         GameRegistry.registerTileEntity(TileEntityBlockMerc.class, "Merc Block");
         BlockEKnight = (new BlockEKnight(BlockEKnightID)).setUnlocalizedName("BlockEKnight").setHardness(2.0F).setResistance(5.0F);
-        GameRegistry.registerBlock(BlockEKnight);
+        GameRegistry.registerBlock(BlockEKnight, "Enemy Knight Spawner");
         LanguageRegistry.addName(BlockEKnight, "Enemy Knight Spawner");
         GameRegistry.registerTileEntity(TileEntityBlockEKnight.class, "Enemy Knight Block");
         BlockEArcher = (new BlockEArcher(BlockEArcherID)).setUnlocalizedName("BlockEArcher").setHardness(2.0F).setResistance(5.0F);
@@ -121,15 +122,15 @@ public class mod_castledef
         LanguageRegistry.addName(BlockEArcher, "Enemy Archer Spawner");
         GameRegistry.registerTileEntity(TileEntityBlockEArcher.class, "Enemy Archer Block");
         BlockMage = (new BlockMage(BlockMageID)).setUnlocalizedName("BlockMage").setHardness(2.0F).setResistance(5.0F);
-        GameRegistry.registerBlock(BlockMage);
+        GameRegistry.registerBlock(BlockMage, "Mage Spawner");
         LanguageRegistry.addName(BlockMage, "Mage Spawner");
         GameRegistry.registerTileEntity(TileEntityBlockEArcher.class, "Mage Block");
         BlockEMage = (new BlockEMage(BlockEMageID)).setUnlocalizedName("BlockEMage").setHardness(2.0F).setResistance(5.0F);
-        GameRegistry.registerBlock(BlockEMage);
+        GameRegistry.registerBlock(BlockEMage, "Enemy Mage Spawner");
         LanguageRegistry.addName(BlockEMage, "Enemy Mage Spawner");
         GameRegistry.registerTileEntity(TileEntityBlockEArcher.class, "Enemy Mage Block");
         BlockArcherM = (new BlockArcherM(BlockArcherMID)).setUnlocalizedName("BlockArcherM").setHardness(2.0F).setResistance(5.0F);
-        GameRegistry.registerBlock(BlockArcherM);
+        GameRegistry.registerBlock(BlockArcherM, "Merc Archer Spawner");
         LanguageRegistry.addName(BlockArcherM, "Merc Archer Spawner");
         GameRegistry.registerTileEntity(TileEntityBlockArcherM.class, "BlockArcherM");
         GameRegistry.addRecipe(new ItemStack(BlockKnight, 1), new Object[] {" X ", "XYX", " X ", 'X', Item.ingotIron, 'Y', Item.swordIron});

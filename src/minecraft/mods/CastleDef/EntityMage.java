@@ -15,16 +15,16 @@ public class EntityMage extends EntityDefender
 
     public EntityMage(World var1)
     {
-		super(var1);
-//		this.texture = "/mods/Mage.png";
-//		this.health = 10;
-//		this.moveSpeed = 0.0F;
-		this.setSize(0.9F, 1.8F);
-		this.isImmuneToFire = true;
-		this.attackStrength = 0;
-//		this.tasks.addTask(1, new EntityMageAttack(this, IMob.class, this.moveSpeed, true));
-//		this.tasks.addTask(2, new EntityAIWander(this, this.moveSpeed));
-//		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, IMob.class, 120.0F, 0, true));
+        super(var1);
+        this.texture = "/mods/Mage.png";
+        this.health = 10;
+        this.moveSpeed = 0.0F;
+        this.setSize(0.9F, 1.8F);
+        this.isImmuneToFire = true;
+        this.attackStrength = 0;
+        this.tasks.addTask(1, new EntityMageAttack(this, IMob.class, this.moveSpeed, true));
+        this.tasks.addTask(2, new EntityAIWander(this, this.moveSpeed));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, IMob.class, 120.0F, 0, true));
     }
 
     /**

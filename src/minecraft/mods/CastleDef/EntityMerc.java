@@ -1,11 +1,9 @@
 package mods.CastleDef;
 
 import java.util.List;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIFollowOwner;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -48,27 +46,26 @@ public class EntityMerc extends EntityTameable
 
     public EntityMerc(World var1)
     {
-    	// TODO
-		super(var1);
-//		this.texture = "/mods/merc2.png";
-		this.setSize(1.0F, 1.8F);
-//		this.health = 25;
-//		this.moveSpeed = 0.3F;
-		this.attackStrength = 6;
-		this.getNavigator().setAvoidsWater(false);
-		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, this.aiSit);
-		this.tasks.addTask(3, new EntityAILeapAtTarget(this, 0.4F));
-//		this.tasks.addTask(4, new EntityAIAttackOnCollide(this, this.moveSpeed, true));
-//		this.tasks.addTask(5, new EntityAIFollowOwner(this, this.moveSpeed, 10.0F, 2.0F));
-//		this.tasks.addTask(7, new EntityAIWander(this, this.moveSpeed));
-		this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-		this.tasks.addTask(9, new EntityAILookIdle(this));
-		this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
-		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
-		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
-//		this.targetTasks.addTask(4, new EntityAITargetNonTamed(this, IMob.class, 16.0F, 200, false));
-//		this.targetTasks.addTask(5, new EntityAINearestAttackableTarget(this, IMob.class, 16.0F, 0, true));
+        super(var1);
+        this.texture = "/mods/merc2.png";
+        this.setSize(1.0F, 1.8F);
+        this.health = 25;
+        this.moveSpeed = 0.3F;
+        this.attackStrength = 6;
+        this.getNavigator().setAvoidsWater(false);
+        this.tasks.addTask(1, new EntityAISwimming(this));
+        this.tasks.addTask(2, this.aiSit);
+        this.tasks.addTask(3, new EntityAILeapAtTarget(this, 0.4F));
+        this.tasks.addTask(4, new EntityAIAttackOnCollide(this, this.moveSpeed, true));
+        this.tasks.addTask(5, new EntityAIFollowOwner(this, this.moveSpeed, 10.0F, 2.0F));
+        this.tasks.addTask(7, new EntityAIWander(this, this.moveSpeed));
+        this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+        this.tasks.addTask(9, new EntityAILookIdle(this));
+        this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
+        this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
+        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
+        this.targetTasks.addTask(4, new EntityAITargetNonTamed(this, IMob.class, 16.0F, 200, false));
+        this.targetTasks.addTask(5, new EntityAINearestAttackableTarget(this, IMob.class, 16.0F, 0, true));
     }
 
     /**
@@ -82,7 +79,7 @@ public class EntityMerc extends EntityTameable
     /**
      * Sets the active target the Task system uses for tracking
      */
-    public void setAttackTarget(EntityLivingBase var1)
+    public void setAttackTarget(EntityLiving var1)
     {
         super.setAttackTarget(var1);
 
@@ -97,8 +94,7 @@ public class EntityMerc extends EntityTameable
      */
     protected void updateAITick()
     {
-    	// TODO
-        //this.dataWatcher.updateObject(18, Integer.valueOf(this.getHealth()));
+        this.dataWatcher.updateObject(18, Integer.valueOf(this.getHealth()));
     }
 
     /**
@@ -114,8 +110,7 @@ public class EntityMerc extends EntityTameable
     protected void entityInit()
     {
         super.entityInit();
-     // TODO
-//        this.dataWatcher.addObject(18, new Integer(this.getHealth()));
+        this.dataWatcher.addObject(18, new Integer(this.getHealth()));
     }
 
     /**
@@ -130,11 +125,10 @@ public class EntityMerc extends EntityTameable
     /**
      * Returns the texture's file path as a String.
      */
-    // TODO
-//    public String getTexture()
-//    {
-//        return this.isSitting() ? "/mods/merc1.png" : (this.isTamed() ? "/mods/merc2.png" : super.getTexture());
-//    }
+    public String getTexture()
+    {
+        return this.isSitting() ? "/mods/merc1.png" : (this.isTamed() ? "/mods/merc2.png" : super.getTexture());
+    }
 
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
@@ -381,8 +375,7 @@ public class EntityMerc extends EntityTameable
                     this.setOwner(var1.username);
                     this.isJumping = false;
                     this.worldObj.setEntityState(this, (byte)7);
-                    // TODO
-//                    this.moveSpeed = 0.3F;
+                    this.moveSpeed = 0.3F;
                 }
 
                 return true;

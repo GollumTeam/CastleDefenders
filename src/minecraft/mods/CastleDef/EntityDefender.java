@@ -17,8 +17,7 @@ public class EntityDefender extends EntityAnimal
     public EntityDefender(World var1)
     {
         super(var1);
-        // TODO
-        //this.moveSpeed = 0.1F;
+        this.moveSpeed = 0.1F;
         this.tasks.addTask(1, new EntityAITempt(this, 0.35F, mod_castledef.ItemMedallion.itemID, false));
         this.tasks.addTask(2, new EntityAISwimming(this));
     }

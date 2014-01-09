@@ -19,18 +19,18 @@ public class EntityArcherM extends EntityTameable
 {
     private static final ItemStack defaultHeldItem = new ItemStack(Item.bow, 1);
 
-	public EntityArcherM(World var1) {
-		super(var1);
-		// TODO
-//		this.texture = "/mods/archerM.png";
-//		this.health = 20;
-//		this.moveSpeed = 0.4F;
-		this.setSize(1.1F, 1.8F);
-		this.tasks.addTask(1, this.aiSit);
-//		this.tasks.addTask(2, new EntityAIFollowOwner(this, this.moveSpeed, 10.0F, 2.0F));
-//		this.tasks.addTask(3, new EntityArcherArrowAttack(this, this.moveSpeed, 1, 15));
-//		this.targetTasks.addTask(4, new EntityAINearestAttackableTarget(this,  IMob.class, 30.0F, 0, true));
-	}
+    public EntityArcherM(World var1)
+    {
+        super(var1);
+        this.texture = "/mods/archerM.png";
+        this.health = 20;
+        this.moveSpeed = 0.4F;
+        this.setSize(1.1F, 1.8F);
+        this.tasks.addTask(1, this.aiSit);
+        this.tasks.addTask(2, new EntityAIFollowOwner(this, this.moveSpeed, 10.0F, 2.0F));
+        this.tasks.addTask(3, new EntityArcherArrowAttack(this, this.moveSpeed, 1, 15));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget(this, IMob.class, 30.0F, 0, true));
+    }
 
     /**
      * Returns true if the newer Entity AI code should be run
@@ -124,8 +124,7 @@ public class EntityArcherM extends EntityTameable
                 this.setOwner(var1.username);
                 this.isJumping = false;
                 this.worldObj.setEntityState(this, (byte)7);
-                // TODO
-//                this.moveSpeed = 0.4F;
+                this.moveSpeed = 0.4F;
             }
 
             return true;
