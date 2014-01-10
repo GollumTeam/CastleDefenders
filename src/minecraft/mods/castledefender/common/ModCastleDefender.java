@@ -106,6 +106,9 @@ public class ModCastleDefender {
 	@EventHandler
 	public void load(FMLInitializationEvent var1) {
 		
+		// Execution du renderer en fonction du serveur ou du client
+		proxy.registerRenderers();
+		
 		// Creation du checker de version
 		VersionChecker.getInstance(this.versionChecker).check(this);
 		

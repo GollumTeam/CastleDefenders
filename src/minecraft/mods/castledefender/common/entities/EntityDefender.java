@@ -7,25 +7,40 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.monster.EntityGhast;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityDefender extends EntityAnimal {
+public class EntityDefender extends EntityMob {
 	
-	protected int attackStrength = 10;
-
 	public EntityDefender(World world) {
 		super(world);
-		
-//		this.moveSpeed = 0.1F;
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.1D);
 		
 		this.tasks.addTask(1, new EntityAITempt(this, 0.35F, ModCastleDefender.ItemMedallion.itemID, false));
 		this.tasks.addTask(2, new EntityAISwimming(this));
 	}
 
+	/**
+	 * @return Zone de detection du mod
+	 */
+	public double getFollowRange () { return 20.D; }
+	/**
+	 * @return Vitesse du mod
+	 */
+	public double getMoveSpeed () { return 0.1D; }
+	/**
+	 * @return Point de vie du mod
+	 */
+	public double getHealt () { return 0.0D; }
+	/**
+	 * @return Point de vie du mod
+	 */
+	public int getAttackStrength () { return 10; }
+	
+	
 	/**
 	 * Returns true if the newer Entity AI code should be run
 	 */
@@ -52,7 +67,7 @@ public class EntityDefender extends EntityAnimal {
 	 * Called when the entity is attacked.
 	 */
 	// TODO @Override
-	public boolean attackEntityFrom(DamageSource var1, int var2) {
+	public boolean attackEntityFrom(DamageSource var1, float var2) {
 		if (super.attackEntityFrom(var1, var2)) {
 			Entity var3 = var1.getEntity();
 
@@ -80,7 +95,7 @@ public class EntityDefender extends EntityAnimal {
 
 	@Override
 	public boolean attackEntityAsMob(Entity var1) {
-		int var2 = this.attackStrength;
+		int var2 = this.getAttackStrength();
 
 		if (this.isPotionActive(Potion.damageBoost)) {
 			var2 += 3 << this.getActivePotionEffect(Potion.damageBoost).getAmplifier();
@@ -92,14 +107,4 @@ public class EntityDefender extends EntityAnimal {
 
 		return var1.attackEntityFrom(DamageSource.causeMobDamage(this), var2);
 	}
-	
-	@Override
-	public EntityAgeable createChild(EntityAgeable var1) {
-		return null;
-	}
-	
-	// TODO
-//	public float getMaxHealth() {
-//		return 0;
-//	}
 }
