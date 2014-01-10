@@ -1,0 +1,21 @@
+[
+{
+  "modid": "CastleDef",
+  "name": "Castle Defender",
+  "description": "The Castle Defender",
+  "credits": "Vox Populi, Azurn, SmeagolWorms4",
+  "logoFile": "logo_castledef.png",
+  "version": "2.0.0",
+  "mcversion": "1.6.2",
+  "url": "",
+  "updateUrl": "",
+  "authors": [
+    "Vox Populi, Azurn, SmeagolWorms4"
+  ],
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]
