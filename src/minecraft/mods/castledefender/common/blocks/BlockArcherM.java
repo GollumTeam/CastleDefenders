@@ -1,5 +1,8 @@
 package mods.castledefender.common.blocks;
 
+import mods.castledefender.common.tileentities.TileEntityBlockArcher;
+import mods.castledefender.common.tileentities.TileEntityBlockArcherM;
+import mods.castledefender.common.tileentities.TileEntityBlockMerc;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -19,8 +22,7 @@ public class BlockArcherM extends BlockCastleDefender {
 	 */
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		// TODO Auto-generated method stub
-		return null;
+		return new TileEntityBlockArcherM();
 	}
 
 }

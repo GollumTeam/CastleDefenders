@@ -2,6 +2,8 @@ package mods.castledefender.common.blocks;
 
 import java.util.Random;
 
+import mods.castledefender.common.tileentities.TileEntityBlockEMage;
+import mods.castledefender.common.tileentities.TileEntityBlockMerc;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
@@ -22,8 +24,7 @@ public class BlockEMage extends BlockCastleDefender {
 	 */
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		// TODO Auto-generated method stub
-		return null;
+		return new TileEntityBlockEMage();
 	}
 	
 	/**
@@ -49,22 +50,6 @@ public class BlockEMage extends BlockCastleDefender {
 	@Override
 	public int getRenderType() {
 		return 1;
-	}
-	
-	/**
-	 * Returns the ID of the items to drop on destruction.
-	 */
-	@Override
-	public int idDropped(int par1, Random par2Random, int par3) {
-		return 0;
-	}
-
-	/**
-	 * Returns the quantity of items to drop on block destruction.
-	 */
-	@Override
-	public int quantityDropped(Random var1) {
-		return 0;
 	}
 	
 	/**

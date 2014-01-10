@@ -9,7 +9,7 @@ public class ClientProxyCastleDefender extends CommonProxyCastleDefender {
 	
 	@Override
 	public void registerRenderers() {
-		
+
 		RenderingRegistry.registerEntityRenderingHandler(EntityKnight.class, new RenderCastleDefender(new ModelBiped(), 0.5F, "Knight"));
 //		RenderingRegistry.registerEntityRenderingHandler(EntityArcher.class, new RenderBiped(new ModelBiped(), 0.5F));
 //		RenderingRegistry.registerEntityRenderingHandler(EntityMerc.class, new RenderBiped(new ModelBiped(), 0.5F));

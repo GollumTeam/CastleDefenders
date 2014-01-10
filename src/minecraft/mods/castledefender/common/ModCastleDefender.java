@@ -12,7 +12,14 @@ import mods.castledefender.common.blocks.BlockMage;
 import mods.castledefender.common.blocks.BlockMerc;
 import mods.castledefender.common.entities.EntityKnight;
 import mods.castledefender.common.items.ItemMedallion;
+import mods.castledefender.common.tileentities.TileEntityBlockArcher;
+import mods.castledefender.common.tileentities.TileEntityBlockArcherM;
+import mods.castledefender.common.tileentities.TileEntityBlockEArcher;
+import mods.castledefender.common.tileentities.TileEntityBlockEKnight;
+import mods.castledefender.common.tileentities.TileEntityBlockEMage;
 import mods.castledefender.common.tileentities.TileEntityBlockKnight;
+import mods.castledefender.common.tileentities.TileEntityBlockMage;
+import mods.castledefender.common.tileentities.TileEntityBlockMerc;
 import mods.castledefender.utils.ConfigLoader;
 import mods.castledefender.utils.ConfigProp;
 import mods.castledefender.utils.VersionChecker;
@@ -21,6 +28,7 @@ import net.minecraft.entity.EntityEggInfo;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -79,7 +87,7 @@ public class ModCastleDefender {
 	
 	@ConfigProp(group = "Items Ids") public static int MedallionID    = 3001;
 
-	@ConfigProp(group = "Mobs Ids") public static int defenderID = -32;
+//	@ConfigProp(group = "Mobs Ids") public static int defenderID = -32;
 	@ConfigProp(group = "Mobs Ids") public static int knightID   = -31;
 	@ConfigProp(group = "Mobs Ids") public static int archerID   = -30;
 	@ConfigProp(group = "Mobs Ids") public static int mercID     = -29;
@@ -152,34 +160,30 @@ public class ModCastleDefender {
 
 		// Nom des Tile Entities
 		GameRegistry.registerTileEntity(TileEntityBlockKnight.class, "Knight Block");
+		GameRegistry.registerTileEntity(TileEntityBlockArcher.class, "BlockArcher");
+		GameRegistry.registerTileEntity(TileEntityBlockMerc.class, "Merc Block");
+		GameRegistry.registerTileEntity(TileEntityBlockEKnight.class, "Enemy Knight Block");
+		GameRegistry.registerTileEntity(TileEntityBlockEArcher.class, "Enemy Archer Block");
+		GameRegistry.registerTileEntity(TileEntityBlockMage.class, "Mage Block");
+		GameRegistry.registerTileEntity(TileEntityBlockEMage.class, "Enemy Mage Block");
+		GameRegistry.registerTileEntity(TileEntityBlockArcherM.class, "Merc Archer Block");
+		
+		// Ajout des recettes
+		GameRegistry.addRecipe(new ItemStack(BlockKnight, 1), new Object[] {" X ", "XYX", " X ", 'X', Item.ingotIron, 'Y', Item.swordIron});
+		GameRegistry.addRecipe(new ItemStack(BlockArcher, 1), new Object[] {" X ", "XYX", " X ", 'X', Item.ingotIron, 'Y', Item.bow});
+		GameRegistry.addRecipe(new ItemStack(BlockMage, 1), new Object[] {"   ", " X ", " Y ", 'X', ItemMedallion, 'Y', BlockEMage});
 
+		GameRegistry.addRecipe(new ItemStack(BlockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordWood   , 'Y', ItemMedallion, 'Z', Item.ingotIron});
+		GameRegistry.addRecipe(new ItemStack(BlockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordStone  , 'Y', ItemMedallion, 'Z', Item.ingotIron});
+		GameRegistry.addRecipe(new ItemStack(BlockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordIron   , 'Y', ItemMedallion, 'Z', Item.ingotIron});
+		GameRegistry.addRecipe(new ItemStack(BlockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordGold   , 'Y', ItemMedallion, 'Z', Item.ingotIron});
+		GameRegistry.addRecipe(new ItemStack(BlockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordDiamond, 'Y', ItemMedallion, 'Z', Item.ingotIron});
+
+		GameRegistry.addRecipe(new ItemStack(BlockArcherM, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.bow   , 'Y', ItemMedallion, 'Z', Item.ingotIron});
+		
 		// Enregistrement des Mobs
 		this.registerMob(EntityKnight.class, "Knight", knightID, 0x000000);
-		
-//		EntityRegistry.registerGlobalEntityID(EntityDefender.class, "Defender", defenderID);
-		
-
-		
-		
-//		GameRegistry.registerTileEntity(TileEntityBlockArcher.class,
-//				"BlockArcher");
-		
-//		GameRegistry
-//				.registerTileEntity(TileEntityBlockMerc.class, "Merc Block");
-		
-//		GameRegistry.registerTileEntity(TileEntityBlockEKnight.class,
-//				"Enemy Knight Block");
-		
-//		GameRegistry.registerTileEntity(TileEntityBlockEArcher.class,
-//				"Enemy Archer Block");
-		
-//		GameRegistry.registerTileEntity(TileEntityBlockEArcher.class,
-//				"Mage Block");
-		
-//		GameRegistry.registerTileEntity(TileEntityBlockEArcher.class,
-//				"Enemy Mage Block");
-		
-		
+//		this.registerMob(EntityDefender.class, "Defender", defenderID);
 		
 	}
 	
