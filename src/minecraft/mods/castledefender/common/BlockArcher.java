@@ -1,5 +1,7 @@
 package mods.castledefender.common;
 
+import java.util.Random;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -22,5 +24,4 @@ public class BlockArcher extends BlockCastleDefender {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
