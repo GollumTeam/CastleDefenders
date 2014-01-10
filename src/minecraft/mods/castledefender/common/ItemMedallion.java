@@ -17,7 +17,7 @@ public class ItemMedallion extends Item
 	}
 	
 	// Enregistre la texture
-	public void registerIcons(IconRegister var1) {
-		this.itemIcon = var1.registerIcon("castledefender:Medallion");
+	public void registerIcons(IconRegister register) {
+		this.itemIcon = register.registerIcon("castledefender:Medallion");
 	}
 }
