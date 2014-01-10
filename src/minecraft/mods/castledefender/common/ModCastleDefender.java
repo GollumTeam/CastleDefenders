@@ -12,7 +12,14 @@ import mods.castledefender.common.blocks.BlockMage;
 import mods.castledefender.common.blocks.BlockMerc;
 import mods.castledefender.common.entities.EntityKnight;
 import mods.castledefender.common.items.ItemMedallion;
+import mods.castledefender.common.tileentities.TileEntityBlockArcher;
+import mods.castledefender.common.tileentities.TileEntityBlockArcherM;
+import mods.castledefender.common.tileentities.TileEntityBlockEArcher;
+import mods.castledefender.common.tileentities.TileEntityBlockEKnight;
+import mods.castledefender.common.tileentities.TileEntityBlockEMage;
 import mods.castledefender.common.tileentities.TileEntityBlockKnight;
+import mods.castledefender.common.tileentities.TileEntityBlockMage;
+import mods.castledefender.common.tileentities.TileEntityBlockMerc;
 import mods.castledefender.utils.ConfigLoader;
 import mods.castledefender.utils.ConfigProp;
 import mods.castledefender.utils.VersionChecker;
@@ -79,7 +86,7 @@ public class ModCastleDefender {
 	
 	@ConfigProp(group = "Items Ids") public static int MedallionID    = 3001;
 
-	@ConfigProp(group = "Mobs Ids") public static int defenderID = -32;
+//	@ConfigProp(group = "Mobs Ids") public static int defenderID = -32;
 	@ConfigProp(group = "Mobs Ids") public static int knightID   = -31;
 	@ConfigProp(group = "Mobs Ids") public static int archerID   = -30;
 	@ConfigProp(group = "Mobs Ids") public static int mercID     = -29;
@@ -152,34 +159,17 @@ public class ModCastleDefender {
 
 		// Nom des Tile Entities
 		GameRegistry.registerTileEntity(TileEntityBlockKnight.class, "Knight Block");
+		GameRegistry.registerTileEntity(TileEntityBlockArcher.class, "BlockArcher");
+		GameRegistry.registerTileEntity(TileEntityBlockMerc.class, "Merc Block");
+		GameRegistry.registerTileEntity(TileEntityBlockEKnight.class, "Enemy Knight Block");
+		GameRegistry.registerTileEntity(TileEntityBlockEArcher.class, "Enemy Archer Block");
+		GameRegistry.registerTileEntity(TileEntityBlockMage.class, "Mage Block");
+		GameRegistry.registerTileEntity(TileEntityBlockEMage.class, "Enemy Mage Block");
+		GameRegistry.registerTileEntity(TileEntityBlockArcherM.class, "Merc Archer Block");
 
 		// Enregistrement des Mobs
 		this.registerMob(EntityKnight.class, "Knight", knightID, 0x000000);
-		
-//		EntityRegistry.registerGlobalEntityID(EntityDefender.class, "Defender", defenderID);
-		
-
-		
-		
-//		GameRegistry.registerTileEntity(TileEntityBlockArcher.class,
-//				"BlockArcher");
-		
-//		GameRegistry
-//				.registerTileEntity(TileEntityBlockMerc.class, "Merc Block");
-		
-//		GameRegistry.registerTileEntity(TileEntityBlockEKnight.class,
-//				"Enemy Knight Block");
-		
-//		GameRegistry.registerTileEntity(TileEntityBlockEArcher.class,
-//				"Enemy Archer Block");
-		
-//		GameRegistry.registerTileEntity(TileEntityBlockEArcher.class,
-//				"Mage Block");
-		
-//		GameRegistry.registerTileEntity(TileEntityBlockEArcher.class,
-//				"Enemy Mage Block");
-		
-		
+//		this.registerMob(EntityDefender.class, "Defender", defenderID);
 		
 	}
 	

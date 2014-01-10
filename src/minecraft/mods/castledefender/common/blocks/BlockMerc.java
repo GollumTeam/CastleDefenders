@@ -1,5 +1,6 @@
 package mods.castledefender.common.blocks;
 
+import mods.castledefender.common.tileentities.TileEntityBlockMerc;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntity;
@@ -23,8 +24,7 @@ public class BlockMerc extends BlockCastleDefender {
 	 */
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		// TODO Auto-generated method stub
-		return null;
+		return new TileEntityBlockMerc();
 	}
 	
 	/**

@@ -2,6 +2,8 @@ package mods.castledefender.common.blocks;
 
 import java.util.Random;
 
+import mods.castledefender.common.tileentities.TileEntityBlockEKnight;
+import mods.castledefender.common.tileentities.TileEntityBlockMerc;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
@@ -22,8 +24,7 @@ public class BlockEKnight extends BlockCastleDefender {
 	 */
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		// TODO Auto-generated method stub
-		return null;
+		return new TileEntityBlockEKnight();
 	}
 	
 	/**

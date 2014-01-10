@@ -1,5 +1,7 @@
 package mods.castledefender.common.blocks;
 
+import mods.castledefender.common.tileentities.TileEntityBlockMage;
+import mods.castledefender.common.tileentities.TileEntityBlockMerc;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
@@ -20,8 +22,7 @@ public class BlockMage extends BlockCastleDefender {
 	 */
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		// TODO Auto-generated method stub
-		return null;
+		return new TileEntityBlockMage();
 	}
 	
 	/**
