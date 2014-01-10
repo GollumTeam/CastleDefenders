@@ -10,13 +10,18 @@ import mods.castledefender.common.blocks.BlockEMage;
 import mods.castledefender.common.blocks.BlockKnight;
 import mods.castledefender.common.blocks.BlockMage;
 import mods.castledefender.common.blocks.BlockMerc;
+import mods.castledefender.common.entities.EntityKnight;
 import mods.castledefender.common.items.ItemMedallion;
 import mods.castledefender.common.tileentities.TileEntityBlockKnight;
 import mods.castledefender.utils.ConfigLoader;
 import mods.castledefender.utils.ConfigProp;
 import mods.castledefender.utils.VersionChecker;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityEggInfo;
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
+import net.minecraft.world.biome.BiomeGenBase;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -24,10 +29,11 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "CastleDef", name = "Castle Defender", version = "2.0.0 [Build Smeagol]", acceptedMinecraftVersions = "1.6.4")
+@Mod(modid = "CastleDefender", name = "Castle Defender", version = "2.0.0 [Build Smeagol]", acceptedMinecraftVersions = "1.6.4")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 public class ModCastleDefender {
 	
@@ -59,6 +65,8 @@ public class ModCastleDefender {
 	// Liste des items
 	public static Item ItemMedallion;
 	
+	@ConfigProp(group = "Mobs Entities") public static int startEntityId = 300;
+	
 	// Liste des IDs
 	@ConfigProp(group = "Blocks Ids") public static int BlockKnightID  = 238;
 	@ConfigProp(group = "Blocks Ids") public static int BlockArcherID  = 239;
@@ -70,7 +78,16 @@ public class ModCastleDefender {
 	@ConfigProp(group = "Blocks Ids") public static int BlockArcherMID = 232;
 	
 	@ConfigProp(group = "Items Ids") public static int MedallionID    = 3001;
-	
+
+	@ConfigProp(group = "Mobs Ids") public static int defenderID = -32;
+	@ConfigProp(group = "Mobs Ids") public static int knightID   = -31;
+	@ConfigProp(group = "Mobs Ids") public static int archerID   = -30;
+	@ConfigProp(group = "Mobs Ids") public static int mercID     = -29;
+	@ConfigProp(group = "Mobs Ids") public static int EknightID  = -28;
+	@ConfigProp(group = "Mobs Ids") public static int EarcherID  = -27;
+	@ConfigProp(group = "Mobs Ids") public static int EmageID    = -26;
+	@ConfigProp(group = "Mobs Ids") public static int archerMID  = -25;
+	@ConfigProp(group = "Mobs Ids") public static int mageID     = -13;
 	
 	
 	@EventHandler
@@ -129,7 +146,17 @@ public class ModCastleDefender {
 		
 		LanguageRegistry.addName(ItemMedallion, "Medallion");
 		
+
+		// Nom des Tile Entities
 		GameRegistry.registerTileEntity(TileEntityBlockKnight.class, "Knight Block");
+
+		// Enregistrement des Mobs
+		this.registerMob(EntityKnight.class, "Knight", knightID, 0x000000);
+		
+//		EntityRegistry.registerGlobalEntityID(EntityDefender.class, "Defender", defenderID);
+		
+
+		
 		
 //		GameRegistry.registerTileEntity(TileEntityBlockArcher.class,
 //				"BlockArcher");
@@ -150,6 +177,58 @@ public class ModCastleDefender {
 //				"Enemy Mage Block");
 		
 		
+		
+	}
+	
+	/**
+	 * Enregistre un mob
+	 * @param entityClass
+	 * @param name
+	 * @param id
+	 */
+	public void registerMob (Class entityClass, String name, int id) {
+		this.registerMob(entityClass, name, id, -1);
+	}
+	
+	/**
+	 * Enregistre un mob
+	 * @param entityClass
+	 * @param name
+	 * @param id
+	 * @param spawn
+	 */
+	public void registerMob (Class entityClass, String name, int id, int color) {
+		
+		EntityRegistry.registerGlobalEntityID(entityClass, name, id);
+		
+		if (color != -1) {
+			
+			// Pop dans les biomes
+			EntityRegistry.addSpawn(entityClass, 10, 0, 0, EnumCreatureType.creature, new BiomeGenBase[] {
+				BiomeGenBase.desert, BiomeGenBase.desertHills,
+				BiomeGenBase.extremeHills,
+				BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest,
+				BiomeGenBase.forestHills, BiomeGenBase.frozenOcean,
+				BiomeGenBase.frozenRiver, BiomeGenBase.hell,
+				BiomeGenBase.iceMountains, BiomeGenBase.icePlains,
+				BiomeGenBase.jungle, BiomeGenBase.jungleHills,
+				BiomeGenBase.mushroomIsland,
+				BiomeGenBase.mushroomIslandShore, BiomeGenBase.ocean,
+				BiomeGenBase.plains, BiomeGenBase.river,
+				BiomeGenBase.sky, BiomeGenBase.swampland,
+				BiomeGenBase.taiga, BiomeGenBase.taigaHills
+			});
+			LanguageRegistry.instance().addStringLocalization("entity."+name+".name", "Knight");
+			
+			// Cherche une entité vide
+			do { ++startEntityId; } while (EntityList.getStringFromID(startEntityId) != null);
+			
+			// Ajout de l'oeuf
+			int entityId = startEntityId;
+			EntityList.IDtoClassMapping.put(Integer.valueOf(entityId), entityClass);
+			EntityList.entityEggs.put(Integer.valueOf(entityId), new EntityEggInfo(entityId, 0xFFFFFF, color));
+			
+		}
 		
 	}
 	
