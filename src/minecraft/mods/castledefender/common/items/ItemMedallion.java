@@ -1,5 +1,6 @@
-package mods.castledefender.common;
+package mods.castledefender.common.items;
 
+import mods.castledefender.common.ModCastleDefender;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 

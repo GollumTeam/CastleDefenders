@@ -1,4 +1,4 @@
-package mods.castledefender.common;
+package mods.castledefender.common.blocks;
 
 import java.util.Random;
 

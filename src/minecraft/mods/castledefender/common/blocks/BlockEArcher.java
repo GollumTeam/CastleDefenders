@@ -1,20 +1,20 @@
-package mods.castledefender.common;
+package mods.castledefender.common.blocks;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
-public class BlockEKnight extends BlockCastleDefender {
+public class BlockEArcher extends BlockCastleDefender {
 	
 	/**
 	 * Constructeur
 	 * @param id
 	 */
-	public BlockEKnight (int id) {
-		super(id, Material.circuits);
+	public BlockEArcher (int id) {
+		super(id, Material.rock);
 	}
 	
 	/**
@@ -27,44 +27,11 @@ public class BlockEKnight extends BlockCastleDefender {
 	}
 	
 	/**
-	 * Enleve les collisions
-	 */
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World var1, int var2, int var3, int var4) {
-		return null;
-	}
-	
-	/**
-	 * Enleve les collisions
-	 */
-	@Override
-	public boolean renderAsNormalBlock() {
-		return false;
-	}
-	
-	/**
-	 * The type of render function that is called for this block
-	 * Affiche en mode baton
-	 */
-	@Override
-	public int getRenderType() {
-		return 1;
-	}
-	
-	/**
 	 * Returns the ID of the items to drop on destruction.
 	 */
 	@Override
 	public int idDropped(int par1, Random par2Random, int par3) {
-		return 0;
-	}
-
-	/**
-	 * Returns the quantity of items to drop on block destruction.
-	 */
-	@Override
-	public int quantityDropped(Random var1) {
-		return 0;
+		return Block.cobblestone.blockID;
 	}
 	
 	/**

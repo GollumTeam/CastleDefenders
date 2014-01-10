@@ -11,4 +11,6 @@ public @interface ConfigProp {
 	public abstract String name() default "";
 
 	public abstract String info() default "";
+	
+	public abstract String group() default "";
 }

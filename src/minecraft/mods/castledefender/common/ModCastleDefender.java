@@ -2,6 +2,16 @@ package mods.castledefender.common;
 
 import java.util.logging.Logger;
 
+import mods.castledefender.common.blocks.BlockArcher;
+import mods.castledefender.common.blocks.BlockArcherM;
+import mods.castledefender.common.blocks.BlockEArcher;
+import mods.castledefender.common.blocks.BlockEKnight;
+import mods.castledefender.common.blocks.BlockEMage;
+import mods.castledefender.common.blocks.BlockKnight;
+import mods.castledefender.common.blocks.BlockMage;
+import mods.castledefender.common.blocks.BlockMerc;
+import mods.castledefender.common.items.ItemMedallion;
+import mods.castledefender.common.tileentities.TileEntityBlockKnight;
 import mods.castledefender.utils.ConfigLoader;
 import mods.castledefender.utils.ConfigProp;
 import mods.castledefender.utils.VersionChecker;
@@ -50,16 +60,16 @@ public class ModCastleDefender {
 	public static Item ItemMedallion;
 	
 	// Liste des IDs
-	@ConfigProp public static int BlockKnightID  = 238;
-	@ConfigProp public static int BlockArcherID  = 239;
-	@ConfigProp public static int BlockMercID    = 234;
-	@ConfigProp public static int BlockEKnightID = 237;
-	@ConfigProp public static int BlockEArcherID = 236;
-	@ConfigProp public static int BlockMageID    = 235;
-	@ConfigProp public static int BlockEMageID   = 233;
-	@ConfigProp public static int BlockArcherMID = 232;
+	@ConfigProp(group = "Blocks Ids") public static int BlockKnightID  = 238;
+	@ConfigProp(group = "Blocks Ids") public static int BlockArcherID  = 239;
+	@ConfigProp(group = "Blocks Ids") public static int BlockMercID    = 234;
+	@ConfigProp(group = "Blocks Ids") public static int BlockEKnightID = 237;
+	@ConfigProp(group = "Blocks Ids") public static int BlockEArcherID = 236;
+	@ConfigProp(group = "Blocks Ids") public static int BlockMageID    = 235;
+	@ConfigProp(group = "Blocks Ids") public static int BlockEMageID   = 233;
+	@ConfigProp(group = "Blocks Ids") public static int BlockArcherMID = 232;
 	
-	@ConfigProp public static int MedallionID    = 3001;
+	@ConfigProp(group = "Items Ids") public static int MedallionID    = 3001;
 	
 	
 	
@@ -119,8 +129,7 @@ public class ModCastleDefender {
 		
 		LanguageRegistry.addName(ItemMedallion, "Medallion");
 		
-//		GameRegistry.registerTileEntity(TileEntityBlockKnight.class,
-//				"Knight Block");
+		GameRegistry.registerTileEntity(TileEntityBlockKnight.class, "Knight Block");
 		
 //		GameRegistry.registerTileEntity(TileEntityBlockArcher.class,
 //				"BlockArcher");

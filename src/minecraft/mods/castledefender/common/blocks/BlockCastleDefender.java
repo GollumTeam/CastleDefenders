@@ -1,5 +1,6 @@
-package mods.castledefender.common;
+package mods.castledefender.common.blocks;
 
+import mods.castledefender.common.ModCastleDefender;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -18,14 +19,8 @@ public abstract class BlockCastleDefender extends BlockContainer {
 	}
 	
 	/**
-	 * Creation de l'entite
+	 * Renregistrement des textures
 	 */
-	@Override
-	public TileEntity createNewTileEntity(World world) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
 	public void registerIcons(IconRegister register) {
 		this.blockIcon = register.registerIcon("castledefender:" + this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".") + 1));

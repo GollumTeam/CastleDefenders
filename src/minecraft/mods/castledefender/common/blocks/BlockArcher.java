@@ -1,16 +1,18 @@
-package mods.castledefender.common;
+package mods.castledefender.common.blocks;
+
+import java.util.Random;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class BlockArcherM extends BlockCastleDefender {
+public class BlockArcher extends BlockCastleDefender {
 	
 	/**
 	 * Constructeur
 	 * @param id
 	 */
-	public BlockArcherM (int id) {
+	public BlockArcher (int id) {
 		super(id, Material.rock);
 	}
 	
@@ -22,5 +24,4 @@ public class BlockArcherM extends BlockCastleDefender {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

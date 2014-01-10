@@ -10,7 +10,9 @@ import java.io.PrintStream;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.HashSet;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.src.ModLoader;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
@@ -21,6 +23,7 @@ public class ConfigLoader {
 	private String fileName;
 	private Class configClass;
 	private LinkedList<Field> configFields;
+	private HashSet<String> groupList;
 	
 	/**
 	 * Constructeur
@@ -30,22 +33,43 @@ public class ConfigLoader {
 	 */
 	public ConfigLoader (Class clss, FMLPreInitializationEvent event) {
 		
-		this.dir = new File(ModLoader.getMinecraftInstance().mcDataDir, "config");
+		this.dir = new File(Minecraft.getMinecraft().mcDataDir, "config");
 		
 		if (!this.dir.exists()) {
 			this.dir.mkdir();
 		}
 		
-		this.configClass = clss;
+		this.configClass  = clss;
 		this.configFields = new LinkedList<Field>();
-		this.fileName = event.getSuggestedConfigurationFile().getName();
+		this.groupList    = new HashSet<String>();
+		this.fileName     = event.getSuggestedConfigurationFile().getName();
 		
 		Field[] fields = this.configClass.getDeclaredFields();
 		for (Field field : fields) {
 			if (field.isAnnotationPresent(ConfigProp.class)) {
 				this.configFields.add(field);
+				ConfigProp prop = (ConfigProp) field.getAnnotation(ConfigProp.class);
+				this.groupList.add(prop.group());
 			}
 		}
+	}
+	
+	/**
+	 * Renvoie les props de chaque group
+	 * @param groupName
+	 * @return
+	 */
+	public LinkedList<Field> getFieldByGroup (String groupName) {
+		
+		LinkedList<Field> list = new LinkedList<Field>();
+		
+		for (Field field : this.configFields) {
+			ConfigProp prop = (ConfigProp) field.getAnnotation(ConfigProp.class);
+			if (prop.group().equals(groupName)) {
+				list.add(field);
+			}
+		}
+		return list;
 	}
 	
 	/**
@@ -164,25 +188,40 @@ public class ConfigLoader {
 			}
 			
 			BufferedWriter out = new BufferedWriter(new FileWriter(file));
-			for (Field field : this.configFields) {
+			
+			for (String groupName : this.groupList) {
 				
-				ConfigProp prop = (ConfigProp) field .getAnnotation(ConfigProp.class);
-				if (prop.info().length() != 0) {
-					out.write("#" + prop.info() + System.getProperty("line.separator"));
+				String title = groupName;
+				if (groupName.equals("")) {
+					title = "General";
 				}
+				for (int i = 0; i < title.length() + 4 ; i++) out.write("#");
+				out.write(System.getProperty("line.separator") + "# " + title + " #" + System.getProperty("line.separator"));
+				for (int i = 0; i < title.length() + 4 ; i++) out.write("#");
+				out.write(System.getProperty("line.separator")+System.getProperty("line.separator"));
 				
-				String name = !prop.name().isEmpty() ? prop.name() : field.getName();
-				
-				try {
+				for (Field field : this.getFieldByGroup(groupName)) {
 					
-					out.write(name + "=" + field.get(null).toString() + System.getProperty("line.separator"));
-					out.write(System.getProperty("line.separator"));
+					ConfigProp prop = (ConfigProp) field.getAnnotation(ConfigProp.class);
+					if (prop.info().length() != 0) {
+						out.write("#" + prop.info() + System.getProperty("line.separator"));
+					}
 					
-				} catch (IllegalArgumentException e) {
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					e.printStackTrace();
+					String name = !prop.name().isEmpty() ? prop.name() : field.getName();
+					
+					try {
+						
+						out.write(name + "=" + field.get(null).toString() + System.getProperty("line.separator"));
+						
+					} catch (IllegalArgumentException e) {
+						e.printStackTrace();
+					} catch (IllegalAccessException e) {
+						e.printStackTrace();
+					}
 				}
+
+				out.write(System.getProperty("line.separator"));
+				out.write(System.getProperty("line.separator"));
 			}
 			out.close();
 			
