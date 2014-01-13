@@ -33,7 +33,7 @@ public class BlockMerc extends BlockCastleDefenders {
 	 * register icons.
 	 */
 	public void registerIcons(IconRegister register) {
-		this.sides  = register.registerIcon("castledefender:BlockMerc-top-bottom");
+		this.sides  = register.registerIcon("castledefenders:BlockMerc-side");
 		super.registerIcons (register);
 	}
 	

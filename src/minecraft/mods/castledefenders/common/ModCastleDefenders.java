@@ -53,7 +53,7 @@ public class ModCastleDefenders {
 	@Instance("ModCastleDefenders")
 	public static ModCastleDefenders instance;
 	
-	@SidedProxy(clientSide = "mods.castledefender.common.ClientProxyCastleDefenders", serverSide = "mods.castledefender.common.CommonProxyCastleDefenders")
+	@SidedProxy(clientSide = "mods.castledefenders.common.ClientProxyCastleDefenders", serverSide = "mods.castledefenders.common.CommonProxyCastleDefenders")
 	public static CommonProxyCastleDefenders proxy;
 	
 	@ConfigProp (info = "Display version checker message")
@@ -249,50 +249,62 @@ public class ModCastleDefenders {
 	 * @param entityClass
 	 * @param name
 	 * @param id
-	 */
-	private void registerMob (Class entityClass, String name, int id) {
-		this.registerMob(entityClass, name, id, -1);
-	}
-	
-	/**
-	 * Enregistre un mob
-	 * @param entityClass
-	 * @param name
-	 * @param id
 	 * @param spawn
 	 */
 	private void registerMob (Class entityClass, String name, int id, int color) {
 		
-		EntityRegistry.registerGlobalEntityID(entityClass, name, id);
+		EntityRegistry.registerGlobalEntityID(entityClass, name, EntityRegistry.findGlobalUniqueEntityId(), 0xFFFFFF, color);
 		
-		if (color != -1) {
-			
-			// Pop dans les biomes
-			EntityRegistry.addSpawn(entityClass, 10, 0, 0, EnumCreatureType.creature, new BiomeGenBase[] {
-				BiomeGenBase.desert, BiomeGenBase.desertHills,
-				BiomeGenBase.extremeHills,
-				BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest,
-				BiomeGenBase.forestHills, BiomeGenBase.frozenOcean,
-				BiomeGenBase.frozenRiver, BiomeGenBase.hell,
-				BiomeGenBase.iceMountains, BiomeGenBase.icePlains,
-				BiomeGenBase.jungle, BiomeGenBase.jungleHills,
-				BiomeGenBase.mushroomIsland,
-				BiomeGenBase.mushroomIslandShore, BiomeGenBase.ocean,
-				BiomeGenBase.plains, BiomeGenBase.river,
-				BiomeGenBase.sky, BiomeGenBase.swampland,
-				BiomeGenBase.taiga, BiomeGenBase.taigaHills
-			});
-			LanguageRegistry.instance().addStringLocalization("entity."+name+".name", "Knight");
-			
-			// Cherche une entité vide
-			do { ++startEntityId; } while (EntityList.getStringFromID(startEntityId) != null);
-			
-			// Ajout de l'oeuf
-			int entityId = startEntityId;
-			EntityList.IDtoClassMapping.put(Integer.valueOf(entityId), entityClass);
-			EntityList.entityEggs.put(Integer.valueOf(entityId), new EntityEggInfo(entityId, 0xFFFFFF, color));
-			
-		}
+		// 30 est traking range : trackingRange The range at which MC will send tracking updates
+		// 1 est la frequence : The frequency of tracking updates
+		// true est l'envoie de la msie a jour de la velocité : sendsVelocityUpdates Whether to send velocity information packets as well
+		EntityRegistry.registerModEntity(entityClass, "name", id, this, 30, 1, true);
+		
+		// Pop dans les biomes
+		EntityRegistry.addSpawn(entityClass, 10, 0, 0, EnumCreatureType.creature, new BiomeGenBase[] {
+			BiomeGenBase.desert, BiomeGenBase.desertHills,
+			BiomeGenBase.extremeHills,
+			BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest,
+			BiomeGenBase.forestHills, BiomeGenBase.frozenOcean,
+			BiomeGenBase.frozenRiver, BiomeGenBase.hell,
+			BiomeGenBase.iceMountains, BiomeGenBase.icePlains,
+			BiomeGenBase.jungle, BiomeGenBase.jungleHills,
+			BiomeGenBase.mushroomIsland,
+			BiomeGenBase.mushroomIslandShore, BiomeGenBase.ocean,
+			BiomeGenBase.plains, BiomeGenBase.river,
+			BiomeGenBase.sky, BiomeGenBase.swampland,
+			BiomeGenBase.taiga, BiomeGenBase.taigaHills
+		});
+		LanguageRegistry.instance().addStringLocalization("entity."+name+".name", name);
+		
+//		if (color != -1) {
+//			
+//			// Pop dans les biomes
+//			EntityRegistry.addSpawn(entityClass, 10, 0, 0, EnumCreatureType.creature, new BiomeGenBase[] {
+//				BiomeGenBase.desert, BiomeGenBase.desertHills,
+//				BiomeGenBase.extremeHills,
+//				BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest,
+//				BiomeGenBase.forestHills, BiomeGenBase.frozenOcean,
+//				BiomeGenBase.frozenRiver, BiomeGenBase.hell,
+//				BiomeGenBase.iceMountains, BiomeGenBase.icePlains,
+//				BiomeGenBase.jungle, BiomeGenBase.jungleHills,
+//				BiomeGenBase.mushroomIsland,
+//				BiomeGenBase.mushroomIslandShore, BiomeGenBase.ocean,
+//				BiomeGenBase.plains, BiomeGenBase.river,
+//				BiomeGenBase.sky, BiomeGenBase.swampland,
+//				BiomeGenBase.taiga, BiomeGenBase.taigaHills
+//			});
+//			LanguageRegistry.instance().addStringLocalization("entity."+name+".name", "Knight");
+//			
+//			// Cherche une entité vide
+//			do { ++startEntityId; } while (EntityList.getStringFromID(startEntityId) != null);
+//			
+//			// Ajout de l'oeuf
+//			int entityId = startEntityId;
+//			EntityList.IDtoClassMapping.put(Integer.valueOf(entityId), entityClass);
+//			EntityList.entityEggs.put(Integer.valueOf(entityId), new EntityEggInfo(entityId, 0xFFFFFF, color));
+//			
+//		}
 		
 	}
 	
