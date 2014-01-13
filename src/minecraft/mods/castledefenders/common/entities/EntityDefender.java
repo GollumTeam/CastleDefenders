@@ -1,5 +1,7 @@
 package mods.castledefenders.common.entities;
 
+import java.util.List;
+
 import mods.castledefenders.common.ModCastleDefenders;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -11,13 +13,20 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.potion.Potion;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityDefender extends EntityMob {
 	
 	public EntityDefender(World world) {
 		super(world);
+
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed) .setAttribute(this.getMoveSpeed ());
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)     .setAttribute(this.getHealt ());
+		this.getEntityAttribute(SharedMonsterAttributes.followRange)   .setAttribute(this.getFollowRange ());
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage)   .setAttribute(this.getAttackStrength ());
 		
 		this.tasks.addTask(1, new EntityAITempt(this, 0.35F, ModCastleDefenders.ItemMedallion.itemID, false));
 		this.tasks.addTask(2, new EntityAISwimming(this));
@@ -40,6 +49,14 @@ public class EntityDefender extends EntityMob {
 	 */
 	public int getAttackStrength () { return 10; }
 	
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes ();
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed) .setAttribute(this.getMoveSpeed ());
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)     .setAttribute(this.getHealt ());
+		this.getEntityAttribute(SharedMonsterAttributes.followRange)   .setAttribute(this.getFollowRange ());
+//		this.getEntityAttribute(SharedMonsterAttributes.attackDamage)  .setAttribute(this.getAttackStrength ());
+	}
 	
 	/**
 	 * Returns true if the newer Entity AI code should be run
@@ -106,5 +123,40 @@ public class EntityDefender extends EntityMob {
 		}
 
 		return var1.attackEntityFrom(DamageSource.causeMobDamage(this), var2);
+	}
+	
+
+	/**
+	 * Checks if the entity's current position is a valid location to spawn this
+	 * entity.
+	 */
+	@Override
+	public boolean getCanSpawnHere() {
+		
+		if (this.worldObj.countEntities(this.getClass()) >= 15) {
+			return false;
+		} else {
+			
+			int var1 = MathHelper.floor_double(this.posX);
+			int var2 = MathHelper.floor_double(this.boundingBox.minY);
+			int var3 = MathHelper.floor_double(this.posZ);
+			this.worldObj.getBlockId(var1, var2 - 1, var3);
+			
+			List var5 = this.worldObj.getEntitiesWithinAABB(
+				EntityKnight.class,
+				AxisAlignedBB.getBoundingBox(
+					this.posX       , this.posY       , this.posZ,
+					this.posX + 1.0D, this.posY + 1.0D, this.posZ + 1.0D
+				).expand(
+					2.0D, 2.0D, 2.0D
+				)
+			);
+			
+			return 
+				this.worldObj.getBlockId(var1, var2 - 1, var3) == ModCastleDefenders.BlockKnightID && 
+				this.worldObj.checkNoEntityCollision(this.boundingBox) && 
+				this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).size() == 0 && var5.isEmpty()
+			;
+		}
 	}
 }

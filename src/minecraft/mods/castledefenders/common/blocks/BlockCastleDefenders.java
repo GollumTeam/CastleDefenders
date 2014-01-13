@@ -23,7 +23,9 @@ public abstract class BlockCastleDefenders extends BlockContainer {
 	 */
 	@Override
 	public void registerIcons(IconRegister register) {
-		this.blockIcon = register.registerIcon("castledefenders:" + this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".") + 1));
+		String texturePath = "castledefenders:" + this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".") + 1);
+		ModCastleDefenders.log.info ("Register block texture : "+ texturePath);
+		this.blockIcon = register.registerIcon(texturePath);
 	}
 	
 	/**

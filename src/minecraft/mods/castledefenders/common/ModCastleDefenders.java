@@ -8,12 +8,14 @@ import mods.castledefenders.common.blocks.BlockArcherM;
 import mods.castledefenders.common.blocks.BlockEArcher;
 import mods.castledefenders.common.blocks.BlockEKnight;
 import mods.castledefenders.common.blocks.BlockEMage;
+import mods.castledefenders.common.blocks.BlockHealer;
 import mods.castledefenders.common.blocks.BlockKnight;
 import mods.castledefenders.common.blocks.BlockKnight2;
 import mods.castledefenders.common.blocks.BlockMage;
 import mods.castledefenders.common.blocks.BlockMerc;
 import mods.castledefenders.common.entities.EntityArcher;
 import mods.castledefenders.common.entities.EntityKnight;
+import mods.castledefenders.common.entities.EntityKnight2;
 import mods.castledefenders.common.items.ItemMedallion;
 import mods.castledefenders.common.tileentities.TileEntityBlockArcher;
 import mods.castledefenders.common.tileentities.TileEntityBlockArcher2;
@@ -21,6 +23,7 @@ import mods.castledefenders.common.tileentities.TileEntityBlockArcherM;
 import mods.castledefenders.common.tileentities.TileEntityBlockEArcher;
 import mods.castledefenders.common.tileentities.TileEntityBlockEKnight;
 import mods.castledefenders.common.tileentities.TileEntityBlockEMage;
+import mods.castledefenders.common.tileentities.TileEntityBlockHealer;
 import mods.castledefenders.common.tileentities.TileEntityBlockKnight;
 import mods.castledefenders.common.tileentities.TileEntityBlockKnight2;
 import mods.castledefenders.common.tileentities.TileEntityBlockMage;
@@ -29,8 +32,6 @@ import mods.castledefenders.utils.ConfigLoader;
 import mods.castledefenders.utils.ConfigProp;
 import mods.castledefenders.utils.VersionChecker;
 import net.minecraft.block.Block;
-import net.minecraft.entity.EntityEggInfo;
-import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -70,17 +71,16 @@ public class ModCastleDefenders {
 	public static Block BlockKnight2;
 	public static Block BlockArcher;
 	public static Block BlockArcher2;
-	public static Block BlockMage;
 	public static Block BlockMerc;
 	public static Block BlockArcherM;
+	public static Block BlockMage;
+	public static Block BlockHealer;
 	public static Block BlockEKnight;
 	public static Block BlockEArcher;
 	public static Block BlockEMage;
 	
 	// Liste des items
 	public static Item ItemMedallion;
-	
-	@ConfigProp(group = "Mobs Entities") public static int startEntityId = 300;
 	
 	// Liste des IDs
 	@ConfigProp(group = "Blocks Ids") public static int BlockKnightID  = 1238;
@@ -90,6 +90,7 @@ public class ModCastleDefenders {
 	@ConfigProp(group = "Blocks Ids") public static int BlockMercID    = 1234;
 	@ConfigProp(group = "Blocks Ids") public static int BlockArcherMID = 1232;
 	@ConfigProp(group = "Blocks Ids") public static int BlockMageID    = 1235;
+	@ConfigProp(group = "Blocks Ids") public static int BlockHealerID  = 1242;
 	@ConfigProp(group = "Blocks Ids") public static int BlockEKnightID = 1237;
 	@ConfigProp(group = "Blocks Ids") public static int BlockEArcherID = 1236;
 	@ConfigProp(group = "Blocks Ids") public static int BlockEMageID   = 1233;
@@ -97,12 +98,13 @@ public class ModCastleDefenders {
 	@ConfigProp(group = "Items Ids") public static int MedallionID    = 13001;
 	
 	@ConfigProp(group = "Mobs Ids") public static int knightID   = -31;
-	@ConfigProp(group = "Mobs Ids") public static int knigh2tID  = -32;
+	@ConfigProp(group = "Mobs Ids") public static int knight2ID  = -32;
 	@ConfigProp(group = "Mobs Ids") public static int archerID   = -30;
 	@ConfigProp(group = "Mobs Ids") public static int archer2ID  = -33;
 	@ConfigProp(group = "Mobs Ids") public static int mercID     = -29;
 	@ConfigProp(group = "Mobs Ids") public static int archerMID  = -25;
 	@ConfigProp(group = "Mobs Ids") public static int mageID     = -13;
+	@ConfigProp(group = "Mobs Ids") public static int HealerID   = -34;
 	@ConfigProp(group = "Mobs Ids") public static int EknightID  = -28;
 	@ConfigProp(group = "Mobs Ids") public static int EarcherID  = -27;
 	@ConfigProp(group = "Mobs Ids") public static int EmageID    = -26;
@@ -130,7 +132,7 @@ public class ModCastleDefenders {
 		// Creation du checker de version
 		VersionChecker.getInstance(this.versionChecker).check(this);
 
-		tabsCastleDefenders = new CastleDefendersTabs("CastleDefender", BlockKnightID);
+		tabsCastleDefenders = new CastleDefendersTabs("CastleDefender", MedallionID);
 		LanguageRegistry.instance().addStringLocalization("itemGroup.CastleDefender", "en_US", "Castle Defender");
 
 		//Initialisation des items
@@ -146,7 +148,7 @@ public class ModCastleDefenders {
 		this.initRecipes ();
 		
 		// Enregistrement des Mobs
-//		this.initMobs ();
+		this.initMobs ();
 		
 	}
 
@@ -171,11 +173,12 @@ public class ModCastleDefenders {
 		BlockArcher  = (new BlockArcher(BlockArcherID))  .setUnlocalizedName("BlockArcher") .setHardness(2.0F).setResistance(5.0F);
 		BlockArcher2 = (new BlockArcher2(BlockArcher2ID)).setUnlocalizedName("BlockArcher2").setHardness(2.0F).setResistance(5.0F);
 		BlockMerc    = (new BlockMerc(BlockMercID))      .setUnlocalizedName("BlockMerc")   .setHardness(2.0F).setResistance(5.0F);
+		BlockArcherM = (new BlockArcherM(BlockArcherMID)).setUnlocalizedName("BlockArcherM").setHardness(2.0F).setResistance(5.0F);
+		BlockMage    = (new BlockMage(BlockMageID))      .setUnlocalizedName("BlockMage")   .setHardness(2.0F).setResistance(5.0F);
+		BlockHealer  = (new BlockHealer(BlockHealerID))  .setUnlocalizedName("BlockHealer") .setHardness(2.0F).setResistance(5.0F);
 		BlockEKnight = (new BlockEKnight(BlockEKnightID)).setUnlocalizedName("BlockEKnight").setHardness(2.0F).setResistance(5.0F);
 		BlockEArcher = (new BlockEArcher(BlockEArcherID)).setUnlocalizedName("BlockEArcher").setHardness(2.0F).setResistance(5.0F);
-		BlockMage    = (new BlockMage(BlockMageID))      .setUnlocalizedName("BlockMage")   .setHardness(2.0F).setResistance(5.0F);
 		BlockEMage   = (new BlockEMage(BlockEMageID))    .setUnlocalizedName("BlockEMage")  .setHardness(2.0F).setResistance(5.0F);
-		BlockArcherM = (new BlockArcherM(BlockArcherMID)).setUnlocalizedName("BlockArcherM").setHardness(2.0F).setResistance(5.0F);
 		
 		
 		// Enregistrement des blocks
@@ -184,8 +187,9 @@ public class ModCastleDefenders {
 		GameRegistry.registerBlock(BlockArcher , "Archer Spawner");
 		GameRegistry.registerBlock(BlockArcher2, "Archer Spawner - Level 2");
 		GameRegistry.registerBlock(BlockMerc   , "Merc Spawner");
-		GameRegistry.registerBlock(BlockMage   , "Mage Spawner");
 		GameRegistry.registerBlock(BlockArcherM, "Merc Archer Spawner");
+		GameRegistry.registerBlock(BlockMage   , "Mage Spawner");
+		GameRegistry.registerBlock(BlockHealer , "Healer Spawner");
 		GameRegistry.registerBlock(BlockEKnight, "Enemy Knight Spawner");
 		GameRegistry.registerBlock(BlockEArcher, "Enemy Archer Spawner");
 		GameRegistry.registerBlock(BlockEMage  , "Enemy Mage Spawner");
@@ -195,9 +199,10 @@ public class ModCastleDefenders {
 		LanguageRegistry.addName(BlockKnight2, "Knight Spawner - Level 2");
 		LanguageRegistry.addName(BlockArcher , "Archer Spawner");
 		LanguageRegistry.addName(BlockArcher2, "Archer Spawner - Level 2");
-		LanguageRegistry.addName(BlockMage   , "Mage Spawner");
 		LanguageRegistry.addName(BlockMerc   , "Merc Spawner");
 		LanguageRegistry.addName(BlockArcherM, "Merc Archer Spawner");
+		LanguageRegistry.addName(BlockMage   , "Mage Spawner");
+		LanguageRegistry.addName(BlockHealer , "Mage Healer");
 		LanguageRegistry.addName(BlockEKnight, "Enemy Knight Spawner");
 		LanguageRegistry.addName(BlockEArcher, "Enemy Archer Spawner");
 		LanguageRegistry.addName(BlockEMage  , "Enemy Mage Spawner");
@@ -214,6 +219,7 @@ public class ModCastleDefenders {
 		GameRegistry.registerTileEntity(TileEntityBlockMerc.class   , "Merc Block");
 		GameRegistry.registerTileEntity(TileEntityBlockArcherM.class, "Merc Archer Block");
 		GameRegistry.registerTileEntity(TileEntityBlockMage.class   , "Mage Block");
+		GameRegistry.registerTileEntity(TileEntityBlockHealer.class , "Hearler Block");
 		GameRegistry.registerTileEntity(TileEntityBlockEKnight.class, "Enemy Knight Block");
 		GameRegistry.registerTileEntity(TileEntityBlockEArcher.class, "Enemy Archer Block");
 		GameRegistry.registerTileEntity(TileEntityBlockEMage.class  , "Enemy Mage Block");
@@ -240,8 +246,9 @@ public class ModCastleDefenders {
 	 * Enregistrement des Mobs
 	 */
 	private void initMobs () {
-		this.registerMob(EntityKnight.class, "Knight", knightID, 0x000000);
-		this.registerMob(EntityArcher.class, "Archer", archerID, 0x500000);
+		this.registerMob(EntityKnight.class , "Knight", "Knight", knightID , 0x000000);
+		this.registerMob(EntityKnight2.class, "Knight2", "Knight - Level 2", knight2ID, 0x00FFFC);
+		this.registerMob(EntityArcher.class , "Archer", "Archer", archerID , 0x500000);
 	}
 	
 	/**
@@ -251,14 +258,14 @@ public class ModCastleDefenders {
 	 * @param id
 	 * @param spawn
 	 */
-	private void registerMob (Class entityClass, String name, int id, int color) {
+	private void registerMob (Class entityClass, String name, String languageName, int id, int color) {
 		
 		EntityRegistry.registerGlobalEntityID(entityClass, name, EntityRegistry.findGlobalUniqueEntityId(), 0xFFFFFF, color);
 		
 		// 30 est traking range : trackingRange The range at which MC will send tracking updates
 		// 1 est la frequence : The frequency of tracking updates
 		// true est l'envoie de la msie a jour de la velocité : sendsVelocityUpdates Whether to send velocity information packets as well
-		EntityRegistry.registerModEntity(entityClass, "name", id, this, 30, 1, true);
+		EntityRegistry.registerModEntity(entityClass, name, id, this, 30, 1, true);
 		
 		// Pop dans les biomes
 		EntityRegistry.addSpawn(entityClass, 10, 0, 0, EnumCreatureType.creature, new BiomeGenBase[] {
@@ -275,36 +282,9 @@ public class ModCastleDefenders {
 			BiomeGenBase.sky, BiomeGenBase.swampland,
 			BiomeGenBase.taiga, BiomeGenBase.taigaHills
 		});
-		LanguageRegistry.instance().addStringLocalization("entity."+name+".name", name);
 		
-//		if (color != -1) {
-//			
-//			// Pop dans les biomes
-//			EntityRegistry.addSpawn(entityClass, 10, 0, 0, EnumCreatureType.creature, new BiomeGenBase[] {
-//				BiomeGenBase.desert, BiomeGenBase.desertHills,
-//				BiomeGenBase.extremeHills,
-//				BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest,
-//				BiomeGenBase.forestHills, BiomeGenBase.frozenOcean,
-//				BiomeGenBase.frozenRiver, BiomeGenBase.hell,
-//				BiomeGenBase.iceMountains, BiomeGenBase.icePlains,
-//				BiomeGenBase.jungle, BiomeGenBase.jungleHills,
-//				BiomeGenBase.mushroomIsland,
-//				BiomeGenBase.mushroomIslandShore, BiomeGenBase.ocean,
-//				BiomeGenBase.plains, BiomeGenBase.river,
-//				BiomeGenBase.sky, BiomeGenBase.swampland,
-//				BiomeGenBase.taiga, BiomeGenBase.taigaHills
-//			});
-//			LanguageRegistry.instance().addStringLocalization("entity."+name+".name", "Knight");
-//			
-//			// Cherche une entité vide
-//			do { ++startEntityId; } while (EntityList.getStringFromID(startEntityId) != null);
-//			
-//			// Ajout de l'oeuf
-//			int entityId = startEntityId;
-//			EntityList.IDtoClassMapping.put(Integer.valueOf(entityId), entityClass);
-//			EntityList.entityEggs.put(Integer.valueOf(entityId), new EntityEggInfo(entityId, 0xFFFFFF, color));
-//			
-//		}
+		// Ajout de la langue
+		LanguageRegistry.instance().addStringLocalization("entity."+name+".name", languageName);
 		
 	}
 	

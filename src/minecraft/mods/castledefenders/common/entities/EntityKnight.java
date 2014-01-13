@@ -23,11 +23,6 @@ public class EntityKnight extends EntityDefender {
 		
 		super(world);
 		
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed) .setAttribute(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)     .setAttribute(this.getHealt ());
-		this.getEntityAttribute(SharedMonsterAttributes.followRange)   .setAttribute(this.getFollowRange ());
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage)   .setAttribute(this.getAttackStrength ());
-		
 		this.setSize(1.1F, 1.8F);
 		this.getNavigator().setBreakDoors(true);
 		this.tasks.addTask(1, new EntityAIAttackOnCollide(this, IMob.class, this.getMoveSpeed (), true));
@@ -49,21 +44,12 @@ public class EntityKnight extends EntityDefender {
 	/**
 	 * @return Point de vie du mod
 	 */
-	public double getHealt () { return 25.0D; }
+	public double getHealt () { return 15.0D; }
 	/**
 	 * @return Point de vie du mod
 	 */
-	public int getAttackStrength () { return 6; }
+	public int getAttackStrength () { return 4; }
 	
-	
-	@Override
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes ();
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed) .setAttribute(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)     .setAttribute(this.getHealt ());
-		this.getEntityAttribute(SharedMonsterAttributes.followRange)   .setAttribute(this.getFollowRange ());
-//		this.getEntityAttribute(SharedMonsterAttributes.attackDamage)  .setAttribute(this.getAttackStrength ());
-	}
 	
 	/**
 	 * Returns the item that this EntityLiving is holding, if any.
@@ -71,40 +57,6 @@ public class EntityKnight extends EntityDefender {
 	@Override
 	public ItemStack getHeldItem() {
 		return defaultHeldItem;
-	}
-
-	/**
-	 * Checks if the entity's current position is a valid location to spawn this
-	 * entity.
-	 */
-	@Override
-	public boolean getCanSpawnHere() {
-		
-		if (this.worldObj.countEntities(this.getClass()) >= 15) {
-			return false;
-		} else {
-			
-			int var1 = MathHelper.floor_double(this.posX);
-			int var2 = MathHelper.floor_double(this.boundingBox.minY);
-			int var3 = MathHelper.floor_double(this.posZ);
-			this.worldObj.getBlockId(var1, var2 - 1, var3);
-			
-			List var5 = this.worldObj.getEntitiesWithinAABB(
-				EntityKnight.class,
-				AxisAlignedBB.getBoundingBox(
-					this.posX       , this.posY       , this.posZ,
-					this.posX + 1.0D, this.posY + 1.0D, this.posZ + 1.0D
-				).expand(
-					2.0D, 2.0D, 2.0D
-				)
-			);
-			
-			return 
-				this.worldObj.getBlockId(var1, var2 - 1, var3) == ModCastleDefenders.BlockKnightID && 
-				this.worldObj.checkNoEntityCollision(this.boundingBox) && 
-				this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).size() == 0 && var5.isEmpty()
-			;
-		}
 	}
 	
 }

@@ -16,7 +16,7 @@ public class BlockEMage extends BlockCastleDefenders {
 	 * @param id
 	 */
 	public BlockEMage (int id) {
-		super(id, Material.circuits);
+		super(id, Material.rock);
 	}
 	
 	/**
