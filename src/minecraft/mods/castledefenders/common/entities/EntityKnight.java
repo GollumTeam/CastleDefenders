@@ -1,7 +1,6 @@
 package mods.castledefenders.common.entities;
 
 import java.util.List;
-
 import mods.castledefenders.common.ModCastleDefenders;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;

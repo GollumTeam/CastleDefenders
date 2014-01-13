@@ -1,6 +1,6 @@
 package mods.castledefenders.common.entities;
 
-import mods.castledefenders.common.ModCastleDefenders;
+import mods.castledefender.common.ModCastleDefenders;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
