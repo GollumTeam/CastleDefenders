@@ -6,6 +6,6 @@ public class TileEntityBlockMage extends TileEntityBlockCastleDefender {
 	 * Constructeur
 	 */
 	public TileEntityBlockMage() {
-		super("Knight");
+		super("Mage");
 	}
 }

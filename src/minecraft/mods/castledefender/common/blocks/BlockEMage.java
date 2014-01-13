@@ -28,31 +28,6 @@ public class BlockEMage extends BlockCastleDefender {
 	}
 	
 	/**
-	 * Enleve les collisions
-	 */
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World var1, int var2, int var3, int var4) {
-		return null;
-	}
-	
-	/**
-	 * Enleve les collisions
-	 */
-	@Override
-	public boolean renderAsNormalBlock() {
-		return false;
-	}
-	
-	/**
-	 * The type of render function that is called for this block
-	 * Affiche en mode baton
-	 */
-	@Override
-	public int getRenderType() {
-		return 1;
-	}
-	
-	/**
 	 * Drops the block items with a specified chance of dropping the specified
 	 * items
 	 */
