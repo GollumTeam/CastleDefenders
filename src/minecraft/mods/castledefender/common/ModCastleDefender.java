@@ -10,6 +10,7 @@ import mods.castledefender.common.blocks.BlockEMage;
 import mods.castledefender.common.blocks.BlockKnight;
 import mods.castledefender.common.blocks.BlockMage;
 import mods.castledefender.common.blocks.BlockMerc;
+import mods.castledefender.common.entities.EntityArcher;
 import mods.castledefender.common.entities.EntityKnight;
 import mods.castledefender.common.items.ItemMedallion;
 import mods.castledefender.common.tileentities.TileEntityBlockArcher;
@@ -183,6 +184,7 @@ public class ModCastleDefender {
 		
 		// Enregistrement des Mobs
 		this.registerMob(EntityKnight.class, "Knight", knightID, 0x000000);
+		this.registerMob(EntityArcher.class, "Archer", archerID, 0x500000);
 //		this.registerMob(EntityDefender.class, "Defender", defenderID);
 		
 	}
