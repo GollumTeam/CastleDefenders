@@ -46,15 +46,15 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "CastleDefender", name = "Castle Defender", version = "3.0.0 [Build Smeagol]", acceptedMinecraftVersions = "1.6.4")
+@Mod(modid = "CastleDefenders", name = "Castle Defenders", version = "3.0.0 [Build Smeagol]", acceptedMinecraftVersions = "1.6.4")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
-public class ModCastleDefender {
+public class ModCastleDefenders {
 	
-	@Instance("ModCastleDefender")
-	public static ModCastleDefender instance;
+	@Instance("ModCastleDefenders")
+	public static ModCastleDefenders instance;
 	
-	@SidedProxy(clientSide = "mods.castledefender.common.ClientProxyCastleDefender", serverSide = "mods.castledefender.common.CommonProxyCastleDefender")
-	public static CommonProxyCastleDefender proxy;
+	@SidedProxy(clientSide = "mods.castledefender.common.ClientProxyCastleDefenders", serverSide = "mods.castledefender.common.CommonProxyCastleDefenders")
+	public static CommonProxyCastleDefenders proxy;
 	
 	@ConfigProp (info = "Display version checker message")
 	public static boolean versionChecker = true;
@@ -63,7 +63,7 @@ public class ModCastleDefender {
 	public static Logger log;
 	
 	// Tab du mode creative
-	public static CastleDefenderTabs tabsCastleDefender;
+	public static CastleDefendersTabs tabsCastleDefenders;
 	
 	// Liste des blocks
 	public static Block BlockKnight;
@@ -130,7 +130,7 @@ public class ModCastleDefender {
 		// Creation du checker de version
 		VersionChecker.getInstance(this.versionChecker).check(this);
 
-		tabsCastleDefender = new CastleDefenderTabs("CastleDefender", BlockKnightID);
+		tabsCastleDefenders = new CastleDefendersTabs("CastleDefender", BlockKnightID);
 		LanguageRegistry.instance().addStringLocalization("itemGroup.CastleDefender", "en_US", "Castle Defender");
 
 		//Initialisation des items

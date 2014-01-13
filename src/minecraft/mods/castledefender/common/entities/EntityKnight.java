@@ -2,7 +2,7 @@ package mods.castledefender.common.entities;
 
 import java.util.List;
 
-import mods.castledefender.common.ModCastleDefender;
+import mods.castledefender.common.ModCastleDefenders;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -101,7 +101,7 @@ public class EntityKnight extends EntityDefender {
 			);
 			
 			return 
-				this.worldObj.getBlockId(var1, var2 - 1, var3) == ModCastleDefender.BlockKnightID && 
+				this.worldObj.getBlockId(var1, var2 - 1, var3) == ModCastleDefenders.BlockKnightID && 
 				this.worldObj.checkNoEntityCollision(this.boundingBox) && 
 				this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).size() == 0 && var5.isEmpty()
 			;

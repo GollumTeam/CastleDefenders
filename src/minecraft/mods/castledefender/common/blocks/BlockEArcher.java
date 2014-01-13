@@ -9,7 +9,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class BlockEArcher extends BlockCastleDefender {
+public class BlockEArcher extends BlockCastleDefenders {
 	
 	/**
 	 * Constructeur

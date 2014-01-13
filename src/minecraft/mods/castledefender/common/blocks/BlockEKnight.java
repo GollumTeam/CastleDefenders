@@ -9,7 +9,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
-public class BlockEKnight extends BlockCastleDefender {
+public class BlockEKnight extends BlockCastleDefenders {
 	
 	/**
 	 * Constructeur

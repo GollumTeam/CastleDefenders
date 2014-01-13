@@ -7,7 +7,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
-public class BlockMage extends BlockCastleDefender {
+public class BlockMage extends BlockCastleDefenders {
 	
 	/**
 	 * Constructeur

@@ -1,21 +1,21 @@
 package mods.castledefender.common.blocks;
 
-import mods.castledefender.common.ModCastleDefender;
+import mods.castledefender.common.ModCastleDefenders;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public abstract class BlockCastleDefender extends BlockContainer {
+public abstract class BlockCastleDefenders extends BlockContainer {
 	
 	/**
 	 * Constructeur
 	 * @param id
 	 */
-	public BlockCastleDefender (int id, Material material) {
+	public BlockCastleDefenders (int id, Material material) {
 		super(id, material);
-		this.setCreativeTab(ModCastleDefender.tabsCastleDefender);
+		this.setCreativeTab(ModCastleDefenders.tabsCastleDefender);
 	}
 	
 	/**

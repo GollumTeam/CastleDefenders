@@ -1,6 +1,6 @@
 package mods.castledefender.common.items;
 
-import mods.castledefender.common.ModCastleDefender;
+import mods.castledefender.common.ModCastleDefenders;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 
@@ -14,7 +14,7 @@ public class ItemMedallion extends Item
 	public ItemMedallion(int id) {
 		super(id);
 		this.maxStackSize = 64;
-		this.setCreativeTab(ModCastleDefender.tabsCastleDefender);
+		this.setCreativeTab(ModCastleDefenders.tabsCastleDefender);
 	}
 	
 	// Enregistre la texture

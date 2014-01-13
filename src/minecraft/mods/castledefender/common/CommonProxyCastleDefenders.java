@@ -1,6 +1,6 @@
 package mods.castledefender.common;
 
-public class CommonProxyCastleDefender {
+public class CommonProxyCastleDefenders {
 	
 	public void registerRenderers() {
 		

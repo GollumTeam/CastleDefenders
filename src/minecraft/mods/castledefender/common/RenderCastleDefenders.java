@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderCastleDefender extends RenderBiped {
+public class RenderCastleDefenders extends RenderBiped {
 	
 	/**
 	 * Cache des location de texture
@@ -17,7 +17,7 @@ public class RenderCastleDefender extends RenderBiped {
 	
 	protected String name;
 	
-	public RenderCastleDefender(ModelBiped biped, float tailleOmbre, String name) {
+	public RenderCastleDefenders(ModelBiped biped, float tailleOmbre, String name) {
 		super(biped, tailleOmbre);
 		this.name = name;
 	}

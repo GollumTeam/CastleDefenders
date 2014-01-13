@@ -7,7 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class BlockArcherM extends BlockCastleDefender {
+public class BlockArcherM extends BlockCastleDefenders {
 	
 	/**
 	 * Constructeur

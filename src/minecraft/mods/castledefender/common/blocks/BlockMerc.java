@@ -7,7 +7,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
-public class BlockMerc extends BlockCastleDefender {
+public class BlockMerc extends BlockCastleDefenders {
 	
 	protected Icon sides;
 	

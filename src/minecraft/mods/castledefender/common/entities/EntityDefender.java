@@ -1,6 +1,6 @@
 package mods.castledefender.common.entities;
 
-import mods.castledefender.common.ModCastleDefender;
+import mods.castledefender.common.ModCastleDefenders;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -19,7 +19,7 @@ public class EntityDefender extends EntityMob {
 	public EntityDefender(World world) {
 		super(world);
 		
-		this.tasks.addTask(1, new EntityAITempt(this, 0.35F, ModCastleDefender.ItemMedallion.itemID, false));
+		this.tasks.addTask(1, new EntityAITempt(this, 0.35F, ModCastleDefenders.ItemMedallion.itemID, false));
 		this.tasks.addTask(2, new EntityAISwimming(this));
 	}
 
