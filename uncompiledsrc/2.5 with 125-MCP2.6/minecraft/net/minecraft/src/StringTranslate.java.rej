@@ -1,0 +1,105 @@
+--- net/minecraft/src/StringTranslate.java	Fri Mar 30 23:47:24 2012
++++ net/minecraft/src/StringTranslate.java	Fri Mar 30 23:49:04 2012
+@@ -76,63 +76,46 @@
+ 
+     }
+ 
+-    public void func_44023_a(String p_44023_1_)
+-    {
+-        Properties properties;
+-        if(p_44023_1_.equals(field_44026_d))
+-        {
+-            return;
++    public void func_44023_a(String p_44023_1_) {
++        if(!p_44023_1_.equals(this.field_44026_d)) {
++           Properties var2 = new Properties();
++
++           try {
++              this.func_44025_a(var2, "en_US");
++           } catch (IOException var8) {
++              ;
++           }
++
++           this.field_46111_e = false;
++           if(!"en_US".equals(p_44023_1_)) {
++              try {
++                 this.func_44025_a(var2, p_44023_1_);
++                 Enumeration var3 = var2.propertyNames();
++
++                 while(var3.hasMoreElements() && !this.field_46111_e) {
++                    Object var4 = var3.nextElement();
++                    Object var5 = var2.get(var4);
++                    if(var5 != null) {
++                       String var6 = var5.toString();
++
++                       for(int var7 = 0; var7 < var6.length(); ++var7) {
++                          if(var6.charAt(var7) >= 256) {
++                             this.field_46111_e = true;
++                             break;
++                          }
++                       }
++                    }
++                 }
++              } catch (IOException var9) {
++                 var9.printStackTrace();
++                 return;
++              }
++           }
++
++           this.field_44026_d = p_44023_1_;
++           this.field_20164_b = var2;
+         }
+-        properties = new Properties();
+-        try
+-        {
+-            func_44025_a(properties, "en_US");
+-        }
+-        catch(IOException ioexception) { }
+-        field_46111_e = false;
+-        if("en_US".equals(p_44023_1_))
+-        {
+-            break MISSING_BLOCK_LABEL_152;
+-        }
+-        Enumeration enumeration;
+-        func_44025_a(properties, p_44023_1_);
+-        enumeration = properties.propertyNames();
+-_L2:
+-        String s;
+-        int i;
+-        Object obj1;
+-        do
+-        {
+-            if(!enumeration.hasMoreElements() || field_46111_e)
+-            {
+-                break MISSING_BLOCK_LABEL_152;
+-            }
+-            Object obj = enumeration.nextElement();
+-            obj1 = properties.get(obj);
+-        } while(obj1 == null);
+-        s = obj1.toString();
+-        i = 0;
+-_L5:
+-        if(!(i >= s.length()))
+-## JADFIX _L1 _L2
+-_L1:
+-        if(!(s.charAt(i) < '\u0100'))
+-## JADFIX _L3 _L4
+-_L3:
+-        field_46111_e = true;
+-          goto _L2
+-_L4:
+-        i++;
+-          goto _L5
+-        IOException ioexception1;
+-        ioexception1;
+-        ioexception1.printStackTrace();
+-        return;
+-        field_44026_d = p_44023_1_;
+-        field_20164_b = properties;
+-        return;
+-          goto _L2
+-    }
++     }
+ 
+     public String func_44024_c()
+     {

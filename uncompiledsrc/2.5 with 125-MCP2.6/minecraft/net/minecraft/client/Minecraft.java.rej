@@ -1,0 +1,36 @@
+--- net/minecraft/client/Minecraft.java	Fri Mar 30 23:47:16 2012
++++ net/minecraft/client/Minecraft.java	Fri Mar 30 23:49:03 2012
+@@ -847,8 +847,7 @@
+         }
+         profilerresult = (ProfilerResult)list.remove(0);
+         if(!(p_40003_1_ != 0))
+-## JADFIX _L1 _L2
+-_L1:
++        {
+         if(profilerresult.field_40703_c.length() > 0)
+         {
+             int i = field_40006_ak.lastIndexOf(".");
+@@ -857,18 +856,15 @@
+                 field_40006_ak = field_40006_ak.substring(0, i);
+             }
+         }
+-          goto _L3
+-_L2:
++        } else
+         if(!(--p_40003_1_ >= list.size() || ((ProfilerResult)list.get(p_40003_1_)).field_40703_c.equals("unspecified")))
+-## JADFIX _L4 _L3
+-_L4:
++        {
+         if(!(field_40006_ak.length() <= 0))
+-## JADFIX _L5 _L6
+-_L5:
++        {
+         field_40006_ak += ".";
+-_L6:
++        }
+         field_40006_ak += ((ProfilerResult)list.get(p_40003_1_)).field_40703_c;
+-_L3:
++        }
+     }
+ 
+     private void func_6238_a(long p_6238_1_)
