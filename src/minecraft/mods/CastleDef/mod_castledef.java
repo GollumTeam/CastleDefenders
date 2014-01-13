@@ -136,11 +136,14 @@ public class mod_castledef
         GameRegistry.addRecipe(new ItemStack(BlockKnight, 1), new Object[] {" X ", "XYX", " X ", 'X', Item.ingotIron, 'Y', Item.swordIron});
         GameRegistry.addRecipe(new ItemStack(BlockArcher, 1), new Object[] {" X ", "XYX", " X ", 'X', Item.ingotIron, 'Y', Item.bow});
         GameRegistry.addRecipe(new ItemStack(BlockMage, 1), new Object[] {"   ", " X ", " Y ", 'X', ItemMedallion, 'Y', BlockEMage});
+        
         EntityRegistry.registerGlobalEntityID(EntityDefender.class, "Defender", defenderID);
-        EntityRegistry.registerGlobalEntityID(EntityKnight.class, "Knight", knightID);
-        EntityRegistry.addSpawn(EntityKnight.class, 10, 0, 0, EnumCreatureType.creature, new BiomeGenBase[] {BiomeGenBase.desert, BiomeGenBase.desertHills, BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.frozenOcean, BiomeGenBase.frozenRiver, BiomeGenBase.hell, BiomeGenBase.iceMountains, BiomeGenBase.icePlains, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, BiomeGenBase.mushroomIslandShore, BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.sky, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.taigaHills});
-        LanguageRegistry.instance().addStringLocalization("entity.Castle Defenders.Knight.name", "Knight");
-        registerEntityEgg(EntityKnight.class, 16777215, 0);
+        
+        //EntityRegistry.registerGlobalEntityID(EntityKnight.class, "Knight", knightID);
+        //EntityRegistry.addSpawn(EntityKnight.class, 10, 0, 0, EnumCreatureType.creature, new BiomeGenBase[] {BiomeGenBase.desert, BiomeGenBase.desertHills, BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.frozenOcean, BiomeGenBase.frozenRiver, BiomeGenBase.hell, BiomeGenBase.iceMountains, BiomeGenBase.icePlains, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, BiomeGenBase.mushroomIslandShore, BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.sky, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.taigaHills});
+        //LanguageRegistry.instance().addStringLocalization("entity.Castle Defenders.Knight.name", "Knight");
+        //registerEntityEgg(EntityKnight.class, 16777215, 0);
+        
         EntityRegistry.registerGlobalEntityID(EntityArcher.class, "Archer", archerID);
         EntityRegistry.addSpawn(EntityArcher.class, 10, 0, 0, EnumCreatureType.creature, new BiomeGenBase[] {BiomeGenBase.desert, BiomeGenBase.desertHills, BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.frozenOcean, BiomeGenBase.frozenRiver, BiomeGenBase.hell, BiomeGenBase.iceMountains, BiomeGenBase.icePlains, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, BiomeGenBase.mushroomIslandShore, BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.sky, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.taigaHills});
         LanguageRegistry.instance().addStringLocalization("entity.Castle Defenders.Archer.name", "Archer");
