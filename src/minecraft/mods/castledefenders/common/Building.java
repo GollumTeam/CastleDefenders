@@ -14,8 +14,9 @@ import com.google.common.io.Resources;
 import net.minecraft.client.Minecraft;
 
 public class Building {
-	
-	public static final String PATH_IMG = "assets/castledefenders/buildings/";
+
+	public static final String PATH_IMG = "/assets/castledefenders/buildings/";
+//	public static final String PATH_IMG = "";
 	
 	String name;
 	
@@ -29,7 +30,7 @@ public class Building {
 		
 		if (is == null) {
 			ModCastleDefenders.log.warning ("Failed to read resource '" + path + "' in jar. read by path file");
-			is = new FileInputStream (Minecraft.getMinecraft().mcDataDir + "/" + path);
+			is = new FileInputStream (Minecraft.getMinecraft().mcDataDir + path);
 		}
 		
 		if (is != null) {
@@ -45,7 +46,6 @@ public class Building {
 			InputStream is = this.getResource(Building.PATH_IMG + this.name + ".png");
 			BufferedImage image = ImageIO.read(is);
 			
-
 			return;
 			
 		} catch (IOException e) {
