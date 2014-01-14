@@ -108,21 +108,31 @@ public class BuildingParser {
 			// Construction de la matrice de blocks //
 			//                                     //
 			//////////////////////////////////////////
-
-			int xImage = 1;
-			int yImage = 0;
+			
 			int slideNum = 0;
 			
-			int x = 1;
-			int y = 1;
-			int z = 1;
+			int x = 0;
+			int y = 0;
+			int z = 0;
 			
-			JsonNode slidesInfos = json.getNode ("color");
+			JsonNode slidesInfos = json.getNode ("slides");
+
+			int originXSlide = 1;
 			
-			while (xImage < image.getWidth()) {
+			while (originXSlide < image.getWidth()) {
 				
-				
-				xImage++;
+				int xImage = originXSlide;
+				for (int yImage = 0; yImage < image.getHeight(); yImage++) {
+					for (xImage = originXSlide; xImage < image.getWidth(); xImage++) {
+						
+						int color = image.getRGB(0, y) & 0xFFFFFF;
+						if (color == 0x000000 || color == 0xFFFFFF) {
+							break;
+						}
+						
+					}
+				}
+				//int height = slidesInfos.getStringValue("ee", "eee");
 			}
 			
 			//ModCastleDefenders.log.info ("random : " + random.nextInt(8));
