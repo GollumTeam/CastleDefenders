@@ -15,6 +15,8 @@ import mods.castledefenders.common.blocks.BlockKnight;
 import mods.castledefenders.common.blocks.BlockKnight2;
 import mods.castledefenders.common.blocks.BlockMage;
 import mods.castledefenders.common.blocks.BlockMerc;
+import mods.castledefenders.common.building.Building;
+import mods.castledefenders.common.building.BuildingParser;
 import mods.castledefenders.common.entities.EntityArcher;
 import mods.castledefenders.common.entities.EntityKnight;
 import mods.castledefenders.common.entities.EntityKnight2;
@@ -135,7 +137,7 @@ public class ModCastleDefenders {
 	 * @throws IOException
 	 * **/
 	@EventHandler
-	public void load(FMLInitializationEvent event) throws IOException {
+	public void load(FMLInitializationEvent event) throws Exception {
 		
 		// Execution du renderer en fonction du serveur ou du client
 		proxy.registerRenderers();
@@ -275,9 +277,9 @@ public class ModCastleDefenders {
 	 * Enregistre les générateur de terrain
 	 * @throws IOException 
 	 */
-	private void initBuildings () throws IOException {
-		Building building = new Building ("mercenary1");
-		building.getBlocksList ();
+	private void initBuildings () throws Exception {
+		BuildingParser parser = new BuildingParser ();
+		Building building = parser.parse ("mercenary1");
 	}
 	
 	/**

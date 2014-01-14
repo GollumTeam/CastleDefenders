@@ -34,306 +34,339 @@ public class WorldGeneratorMercBase implements IWorldGenerator {
 	}
 	
 	
-	private void generateSurface(World var1, Random var2, int var3, int var4)
+	private void generateSurface(World world, Random random, int wolrdX, int wolrdZ)
     {
-        byte var5 = 64;
-        int var6 = var2.nextInt(3);
-
+		// Position initial de la génération en hauteur
+        byte worldY = 64;
+        int var6 = random.nextInt(3);
+        
+        // var6 == 0 supprime le switch case
+        // Du coups on n'a que un seul type de batimant
         if (var6 == 0)
         {
-            int var7;
-            int var8;
-            int var9;
-            int var10;
-            int var11;
-            int var12;
-            int var13;
-
-            if (var2.nextInt(ModCastleDefenders.mercenarySpawnRate) == 0 && var6 == 0)
+            int ramdom8M8_X;
+            int ramdom8M8_Y;
+            int ramdom8M8_Z;
+            int x;
+            int y;
+            int z;
+            
+            // Batiment 1 1 chance sur 3
+            if (random.nextInt(ModCastleDefenders.mercenarySpawnRate) == 0 && var6 == 0)
             {
-                for (var7 = 0; var7 < 1; ++var7)
+                ramdom8M8_X = wolrdX + random.nextInt(8) - random.nextInt(8);
+                ramdom8M8_Y = worldY + random.nextInt(8) - random.nextInt(8);
+                ramdom8M8_Z = wolrdZ + random.nextInt(8) - random.nextInt(8);
+                
+                
+                //Test si on est sur de la terre
+                if (world.getBlockId(ramdom8M8_X + 3, ramdom8M8_Y - 1, ramdom8M8_Z + 3) == Block.grass.blockID)
                 {
-                    var8 = var3 + var2.nextInt(8) - var2.nextInt(8);
-                    var9 = var5 + var2.nextInt(8) - var2.nextInt(8);
-                    var10 = var4 + var2.nextInt(8) - var2.nextInt(8);
-
-                    if (var1.getBlockId(var8 + 3, var9 - 1, var10 + 3) == Block.grass.blockID)
+                	// Vide tous les blocks du cube
+                	//  - y : 0
+                	//  - x : 0
+                	//  - z : 0
+                	//  - HauteurY  : 8
+                	//  - largeurX  : 11
+                	//  - longueurZ : 11
+                    for (y = ramdom8M8_Y; y < ramdom8M8_Y + y; ++y)
                     {
-                        for (var11 = var9; var11 < var9 + 8; ++var11)
+                        for (x = 0; x< 11; ++x)
                         {
-                            for (var12 = 0; var12 < 11; ++var12)
+                            for (z = 0; z < 11; ++z)
                             {
-                                for (var13 = 0; var13 < 11; ++var13)
-                                {
-                                    var1.setBlock(var8 + var12, var11, var10 + var13, 0, 0, 2);
-                                }
+                                world.setBlock(ramdom8M8_X + x, y, ramdom8M8_Z + z, 0, 0, 2);
                             }
                         }
-
-                        for (var11 = var9; var11 < var9 + 4; ++var11)
-                        {
-                            for (var12 = 0; var12 < 6; ++var12)
-                            {
-                                for (var13 = 0; var13 < 11; ++var13)
-                                {
-                                    var1.setBlock(var8 + var12, var11, var10 + var13, 5);
-                                }
-                            }
-                        }
-
-                        for (var11 = var9; var11 < var9 + 3; ++var11)
-                        {
-                            for (var12 = 1; var12 < 5; ++var12)
-                            {
-                                for (var13 = 1; var13 < 10; ++var13)
-                                {
-                                    var1.setBlock(var8 + var12, var11, var10 + var13, 0);
-                                }
-                            }
-                        }
-
-                        var1.setBlock(var8 + 5, var9, var10 + 5, 0);
-                        var1.setBlock(var8 + 5, var9 + 1, var10 + 5, 0);
-                        var1.setBlock(var8 + 4, var9 + 1, var10 + 4, 50);
-                        var1.setBlock(var8 + 4, var9 + 1, var10 + 6, 50);
-
-                        if (var1.getBlockId(var8 + 3, var9 + 1, var10 - 1) == 0)
-                        {
-                            var1.setBlock(var8 + 3, var9 + 1, var10, 0);
-                        }
-                        else
-                        {
-                            var1.setBlock(var8 + 3, var9 + 1, var10, 50);
-                        }
-
-                        var1.setBlock(var8 + 1, var9, var10 + 1, 61);
-                        var1.setBlock(var8 + 1, var9, var10 + 2, 54);
-                        var1.setBlock(var8 + 1, var9, var10 + 3, 54);
-                        var1.setBlock(var8 + 4, var9, var10 + 8, 26);
-                        var1.setBlock(var8 + 4, var9, var10 + 9, 26);
-                        var1.setBlock(var8 + 2, var9, var10 + 8, 26);
-                        var1.setBlock(var8 + 2, var9, var10 + 9, 26);
-
-                        for (var11 = 6; var11 < 11; ++var11)
-                        {
-                            for (var12 = 0; var12 < 11; ++var12)
-                            {
-                                if (var1.getBlockId(var8 + var11, var9 - 1, var10 + var12) != 0)
-                                {
-                                    var1.setBlock(var8 + var11, var9, var10 + var12, 85);
-                                }
-                            }
-                        }
-
-                        for (var11 = 6; var11 < 10; ++var11)
-                        {
-                            for (var12 = 1; var12 < 10; ++var12)
-                            {
-                                var1.setBlock(var8 + var11, var9, var10 + var12, 0);
-                            }
-                        }
-
-                        var1.setBlock(var8 + 10, var9, var10 + 5, 0);
-                        var1.setBlock(var8 + 4, var9 - 1, var10 + 2, ModCastleDefenders.blockMerc.blockID);
-
-                        if (var1.getBlockId(var8 + 8, var9 - 1, var10 + 2) != 0)
-                        {
-                            var1.setBlock(var8 + 8, var9 - 1, var10 + 2, ModCastleDefenders.blockMerc.blockID);
-                        }
-
-                        for (var11 = 0; var11 < 2; ++var11)
-                        {
-                            TileEntityChest var15 = (TileEntityChest)var1.getBlockTileEntity(var8 + 1, var9, var10 + 3);
-                            ItemStack var14 = this.pickCheckLootItem(var2);
-
-                            if (var14 != null)
-                            {
-                                var15.setInventorySlotContents(var2.nextInt(var15.getSizeInventory()), var14);
-                            }
-                        }
-
-                        var1.setBlock(var8 + 1, var9 + 4, var10 + 1, 126);
-                        var1.setBlock(var8 + 1, var9 + 4, var10 + 2, 126);
-                        var1.setBlock(var8 + 1, var9 + 4, var10 + 3, 126);
-                        var1.setBlock(var8 + 1, var9 + 4, var10 + 4, 5);
-                        var1.setBlock(var8 + 1, var9 + 4, var10 + 5, 5);
-                        var1.setBlock(var8 + 1, var9 + 4, var10 + 6, 5);
-                        var1.setBlock(var8 + 1, var9 + 4, var10 + 7, 126);
-                        var1.setBlock(var8 + 1, var9 + 4, var10 + 8, 126);
-                        var1.setBlock(var8 + 1, var9 + 4, var10 + 9, 126);
-                        var1.setBlock(var8 + 2, var9 + 4, var10 + 1, 126);
-                        var1.setBlock(var8 + 3, var9 + 4, var10 + 1, 126);
-                        var1.setBlock(var8 + 4, var9 + 4, var10 + 1, 126);
-                        var1.setBlock(var8 + 4, var9 + 4, var10 + 2, 126);
-                        var1.setBlock(var8 + 4, var9 + 4, var10 + 3, 126);
-                        var1.setBlock(var8 + 4, var9 + 4, var10 + 4, 5);
-                        var1.setBlock(var8 + 4, var9 + 4, var10 + 5, 5);
-                        var1.setBlock(var8 + 4, var9 + 4, var10 + 6, 5);
-                        var1.setBlock(var8 + 4, var9 + 4, var10 + 7, 126);
-                        var1.setBlock(var8 + 4, var9 + 4, var10 + 8, 126);
-                        var1.setBlock(var8 + 4, var9 + 4, var10 + 9, 126);
-                        var1.setBlock(var8 + 2, var9 + 4, var10 + 9, 126);
-                        var1.setBlock(var8 + 3, var9 + 4, var10 + 9, 126);
-                        var1.setBlock(var8 + 4, var9 + 5, var10 + 4, 5);
-                        var1.setBlock(var8 + 4, var9 + 5, var10 + 5, 5);
-                        var1.setBlock(var8 + 4, var9 + 5, var10 + 6, 5);
-                        var1.setBlock(var8 + 1, var9 + 5, var10 + 4, 5);
-                        var1.setBlock(var8 + 1, var9 + 5, var10 + 5, 5);
-                        var1.setBlock(var8 + 1, var9 + 5, var10 + 6, 5);
-                        var1.setBlock(var8 + 2, var9 + 4, var10 + 6, 5);
-                        var1.setBlock(var8 + 2, var9 + 4, var10 + 4, 5);
-                        var1.setBlock(var8 + 2, var9 + 5, var10 + 6, 5);
-                        var1.setBlock(var8 + 2, var9 + 5, var10 + 4, 5);
-                        var1.setBlock(var8 + 2, var9 + 5, var10 + 4, 0);
-                        var1.setBlock(var8 + 2, var9 + 4, var10 + 4, 0);
-                        var1.setBlock(var8 + 2, var9 + 5, var10 + 6, 0);
-                        var1.setBlock(var8 + 2, var9 + 4, var10 + 6, 0);
-                        var1.setBlock(var8 + 2, var9 + 2, var10 + 5, 5);
-                        var1.setBlock(var8 + 2, var9 + 1, var10 + 5, 5);
-                        var1.setBlock(var8 + 2, var9 + 0, var10 + 5, 5);
-                        var1.setBlock(var8, var9 + 3, var10, 126);
-                        var1.setBlock(var8, var9 + 3, var10 + 10, 126);
-                        var1.setBlock(var8 + 5, var9 + 3, var10, 126);
-                        var1.setBlock(var8 + 5, var9 + 3, var10 + 10, 126);
-
-                        for (var11 = var9 + 6; var11 < var9 + 7; ++var11)
-                        {
-                            for (var12 = 1; var12 < 5; ++var12)
-                            {
-                                for (var13 = 3; var13 < 8; ++var13)
-                                {
-                                    var1.setBlock(var8 + var12, var11, var10 + var13, 5);
-                                }
-                            }
-                        }
-
-                        for (var11 = var9 + 7; var11 < var9 + 8; ++var11)
-                        {
-                            for (var12 = 1; var12 < 5; ++var12)
-                            {
-                                for (var13 = 3; var13 < 8; ++var13)
-                                {
-                                    var1.setBlock(var8 + var12, var11, var10 + var13, 126);
-                                }
-                            }
-                        }
-
-                        for (var11 = var9 + 7; var11 < var9 + 8; ++var11)
-                        {
-                            for (var12 = 2; var12 < 4; ++var12)
-                            {
-                                for (var13 = 4; var13 < 7; ++var13)
-                                {
-                                    var1.setBlock(var8 + var12, var11, var10 + var13, 0);
-                                }
-                            }
-                        }
-
-                        var1.setBlock(var8 + 1, var9 + 7, var10 + 3, 5);
-                        var1.setBlock(var8 + 1, var9 + 7, var10 + 7, 5);
-                        var1.setBlock(var8 + 4, var9 + 7, var10 + 3, 5);
-                        var1.setBlock(var8 + 4, var9 + 7, var10 + 7, 5);
-                        var1.setBlock(var8 + 2, var9 + 6, var10 + 6, ModCastleDefenders.blockArcherM.blockID);
-                        var1.setBlock(var8 + 3, var9 + 6, var10 + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
-                        var1.setBlock(var8 + 3, var9 + 5, var10 + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
-                        var1.setBlock(var8 + 3, var9 + 4, var10 + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
-                        var1.setBlock(var8 + 3, var9 + 3, var10 + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
-                        var1.setBlock(var8 + 3, var9 + 2, var10 + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
-                        var1.setBlock(var8 + 3, var9 + 1, var10 + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
-                        var1.setBlock(var8 + 3, var9 + 0, var10 + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
                     }
+                    
+                    // Remplie de bois
+                	//  - y : 0
+                	//  - x : 0
+                	//  - z : 0
+                	//  - HauteurY  : 4
+                	//  - largeurX  : 6
+                	//  - longueurZ : 11
+                    for (y = ramdom8M8_Y; y < ramdom8M8_Y + 4; ++y)
+                    {
+                        for (x = 0; x < 6; ++x)
+                        {
+                            for (z = 0; z < 11; ++z)
+                            {
+                                world.setBlock(ramdom8M8_X + x, z, ramdom8M8_Z + z, 5);
+                            }
+                        }
+                    }
+                    
+                    // Vide un contenu surment mais plus petit ca fabrique un muret de 5 de haut :)
+                	//  - y : 0
+                	//  - x : 1
+                	//  - z : 1
+                	//  - HauteurY  : 3
+                	//  - largeurX  : 6
+                	//  - longueurZ : 11
+                    for (y = ramdom8M8_Y; y < ramdom8M8_Y + 3; ++y)
+                    {
+                        for (x = 1; x < 5; ++x)
+                        {
+                            for (z = 1; z < 10; ++z)
+                            {
+                                world.setBlock(ramdom8M8_X + x, y, ramdom8M8_Z + z, 0);
+                            }
+                        }
+                    }
+                    
+                    
+                    // Vide des emplacement et pose des torches (id 50 = torche)
+                    world.setBlock(ramdom8M8_X + 5, ramdom8M8_Y, ramdom8M8_Z + 5, 0);
+                    world.setBlock(ramdom8M8_X + 5, ramdom8M8_Y + 1, ramdom8M8_Z + 5, 0);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 1, ramdom8M8_Z + 4, 50);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 1, ramdom8M8_Z + 6, 50);
+
+                    if (world.getBlockId(ramdom8M8_X + 3, ramdom8M8_Y + 1, ramdom8M8_Z - 1) == 0)
+                    {
+                        world.setBlock(ramdom8M8_X + 3, ramdom8M8_Y + 1, ramdom8M8_Z, 0);
+                    }
+                    else
+                    {
+                        world.setBlock(ramdom8M8_X + 3, ramdom8M8_Y + 1, ramdom8M8_Z, 50);
+                    }
+                    
+                    
+                    world.setBlock(ramdom8M8_X + 1, ramdom8M8_Y, ramdom8M8_Z + 1, 61); // Le four
+                    world.setBlock(ramdom8M8_X + 1, ramdom8M8_Y, ramdom8M8_Z + 2, 54); // Le coffre
+                    world.setBlock(ramdom8M8_X + 1, ramdom8M8_Y, ramdom8M8_Z + 3, 54); // Le coffre
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y, ramdom8M8_Z + 8, 26); // Le lit
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y, ramdom8M8_Z + 9, 26); // Le lit
+                    world.setBlock(ramdom8M8_X + 2, ramdom8M8_Y, ramdom8M8_Z + 8, 26); // Le lit
+                    world.setBlock(ramdom8M8_X + 2, ramdom8M8_Y, ramdom8M8_Z + 9, 26); // Le lit
+                    
+                    // Creer des barrier (id 85 = barrierre)
+                    for (x = 6; x < 11; ++x)
+                    {
+                        for (y = 0; y < 11; ++y)
+                        {
+                            if (world.getBlockId(ramdom8M8_X + x, ramdom8M8_Y - 1, ramdom8M8_Z + y) != 0)
+                            {
+                                world.setBlock(ramdom8M8_X + x, ramdom8M8_Y, ramdom8M8_Z + y, 85);
+                            }
+                        }
+                    }
+                    
+                    // Vide
+                    for (x = 6; x < 10; ++x)
+                    {
+                        for (y = 1; y < 10; ++y)
+                        {
+                            world.setBlock(ramdom8M8_X + x, ramdom8M8_Y, ramdom8M8_Z + y, 0);
+                        }
+                    }
+                    
+                    // Ajoute le block mercenaire
+                    world.setBlock(ramdom8M8_X + 10, ramdom8M8_Y, ramdom8M8_Z + 5, 0);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y - 1, ramdom8M8_Z + 2, ModCastleDefenders.blockMerc.blockID);
+                    
+                    
+                    // Ajoute un block mercenaire a coté de al maison si la zone n'est pas vide
+                    if (world.getBlockId(ramdom8M8_X + 8, ramdom8M8_Y - 1, ramdom8M8_Z + 2) != 0)
+                    {
+                        world.setBlock(ramdom8M8_X + 8, ramdom8M8_Y - 1, ramdom8M8_Z + 2, ModCastleDefenders.blockMerc.blockID);
+                    }
+                    
+                    
+                    // ajoute des tile entity
+                    for (x = 0; x < 2; ++x)
+                    {
+                        TileEntityChest world5 = (TileEntityChest)world.getBlockTileEntity(ramdom8M8_X + 1, ramdom8M8_Y, ramdom8M8_Z + 3);
+                        ItemStack world4 = this.pickCheckLootItem(random);
+
+                        if (world4 != null)
+                        {
+                            world5.setInventorySlotContents(random.nextInt(world5.getSizeInventory()), world4);
+                        }
+                    }
+                    
+                    // Met des dale de bois et du bois (5 bois, 126 dalle de bois)
+                    world.setBlock(ramdom8M8_X + 1, ramdom8M8_Y + 4, ramdom8M8_Z + 1, 126);
+                    world.setBlock(ramdom8M8_X + 1, ramdom8M8_Y + 4, ramdom8M8_Z + 2, 126);
+                    world.setBlock(ramdom8M8_X + 1, ramdom8M8_Y + 4, ramdom8M8_Z + 3, 126);
+                    world.setBlock(ramdom8M8_X + 1, ramdom8M8_Y + 4, ramdom8M8_Z + 4, 5);
+                    world.setBlock(ramdom8M8_X + 1, ramdom8M8_Y + 4, ramdom8M8_Z + 5, 5);
+                    world.setBlock(ramdom8M8_X + 1, ramdom8M8_Y + 4, ramdom8M8_Z + 6, 5);
+                    world.setBlock(ramdom8M8_X + 1, ramdom8M8_Y + 4, ramdom8M8_Z + 7, 126);
+                    world.setBlock(ramdom8M8_X + 1, ramdom8M8_Y + 4, ramdom8M8_Z + 8, 126);
+                    world.setBlock(ramdom8M8_X + 1, ramdom8M8_Y + 4, ramdom8M8_Z + 9, 126);
+                    world.setBlock(ramdom8M8_X + 2, ramdom8M8_Y + 4, ramdom8M8_Z + 1, 126);
+                    world.setBlock(ramdom8M8_X + 3, ramdom8M8_Y + 4, ramdom8M8_Z + 1, 126);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 4, ramdom8M8_Z + 1, 126);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 4, ramdom8M8_Z + 2, 126);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 4, ramdom8M8_Z + 3, 126);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 4, ramdom8M8_Z + 4, 5);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 4, ramdom8M8_Z + 5, 5);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 4, ramdom8M8_Z + 6, 5);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 4, ramdom8M8_Z + 7, 126);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 4, ramdom8M8_Z + 8, 126);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 4, ramdom8M8_Z + 9, 126);
+                    world.setBlock(ramdom8M8_X + 2, ramdom8M8_Y + 4, ramdom8M8_Z + 9, 126);
+                    world.setBlock(ramdom8M8_X + 3, ramdom8M8_Y + 4, ramdom8M8_Z + 9, 126);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 5, ramdom8M8_Z + 4, 5);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 5, ramdom8M8_Z + 5, 5);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 5, ramdom8M8_Z + 6, 5);
+                    world.setBlock(ramdom8M8_X + 1, ramdom8M8_Y + 5, ramdom8M8_Z + 4, 5);
+                    world.setBlock(ramdom8M8_X + 1, ramdom8M8_Y + 5, ramdom8M8_Z + 5, 5);
+                    world.setBlock(ramdom8M8_X + 1, ramdom8M8_Y + 5, ramdom8M8_Z + 6, 5);
+                    world.setBlock(ramdom8M8_X + 2, ramdom8M8_Y + 4, ramdom8M8_Z + 6, 5);
+                    world.setBlock(ramdom8M8_X + 2, ramdom8M8_Y + 4, ramdom8M8_Z + 4, 5);
+                    world.setBlock(ramdom8M8_X + 2, ramdom8M8_Y + 5, ramdom8M8_Z + 6, 5);
+                    world.setBlock(ramdom8M8_X + 2, ramdom8M8_Y + 5, ramdom8M8_Z + 4, 5);
+                    world.setBlock(ramdom8M8_X + 2, ramdom8M8_Y + 5, ramdom8M8_Z + 4, 0);
+                    world.setBlock(ramdom8M8_X + 2, ramdom8M8_Y + 4, ramdom8M8_Z + 4, 0);
+                    world.setBlock(ramdom8M8_X + 2, ramdom8M8_Y + 5, ramdom8M8_Z + 6, 0);
+                    world.setBlock(ramdom8M8_X + 2, ramdom8M8_Y + 4, ramdom8M8_Z + 6, 0);
+                    world.setBlock(ramdom8M8_X + 2, ramdom8M8_Y + 2, ramdom8M8_Z + 5, 5);
+                    world.setBlock(ramdom8M8_X + 2, ramdom8M8_Y + 1, ramdom8M8_Z + 5, 5);
+                    world.setBlock(ramdom8M8_X + 2, ramdom8M8_Y + 0, ramdom8M8_Z + 5, 5);
+                    world.setBlock(ramdom8M8_X, ramdom8M8_Y + 3, ramdom8M8_Z, 126);
+                    world.setBlock(ramdom8M8_X, ramdom8M8_Y + 3, ramdom8M8_Z + 10, 126);
+                    world.setBlock(ramdom8M8_X + 5, ramdom8M8_Y + 3, ramdom8M8_Z, 126);
+                    world.setBlock(ramdom8M8_X + 5, ramdom8M8_Y + 3, ramdom8M8_Z + 10, 126);
+
+                    for (x = ramdom8M8_Y + 6; x < ramdom8M8_Y + 7; ++x)
+                    {
+                        for (y = 1; y < 5; ++y)
+                        {
+                            for (z = 3; z < 8; ++z)
+                            {
+                                world.setBlock(ramdom8M8_X + y, x, ramdom8M8_Z + z, 5);
+                            }
+                        }
+                    }
+
+                    for (x = ramdom8M8_Y + 7; x < ramdom8M8_Y + 8; ++x)
+                    {
+                        for (y = 1; y < 5; ++y)
+                        {
+                            for (z = 3; z < 8; ++z)
+                            {
+                                world.setBlock(ramdom8M8_X + y, x, ramdom8M8_Z + z, 126);
+                            }
+                        }
+                    }
+
+                    for (x = ramdom8M8_Y + 7; x < ramdom8M8_Y + 8; ++x)
+                    {
+                        for (y = 2; y < 4; ++y)
+                        {
+                            for (z = 4; z < 7; ++z)
+                            {
+                                world.setBlock(ramdom8M8_X + y, x, ramdom8M8_Z + z, 0);
+                            }
+                        }
+                    }
+
+                    world.setBlock(ramdom8M8_X + 1, ramdom8M8_Y + 7, ramdom8M8_Z + 3, 5);
+                    world.setBlock(ramdom8M8_X + 1, ramdom8M8_Y + 7, ramdom8M8_Z + 7, 5);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 7, ramdom8M8_Z + 3, 5);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 7, ramdom8M8_Z + 7, 5);
+                    world.setBlock(ramdom8M8_X + 2, ramdom8M8_Y + 6, ramdom8M8_Z + 6, ModCastleDefenders.blockArcherM.blockID);
+                    
+                    // Pose les ecchlle
+                    world.setBlock(ramdom8M8_X + 3, ramdom8M8_Y + 6, ramdom8M8_Z + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
+                    world.setBlock(ramdom8M8_X + 3, ramdom8M8_Y + 5, ramdom8M8_Z + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
+                    world.setBlock(ramdom8M8_X + 3, ramdom8M8_Y + 4, ramdom8M8_Z + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
+                    world.setBlock(ramdom8M8_X + 3, ramdom8M8_Y + 3, ramdom8M8_Z + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
+                    world.setBlock(ramdom8M8_X + 3, ramdom8M8_Y + 2, ramdom8M8_Z + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
+                    world.setBlock(ramdom8M8_X + 3, ramdom8M8_Y + 1, ramdom8M8_Z + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
+                    world.setBlock(ramdom8M8_X + 3, ramdom8M8_Y + 0, ramdom8M8_Z + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
                 }
             }
 
-            if (var2.nextInt(ModCastleDefenders.mercenarySpawnRate) == 0 && (var6 == 1 || var6 == 2))
+            if (random.nextInt(ModCastleDefenders.mercenarySpawnRate) == 0 && (var6 == 1 || var6 == 2))
             {
-                for (var7 = 0; var7 < 1; ++var7)
+                ramdom8M8_X = wolrdX + random.nextInt(8) - random.nextInt(8);
+                ramdom8M8_Y = worldY + random.nextInt(8) - random.nextInt(8);
+                ramdom8M8_Z = wolrdZ + random.nextInt(8) - random.nextInt(8);
+
+                if (world.getBlockId(ramdom8M8_X, ramdom8M8_Y - 1, ramdom8M8_Z) == Block.grass.blockID && world.getBlockId(ramdom8M8_X + 7, ramdom8M8_Y - 1, ramdom8M8_Z + 1) != 0 && world.getBlockId(ramdom8M8_X + 7, ramdom8M8_Y, ramdom8M8_Z + 3) != 0)
                 {
-                    var8 = var3 + var2.nextInt(8) - var2.nextInt(8);
-                    var9 = var5 + var2.nextInt(8) - var2.nextInt(8);
-                    var10 = var4 + var2.nextInt(8) - var2.nextInt(8);
-
-                    if (var1.getBlockId(var8, var9 - 1, var10) == Block.grass.blockID && var1.getBlockId(var8 + 7, var9 - 1, var10 + 1) != 0 && var1.getBlockId(var8 + 7, var9, var10 + 3) != 0)
+                    for (x = ramdom8M8_Y; x < ramdom8M8_Y + 8; ++x)
                     {
-                        for (var11 = var9; var11 < var9 + 8; ++var11)
+                        for (y = 0; y < 9; ++y)
                         {
-                            for (var12 = 0; var12 < 9; ++var12)
+                            for (z = 0; z < 4; ++z)
                             {
-                                for (var13 = 0; var13 < 4; ++var13)
-                                {
-                                    var1.setBlock(var8 + var12, var11, var10 + var13, 0, 0, 2);
-                                }
+                                world.setBlock(ramdom8M8_X + y, x, ramdom8M8_Z + z, 0, 0, 2);
                             }
                         }
-
-                        for (var11 = var9; var11 < var9 + 1; ++var11)
-                        {
-                            for (var12 = 4; var12 < 7; ++var12)
-                            {
-                                for (var13 = 0; var13 < 5; ++var13)
-                                {
-                                    var1.setBlock(var8 + var12, var11, var10 + var13, 35);
-                                }
-                            }
-                        }
-
-                        for (var11 = var9; var11 < var9 + 1; ++var11)
-                        {
-                            for (var12 = 4; var12 < 7; ++var12)
-                            {
-                                for (var13 = 1; var13 < 4; ++var13)
-                                {
-                                    var1.setBlock(var8 + var12, var11, var10 + var13, 0);
-                                }
-                            }
-                        }
-
-                        var1.setBlock(var8 + 7, var9, var10 + 1, 35);
-                        var1.setBlock(var8 + 7, var9, var10 + 2, 35);
-                        var1.setBlock(var8 + 7, var9 + 1, var10 + 2, 35);
-                        var1.setBlock(var8 + 7, var9, var10 + 3, 35);
-                        var1.setBlock(var8 + 8, var9, var10 + 2, 35);
-                        var1.setBlock(var8 + 6, var9 + 2, var10 + 2, 35);
-                        var1.setBlock(var8 + 5, var9 + 2, var10 + 2, 35);
-                        var1.setBlock(var8 + 4, var9 + 2, var10 + 2, 35);
-                        var1.setBlock(var8 + 6, var9 + 1, var10 + 1, 35);
-                        var1.setBlock(var8 + 5, var9 + 1, var10 + 1, 35);
-                        var1.setBlock(var8 + 4, var9 + 1, var10 + 1, 35);
-                        var1.setBlock(var8 + 6, var9 + 1, var10 + 3, 35);
-                        var1.setBlock(var8 + 5, var9 + 1, var10 + 3, 35);
-                        var1.setBlock(var8 + 4, var9 + 1, var10 + 3, 35);
-                        var1.setBlock(var8 + 6, var9 + 1, var10 + 2, 50);
-                        var1.setBlock(var8 + 7, var9, var10 + 2, 85);
-                        var1.setBlock(var8 + 5, var9, var10 + 1, 85);
-                        var1.setBlock(var8 + 5, var9, var10 + 3, 85);
-
-                        for (var11 = 0; var11 < 4; ++var11)
-                        {
-                            for (var12 = 0; var12 < 5; ++var12)
-                            {
-                                var1.setBlock(var8 + var11, var9, var10 + var12, 85);
-                            }
-                        }
-
-                        for (var11 = 1; var11 < 4; ++var11)
-                        {
-                            for (var12 = 1; var12 < 4; ++var12)
-                            {
-                                var1.setBlock(var8 + var11, var9, var10 + var12, 0);
-                            }
-                        }
-
-                        var1.setBlock(var8, var9, var10 + 2, 0);
-                        var1.setBlock(var8 + 2, var9 - 1, var10 + 2, ModCastleDefenders.blockMerc.blockID);
                     }
+
+                    for (x = ramdom8M8_Y; x < ramdom8M8_Y + 1; ++x)
+                    {
+                        for (y = 4; y < 7; ++y)
+                        {
+                            for (z = 0; z < 5; ++z)
+                            {
+                                world.setBlock(ramdom8M8_X + y, x, ramdom8M8_Z + z, 35);
+                            }
+                        }
+                    }
+
+                    for (x = ramdom8M8_Y; x < ramdom8M8_Y + 1; ++x)
+                    {
+                        for (y = 4; y < 7; ++y)
+                        {
+                            for (z = 1; z < 4; ++z)
+                            {
+                                world.setBlock(ramdom8M8_X + y, x, ramdom8M8_Z + z, 0);
+                            }
+                        }
+                    }
+
+                    world.setBlock(ramdom8M8_X + 7, ramdom8M8_Y, ramdom8M8_Z + 1, 35);
+                    world.setBlock(ramdom8M8_X + 7, ramdom8M8_Y, ramdom8M8_Z + 2, 35);
+                    world.setBlock(ramdom8M8_X + 7, ramdom8M8_Y + 1, ramdom8M8_Z + 2, 35);
+                    world.setBlock(ramdom8M8_X + 7, ramdom8M8_Y, ramdom8M8_Z + 3, 35);
+                    world.setBlock(ramdom8M8_X + 8, ramdom8M8_Y, ramdom8M8_Z + 2, 35);
+                    world.setBlock(ramdom8M8_X + 6, ramdom8M8_Y + 2, ramdom8M8_Z + 2, 35);
+                    world.setBlock(ramdom8M8_X + 5, ramdom8M8_Y + 2, ramdom8M8_Z + 2, 35);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 2, ramdom8M8_Z + 2, 35);
+                    world.setBlock(ramdom8M8_X + 6, ramdom8M8_Y + 1, ramdom8M8_Z + 1, 35);
+                    world.setBlock(ramdom8M8_X + 5, ramdom8M8_Y + 1, ramdom8M8_Z + 1, 35);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 1, ramdom8M8_Z + 1, 35);
+                    world.setBlock(ramdom8M8_X + 6, ramdom8M8_Y + 1, ramdom8M8_Z + 3, 35);
+                    world.setBlock(ramdom8M8_X + 5, ramdom8M8_Y + 1, ramdom8M8_Z + 3, 35);
+                    world.setBlock(ramdom8M8_X + 4, ramdom8M8_Y + 1, ramdom8M8_Z + 3, 35);
+                    world.setBlock(ramdom8M8_X + 6, ramdom8M8_Y + 1, ramdom8M8_Z + 2, 50);
+                    world.setBlock(ramdom8M8_X + 7, ramdom8M8_Y, ramdom8M8_Z + 2, 85);
+                    world.setBlock(ramdom8M8_X + 5, ramdom8M8_Y, ramdom8M8_Z + 1, 85);
+                    world.setBlock(ramdom8M8_X + 5, ramdom8M8_Y, ramdom8M8_Z + 3, 85);
+
+                    for (x = 0; x < 4; ++x)
+                    {
+                        for (y = 0; y < 5; ++y)
+                        {
+                            world.setBlock(ramdom8M8_X + x, ramdom8M8_Y, ramdom8M8_Z + y, 85);
+                        }
+                    }
+
+                    for (x = 1; x < 4; ++x)
+                    {
+                        for (y = 1; y < 4; ++y)
+                        {
+                            world.setBlock(ramdom8M8_X + x, ramdom8M8_Y, ramdom8M8_Z + y, 0);
+                        }
+                    }
+
+                    world.setBlock(ramdom8M8_X, ramdom8M8_Y, ramdom8M8_Z + 2, 0);
+                    world.setBlock(ramdom8M8_X + 2, ramdom8M8_Y - 1, ramdom8M8_Z + 2, ModCastleDefenders.blockMerc.blockID);
                 }
             }
         }
     }
 
 
-    private ItemStack pickCheckLootItem(Random var1) {
-        int var2 = var1.nextInt(6);
-        return var2 == 0 ? new ItemStack(Item.arrow, var1.nextInt(30) + 10) : (var2 == 1 ? new ItemStack(Item.swordIron) : (var2 == 2 ? new ItemStack(Item.goldNugget) : (var2 == 3 ? new ItemStack(Item.goldNugget) : (var2 == 4 ? new ItemStack(Item.bread) : (var2 == 5 ? new ItemStack(Item.carrot) : null)))));
+    private ItemStack pickCheckLootItem(Random world) {
+        int random = world.nextInt(6);
+        return random == 0 ? new ItemStack(Item.arrow, world.nextInt(30) + 10) : (random == 1 ? new ItemStack(Item.swordIron) : (random == 2 ? new ItemStack(Item.goldNugget) : (random == 3 ? new ItemStack(Item.goldNugget) : (random == 4 ? new ItemStack(Item.bread) : (random == 5 ? new ItemStack(Item.carrot) : null)))));
     }
 }
