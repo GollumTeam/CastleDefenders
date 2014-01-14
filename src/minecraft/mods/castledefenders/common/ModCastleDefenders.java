@@ -132,7 +132,8 @@ public class ModCastleDefenders {
 		
 		// Creation du checker de version
 		VersionChecker.getInstance(this.versionChecker).check(this);
-
+		
+		// Creation du tab creative
 		tabCastleDefenders = new CastleDefendersTabs("CastleDefender");
 		LanguageRegistry.instance().addStringLocalization("itemGroup.CastleDefender", "en_US", "Castle Defender");
 
@@ -151,6 +152,7 @@ public class ModCastleDefenders {
 		// Enregistrement des Mobs
 		this.initMobs ();
 		
+		// Set de l'icon du tab creative
 		this.tabCastleDefenders.setIcon(this.blockArcherM);
 		
 	}
