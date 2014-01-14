@@ -29,6 +29,7 @@ import mods.castledefenders.common.tileentities.TileEntityBlockKnight;
 import mods.castledefenders.common.tileentities.TileEntityBlockKnight2;
 import mods.castledefenders.common.tileentities.TileEntityBlockMage;
 import mods.castledefenders.common.tileentities.TileEntityBlockMerc;
+import mods.castledefenders.common.worldgenerator.WorldGeneratorMercBase;
 import mods.castledefenders.utils.ConfigLoader;
 import mods.castledefenders.utils.ConfigProp;
 import mods.castledefenders.utils.VersionChecker;
@@ -110,6 +111,8 @@ public class ModCastleDefenders {
 	@ConfigProp(group = "Mobs Ids") public static int eArcherID  = -27;
 	@ConfigProp(group = "Mobs Ids") public static int eMageID    = -26;
 	
+	@ConfigProp(group = "Spawn rate") public static int castleSpawnRate    = 7;
+	@ConfigProp(group = "Spawn rate") public static int mercenarySpawnRate = 7;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -140,17 +143,23 @@ public class ModCastleDefenders {
 		//Initialisation des items
 		this.initItems();
 		
-		//Initialisation des blocks
+		// Initialisation des blocks
 		this.initBlocks ();
 
-		// Nom des TileEntities
+		// Initialisation les TileEntities
 		this.initTileEntities ();
 		
 		// Ajout des recettes
 		this.initRecipes ();
 		
-		// Enregistrement des Mobs
+		// Initialisation des Mobs
 		this.initMobs ();
+
+		// Initialisation des buildings
+		this.initBuildings();
+		
+		// Initialisation des générateur de terrain
+		this.initWorldGenerators();
 		
 		// Set de l'icon du tab creative
 		this.tabCastleDefenders.setIcon(this.blockArcherM);
@@ -204,8 +213,8 @@ public class ModCastleDefenders {
 		LanguageRegistry.addName(this.blockKnight2, "Knight Spawner - Level 2");
 		LanguageRegistry.addName(this.blockArcher , "Archer Spawner");
 		LanguageRegistry.addName(this.blockArcher2, "Archer Spawner - Level 2");
-		LanguageRegistry.addName(this.blockMerc   , "Merc Spawner");
-		LanguageRegistry.addName(this.blockArcherM, "Merc Archer Spawner");
+		LanguageRegistry.addName(this.blockMerc   , "Mercenary Spawner");
+		LanguageRegistry.addName(this.blockArcherM, "Mercenary Archer Spawner");
 		LanguageRegistry.addName(this.blockMage   , "Mage Spawner");
 		LanguageRegistry.addName(this.blockHealer , "Mage Healer");
 		LanguageRegistry.addName(this.blockEKnight, "Enemy Knight Spawner");
@@ -234,17 +243,16 @@ public class ModCastleDefenders {
 	 * Ajout des recettes
 	 */
 	private void initRecipes () {
-		GameRegistry.addRecipe(new ItemStack(this.blockKnight, 1), new Object[] {" X ", "XYX", " X ", 'X', Item.ingotIron, 'Y', Item.swordIron});
-		GameRegistry.addRecipe(new ItemStack(this.blockArcher, 1), new Object[] {" X ", "XYX", " X ", 'X', Item.ingotIron, 'Y', Item.bow});
-		GameRegistry.addRecipe(new ItemStack(this.blockMage, 1), new Object[] {"   ", " X ", " Y ", 'X', itemMedallion, 'Y', this.blockEMage});
-
-		GameRegistry.addRecipe(new ItemStack(this.blockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordWood   , 'Y', this.itemMedallion, 'Z', Item.ingotIron});
-		GameRegistry.addRecipe(new ItemStack(this.blockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordStone  , 'Y', this.itemMedallion, 'Z', Item.ingotIron});
-		GameRegistry.addRecipe(new ItemStack(this.blockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordIron   , 'Y', this.itemMedallion, 'Z', Item.ingotIron});
-		GameRegistry.addRecipe(new ItemStack(this.blockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordGold   , 'Y', this.itemMedallion, 'Z', Item.ingotIron});
-		GameRegistry.addRecipe(new ItemStack(this.blockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordDiamond, 'Y', this.itemMedallion, 'Z', Item.ingotIron});
-
-		GameRegistry.addRecipe(new ItemStack(this.blockArcherM, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.bow   , 'Y', this.itemMedallion, 'Z', Item.ingotIron});
+		
+		
+		GameRegistry.addRecipe(new ItemStack(this.blockKnight , 1), new Object[] { " X ", "XYX", " X ", 'X', Item.ingotIron, 'Y', Item.swordIron });
+		GameRegistry.addRecipe(new ItemStack(this.blockKnight2, 1), new Object[] { " X ", "XYX", " X ", 'X', Item.ingotIron, 'Y', Item.swordDiamond });
+		GameRegistry.addRecipe(new ItemStack(this.blockArcher , 1), new Object[] { " X ", "XYX", " X ", 'X', Item.ingotIron, 'Y', Item.bow });
+		GameRegistry.addRecipe(new ItemStack(this.blockArcher2, 1), new Object[] { "ZXZ", "XYX", "ZXZ", 'X', Item.ingotIron, 'Y', Item.bow,          'Z', Item.diamond });
+		GameRegistry.addRecipe(new ItemStack(this.blockMerc,    1), new Object[] { "KXK", "XYX", "KXK", 'X', Block.planks,   'Y', Item.swordDiamond, 'K', Item.ingotGold });
+		GameRegistry.addRecipe(new ItemStack(this.blockArcherM, 1), new Object[] { "KXK", "XYX", "KXK", 'X', Block.planks,   'Y', Item.bow,          'K', Item.ingotGold });
+		GameRegistry.addRecipe(new ItemStack(this.blockMage   , 1), new Object[] { "YYY", "XXX", "XXX", 'X', Block.obsidian, 'Y', this.itemMedallion });
+		GameRegistry.addRecipe(new ItemStack(this.blockHealer , 1), new Object[] { "XYX", "XYX", "XYX", 'X', Block.planks,   'Y', this.itemMedallion });
 	}
 	
 	/**
@@ -254,6 +262,21 @@ public class ModCastleDefenders {
 		this.registerMob(EntityKnight.class , "Knight", "Knight"           , this.knightID , 0x000000);
 		this.registerMob(EntityKnight2.class, "Knight2", "Knight - Level 2", this.knight2ID, 0x00FFFC);
 		this.registerMob(EntityArcher.class , "Archer", "Archer"           , this.archerID , 0x500000);
+	}
+
+	/**
+	 * Enregistre les générateur de terrain
+	 */
+	private void initBuildings () {
+		Building building = new Building ("mercenary1");
+		building.getBlocksList ();
+	}
+	
+	/**
+	 * Enregistre les générateur de terrain
+	 */
+	private void initWorldGenerators () {
+        GameRegistry.registerWorldGenerator(new WorldGeneratorMercBase());
 	}
 	
 	/**
