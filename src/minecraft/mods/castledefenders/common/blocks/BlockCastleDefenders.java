@@ -15,7 +15,7 @@ public abstract class BlockCastleDefenders extends BlockContainer {
 	 */
 	public BlockCastleDefenders (int id, Material material) {
 		super(id, material);
-		this.setCreativeTab(ModCastleDefenders.tabsCastleDefenders);
+		this.setCreativeTab(ModCastleDefenders.tabCastleDefenders);
 	}
 	
 	/**

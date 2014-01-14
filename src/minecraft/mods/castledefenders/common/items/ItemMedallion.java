@@ -14,7 +14,7 @@ public class ItemMedallion extends Item
 	public ItemMedallion(int id) {
 		super(id);
 		this.maxStackSize = 64;
-		this.setCreativeTab(ModCastleDefenders.tabsCastleDefenders);
+		this.setCreativeTab(ModCastleDefenders.tabCastleDefenders);
 	}
 	
 	// Enregistre la texture

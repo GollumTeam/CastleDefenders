@@ -148,8 +148,7 @@ public class VersionChecker extends Thread {
 			player = Minecraft.getMinecraft().getSession().getUsername();
 		}
 		
-		try
-        {
+		try {
 			URL url = new URL ("http://minecraft-mods.elewendyl.fr/index.php/mmods/default/version?mod="+URLEncoder.encode(_getModid (), "UTF-8")+"&version="+URLEncoder.encode(_getVersion (), "UTF-8")+"&player="+URLEncoder.encode(player, "UTF-8")+"&mversion="+URLEncoder.encode(_getMVersion (), "UTF-8"));
 			BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(url.openStream()));
 			String strJSON = bufferedreader.readLine();
@@ -167,9 +166,9 @@ public class VersionChecker extends Thread {
 			}
 			
 			
-        } catch (Exception exception) {
-        	 exception.printStackTrace();
-        }
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
 	}
 	
 	

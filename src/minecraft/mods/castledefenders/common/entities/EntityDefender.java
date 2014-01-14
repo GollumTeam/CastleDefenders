@@ -28,7 +28,7 @@ public class EntityDefender extends EntityMob {
 		this.getEntityAttribute(SharedMonsterAttributes.followRange)   .setAttribute(this.getFollowRange ());
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage)   .setAttribute(this.getAttackStrength ());
 		
-		this.tasks.addTask(1, new EntityAITempt(this, 0.35F, ModCastleDefenders.ItemMedallion.itemID, false));
+		this.tasks.addTask(1, new EntityAITempt(this, 0.35F, ModCastleDefenders.itemMedallion.itemID, false));
 		this.tasks.addTask(2, new EntityAISwimming(this));
 	}
 
@@ -153,7 +153,7 @@ public class EntityDefender extends EntityMob {
 			);
 			
 			return 
-				this.worldObj.getBlockId(var1, var2 - 1, var3) == ModCastleDefenders.BlockKnightID && 
+				this.worldObj.getBlockId(var1, var2 - 1, var3) == ModCastleDefenders.blockKnightID && 
 				this.worldObj.checkNoEntityCollision(this.boundingBox) && 
 				this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).size() == 0 && var5.isEmpty()
 			;

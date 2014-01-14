@@ -1,5 +1,6 @@
 package mods.castledefenders.common;
 
+import java.lang.annotation.Annotation;
 import java.util.logging.Logger;
 
 import mods.castledefenders.common.blocks.BlockArcher;
@@ -64,38 +65,38 @@ public class ModCastleDefenders {
 	public static Logger log;
 	
 	// Tab du mode creative
-	public static CastleDefendersTabs tabsCastleDefenders;
+	public static CastleDefendersTabs tabCastleDefenders;
 	
 	// Liste des blocks
-	public static Block BlockKnight;
-	public static Block BlockKnight2;
-	public static Block BlockArcher;
-	public static Block BlockArcher2;
-	public static Block BlockMerc;
-	public static Block BlockArcherM;
-	public static Block BlockMage;
-	public static Block BlockHealer;
-	public static Block BlockEKnight;
-	public static Block BlockEArcher;
-	public static Block BlockEMage;
+	public static Block blockKnight;
+	public static Block blockKnight2;
+	public static Block blockArcher;
+	public static Block blockArcher2;
+	public static Block blockMerc;
+	public static Block blockArcherM;
+	public static Block blockMage;
+	public static Block blockHealer;
+	public static Block blockEKnight;
+	public static Block blockEArcher;
+	public static Block blockEMage;
 	
 	// Liste des items
-	public static Item ItemMedallion;
+	public static Item itemMedallion;
 	
 	// Liste des IDs
-	@ConfigProp(group = "Blocks Ids") public static int BlockKnightID  = 1238;
-	@ConfigProp(group = "Blocks Ids") public static int BlockKnight2ID = 1240;
-	@ConfigProp(group = "Blocks Ids") public static int BlockArcherID  = 1239;
-	@ConfigProp(group = "Blocks Ids") public static int BlockArcher2ID = 1241;
-	@ConfigProp(group = "Blocks Ids") public static int BlockMercID    = 1234;
-	@ConfigProp(group = "Blocks Ids") public static int BlockArcherMID = 1232;
-	@ConfigProp(group = "Blocks Ids") public static int BlockMageID    = 1235;
-	@ConfigProp(group = "Blocks Ids") public static int BlockHealerID  = 1242;
-	@ConfigProp(group = "Blocks Ids") public static int BlockEKnightID = 1237;
-	@ConfigProp(group = "Blocks Ids") public static int BlockEArcherID = 1236;
-	@ConfigProp(group = "Blocks Ids") public static int BlockEMageID   = 1233;
+	@ConfigProp(group = "Blocks Ids") public static int blockKnightID  = 1238;
+	@ConfigProp(group = "Blocks Ids") public static int blockKnight2ID = 1240;
+	@ConfigProp(group = "Blocks Ids") public static int blockArcherID  = 1239;
+	@ConfigProp(group = "Blocks Ids") public static int blockArcher2ID = 1241;
+	@ConfigProp(group = "Blocks Ids") public static int blockMercID    = 1234;
+	@ConfigProp(group = "Blocks Ids") public static int blockArcherMID = 1232;
+	@ConfigProp(group = "Blocks Ids") public static int blockMageID    = 1235;
+	@ConfigProp(group = "Blocks Ids") public static int blockHealerID  = 1242;
+	@ConfigProp(group = "Blocks Ids") public static int blockEKnightID = 1237;
+	@ConfigProp(group = "Blocks Ids") public static int blockEArcherID = 1236;
+	@ConfigProp(group = "Blocks Ids") public static int blockEMageID   = 1233;
 	
-	@ConfigProp(group = "Items Ids") public static int MedallionID    = 13001;
+	@ConfigProp(group = "Items Ids") public static int medallionID    = 13001;
 	
 	@ConfigProp(group = "Mobs Ids") public static int knightID   = -31;
 	@ConfigProp(group = "Mobs Ids") public static int knight2ID  = -32;
@@ -104,10 +105,10 @@ public class ModCastleDefenders {
 	@ConfigProp(group = "Mobs Ids") public static int mercID     = -29;
 	@ConfigProp(group = "Mobs Ids") public static int archerMID  = -25;
 	@ConfigProp(group = "Mobs Ids") public static int mageID     = -13;
-	@ConfigProp(group = "Mobs Ids") public static int HealerID   = -34;
-	@ConfigProp(group = "Mobs Ids") public static int EknightID  = -28;
-	@ConfigProp(group = "Mobs Ids") public static int EarcherID  = -27;
-	@ConfigProp(group = "Mobs Ids") public static int EmageID    = -26;
+	@ConfigProp(group = "Mobs Ids") public static int healerID   = -34;
+	@ConfigProp(group = "Mobs Ids") public static int eKnightID  = -28;
+	@ConfigProp(group = "Mobs Ids") public static int eArcherID  = -27;
+	@ConfigProp(group = "Mobs Ids") public static int eMageID    = -26;
 	
 	
 	@EventHandler
@@ -132,7 +133,7 @@ public class ModCastleDefenders {
 		// Creation du checker de version
 		VersionChecker.getInstance(this.versionChecker).check(this);
 
-		tabsCastleDefenders = new CastleDefendersTabs("CastleDefender", MedallionID);
+		tabCastleDefenders = new CastleDefendersTabs("CastleDefender");
 		LanguageRegistry.instance().addStringLocalization("itemGroup.CastleDefender", "en_US", "Castle Defender");
 
 		//Initialisation des items
@@ -150,6 +151,8 @@ public class ModCastleDefenders {
 		// Enregistrement des Mobs
 		this.initMobs ();
 		
+		this.tabCastleDefenders.setIcon(this.blockArcherM);
+		
 	}
 
 	/**
@@ -157,9 +160,9 @@ public class ModCastleDefenders {
 	 */
 	public void initItems () {
 
-		ItemMedallion = (new ItemMedallion(MedallionID)).setUnlocalizedName("Medallion");
-		
-		LanguageRegistry.addName(ItemMedallion, "Medallion");
+		this.itemMedallion = (new ItemMedallion(this.medallionID)).setUnlocalizedName("MedallionCD");
+		GameRegistry.registerItem(this.itemMedallion, "Medallion", this.getModid());
+		LanguageRegistry.addName(this.itemMedallion, "Medallion");
 	}
 	
 	/**
@@ -168,44 +171,44 @@ public class ModCastleDefenders {
 	public void initBlocks () {
 
 		// Création des blocks
-		BlockKnight  = (new BlockKnight(BlockKnightID))  .setUnlocalizedName("BlockKnight") .setHardness(2.0F).setResistance(5.0F);
-		BlockKnight2 = (new BlockKnight2(BlockKnight2ID)).setUnlocalizedName("BlockKnight2").setHardness(2.0F).setResistance(5.0F);
-		BlockArcher  = (new BlockArcher(BlockArcherID))  .setUnlocalizedName("BlockArcher") .setHardness(2.0F).setResistance(5.0F);
-		BlockArcher2 = (new BlockArcher2(BlockArcher2ID)).setUnlocalizedName("BlockArcher2").setHardness(2.0F).setResistance(5.0F);
-		BlockMerc    = (new BlockMerc(BlockMercID))      .setUnlocalizedName("BlockMerc")   .setHardness(2.0F).setResistance(5.0F);
-		BlockArcherM = (new BlockArcherM(BlockArcherMID)).setUnlocalizedName("BlockArcherM").setHardness(2.0F).setResistance(5.0F);
-		BlockMage    = (new BlockMage(BlockMageID))      .setUnlocalizedName("BlockMage")   .setHardness(2.0F).setResistance(5.0F);
-		BlockHealer  = (new BlockHealer(BlockHealerID))  .setUnlocalizedName("BlockHealer") .setHardness(2.0F).setResistance(5.0F);
-		BlockEKnight = (new BlockEKnight(BlockEKnightID)).setUnlocalizedName("BlockEKnight").setHardness(2.0F).setResistance(5.0F);
-		BlockEArcher = (new BlockEArcher(BlockEArcherID)).setUnlocalizedName("BlockEArcher").setHardness(2.0F).setResistance(5.0F);
-		BlockEMage   = (new BlockEMage(BlockEMageID))    .setUnlocalizedName("BlockEMage")  .setHardness(2.0F).setResistance(5.0F);
+		this.blockKnight  = (new BlockKnight(this.blockKnightID))  .setUnlocalizedName("BlockKnight") .setHardness(2.0F).setResistance(5.0F);
+		this.blockKnight2 = (new BlockKnight2(this.blockKnight2ID)).setUnlocalizedName("BlockKnight2").setHardness(2.0F).setResistance(5.0F);
+		this.blockArcher  = (new BlockArcher(this.blockArcherID))  .setUnlocalizedName("BlockArcher") .setHardness(2.0F).setResistance(5.0F);
+		this.blockArcher2 = (new BlockArcher2(this.blockArcher2ID)).setUnlocalizedName("BlockArcher2").setHardness(2.0F).setResistance(5.0F);
+		this.blockMerc    = (new BlockMerc(this.blockMercID))      .setUnlocalizedName("BlockMerc")   .setHardness(2.0F).setResistance(5.0F);
+		this.blockArcherM = (new BlockArcherM(this.blockArcherMID)).setUnlocalizedName("BlockArcherM").setHardness(2.0F).setResistance(5.0F);
+		this.blockMage    = (new BlockMage(this.blockMageID))      .setUnlocalizedName("BlockMage")   .setHardness(2.0F).setResistance(5.0F);
+		this.blockHealer  = (new BlockHealer(this.blockHealerID))  .setUnlocalizedName("BlockHealer") .setHardness(2.0F).setResistance(5.0F);
+		this.blockEKnight = (new BlockEKnight(this.blockEKnightID)).setUnlocalizedName("BlockEKnight").setHardness(2.0F).setResistance(5.0F);
+		this.blockEArcher = (new BlockEArcher(this.blockEArcherID)).setUnlocalizedName("BlockEArcher").setHardness(2.0F).setResistance(5.0F);
+		this.blockEMage   = (new BlockEMage(this.blockEMageID))    .setUnlocalizedName("BlockEMage")  .setHardness(2.0F).setResistance(5.0F);
 		
 		
 		// Enregistrement des blocks
-		GameRegistry.registerBlock(BlockKnight , "Knight Spawner");
-		GameRegistry.registerBlock(BlockKnight2, "Knight Spawner - Level 2");
-		GameRegistry.registerBlock(BlockArcher , "Archer Spawner");
-		GameRegistry.registerBlock(BlockArcher2, "Archer Spawner - Level 2");
-		GameRegistry.registerBlock(BlockMerc   , "Merc Spawner");
-		GameRegistry.registerBlock(BlockArcherM, "Merc Archer Spawner");
-		GameRegistry.registerBlock(BlockMage   , "Mage Spawner");
-		GameRegistry.registerBlock(BlockHealer , "Healer Spawner");
-		GameRegistry.registerBlock(BlockEKnight, "Enemy Knight Spawner");
-		GameRegistry.registerBlock(BlockEArcher, "Enemy Archer Spawner");
-		GameRegistry.registerBlock(BlockEMage  , "Enemy Mage Spawner");
+		GameRegistry.registerBlock(this.blockKnight , "Knight Spawner");
+		GameRegistry.registerBlock(this.blockKnight2, "Knight Spawner - Level 2");
+		GameRegistry.registerBlock(this.blockArcher , "Archer Spawner");
+		GameRegistry.registerBlock(this.blockArcher2, "Archer Spawner - Level 2");
+		GameRegistry.registerBlock(this.blockMerc   , "Merc Spawner");
+		GameRegistry.registerBlock(this.blockArcherM, "Merc Archer Spawner");
+		GameRegistry.registerBlock(this.blockMage   , "Mage Spawner");
+		GameRegistry.registerBlock(this.blockHealer , "Healer Spawner");
+		GameRegistry.registerBlock(this.blockEKnight, "Enemy Knight Spawner");
+		GameRegistry.registerBlock(this.blockEArcher, "Enemy Archer Spawner");
+		GameRegistry.registerBlock(this.blockEMage  , "Enemy Mage Spawner");
 		
 		// Nom des blocks
-		LanguageRegistry.addName(BlockKnight , "Knight Spawner");
-		LanguageRegistry.addName(BlockKnight2, "Knight Spawner - Level 2");
-		LanguageRegistry.addName(BlockArcher , "Archer Spawner");
-		LanguageRegistry.addName(BlockArcher2, "Archer Spawner - Level 2");
-		LanguageRegistry.addName(BlockMerc   , "Merc Spawner");
-		LanguageRegistry.addName(BlockArcherM, "Merc Archer Spawner");
-		LanguageRegistry.addName(BlockMage   , "Mage Spawner");
-		LanguageRegistry.addName(BlockHealer , "Mage Healer");
-		LanguageRegistry.addName(BlockEKnight, "Enemy Knight Spawner");
-		LanguageRegistry.addName(BlockEArcher, "Enemy Archer Spawner");
-		LanguageRegistry.addName(BlockEMage  , "Enemy Mage Spawner");
+		LanguageRegistry.addName(this.blockKnight , "Knight Spawner");
+		LanguageRegistry.addName(this.blockKnight2, "Knight Spawner - Level 2");
+		LanguageRegistry.addName(this.blockArcher , "Archer Spawner");
+		LanguageRegistry.addName(this.blockArcher2, "Archer Spawner - Level 2");
+		LanguageRegistry.addName(this.blockMerc   , "Merc Spawner");
+		LanguageRegistry.addName(this.blockArcherM, "Merc Archer Spawner");
+		LanguageRegistry.addName(this.blockMage   , "Mage Spawner");
+		LanguageRegistry.addName(this.blockHealer , "Mage Healer");
+		LanguageRegistry.addName(this.blockEKnight, "Enemy Knight Spawner");
+		LanguageRegistry.addName(this.blockEArcher, "Enemy Archer Spawner");
+		LanguageRegistry.addName(this.blockEMage  , "Enemy Mage Spawner");
 	}
 	
 	/**
@@ -229,26 +232,26 @@ public class ModCastleDefenders {
 	 * Ajout des recettes
 	 */
 	private void initRecipes () {
-		GameRegistry.addRecipe(new ItemStack(BlockKnight, 1), new Object[] {" X ", "XYX", " X ", 'X', Item.ingotIron, 'Y', Item.swordIron});
-		GameRegistry.addRecipe(new ItemStack(BlockArcher, 1), new Object[] {" X ", "XYX", " X ", 'X', Item.ingotIron, 'Y', Item.bow});
-		GameRegistry.addRecipe(new ItemStack(BlockMage, 1), new Object[] {"   ", " X ", " Y ", 'X', ItemMedallion, 'Y', BlockEMage});
+		GameRegistry.addRecipe(new ItemStack(this.blockKnight, 1), new Object[] {" X ", "XYX", " X ", 'X', Item.ingotIron, 'Y', Item.swordIron});
+		GameRegistry.addRecipe(new ItemStack(this.blockArcher, 1), new Object[] {" X ", "XYX", " X ", 'X', Item.ingotIron, 'Y', Item.bow});
+		GameRegistry.addRecipe(new ItemStack(this.blockMage, 1), new Object[] {"   ", " X ", " Y ", 'X', itemMedallion, 'Y', this.blockEMage});
 
-		GameRegistry.addRecipe(new ItemStack(BlockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordWood   , 'Y', ItemMedallion, 'Z', Item.ingotIron});
-		GameRegistry.addRecipe(new ItemStack(BlockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordStone  , 'Y', ItemMedallion, 'Z', Item.ingotIron});
-		GameRegistry.addRecipe(new ItemStack(BlockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordIron   , 'Y', ItemMedallion, 'Z', Item.ingotIron});
-		GameRegistry.addRecipe(new ItemStack(BlockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordGold   , 'Y', ItemMedallion, 'Z', Item.ingotIron});
-		GameRegistry.addRecipe(new ItemStack(BlockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordDiamond, 'Y', ItemMedallion, 'Z', Item.ingotIron});
+		GameRegistry.addRecipe(new ItemStack(this.blockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordWood   , 'Y', this.itemMedallion, 'Z', Item.ingotIron});
+		GameRegistry.addRecipe(new ItemStack(this.blockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordStone  , 'Y', this.itemMedallion, 'Z', Item.ingotIron});
+		GameRegistry.addRecipe(new ItemStack(this.blockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordIron   , 'Y', this.itemMedallion, 'Z', Item.ingotIron});
+		GameRegistry.addRecipe(new ItemStack(this.blockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordGold   , 'Y', this.itemMedallion, 'Z', Item.ingotIron});
+		GameRegistry.addRecipe(new ItemStack(this.blockMerc, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.swordDiamond, 'Y', this.itemMedallion, 'Z', Item.ingotIron});
 
-		GameRegistry.addRecipe(new ItemStack(BlockArcherM, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.bow   , 'Y', ItemMedallion, 'Z', Item.ingotIron});
+		GameRegistry.addRecipe(new ItemStack(this.blockArcherM, 1), new Object[] {" Z ", "XYX", " Z ", 'X', Item.bow   , 'Y', this.itemMedallion, 'Z', Item.ingotIron});
 	}
 	
 	/**
 	 * Enregistrement des Mobs
 	 */
 	private void initMobs () {
-		this.registerMob(EntityKnight.class , "Knight", "Knight", knightID , 0x000000);
-		this.registerMob(EntityKnight2.class, "Knight2", "Knight - Level 2", knight2ID, 0x00FFFC);
-		this.registerMob(EntityArcher.class , "Archer", "Archer", archerID , 0x500000);
+		this.registerMob(EntityKnight.class , "Knight", "Knight"           , this.knightID , 0x000000);
+		this.registerMob(EntityKnight2.class, "Knight2", "Knight - Level 2", this.knight2ID, 0x00FFFC);
+		this.registerMob(EntityArcher.class , "Archer", "Archer"           , this.archerID , 0x500000);
 	}
 	
 	/**
@@ -286,6 +289,22 @@ public class ModCastleDefenders {
 		// Ajout de la langue
 		LanguageRegistry.instance().addStringLocalization("entity."+name+".name", languageName);
 		
+	}
+	
+	/**
+	 * Renvoie le modID du MOD
+	 * @return String
+	 */
+	public String getModid () {
+		String modid = "Error";
+		
+		for (Annotation annotation : this.getClass().getAnnotations()) {
+			if (annotation instanceof Mod) {
+				modid = ((Mod)annotation).modid();
+			}
+		}
+		
+		return modid;
 	}
 	
 }
