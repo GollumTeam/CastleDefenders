@@ -1,5 +1,6 @@
 package mods.castledefenders.common;
 
+import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.util.logging.Logger;
 
@@ -114,6 +115,9 @@ public class ModCastleDefenders {
 	@ConfigProp(group = "Spawn rate") public static int castleSpawnRate    = 7;
 	@ConfigProp(group = "Spawn rate") public static int mercenarySpawnRate = 7;
 	
+	/**
+	 * 1
+	 */
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		
@@ -126,9 +130,12 @@ public class ModCastleDefenders {
 		
 	}
 	
-	/** 2 **/
+	/**
+	 * 2 
+	 * @throws IOException
+	 * **/
 	@EventHandler
-	public void load(FMLInitializationEvent event) {
+	public void load(FMLInitializationEvent event) throws IOException {
 		
 		// Execution du renderer en fonction du serveur ou du client
 		proxy.registerRenderers();
@@ -266,8 +273,9 @@ public class ModCastleDefenders {
 
 	/**
 	 * Enregistre les générateur de terrain
+	 * @throws IOException 
 	 */
-	private void initBuildings () {
+	private void initBuildings () throws IOException {
 		Building building = new Building ("mercenary1");
 		building.getBlocksList ();
 	}

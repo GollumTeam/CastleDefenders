@@ -39,7 +39,7 @@ public class Building {
 		return is;
 	}
 	
-	public void getBlocksList() {
+	public void getBlocksList() throws IOException {
 		
 		try {
 			InputStream is = this.getResource(Building.PATH_IMG + this.name + ".png");
@@ -50,9 +50,8 @@ public class Building {
 			
 		} catch (IOException e) {
 			ModCastleDefenders.log.severe ("Error to read resource in jar");
-			e.printStackTrace();
+			throw e;
 		}
-		return;
 	}
 	
 	
