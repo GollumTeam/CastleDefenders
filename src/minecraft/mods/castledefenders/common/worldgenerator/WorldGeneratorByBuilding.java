@@ -150,10 +150,10 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			int initZ = wolrdZ + random.nextInt(8) - random.nextInt(8);
 			
 			// Pour test sur un superflat
-			initY = 4;
+			initY = 3;
 			
 			//Test si on est sur de la terre (faudrais aps que le batiment vol)
-			if (world.getBlockId(initX + 3, initY - 1, initZ + 3) == Block.grass.blockID) {
+			if (world.getBlockId(initX + 3, initY, initZ + 3) == Block.grass.blockID) {
 				
 				// Parcours la matrice et ajoute les blocks
 				for (int x= 0; x < building.maxX; x++) {
@@ -165,10 +165,10 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 							if (unity.block != null) {
 							
 								world.setBlock(initX + x, initY + y, initZ + z, unity.block.blockID, unity.metadataBlock, 2);
-								if (unity.block instanceof ITileEntityProvider) {
-									TileEntity tileentity = unity.block.createTileEntity(world, unity.metadataBlock);
-									world.setBlockTileEntity(initX + x, initY + y, initZ + z, tileentity);
-								}
+//								if (unity.block instanceof ITileEntityProvider) {
+//									TileEntity tileentity = unity.block.createTileEntity(world, unity.metadataBlock);
+//									world.setBlockTileEntity(initX + x, initY + y, initZ + z, tileentity);
+//								}
 							} else {
 								world.setBlock(initX + x, initY + y, initZ + z, 0, 0, 2);
 							}

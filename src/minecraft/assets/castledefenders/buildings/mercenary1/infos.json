@@ -6,7 +6,7 @@
 		{ "block": "net.minecraft.block.Block|fence" },
 		{ "block": "net.minecraft.block.Block|torchWood" },
 		{ "block": "net.minecraft.block.Block|woodSingleSlab" },
-		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockKight2" }
+		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockKnight2" }
 	],
 	"infos": {
 		"0x0x0": { "block": "net.minecraft.block.Block|planks", "metadata": 2 }
