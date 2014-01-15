@@ -58,16 +58,19 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 		
 		switch (dimensionId) {
 			case WorldGeneratorByBuilding.DIMENSION_ID_NETHER:
-				this.buildingsSurface.add(buildingAndInfos);
+				this.buildingsNether.add(buildingAndInfos);
 				break;
 				
 			case WorldGeneratorByBuilding.DIMENSION_ID_SURFACE:
-				this.buildingsNether.add(buildingAndInfos);
+				this.buildingsSurface.add(buildingAndInfos);
 				break;
 			default:
 		}
 	}
 	
+	/**
+	 * Methode de genera
+	 */
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
 		
@@ -103,7 +106,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 	 * @param totalRate
 	 * @return
 	 */
-	private Building getBuildingInRate(ArrayList<BuildingAndInfos> buildings, int totalRate, Random random) {
+	private Building getBuildingInRate(ArrayList<BuildingAndInfos> buildings, Random random) {
 		
 		ArrayList<Building>buildingsForRate = new ArrayList<Building>();
 		
@@ -113,7 +116,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			}
 		}
 		
-		return buildingsForRate.get(random.nextInt(totalRate));
+		return buildingsForRate.get(random.nextInt(this.totalRateSpawnByBuildingList (buildings)));
 	}
 	
 	/**
@@ -127,16 +130,40 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 	 */
 	private void generateBuilding(World world, Random random, int wolrdX, int wolrdZ, ArrayList<BuildingAndInfos> buildings) {
 		
+		if (buildings.size() == 0) {
+			return;
+		}
+		
 		// test du Spawn global
 		if (random.nextInt(10) < this.globalSpawnRate) {
 			
 
 			// Position initial de la génération en hauteur
 			int worldY = 64;
-			Building building = this.getBuildingInRate (buildings, this.totalRateSpawnByBuildingList(buildings), random);
+			Building building = this.getBuildingInRate (buildings, random);
 			
+			// Position initiale du batiment
+			int initX = wolrdX + random.nextInt(8) - random.nextInt(8);
+			int initY = worldY + random.nextInt(8) - random.nextInt(8);
+			int initZ = wolrdZ + random.nextInt(8) - random.nextInt(8);
 			
+			//Test si on est sur de la terre (faudrais aps que le batiment vol)
+			if (world.getBlockId(initX + 3, initY - 1, initZ + 3) == Block.grass.blockID) {
 			
+				// Parcours la matrice et ajoute les blocks
+				for (int x= 0; x < building.maxX; x++) {
+					for (int y= 0; y < building.maxY; y++) {
+						for (int z= 0; z < building.maxZ; z++) {
+							
+							Building.Unity unity = building.get(x, y, z);
+							
+							world.setBlock(initX + x, initY + y, initZ + z, unity.idBlock, unity.metadataBlock, 2);
+							
+						}
+					}
+				}
+			
+			}	
 		}
 	}
 	

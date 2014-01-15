@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 public class Building {
 
-	int maxX;
-	int maxY;
-	int maxZ;
+	public int maxX;
+	public int maxY;
+	public int maxZ;
 	
 	/**
 	 * Un element de lamatrice building
 	 */
 	static public class Unity implements Cloneable {
-		int idBlock = 0;
-		int metadataBlock = 0;
+		public int idBlock = 0;
+		public int metadataBlock = 0;
 		
 		/**
 		 * Clone l'objet
@@ -35,8 +35,7 @@ public class Building {
 	}
 	
 	//Liste des block de la constuction
-//	Building.Unity[][][] blocks = new Building.Unity[64][256][64];
-	ArrayList<ArrayList<ArrayList<Unity>>> blocks = new ArrayList<ArrayList<ArrayList<Unity>>>();
+	private ArrayList<ArrayList<ArrayList<Unity>>> blocks = new ArrayList<ArrayList<ArrayList<Unity>>>();
 	
 	
 	public Building() {
