@@ -6,8 +6,10 @@ import java.util.Random;
 import mods.castledefenders.common.ModCastleDefenders;
 import mods.castledefenders.common.building.Building;
 import net.minecraft.block.Block;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Facing;
@@ -135,7 +137,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 		}
 		
 		// test du Spawn global
-		if (random.nextInt(10) < this.globalSpawnRate) {
+		if (random.nextInt(50) < Math.min (this.globalSpawnRate, 10)  && true) {
 			
 
 			// Position initial de la génération en hauteur
@@ -147,9 +149,12 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			int initY = worldY + random.nextInt(8) - random.nextInt(8);
 			int initZ = wolrdZ + random.nextInt(8) - random.nextInt(8);
 			
+			// Pour test sur un superflat
+			initY = 4;
+			
 			//Test si on est sur de la terre (faudrais aps que le batiment vol)
 			if (world.getBlockId(initX + 3, initY - 1, initZ + 3) == Block.grass.blockID) {
-			
+				
 				// Parcours la matrice et ajoute les blocks
 				for (int x= 0; x < building.maxX; x++) {
 					for (int y= 0; y < building.maxY; y++) {
@@ -157,14 +162,222 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 							
 							Building.Unity unity = building.get(x, y, z);
 							
-							world.setBlock(initX + x, initY + y, initZ + z, unity.idBlock, unity.metadataBlock, 2);
+							if (unity.block != null) {
 							
+								world.setBlock(initX + x, initY + y, initZ + z, unity.block.blockID, unity.metadataBlock, 2);
+								if (unity.block instanceof ITileEntityProvider) {
+									TileEntity tileentity = unity.block.createTileEntity(world, unity.metadataBlock);
+									world.setBlockTileEntity(initX + x, initY + y, initZ + z, tileentity);
+								}
+							} else {
+								world.setBlock(initX + x, initY + y, initZ + z, 0, 0, 2);
+							}
 						}
 					}
 				}
-			
-			}	
+				
+//				this.buildOld(world, random, initX, initY, initZ + 20);
+//				ModCastleDefenders.log.warning("End create old building in : "+initX +" "+ initY +" "+ initZ);
+			}
 		}
 	}
+	
+	private void buildOld (World world, Random random, int ramdom8M8_X, int ramdom8M8_Y, int ramdom8M8_Z) {
+		
+		ModCastleDefenders.log.warning("Create old building in : "+ramdom8M8_X+" "+ramdom8M8_Y+" "+ramdom8M8_Z);
+		
+            int var8 = ramdom8M8_X;
+            int var9 = ramdom8M8_Y;
+            int var10 = ramdom8M8_Z;
+            int x, y, z;
+            World var1 = world;
+            Random var2 = random;
+
+            if (var1.getBlockId(var8 + 3, var9 - 1, var10 + 3) == Block.grass.blockID)
+            {
+                for (y = var9; y < var9 + 8; ++y)
+                {
+                    for (x = 0; x < 11; ++x)
+                    {
+                        for (z = 0; z < 11; ++z)
+                        {
+                            var1.setBlock(var8 + x, y, var10 + z, 0, 0, 2);
+                        }
+                    }
+                }
+
+                for (y = var9; y < var9 + 4; ++y)
+                {
+                    for (x = 0; x < 6; ++x)
+                    {
+                        for (z = 0; z < 11; ++z)
+                        {
+                            var1.setBlock(var8 + x, y, var10 + z, 5);
+                        }
+                    }
+                }
+
+                for (y = var9; y < var9 + 3; ++y)
+                {
+                    for (x = 1; x < 5; ++x)
+                    {
+                        for (z = 1; z < 10; ++z)
+                        {
+                            var1.setBlock(var8 + x, y, var10 + z, 0);
+                        }
+                    }
+                }
+
+                var1.setBlock(var8 + 5, var9, var10 + 5, 0);
+                var1.setBlock(var8 + 5, var9 + 1, var10 + 5, 0);
+                var1.setBlock(var8 + 4, var9 + 1, var10 + 4, 50);
+                var1.setBlock(var8 + 4, var9 + 1, var10 + 6, 50);
+
+                if (var1.getBlockId(var8 + 3, var9 + 1, var10 - 1) == 0)
+                {
+                    var1.setBlock(var8 + 3, var9 + 1, var10, 0);
+                }
+                else
+                {
+                    var1.setBlock(var8 + 3, var9 + 1, var10, 50);
+                }
+
+                var1.setBlock(var8 + 1, var9, var10 + 1, 61);
+                var1.setBlock(var8 + 1, var9, var10 + 2, 54);
+                var1.setBlock(var8 + 1, var9, var10 + 3, 54);
+                var1.setBlock(var8 + 4, var9, var10 + 8, 26);
+                var1.setBlock(var8 + 4, var9, var10 + 9, 26);
+                var1.setBlock(var8 + 2, var9, var10 + 8, 26);
+                var1.setBlock(var8 + 2, var9, var10 + 9, 26);
+
+                for (y = 6; y < 11; ++y)
+                {
+                    for (x = 0; x < 11; ++x)
+                    {
+                        if (var1.getBlockId(var8 + y, var9 - 1, var10 + x) != 0)
+                        {
+                            var1.setBlock(var8 + y, var9, var10 + x, 85);
+                        }
+                    }
+                }
+
+                for (y = 6; y < 10; ++y)
+                {
+                    for (x = 1; x < 10; ++x)
+                    {
+                        var1.setBlock(var8 + y, var9, var10 + x, 0);
+                    }
+                }
+
+                var1.setBlock(var8 + 10, var9, var10 + 5, 0);
+                var1.setBlock(var8 + 4, var9 - 1, var10 + 2, ModCastleDefenders.blockMerc.blockID);
+
+                if (var1.getBlockId(var8 + 8, var9 - 1, var10 + 2) != 0)
+                {
+                    var1.setBlock(var8 + 8, var9 - 1, var10 + 2, ModCastleDefenders.blockMerc.blockID);
+                }
+
+//                for (y = 0; y < 2; ++y)
+//                {
+//                    TileEntityChest var15 = (TileEntityChest)var1.getBlockTileEntity(var8 + 1, var9, var10 + 3);
+//                    ItemStack var14 = this.pickCheckLootItem(var2);
+//
+//                    if (var14 != null)
+//                    {
+//                        var15.setInventorySlotContents(var2.nextInt(var15.getSizeInventory()), var14);
+//                    }
+//                }
+
+                var1.setBlock(var8 + 1, var9 + 4, var10 + 1, 126);
+                var1.setBlock(var8 + 1, var9 + 4, var10 + 2, 126);
+                var1.setBlock(var8 + 1, var9 + 4, var10 + 3, 126);
+                var1.setBlock(var8 + 1, var9 + 4, var10 + 4, 5);
+                var1.setBlock(var8 + 1, var9 + 4, var10 + 5, 5);
+                var1.setBlock(var8 + 1, var9 + 4, var10 + 6, 5);
+                var1.setBlock(var8 + 1, var9 + 4, var10 + 7, 126);
+                var1.setBlock(var8 + 1, var9 + 4, var10 + 8, 126);
+                var1.setBlock(var8 + 1, var9 + 4, var10 + 9, 126);
+                var1.setBlock(var8 + 2, var9 + 4, var10 + 1, 126);
+                var1.setBlock(var8 + 3, var9 + 4, var10 + 1, 126);
+                var1.setBlock(var8 + 4, var9 + 4, var10 + 1, 126);
+                var1.setBlock(var8 + 4, var9 + 4, var10 + 2, 126);
+                var1.setBlock(var8 + 4, var9 + 4, var10 + 3, 126);
+                var1.setBlock(var8 + 4, var9 + 4, var10 + 4, 5);
+                var1.setBlock(var8 + 4, var9 + 4, var10 + 5, 5);
+                var1.setBlock(var8 + 4, var9 + 4, var10 + 6, 5);
+                var1.setBlock(var8 + 4, var9 + 4, var10 + 7, 126);
+                var1.setBlock(var8 + 4, var9 + 4, var10 + 8, 126);
+                var1.setBlock(var8 + 4, var9 + 4, var10 + 9, 126);
+                var1.setBlock(var8 + 2, var9 + 4, var10 + 9, 126);
+                var1.setBlock(var8 + 3, var9 + 4, var10 + 9, 126);
+                var1.setBlock(var8 + 4, var9 + 5, var10 + 4, 5);
+                var1.setBlock(var8 + 4, var9 + 5, var10 + 5, 5);
+                var1.setBlock(var8 + 4, var9 + 5, var10 + 6, 5);
+                var1.setBlock(var8 + 1, var9 + 5, var10 + 4, 5);
+                var1.setBlock(var8 + 1, var9 + 5, var10 + 5, 5);
+                var1.setBlock(var8 + 1, var9 + 5, var10 + 6, 5);
+                var1.setBlock(var8 + 2, var9 + 4, var10 + 6, 5);
+                var1.setBlock(var8 + 2, var9 + 4, var10 + 4, 5);
+                var1.setBlock(var8 + 2, var9 + 5, var10 + 6, 5);
+                var1.setBlock(var8 + 2, var9 + 5, var10 + 4, 5);
+                var1.setBlock(var8 + 2, var9 + 5, var10 + 4, 0);
+                var1.setBlock(var8 + 2, var9 + 4, var10 + 4, 0);
+                var1.setBlock(var8 + 2, var9 + 5, var10 + 6, 0);
+                var1.setBlock(var8 + 2, var9 + 4, var10 + 6, 0);
+                var1.setBlock(var8 + 2, var9 + 2, var10 + 5, 5);
+                var1.setBlock(var8 + 2, var9 + 1, var10 + 5, 5);
+                var1.setBlock(var8 + 2, var9 + 0, var10 + 5, 5);
+                var1.setBlock(var8, var9 + 3, var10, 126);
+                var1.setBlock(var8, var9 + 3, var10 + 10, 126);
+                var1.setBlock(var8 + 5, var9 + 3, var10, 126);
+                var1.setBlock(var8 + 5, var9 + 3, var10 + 10, 126);
+
+                for (y = var9 + 6; y < var9 + 7; ++y)
+                {
+                    for (x = 1; x < 5; ++x)
+                    {
+                        for (z = 3; z < 8; ++z)
+                        {
+                            var1.setBlock(var8 + x, y, var10 + z, 5);
+                        }
+                    }
+                }
+
+                for (y = var9 + 7; y < var9 + 8; ++y)
+                {
+                    for (x = 1; x < 5; ++x)
+                    {
+                        for (z = 3; z < 8; ++z)
+                        {
+                            var1.setBlock(var8 + x, y, var10 + z, 126);
+                        }
+                    }
+                }
+
+                for (y = var9 + 7; y < var9 + 8; ++y)
+                {
+                    for (x = 2; x < 4; ++x)
+                    {
+                        for (z = 4; z < 7; ++z)
+                        {
+                            var1.setBlock(var8 + x, y, var10 + z, 0);
+                        }
+                    }
+                }
+
+                var1.setBlock(var8 + 1, var9 + 7, var10 + 3, 5);
+                var1.setBlock(var8 + 1, var9 + 7, var10 + 7, 5);
+                var1.setBlock(var8 + 4, var9 + 7, var10 + 3, 5);
+                var1.setBlock(var8 + 4, var9 + 7, var10 + 7, 5);
+                var1.setBlock(var8 + 2, var9 + 6, var10 + 6, ModCastleDefenders.blockArcherM.blockID);
+                var1.setBlock(var8 + 3, var9 + 6, var10 + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
+                var1.setBlock(var8 + 3, var9 + 5, var10 + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
+                var1.setBlock(var8 + 3, var9 + 4, var10 + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
+                var1.setBlock(var8 + 3, var9 + 3, var10 + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
+                var1.setBlock(var8 + 3, var9 + 2, var10 + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
+                var1.setBlock(var8 + 3, var9 + 1, var10 + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
+                var1.setBlock(var8 + 3, var9 + 0, var10 + 5, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
+            }
+        }
 	
 }

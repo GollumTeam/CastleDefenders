@@ -2,6 +2,7 @@ package mods.castledefenders.common.worldgenerator;
 
 import java.util.Random;
 
+import mods.castledefenders.common.CastleDefendersTabs;
 import mods.castledefenders.common.ModCastleDefenders;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -116,6 +117,8 @@ public class WorldGeneratorMercBase implements IWorldGenerator {
                         }
                     }
                     
+//                    net.minecraft.block.Block.woodSingleSlab;
+//                    mods.castledefenders.common.ModCastleDefenders.blockMerc
                     
                     // Vide des emplacement et pose des torches (id 50 = torche)
                     world.setBlock(ramdom8M8_X + 5, ramdom8M8_Y, ramdom8M8_Z + 5, 0);

@@ -290,7 +290,7 @@ public class ModCastleDefenders {
 	 */
 	private void initBuildings () throws Exception {
 		BuildingParser parser = new BuildingParser ();
-		buildingMercenary1 = parser.parse ("mercenary1");
+		this.buildingMercenary1 = parser.parse ("mercenary1");
 	}
 	
 	/**
@@ -307,9 +307,6 @@ public class ModCastleDefenders {
 		
 		// Enregistrement du worldgenerator mercenary
 		GameRegistry.registerWorldGenerator (worldGeneratorByBuilding);
-		
-		// Old
-		GameRegistry.registerWorldGenerator (new WorldGeneratorMercBase());
 	}
 	
 	/**

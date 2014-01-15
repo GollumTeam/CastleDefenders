@@ -110,7 +110,7 @@ public class BuildingParser {
 				Block block = (Block) f.get(null);
 				
 				Unity unity         =  new Unity();
-				unity.idBlock       = block.blockID;
+				unity.block         = block;
 				unity.metadataBlock = Integer.parseInt(metadata);
 				
 				corlorBlockIndex.put(color, unity);
