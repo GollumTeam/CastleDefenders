@@ -135,10 +135,12 @@ public class BuildingParser {
 			
 			int originXSlide = 1;
 			
+			// Parcours l'image pour créer la matrice de block
 			while (originXSlide < image.getWidth()) {
+				
+				int xImage = originXSlide;
 				for (int zImage = 0; zImage < image.getHeight(); zImage++) {
 					
-					int xImage = originXSlide;
 					for (xImage = originXSlide; xImage < image.getWidth(); xImage++) {
 						
 						int color = image.getRGB(xImage, zImage) & 0xFFFFFF;
@@ -146,7 +148,6 @@ public class BuildingParser {
 							break;
 						}
 						
-						System.out.print (color+",\t");
 						Unity unityPtr = null; try { unityPtr = (Unity)corlorBlockIndex.get(color); } catch (Exception e) {};
 						Unity unity =  (unityPtr != null) ? (Unity)unityPtr.clone () : new Unity ();
 						
@@ -154,14 +155,10 @@ public class BuildingParser {
 						
 						x++;
 					}
-					System.out.println ("");
-					originXSlide = xImage + 1;
 					z++;
 					x = 0;
 				}
-				System.out.println ("");
-				System.out.println ("===========");
-				System.out.println ("");
+				originXSlide = xImage + 1;
 				y++;
 				z = 0;
 			}

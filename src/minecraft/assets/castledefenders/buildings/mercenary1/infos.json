@@ -6,5 +6,8 @@
 		{ "block": "net.minecraft.block.Block|planks" },
 		{ "block": "net.minecraft.block.Block|planks" },
 		{ "block": "net.minecraft.block.Block|planks" }
-	]
+	],
+	"infos": {
+		"0x0x0": { "block": "net.minecraft.block.Block|planks", "metadata": 2 }
+	}
 }

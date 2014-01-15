@@ -32,6 +32,7 @@ import mods.castledefenders.common.tileentities.TileEntityBlockKnight;
 import mods.castledefenders.common.tileentities.TileEntityBlockKnight2;
 import mods.castledefenders.common.tileentities.TileEntityBlockMage;
 import mods.castledefenders.common.tileentities.TileEntityBlockMerc;
+import mods.castledefenders.common.worldgenerator.WorldGeneratorByBuilding;
 import mods.castledefenders.common.worldgenerator.WorldGeneratorMercBase;
 import mods.castledefenders.utils.ConfigLoader;
 import mods.castledefenders.utils.ConfigProp;
@@ -114,8 +115,18 @@ public class ModCastleDefenders {
 	@ConfigProp(group = "Mobs Ids") public static int eArcherID  = -27;
 	@ConfigProp(group = "Mobs Ids") public static int eMageID    = -26;
 	
-	@ConfigProp(group = "Spawn rate") public static int castleSpawnRate    = 7;
-	@ConfigProp(group = "Spawn rate") public static int mercenarySpawnRate = 7;
+	// Ratio de building de chaque type
+	@ConfigProp(group = "Spawn rate group [0-10]") public static int castleSpawnRate    = 7;
+	@ConfigProp(group = "Spawn rate group [0-10]") public static int mercenarySpawnRate = 7;
+	
+	// Ratio de building entre les batiments d'un meme type
+	@ConfigProp(group = "Spawn rate between mercenary building")
+	public static int mercenaryBuilding1SpawnRate    = 1;
+	@ConfigProp(group = "Spawn rate between mercenary building")
+	public static int mercenaryBuilding2SpawnRate    = 2;
+	
+	// Liste des constructions
+	private Building buildingMercenary1;
 	
 	/**
 	 * 1
@@ -279,14 +290,26 @@ public class ModCastleDefenders {
 	 */
 	private void initBuildings () throws Exception {
 		BuildingParser parser = new BuildingParser ();
-		Building building = parser.parse ("mercenary1");
+		buildingMercenary1 = parser.parse ("mercenary1");
 	}
 	
 	/**
 	 * Enregistre les générateur de terrain
 	 */
 	private void initWorldGenerators () {
-        GameRegistry.registerWorldGenerator(new WorldGeneratorMercBase());
+		GameRegistry.registerWorldGenerator(new WorldGeneratorMercBase());
+		
+		// Céation du world generator
+		WorldGeneratorByBuilding worldGeneratorByBuilding = new WorldGeneratorByBuilding(this.mercenarySpawnRate);
+		
+		// Ajout des batiments
+		worldGeneratorByBuilding.addbuilding (this.buildingMercenary1, this.mercenaryBuilding1SpawnRate);
+		
+		// Enregistrement du worldgenerator mercenary
+		GameRegistry.registerWorldGenerator (worldGeneratorByBuilding);
+		
+		// Old
+		GameRegistry.registerWorldGenerator (new WorldGeneratorMercBase());
 	}
 	
 	/**
