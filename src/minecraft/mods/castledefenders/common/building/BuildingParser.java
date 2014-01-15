@@ -6,20 +6,20 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.lang.reflect.Field;
 import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
 import java.util.Random;
+import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
 
 import mods.castledefenders.common.ModCastleDefenders;
+import mods.castledefenders.common.building.Building.Unity;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import argo.jdom.JdomParser;
 import argo.jdom.JsonNode;
 import argo.jdom.JsonRootNode;
-import argo.jdom.JsonStringNode;
 import argo.saj.InvalidSyntaxException;
 
 public class BuildingParser {
@@ -64,7 +64,7 @@ public class BuildingParser {
 		Building building = new Building ();
 		
 		// Liste de la correspondance couleur block
-		Hashtable<Integer, String> corlorBlockIndex = new Hashtable();
+		Hashtable<Integer, Unity> corlorBlockIndex = new Hashtable ();
 		
 		// Objet pour générer des ramdoms
 		Random random = new Random();
@@ -93,9 +93,27 @@ public class BuildingParser {
 					break;
 				}
 				
-				String type = colorLink.getStringValue(y);
+				JsonNode type = colorLink.getNode(y);
 				
-				corlorBlockIndex.put(color, type);
+				///////////////////////////////////
+				// Récupération de l'objet block //
+				///////////////////////////////////
+				
+				// Découpe le type par ClassName|ObjetBlock ou ClassName|ObjetBlock:intMetadataOptional
+				String[] explode = type.getStringValue ("block").split(Pattern.quote("|"));
+				String metadata  = "0"; try { metadata = type.getNumberValue ("metadata"); } catch (Exception e) { }
+				
+				
+				// Récupère l'attribut
+				Class classBlock = Class.forName(explode[0]);
+				Field f = classBlock.getDeclaredField(explode[1]);
+				Block block = (Block) f.get(null);
+				
+				Unity unity         =  new Unity();
+				unity.idBlock       = block.blockID;
+				unity.metadataBlock = Integer.parseInt(metadata);
+				
+				corlorBlockIndex.put(color, unity);
 			}
 			
 			ModCastleDefenders.log.info ("Color index  building '"+name+"' loaded");
@@ -115,31 +133,40 @@ public class BuildingParser {
 			int y = 0;
 			int z = 0;
 			
-			JsonNode slidesInfos = json.getNode ("slides");
-
 			int originXSlide = 1;
 			
 			while (originXSlide < image.getWidth()) {
-				
-				int xImage = originXSlide;
-				for (int yImage = 0; yImage < image.getHeight(); yImage++) {
+				for (int zImage = 0; zImage < image.getHeight(); zImage++) {
+					
+					int xImage = originXSlide;
 					for (xImage = originXSlide; xImage < image.getWidth(); xImage++) {
 						
-						int color = image.getRGB(0, y) & 0xFFFFFF;
-						if (color == 0x000000 || color == 0xFFFFFF) {
+						int color = image.getRGB(xImage, zImage) & 0xFFFFFF;
+						if (color == 0x000000) {
 							break;
 						}
 						
+						System.out.print (color+",\t");
+						Unity unityPtr = null; try { unityPtr = (Unity)corlorBlockIndex.get(color); } catch (Exception e) {};
+						Unity unity =  (unityPtr != null) ? (Unity)unityPtr.clone () : new Unity ();
+						
+						building.add(x, y, z, unity);
+						
+						x++;
 					}
+					System.out.println ("");
+					originXSlide = xImage + 1;
+					z++;
+					x = 0;
 				}
-				//int height = slidesInfos.getStringValue("ee", "eee");
+				System.out.println ("");
+				System.out.println ("===========");
+				System.out.println ("");
+				y++;
+				z = 0;
 			}
-			
-			//ModCastleDefenders.log.info ("random : " + random.nextInt(8));
-			//ModCastleDefenders.log.info ("random : " + random.nextInt(8));
-			//ModCastleDefenders.log.info ("random : " + random.nextInt(8));
-			//ModCastleDefenders.log.info ("random : " + random.nextInt(8));
-			//ModCastleDefenders.log.info ("random : " + random.nextInt(8));
+
+			ModCastleDefenders.log.info ("Matrice building '"+name+"' loaded");
 			
 			
 		} catch (IOException e) {

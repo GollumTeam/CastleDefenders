@@ -1,18 +1,10 @@
 {
 	"color" : [
-		"net.minecraft.block.Block|planks",
-		"net.minecraft.block.Block|planks",
-		"net.minecraft.block.Block|planks",
-		"net.minecraft.block.Block|planks",
-		"net.minecraft.block.Block|planks",
-		"net.minecraft.block.Block|planks"
-	],
-	"slides": [
-		{
-			"height": 1
-		},
-		{
-			"height": 5
-		}
+		{ "block": "net.minecraft.block.Block|planks", "metadata": 1 },
+		{ "block": "net.minecraft.block.Block|planks" },
+		{ "block": "net.minecraft.block.Block|planks" },
+		{ "block": "net.minecraft.block.Block|planks" },
+		{ "block": "net.minecraft.block.Block|planks" },
+		{ "block": "net.minecraft.block.Block|planks" }
 	]
 }
