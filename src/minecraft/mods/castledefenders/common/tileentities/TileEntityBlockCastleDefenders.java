@@ -14,9 +14,9 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity {
 
 	// Les données de l'entité
 	public int delay = -1;
-	private int minSpawnDelay = 200;
-	private int maxSpawnDelay = 800;
-	private int spawnCount = 4;
+	protected int minSpawnDelay = 200;
+	protected int maxSpawnDelay = 800;
+	protected int spawnCount = 4;
 	private NBTTagCompound spawnerTags = null;
 	
 	// Le mob
@@ -58,6 +58,7 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity {
 	 * inside its implementation.
 	 */
 	public void updateEntity() {
+		
 		
 		if (this.anyPlayerInRange()) {
 			
@@ -143,7 +144,7 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity {
 	@Override
 	public void readFromNBT(NBTTagCompound var1) {
 		super.readFromNBT(var1);
-		this.mobID = var1.getString("EntityId");
+//		this.mobID = var1.getString("EntityId");
 		this.delay = var1.getShort("Delay");
 
 		if (var1.hasKey("SpawnData")) {
@@ -152,11 +153,11 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity {
 			this.spawnerTags = null;
 		}
 
-		if (var1.hasKey("MinSpawnDelay")) {
-			this.minSpawnDelay = var1.getShort("MinSpawnDelay");
-			this.maxSpawnDelay = var1.getShort("MaxSpawnDelay");
-			this.spawnCount = var1.getShort("SpawnCount");
-		}
+//		if (var1.hasKey("MinSpawnDelay")) {
+//			this.minSpawnDelay = var1.getShort("MinSpawnDelay");
+//			this.maxSpawnDelay = var1.getShort("MaxSpawnDelay");
+//			this.spawnCount = var1.getShort("SpawnCount");
+//		}
 	}
 
 	/**
@@ -165,11 +166,11 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity {
 	@Override
 	public void writeToNBT(NBTTagCompound var1) {
 		super.writeToNBT(var1);
-		var1.setString("EntityId", this.mobID);
+//		var1.setString("EntityId", this.mobID);
 		var1.setShort("Delay", (short) this.delay);
-		var1.setShort("MinSpawnDelay", (short) this.minSpawnDelay);
-		var1.setShort("MaxSpawnDelay", (short) this.maxSpawnDelay);
-		var1.setShort("SpawnCount", (short) this.spawnCount);
+//		var1.setShort("MinSpawnDelay", (short) this.minSpawnDelay);
+//		var1.setShort("MaxSpawnDelay", (short) this.maxSpawnDelay);
+//		var1.setShort("SpawnCount", (short) this.spawnCount);
 
 		if (this.spawnerTags != null) {
 			var1.setCompoundTag("SpawnData", this.spawnerTags);

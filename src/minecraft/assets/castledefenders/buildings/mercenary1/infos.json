@@ -8,7 +8,13 @@
 		{ "block": "net.minecraft.block.Block|woodSingleSlab" },
 		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockKnight2" }
 	],
-	"infos": {
-		"0x0x0": { "block": "net.minecraft.block.Block|planks", "metadata": 2 }
+	"sets": {
+        "4x2x4": { "block": "net.minecraft.block.Block|torchWood", "orientation":"down" },
+        "6x2x4": { "block": "net.minecraft.block.Block|torchWood", "orientation":"down" },
+		"1x1x1": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"left" },
+		"2x1x1": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"left" },
+        "1x1x3": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"left" },
+        "2x1x3": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"left" },
+		"0x1x9": { "block": "net.minecraft.block.Block|fenceGate", "metadata": 0 }
 	}
 }

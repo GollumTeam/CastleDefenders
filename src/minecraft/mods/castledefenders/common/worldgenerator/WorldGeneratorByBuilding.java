@@ -5,12 +5,11 @@ import java.util.Random;
 
 import mods.castledefenders.common.ModCastleDefenders;
 import mods.castledefenders.common.building.Building;
+import mods.castledefenders.common.building.Building.Unity;
 import net.minecraft.block.Block;
-import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.block.BlockDirectional;
+import net.minecraft.block.BlockRedstoneTorch;
+import net.minecraft.block.BlockTorch;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Facing;
 import net.minecraft.world.World;
@@ -79,11 +78,11 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 		// Generation diffenrente entre le nether et la surface
 		switch (world.provider.dimensionId) {
 			case WorldGeneratorByBuilding.DIMENSION_ID_NETHER:
-				this.generateBuilding(world, random, chunkX * 16, chunkZ * 16, buildingsNether);
+				this.generateBuilding(world, random, chunkX, chunkZ, buildingsNether);
 				break;
 				
 			case WorldGeneratorByBuilding.DIMENSION_ID_SURFACE:
-				this.generateBuilding(world, random, chunkX * 16, chunkZ * 16, buildingsSurface);
+				this.generateBuilding(world, random, chunkX, chunkZ, buildingsSurface);
 				break;
 			default:
 		}
@@ -130,7 +129,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 	 * @param buildings
 	 * @param random
 	 */
-	private void generateBuilding(World world, Random random, int wolrdX, int wolrdZ, ArrayList<BuildingAndInfos> buildings) {
+	private void generateBuilding(World world, Random random, int chunkX, int chunkZ, ArrayList<BuildingAndInfos> buildings) {
 		
 		if (buildings.size() == 0) {
 			return;
@@ -145,9 +144,9 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			Building building = this.getBuildingInRate (buildings, random);
 			
 			// Position initiale du batiment
-			int initX = wolrdX + random.nextInt(8) - random.nextInt(8);
-			int initY = worldY + random.nextInt(8) - random.nextInt(8);
-			int initZ = wolrdZ + random.nextInt(8) - random.nextInt(8);
+			int initX = chunkX * 16 + random.nextInt(8) - random.nextInt(8);
+			int initY = worldY      + random.nextInt(8) - random.nextInt(8);
+			int initZ = chunkZ * 16 + random.nextInt(8) - random.nextInt(8);
 			
 			// Pour test sur un superflat
 			initY = 3;
@@ -160,18 +159,15 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 					for (int y= 0; y < building.maxY; y++) {
 						for (int z= 0; z < building.maxZ; z++) {
 							
-							Building.Unity unity = building.get(x, y, z);
+							Unity unity = building.get(x, y, z);
 							
 							if (unity.block != null) {
-							
-								world.setBlock(initX + x, initY + y, initZ + z, unity.block.blockID, unity.metadataBlock, 2);
-//								if (unity.block instanceof ITileEntityProvider) {
-//									TileEntity tileentity = unity.block.createTileEntity(world, unity.metadataBlock);
-//									world.setBlockTileEntity(initX + x, initY + y, initZ + z, tileentity);
-//								}
+								world.setBlock(initX + x, initY + y, initZ + z, unity.block.blockID, unity.metadata, 2);
 							} else {
 								world.setBlock(initX + x, initY + y, initZ + z, 0, 0, 2);
 							}
+							
+							this.setOrientation (world, initX + x, initY + y, initZ + z, unity.orientation);
 						}
 					}
 				}
@@ -182,6 +178,59 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 		}
 	}
 	
+	/**
+	 * Affecte l'orientation
+	 * @param i
+	 * @param j
+	 * @param k
+	 * @param orientation
+	 */
+	private void setOrientation(World world, int x, int y, int z, int orientation) {
+
+		Block block  = Block.blocksList [world.getBlockId (x, y, z)];
+		int metadata = world.getBlockMetadata (x, y, z);
+		
+		if (block instanceof BlockTorch) {
+
+			if (orientation == Unity.ORIENTATION_NONE)  { metadata = metadata & 0x8 + 0; } else 
+			if (orientation == Unity.ORIENTATION_UP)    { metadata = metadata & 0x8 + 3; } else 
+			if (orientation == Unity.ORIENTATION_DOWN)  { metadata = metadata & 0x8 + 4; } else 
+			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = metadata & 0x8 + 1; } else 
+			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = metadata & 0x8 + 2; } else 
+			{
+				ModCastleDefenders.log.severe("Bad orientation : "+x+","+y+","+z);
+			}
+			
+			world.setBlockMetadataWithNotify(x, y, z, metadata, 2);
+			
+			ModCastleDefenders.log.info("Generation BlockTorch orientation : "+orientation);
+			ModCastleDefenders.log.info("Generation BlockTorch metadata : "+metadata);
+			
+			return;
+		}
+		
+		if (block instanceof BlockDirectional) {
+
+			if (orientation == Unity.ORIENTATION_NONE)  { metadata = metadata & 0x8 + 2; } else 
+			if (orientation == Unity.ORIENTATION_UP)    { metadata = metadata & 0x8 + 2; } else 
+			if (orientation == Unity.ORIENTATION_DOWN)  { metadata = metadata & 0x8 + 0; } else 
+			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = metadata & 0x8 + 1; } else 
+			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = metadata & 0x8 + 3; } else 
+			{
+				ModCastleDefenders.log.severe("Bad orientation : "+x+","+y+","+z);
+			}
+			
+			world.setBlockMetadataWithNotify(x, y, z, metadata, 2);
+
+			ModCastleDefenders.log.info("Generation BlockTorch orientation : "+orientation);
+			ModCastleDefenders.log.info("Generation BlockDirectionnal metadata : "+metadata);
+			
+			return;
+		}
+		
+	}
+
+
 	private void buildOld (World world, Random random, int ramdom8M8_X, int ramdom8M8_Y, int ramdom8M8_Z) {
 		
 		ModCastleDefenders.log.warning("Create old building in : "+ramdom8M8_X+" "+ramdom8M8_Y+" "+ramdom8M8_Z);

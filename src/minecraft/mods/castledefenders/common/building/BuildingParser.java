@@ -7,8 +7,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
@@ -20,6 +23,7 @@ import net.minecraft.client.Minecraft;
 import argo.jdom.JdomParser;
 import argo.jdom.JsonNode;
 import argo.jdom.JsonRootNode;
+import argo.jdom.JsonStringNode;
 import argo.saj.InvalidSyntaxException;
 
 public class BuildingParser {
@@ -99,19 +103,7 @@ public class BuildingParser {
 				// Récupération de l'objet block //
 				///////////////////////////////////
 				
-				// Découpe le type par ClassName|ObjetBlock ou ClassName|ObjetBlock:intMetadataOptional
-				String[] explode = type.getStringValue ("block").split(Pattern.quote("|"));
-				String metadata  = "0"; try { metadata = type.getNumberValue ("metadata"); } catch (Exception e) { }
-				
-				
-				// Récupère l'attribut
-				Class classBlock = Class.forName(explode[0]);
-				Field f = classBlock.getDeclaredField(explode[1]);
-				Block block = (Block) f.get(null);
-				
-				Unity unity         =  new Unity();
-				unity.block         = block;
-				unity.metadataBlock = Integer.parseInt(metadata);
+				Unity unity = this.parseBlockDescription (type);
 				
 				corlorBlockIndex.put(color, unity);
 			}
@@ -138,6 +130,7 @@ public class BuildingParser {
 			// Parcours l'image pour créer la matrice de block
 			while (originXSlide < image.getWidth()) {
 				
+				
 				int xImage = originXSlide;
 				for (int zImage = 0; zImage < image.getHeight(); zImage++) {
 					
@@ -151,7 +144,7 @@ public class BuildingParser {
 						Unity unityPtr = null; try { unityPtr = (Unity)corlorBlockIndex.get(color); } catch (Exception e) {};
 						Unity unity =  (unityPtr != null) ? (Unity)unityPtr.clone () : new Unity ();
 						
-						building.add(x, y, z, unity);
+						building.set(x, y, z, unity);
 						
 						x++;
 					}
@@ -162,7 +155,19 @@ public class BuildingParser {
 				y++;
 				z = 0;
 			}
-
+			
+			Map<JsonStringNode, JsonNode> map = json.getNode ("sets").getFields();
+			for (JsonStringNode key : map.keySet()) {
+				String position3D[] = key.getText().split("x");
+				x = Integer.parseInt(position3D[0]);
+				y = Integer.parseInt(position3D[1]);
+				z = Integer.parseInt(position3D[2]);
+				
+				Unity unity = this.parseBlockDescription(map.get(key));
+				building.set(x, y, z, unity);
+				
+			}
+			
 			ModCastleDefenders.log.info ("Matrice building '"+name+"' loaded");
 			
 			
@@ -175,6 +180,50 @@ public class BuildingParser {
 		}
 		
 		return building;
+	}
+	
+	/**
+	 * Parse une description de block
+	 * @param type
+	 * @return
+	 */
+	private Unity parseBlockDescription(JsonNode type) {
+		
+		Unity unity = new Unity();
+		try {
+			// Découpe le type par ClassName|ObjetBlock ou ClassName|ObjetBlock:intMetadataOptional
+			String[] explode   = type.getStringValue ("block").split(Pattern.quote("|"));
+			String metadata    = "0"; try { metadata = type.getNumberValue ("metadata"); } catch (Exception e) { }
+			String orientation = "none"; try { orientation = type.getStringValue ("orientation"); } catch (Exception e) { }
+			
+			
+			// Récupère l'attribut
+			Class classBlock;
+			classBlock = Class.forName(explode[0]);
+			Field f = classBlock.getDeclaredField(explode[1]);
+			Block block = (Block) f.get(null);
+			
+			
+			unity.block       = block;
+			unity.metadata    = Integer.parseInt(metadata);
+
+			if (orientation.equals("none"))   { unity.orientation = Unity.ORIENTATION_NONE;     } else 
+			if (orientation.equals("up"))     { unity.orientation = Unity.ORIENTATION_UP;     } else 
+			if (orientation.equals("down"))   { unity.orientation = Unity.ORIENTATION_DOWN;   } else 
+			if (orientation.equals("left"))   { unity.orientation = Unity.ORIENTATION_LEFT;   } else 
+			if (orientation.equals("right"))  { unity.orientation = Unity.ORIENTATION_RIGTH;  } else 
+			if (orientation.equals("top"))    { unity.orientation = Unity.ORIENTATION_TOP;    } else 
+			if (orientation.equals("bottom")) { unity.orientation = Unity.ORIENTATION_BOTTOM; }
+			
+			if (unity.orientation != 0) {
+				ModCastleDefenders.log.info("Generation orientation : "+unity.orientation);
+				ModCastleDefenders.log.info("Generation orientation : "+orientation);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return unity;
 	}
 	
 	
