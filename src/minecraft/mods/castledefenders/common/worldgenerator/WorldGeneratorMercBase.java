@@ -117,7 +117,7 @@ public class WorldGeneratorMercBase implements IWorldGenerator {
                         }
                     }
                     
-//                    net.minecraft.block.Block.woodSingleSlab;
+//                    net.minecraft.block.Block.chest;
 //                    mods.castledefenders.common.ModCastleDefenders.blockKnight2
                     
                     // Vide des emplacement et pose des torches (id 50 = torche)

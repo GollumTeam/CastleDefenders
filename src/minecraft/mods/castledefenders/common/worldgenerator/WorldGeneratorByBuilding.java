@@ -7,9 +7,14 @@ import mods.castledefenders.common.ModCastleDefenders;
 import mods.castledefenders.common.building.Building;
 import mods.castledefenders.common.building.Building.Unity;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockDirectional;
+import net.minecraft.block.BlockFurnace;
+import net.minecraft.block.BlockHopper;
+import net.minecraft.block.BlockLadder;
 import net.minecraft.block.BlockRedstoneTorch;
 import net.minecraft.block.BlockTorch;
+import net.minecraft.block.BlockWall;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Facing;
 import net.minecraft.world.World;
@@ -192,39 +197,55 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 		
 		if (block instanceof BlockTorch) {
 
-			if (orientation == Unity.ORIENTATION_NONE)  { metadata = metadata & 0x8 + 0; } else 
-			if (orientation == Unity.ORIENTATION_UP)    { metadata = metadata & 0x8 + 3; } else 
-			if (orientation == Unity.ORIENTATION_DOWN)  { metadata = metadata & 0x8 + 4; } else 
-			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = metadata & 0x8 + 1; } else 
-			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = metadata & 0x8 + 2; } else 
+			if (orientation == Unity.ORIENTATION_NONE)  { metadata = (metadata & 0x8) + 0; } else 
+			if (orientation == Unity.ORIENTATION_UP)    { metadata = (metadata & 0x8) + 4; } else 
+			if (orientation == Unity.ORIENTATION_DOWN)  { metadata = (metadata & 0x8) + 3; } else 
+			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = (metadata & 0x8) + 2; } else 
+			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = (metadata & 0x8) + 1; } else 
 			{
 				ModCastleDefenders.log.severe("Bad orientation : "+x+","+y+","+z);
 			}
 			
 			world.setBlockMetadataWithNotify(x, y, z, metadata, 2);
-			
-			ModCastleDefenders.log.info("Generation BlockTorch orientation : "+orientation);
-			ModCastleDefenders.log.info("Generation BlockTorch metadata : "+metadata);
-			
 			return;
 		}
 		
 		if (block instanceof BlockDirectional) {
 
-			if (orientation == Unity.ORIENTATION_NONE)  { metadata = metadata & 0x8 + 2; } else 
-			if (orientation == Unity.ORIENTATION_UP)    { metadata = metadata & 0x8 + 2; } else 
-			if (orientation == Unity.ORIENTATION_DOWN)  { metadata = metadata & 0x8 + 0; } else 
-			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = metadata & 0x8 + 1; } else 
-			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = metadata & 0x8 + 3; } else 
+			if (orientation == Unity.ORIENTATION_NONE)  { metadata = (metadata & 0x8) + 0; } else 
+			if (orientation == Unity.ORIENTATION_UP)    { metadata = (metadata & 0x8) + 0; } else 
+			if (orientation == Unity.ORIENTATION_DOWN)  { metadata = (metadata & 0x8) + 2; } else 
+			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = (metadata & 0x8) + 3; } else 
+			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = (metadata & 0x8) + 1; } else 
 			{
 				ModCastleDefenders.log.severe("Bad orientation : "+x+","+y+","+z);
 			}
 			
 			world.setBlockMetadataWithNotify(x, y, z, metadata, 2);
-
-			ModCastleDefenders.log.info("Generation BlockTorch orientation : "+orientation);
-			ModCastleDefenders.log.info("Generation BlockDirectionnal metadata : "+metadata);
+			return;
+		}
+		
+		if (
+			block instanceof BlockLadder ||
+			block instanceof BlockWall ||
+			block instanceof BlockFurnace ||
+			block instanceof BlockChest
+		) {
 			
+			if (orientation == Unity.ORIENTATION_NONE)  { metadata = (metadata & 0x8) + 2; } else 
+			if (orientation == Unity.ORIENTATION_UP)    { metadata = (metadata & 0x8) + 2; } else 
+			if (orientation == Unity.ORIENTATION_DOWN)  { metadata = (metadata & 0x8) + 3; } else 
+			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = (metadata & 0x8) + 4; } else 
+			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = (metadata & 0x8) + 5; } else 
+			{
+				ModCastleDefenders.log.severe("Bad orientation : "+x+","+y+","+z);
+			}
+			
+
+			ModCastleDefenders.log.info("blockID : "+block.blockID);
+			ModCastleDefenders.log.info("metadata : "+metadata);
+			
+			world.setBlockMetadataWithNotify(x, y, z, metadata, 2);
 			return;
 		}
 		

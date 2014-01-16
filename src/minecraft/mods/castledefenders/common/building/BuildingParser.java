@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
@@ -18,7 +19,9 @@ import javax.imageio.ImageIO;
 
 import mods.castledefenders.common.ModCastleDefenders;
 import mods.castledefenders.common.building.Building.Unity;
+import mods.castledefenders.common.building.Building.Unity.Content;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.client.Minecraft;
 import argo.jdom.JdomParser;
 import argo.jdom.JsonNode;
@@ -168,6 +171,10 @@ public class BuildingParser {
 				
 			}
 			
+			//Renverse la matrice par X et par Z pour correspondre au position dans le monde
+			building.reverseByX();
+			building.reverseByZ();
+			
 			ModCastleDefenders.log.info ("Matrice building '"+name+"' loaded");
 			
 			
@@ -195,6 +202,7 @@ public class BuildingParser {
 			String[] explode   = type.getStringValue ("block").split(Pattern.quote("|"));
 			String metadata    = "0"; try { metadata = type.getNumberValue ("metadata"); } catch (Exception e) { }
 			String orientation = "none"; try { orientation = type.getStringValue ("orientation"); } catch (Exception e) { }
+			JsonNode contents  = null; try { contents = type.getNode("contents"); } catch (Exception e) { }
 			
 			
 			// Récupère l'attribut
@@ -215,15 +223,57 @@ public class BuildingParser {
 			if (orientation.equals("top"))    { unity.orientation = Unity.ORIENTATION_TOP;    } else 
 			if (orientation.equals("bottom")) { unity.orientation = Unity.ORIENTATION_BOTTOM; }
 			
-			if (unity.orientation != 0) {
-				ModCastleDefenders.log.info("Generation orientation : "+unity.orientation);
-				ModCastleDefenders.log.info("Generation orientation : "+orientation);
+			if (contents != null) {
+				unity.contents = new ArrayList();
+				for (JsonNode group : contents.getElements()) {
+					unity.contents.add (this.parseContents (group));
+				}
+						
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return unity;
+	}
+	
+	/**
+	 * Parse un contenu d'objet (Les chests par exemple)
+	 * @param group
+	 * @return
+	 */
+	private ArrayList<Content> parseContents(JsonNode group) {
+		
+		ArrayList<Content> contentsGroup = new ArrayList();
+		
+		for (JsonNode el: group.getElements()) {
+			
+			String[] explode   = el.getStringValue ("element").split(Pattern.quote("|"));
+			
+			try {
+				
+				// Récupère l'attribut
+				Class classEl;
+				classEl = Class.forName(explode[0]);
+				Field f = classEl.getDeclaredField(explode[1]);
+				Item item = (Item) f.get(null);
+				
+				Content content = new Content ();
+				
+				content.id = 1;
+				content.min = 1; try { content.min = Integer.parseInt (el.getNumberValue ("min")); } catch (Exception e) { }
+				content.max = 1; try { content.max = Integer.parseInt (el.getNumberValue ("max")); } catch (Exception e) { }
+				
+				contentsGroup.add(content);
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		return contentsGroup;
 	}
 	
 	

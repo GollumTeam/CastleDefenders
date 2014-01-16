@@ -1,6 +1,7 @@
 package mods.castledefenders.common.building;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import net.minecraft.block.Block;
 
@@ -14,10 +15,7 @@ public class Building {
 	 * Un element de lamatrice building
 	 */
 	static public class Unity implements Cloneable {
-		public Block block     = null;
-		public int metadata    = 0;
-		public int orientation = Unity.ORIENTATION_NONE;
-
+		
 		public static final int ORIENTATION_NONE   = 0;
 		public static final int ORIENTATION_UP     = 1;
 		public static final int ORIENTATION_DOWN   = 2;
@@ -27,6 +25,30 @@ public class Building {
 		public static final int ORIENTATION_BOTTOM = 6;
 		
 		/**
+		 * Contenu d'un objet (des Item uniquement pour le moment)
+		 */
+		static public class Content implements Cloneable {
+			
+			public int id = 0;
+			public int min = 1;
+			public int max = 1;
+			
+			public Object clone() {
+				Content o = new Content ();
+				o.id    = this.id;
+				o.min   = this.min;
+				o.max   = this.max;
+				return o;
+			}
+			
+		}
+		
+		public Block block     = null;
+		public int metadata    = 0;
+		public int orientation = Unity.ORIENTATION_NONE;
+		public ArrayList<ArrayList<Content>> contents = new ArrayList();
+		
+		/**
 		 * Clone l'objet
 		 */
 		public Object clone() {
@@ -34,17 +56,56 @@ public class Building {
 			o.block       = this.block;
 			o.metadata    = this.metadata;
 			o.orientation = this.orientation;
+			
+			for (ArrayList<Content> groupEl : this.contents) {
+				
+				ArrayList<Content> newGroupEl = new ArrayList();
+				for (Content el: groupEl) {
+					Content content = new Content ();
+					content.id  = el.id;
+					content.min = el.min;
+					content.max = el.max;
+					newGroupEl.add (content);
+				}
+				
+				o.contents.add(newGroupEl);
+			}
+			
 			return o;
 		}
 	}
 	
+	
+	
 	//Liste des block de la constuction
 	private ArrayList<ArrayList<ArrayList<Unity>>> blocks = new ArrayList<ArrayList<ArrayList<Unity>>>();
-	
-	
-	public Building() {
+
+	/**
+	 * Renverse la matrice par X
+	 */
+	public void reverseByX () {
+		Collections.reverse(this.blocks);
 	}
 	
+	/**
+	 * Renverse la matrice par X
+	 */
+	public void reverseByY () {
+		for (ArrayList<ArrayList<Unity>> list: this.blocks) {
+			Collections.reverse(list);
+		}
+	}
+	
+	/**
+	 * Renverse la matrice par X
+	 */
+	public void reverseByZ () {
+		for (ArrayList<ArrayList<Unity>> list: this.blocks) {
+			for (ArrayList<Unity> list2: list) {
+				Collections.reverse(list2);
+			}
+		}
+	}
 	
 	public void set (int x, int y, int z, Unity unity) {
 		
