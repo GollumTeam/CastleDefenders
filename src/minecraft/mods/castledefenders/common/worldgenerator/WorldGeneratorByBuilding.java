@@ -6,6 +6,7 @@ import java.util.Random;
 import mods.castledefenders.common.ModCastleDefenders;
 import mods.castledefenders.common.building.Building;
 import mods.castledefenders.common.building.Building.Unity;
+import mods.castledefenders.common.building.Building.Unity.Content;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockDirectional;
@@ -166,13 +167,19 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 							
 							Unity unity = building.get(x, y, z);
 							
-							if (unity.block != null) {
-								world.setBlock(initX + x, initY + y, initZ + z, unity.block.blockID, unity.metadata, 2);
-							} else {
-								world.setBlock(initX + x, initY + y, initZ + z, 0, 0, 2);
-							}
+							// Position réél dans le monde du block
+							int finalX = initX + x;
+							int finalY = initY + y;
+							int finalZ = initZ + z;
 							
-							this.setOrientation (world, initX + x, initY + y, initZ + z, unity.orientation);
+							if (unity.block != null) {
+								world.setBlock(finalX, finalY, finalZ, unity.block.blockID, unity.metadata, 2);
+							} else {
+								world.setBlock(finalX, finalY, finalZ, 0, 0, 2);
+							}
+
+							this.setOrientation (world, finalX, finalY, finalZ, unity.orientation);
+							this.setContents    (world, finalX, finalY, finalZ, unity.contents);
 						}
 					}
 				}
@@ -183,6 +190,19 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 		}
 	}
 	
+	/**
+	 * Insert le contenu du block
+	 * @param world
+	 * @param i
+	 * @param j
+	 * @param k
+	 * @param contents
+	 */
+	private void setContents(World world, int x, int y, int z, ArrayList<ArrayList<Content>> contents) {
+		// TODO
+	}
+
+
 	/**
 	 * Affecte l'orientation
 	 * @param i
