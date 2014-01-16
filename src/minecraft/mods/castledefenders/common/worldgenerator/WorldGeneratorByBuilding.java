@@ -142,7 +142,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 		}
 		
 		// test du Spawn global
-		if (random.nextInt(50) < Math.min (this.globalSpawnRate, 10)) {
+		if (random.nextInt(10) < Math.min (this.globalSpawnRate, 10)) {
 			
 
 			// Position initial de la génération en hauteur
@@ -155,11 +155,13 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			int initZ = chunkZ * 16 + random.nextInt(8) - random.nextInt(8);
 			
 			// Pour test sur un superflat
-			initY = 3;
-			boolean old = false;
+//			initY = 3;
 			
 			//Test si on est sur de la terre (faudrais aps que le batiment vol)
-			if (world.getBlockId(initX + 3, initY, initZ + 3) == Block.grass.blockID && !old) {
+			if (world.getBlockId(initX + 3, initY, initZ + 3) == Block.grass.blockID || 
+				world.getBlockId(initX + 3, initY+1, initZ + 3) == Block.grass.blockID) {
+				
+				ModCastleDefenders.log.info("Create building width matrix :"+initX+" "+initY+" "+initZ);
 				
 				// Parcours la matrice et ajoute les blocks
 				for (int x= 0; x < building.maxX; x++) {
@@ -184,9 +186,58 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 						}
 					}
 				}
+				
+				
+				/////////////////////////////////////////////////////////////
+				// Rempli en dessous du batiment pour pas que ca sois vide //
+				/////////////////////////////////////////////////////////////
+				
+				int maxYdown = 0;
+				
+				for (int x= 0; x < building.maxX; x++) {
+					for (int z= 0; z < building.maxZ; z++) {
+						
+						int y = -1;
+						int finalX = initX + x;
+						int finalY = initY + y;
+						int finalZ = initZ + z;
+						// recherche la profondeur maxi de Y
+						while (
+							world.getBlockId(finalX, finalY, finalZ) != Block.grass.blockID &&
+							world.getBlockId(finalX, finalY, finalZ) != Block.stone.blockID
+						){
+							
+							maxYdown = Math.min (maxYdown, y);
+							
+							y--;
+							finalX = initX + x;
+							finalY = initY + y;
+							finalZ = initZ + z;
+						}
+					}
+				}
+				// Crée un escalier sur les block de remplissage pour que ca sois plus jolie
+				for (int y = maxYdown; y < 0; y++) {
+					
+					for (int x = y; x < building.maxX + (-y); x++) {
+						for (int z = y; z < building.maxZ + (-y); z++) {
+							int finalX = initX + x;
+							int finalY = initY + y;
+							int finalZ = initZ + z;
+							
+							// TODO L'escalier est moche
+							
+							if (
+								world.getBlockId(finalX, finalY, finalZ) != Block.grass.blockID &&
+								world.getBlockId(finalX, finalY, finalZ) != Block.stone.blockID
+							) {
+								world.setBlock(finalX, finalY, finalZ, Block.grass.blockID, 0, 2);
+							}
+						}
+					}
+					
+				}
 			}
-			
-			else { this.buildOld(world, random, initX, initY+1, initZ); }
 		}
 
 	}
@@ -292,96 +343,4 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 		
 	}
 
-
-	private void buildOld (World world, Random random, int ramdom8M8_X, int ramdom8M8_Y, int ramdom8M8_Z) {
-		
-		ModCastleDefenders.log.warning("Create old building in : "+ramdom8M8_X+" "+ramdom8M8_Y+" "+ramdom8M8_Z);
-		
-        int var8 = ramdom8M8_X;
-        int var9 = ramdom8M8_Y;
-        int var10 = ramdom8M8_Z;
-        int var11, var12, var13;
-        World var1 = world;
-        Random var2 = random;
-
-        for (var11 = var9; var11 < var9 + 8; ++var11)
-        {
-            for (var12 = 0; var12 < 9; ++var12)
-            {
-                for (var13 = 0; var13 < 4; ++var13)
-                {
-                    var1.setBlock(var8 + var12, var11, var10 + var13, 0, 0, 2);
-                }
-            }
-        }
-		ModCastleDefenders.log.warning("Step 1");
-
-        for (var11 = var9; var11 < var9 + 1; ++var11)
-        {
-            for (var12 = 4; var12 < 7; ++var12)
-            {
-                for (var13 = 0; var13 < 5; ++var13)
-                {
-                    var1.setBlock(var8 + var12, var11, var10 + var13, 35);
-                }
-            }
-        }
-		ModCastleDefenders.log.warning("Step 2");
-
-        for (var11 = var9; var11 < var9 + 1; ++var11)
-        {
-            for (var12 = 4; var12 < 7; ++var12)
-            {
-                for (var13 = 1; var13 < 4; ++var13)
-                {
-                    var1.setBlock(var8 + var12, var11, var10 + var13, 0);
-                }
-            }
-        }
-		ModCastleDefenders.log.warning("Step 3");
-
-        var1.setBlock(var8 + 7, var9, var10 + 1, 35);
-        var1.setBlock(var8 + 7, var9, var10 + 2, 35);
-        var1.setBlock(var8 + 7, var9 + 1, var10 + 2, 35);
-        var1.setBlock(var8 + 7, var9, var10 + 3, 35);
-        var1.setBlock(var8 + 8, var9, var10 + 2, 35);
-        var1.setBlock(var8 + 6, var9 + 2, var10 + 2, 35);
-        var1.setBlock(var8 + 5, var9 + 2, var10 + 2, 35);
-        var1.setBlock(var8 + 4, var9 + 2, var10 + 2, 35);
-        var1.setBlock(var8 + 6, var9 + 1, var10 + 1, 35);
-        var1.setBlock(var8 + 5, var9 + 1, var10 + 1, 35);
-        var1.setBlock(var8 + 4, var9 + 1, var10 + 1, 35);
-        var1.setBlock(var8 + 6, var9 + 1, var10 + 3, 35);
-        var1.setBlock(var8 + 5, var9 + 1, var10 + 3, 35);
-        var1.setBlock(var8 + 4, var9 + 1, var10 + 3, 35);
-        var1.setBlock(var8 + 6, var9 + 1, var10 + 2, 50);
-        var1.setBlock(var8 + 7, var9, var10 + 2, 85);
-        var1.setBlock(var8 + 5, var9, var10 + 1, 85);
-        var1.setBlock(var8 + 5, var9, var10 + 3, 85);
-
-		ModCastleDefenders.log.warning("Step 4");
-		
-        for (var11 = 0; var11 < 4; ++var11)
-        {
-            for (var12 = 0; var12 < 5; ++var12)
-            {
-                var1.setBlock(var8 + var11, var9, var10 + var12, 85);
-            }
-        }
-
-		ModCastleDefenders.log.warning("Step 5");
-		
-        for (var11 = 1; var11 < 4; ++var11)
-        {
-            for (var12 = 1; var12 < 4; ++var12)
-            {
-                var1.setBlock(var8 + var11, var9, var10 + var12, 0);
-            }
-        }
-		ModCastleDefenders.log.warning("Step 6");
-
-        var1.setBlock(var8, var9, var10 + 2, 0);
-        var1.setBlock(var8 + 2, var9 - 1, var10 + 2, ModCastleDefenders.blockMerc.blockID);
-	}
-	
 }
