@@ -33,7 +33,6 @@ import mods.castledefenders.common.tileentities.TileEntityBlockKnight2;
 import mods.castledefenders.common.tileentities.TileEntityBlockMage;
 import mods.castledefenders.common.tileentities.TileEntityBlockMerc;
 import mods.castledefenders.common.worldgenerator.WorldGeneratorByBuilding;
-import mods.castledefenders.common.worldgenerator.WorldGeneratorMercBase;
 import mods.castledefenders.utils.ConfigLoader;
 import mods.castledefenders.utils.ConfigProp;
 import mods.castledefenders.utils.VersionChecker;
@@ -127,6 +126,7 @@ public class ModCastleDefenders {
 	
 	// Liste des constructions
 	private Building buildingMercenary1;
+	private Building buildingMercenary2;
 	
 	/**
 	 * 1
@@ -291,19 +291,20 @@ public class ModCastleDefenders {
 	private void initBuildings () throws Exception {
 		BuildingParser parser = new BuildingParser ();
 		this.buildingMercenary1 = parser.parse ("mercenary1");
+		this.buildingMercenary2 = parser.parse ("mercenary2");
 	}
 	
 	/**
 	 * Enregistre les générateur de terrain
 	 */
 	private void initWorldGenerators () {
-		GameRegistry.registerWorldGenerator(new WorldGeneratorMercBase());
 		
 		// Céation du world generator
 		WorldGeneratorByBuilding worldGeneratorByBuilding = new WorldGeneratorByBuilding(this.mercenarySpawnRate);
 		
 		// Ajout des batiments
 		worldGeneratorByBuilding.addbuilding (this.buildingMercenary1, this.mercenaryBuilding1SpawnRate);
+		worldGeneratorByBuilding.addbuilding (this.buildingMercenary2, this.mercenaryBuilding2SpawnRate);
 		
 		// Enregistrement du worldgenerator mercenary
 		GameRegistry.registerWorldGenerator (worldGeneratorByBuilding);

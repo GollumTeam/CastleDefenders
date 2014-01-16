@@ -61,11 +61,7 @@ public class Building {
 				
 				ArrayList<Content> newGroupEl = new ArrayList();
 				for (Content el: groupEl) {
-					Content content = new Content ();
-					content.id  = el.id;
-					content.min = el.min;
-					content.max = el.max;
-					newGroupEl.add (content);
+					newGroupEl.add ((Content) el.clone ());
 				}
 				
 				o.contents.add(newGroupEl);

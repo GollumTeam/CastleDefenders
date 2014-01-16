@@ -1,0 +1,9 @@
+{
+	"color" : [
+		{ "block": "net.minecraft.block.Block|cloth" },
+		{ "block": "net.minecraft.block.Block|grass" },
+		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockMerc" },
+		{ "block": "net.minecraft.block.Block|fence" },
+		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "down"}
+	]
+}

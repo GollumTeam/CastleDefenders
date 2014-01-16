@@ -8,11 +8,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
@@ -21,8 +19,8 @@ import mods.castledefenders.common.ModCastleDefenders;
 import mods.castledefenders.common.building.Building.Unity;
 import mods.castledefenders.common.building.Building.Unity.Content;
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.client.Minecraft;
+import net.minecraft.item.Item;
 import argo.jdom.JdomParser;
 import argo.jdom.JsonNode;
 import argo.jdom.JsonRootNode;
@@ -159,16 +157,19 @@ public class BuildingParser {
 				z = 0;
 			}
 			
-			Map<JsonStringNode, JsonNode> map = json.getNode ("sets").getFields();
-			for (JsonStringNode key : map.keySet()) {
-				String position3D[] = key.getText().split("x");
-				x = Integer.parseInt(position3D[0]);
-				y = Integer.parseInt(position3D[1]);
-				z = Integer.parseInt(position3D[2]);
-				
-				Unity unity = this.parseBlockDescription(map.get(key));
-				building.set(x, y, z, unity);
-				
+			try {
+				Map<JsonStringNode, JsonNode> map = json.getNode ("sets").getFields();
+				for (JsonStringNode key : map.keySet()) {
+					String position3D[] = key.getText().split("x");
+					x = Integer.parseInt(position3D[0]);
+					y = Integer.parseInt(position3D[1]);
+					z = Integer.parseInt(position3D[2]);
+					
+					Unity unity = this.parseBlockDescription(map.get(key));
+					building.set(x, y, z, unity);
+					
+				}
+			} catch (Exception e) {
 			}
 			
 			//Renverse la matrice par X et par Z pour correspondre au position dans le monde
@@ -260,7 +261,7 @@ public class BuildingParser {
 				
 				Content content = new Content ();
 				
-				content.id = 1;
+				content.id = (item != null) ? item.itemID : 1;
 				content.min = 1; try { content.min = Integer.parseInt (el.getNumberValue ("min")); } catch (Exception e) { }
 				content.max = 1; try { content.max = Integer.parseInt (el.getNumberValue ("max")); } catch (Exception e) { }
 				
