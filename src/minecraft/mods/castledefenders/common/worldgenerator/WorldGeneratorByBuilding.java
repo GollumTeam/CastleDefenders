@@ -113,7 +113,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 		}
 		
 		// test du Spawn global
-		if (random.nextInt(50) < Math.min (this.globalSpawnRate, 10)) { // Pour test sur un superflat
+		if (random.nextInt(50) < Math.min (this.globalSpawnRate, 10)) { // Pour test sur un superflat // revoie le calcul 1 chance sur 6 par defaut
 //		if (random.nextInt(22) < Math.min (this.globalSpawnRate, 10)) {
 			
 
@@ -127,7 +127,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			int initY = worldY      + random.nextInt(8) - random.nextInt(8);
 			int initZ = chunkZ * 16 + random.nextInt(8) - random.nextInt(8);
 			initY = 3; // Pour test sur un superflat
-			boolean old = true;
+			boolean old = false;
 			
 			
 			//Test si on est sur de la terre (faudrais aps que le batiment vol)
@@ -295,8 +295,6 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
                 var9 = initY;
                 var10 = initZ;
 
-                if (var1.getBlockId(var8 + 3, var9, var10 + 3) == Block.grass.blockID)
-                {
                     var11 = var2.nextInt(2);
 
                     for (var12 = var9; var12 < var9 + 8; ++var12)
@@ -404,10 +402,10 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
                             }
                         }
                     }
-
                     var12 = var2.nextInt(4);
                     int var15;
-
+                    
+                    /*
                     if (var12 == 0)
                     {
                         for (var13 = var9 + 1; var13 < var9 + 14; ++var13)
@@ -518,7 +516,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
                         var1.setBlock(var8 + 6, var9 + 7, var10 + 4, Block.cobblestone.blockID);
                         var1.setBlock(var8 + 6, var9 + 7, var10 + 5, Block.cobblestone.blockID);
                         var1.setBlock(var8 + 7, var9 + 7, var10 + 5, Block.cobblestone.blockID);
-                    }
+                    }*/
 
                     var1.setBlock(var8 + 6, var9 + 1, var10 + 1, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.offsetsXForSide[5]], 2);
                     var1.setBlock(var8 + 6, var9 + 2, var10 + 1, Block.ladder.blockID, 1 << Direction.facingToDirection[Facing.oppositeSide[5]], 2);
@@ -615,7 +613,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
                         var1.setBlock(var8 + 9, var9 + 1, var10 + 11, 22);
                         var1.setBlock(var8 + 9, var9 + 2, var10 + 11, 22);
                     }
-                }
+                
 //            }
 //        }
 /*

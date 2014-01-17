@@ -120,13 +120,17 @@ public class ModCastleDefenders {
 	
 	// Ratio de building entre les batiments d'un meme type
 	@ConfigProp(group = "Spawn rate between mercenary building")
-	public static int mercenaryBuilding1SpawnRate    = 1;
+	public static int mercenaryBuilding1SpawnRate = 1;
 	@ConfigProp(group = "Spawn rate between mercenary building")
-	public static int mercenaryBuilding2SpawnRate    = 2;
+	public static int mercenaryBuilding2SpawnRate = 2;
+	
+	@ConfigProp(group = "Spawn rate between castle building")
+	public static int castleBuilding1SpawnRate = 1;
 	
 	// Liste des constructions
 	private Building buildingMercenary1;
 	private Building buildingMercenary2;
+	private Building buildingCastle1;
 	
 	/**
 	 * 1
@@ -292,6 +296,7 @@ public class ModCastleDefenders {
 		BuildingParser parser = new BuildingParser ();
 		this.buildingMercenary1 = parser.parse ("mercenary1");
 		this.buildingMercenary2 = parser.parse ("mercenary2");
+		this.buildingCastle1    = parser.parse ("castle1");
 	}
 	
 	/**
@@ -300,14 +305,18 @@ public class ModCastleDefenders {
 	private void initWorldGenerators () {
 		
 		// Céation du world generator
-		WorldGeneratorByBuilding worldGeneratorByBuilding = new WorldGeneratorByBuilding(this.mercenarySpawnRate);
+		WorldGeneratorByBuilding worldGeneratorByBuildingMercery = new WorldGeneratorByBuilding(this.mercenarySpawnRate);
+		WorldGeneratorByBuilding worldGeneratorByBuildingCastle  = new WorldGeneratorByBuilding(this.castleSpawnRate);
 		
 		// Ajout des batiments
-		worldGeneratorByBuilding.addbuilding (this.buildingMercenary1, this.mercenaryBuilding1SpawnRate);
-		worldGeneratorByBuilding.addbuilding (this.buildingMercenary2, this.mercenaryBuilding2SpawnRate);
+		worldGeneratorByBuildingMercery.addbuilding (this.buildingMercenary1, this.mercenaryBuilding1SpawnRate);
+		worldGeneratorByBuildingMercery.addbuilding (this.buildingMercenary2, this.mercenaryBuilding2SpawnRate);
+		
+		worldGeneratorByBuildingCastle.addbuilding (this.buildingCastle1, this.castleBuilding1SpawnRate);
 		
 		// Enregistrement du worldgenerator mercenary
-		GameRegistry.registerWorldGenerator (worldGeneratorByBuilding);
+//		GameRegistry.registerWorldGenerator (worldGeneratorByBuildingMercery);
+		GameRegistry.registerWorldGenerator (worldGeneratorByBuildingCastle);
 	}
 	
 	/**
