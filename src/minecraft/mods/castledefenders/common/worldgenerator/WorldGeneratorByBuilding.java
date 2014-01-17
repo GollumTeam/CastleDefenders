@@ -8,6 +8,7 @@ import mods.castledefenders.common.building.Building;
 import mods.castledefenders.common.building.Building.Unity;
 import mods.castledefenders.common.building.Building.Unity.Content;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockBed;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.BlockFurnace;
@@ -142,12 +143,14 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 		}
 		
 		// test du Spawn global
-		if (random.nextInt(10) < Math.min (this.globalSpawnRate, 10)) {
+		if (random.nextInt(50) < Math.min (this.globalSpawnRate, 50)) { // Pour test sur un superflat
+//		if (random.nextInt(50) < Math.min (this.globalSpawnRate, 10)) {
 			
 
 			// Position initial de la génération en hauteur
 			int worldY = 64;
-			Building building = this.getBuildingInRate (buildings, random);
+			int rotate = random.nextInt(Building.ROTATED_180);
+			Building building = this.getBuildingInRate (buildings, random).getRotatetedBuilding (rotate);
 			
 			// Position initiale du batiment
 			int initX = chunkX * 16 + random.nextInt(8) - random.nextInt(8);
@@ -155,11 +158,10 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			int initZ = chunkZ * 16 + random.nextInt(8) - random.nextInt(8);
 			
 			// Pour test sur un superflat
-//			initY = 3;
+			initY = 3;
 			
 			//Test si on est sur de la terre (faudrais aps que le batiment vol)
-			if (world.getBlockId(initX + 3, initY, initZ + 3) == Block.grass.blockID || 
-				world.getBlockId(initX + 3, initY+1, initZ + 3) == Block.grass.blockID) {
+			if (world.getBlockId(initX + 3, initY, initZ + 3) == Block.grass.blockID) {
 				
 				ModCastleDefenders.log.info("Create building width matrix :"+initX+" "+initY+" "+initZ);
 				
@@ -181,7 +183,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 								world.setBlock(finalX, finalY, finalZ, 0, 0, 2);
 							}
 
-							this.setOrientation (world, finalX, finalY, finalZ, unity.orientation);
+							this.setOrientation (world, finalX, finalY, finalZ, unity.orientation, rotate);
 							this.setContents    (world, random, finalX, finalY, finalZ, unity.contents);
 						}
 					}
@@ -204,7 +206,10 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 						// recherche la profondeur maxi de Y
 						while (
 							world.getBlockId(finalX, finalY, finalZ) != Block.grass.blockID &&
-							world.getBlockId(finalX, finalY, finalZ) != Block.stone.blockID
+							world.getBlockId(finalX, finalY, finalZ) != Block.stone.blockID &&
+							world.getBlockId(finalX, finalY, finalZ) != Block.dirt.blockID &&
+							world.getBlockId(finalX, finalY, finalZ) != Block.bedrock.blockID &&
+							y > 0
 						){
 							
 							maxYdown = Math.min (maxYdown, y);
@@ -243,6 +248,38 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 	}
 	
 	/**
+	 * Retourne l'orientation retourner en fonction de la rotation
+	 * @param rotate
+	 * @param orientation
+	 * @return
+	 */
+	private int rotateOrientation(int rotate, int orientation) {
+		if (rotate == Building.ROTATED_90) {
+			
+			switch (orientation) { 
+				case Unity.ORIENTATION_UP:
+					return Unity.ORIENTATION_RIGTH;
+				case Unity.ORIENTATION_LEFT:
+					return Unity.ORIENTATION_DOWN;
+				case Unity.ORIENTATION_DOWN:
+					return Unity.ORIENTATION_LEFT;
+				case Unity.ORIENTATION_RIGTH:
+					return Unity.ORIENTATION_UP;
+				default:
+					return Unity.ORIENTATION_NONE;
+			}
+		}
+		if (rotate == Building.ROTATED_180) {
+			return this.rotateOrientation(Building.ROTATED_90, this.rotateOrientation(Building.ROTATED_90, orientation));
+		}
+		if (rotate == Building.ROTATED_240) {
+			return this.rotateOrientation(Building.ROTATED_180, this.rotateOrientation(Building.ROTATED_90, orientation));
+		}
+		return orientation;
+	}
+
+
+	/**
 	 * Insert le contenu du block
 	 * @param world
 	 * @param random
@@ -277,8 +314,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 		}
 		
 	}
-
-
+	
 	/**
 	 * Affecte l'orientation
 	 * @param i
@@ -287,9 +323,23 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 	 * @param orientation
 	 */
 	private void setOrientation(World world, int x, int y, int z, int orientation) {
+		this.setOrientation(world, x, y, z, orientation, Building.ROTATED_0);
+	}
+
+	/**
+	 * Affecte l'orientation
+	 * @param i
+	 * @param j
+	 * @param k
+	 * @param orientation
+	 * @param rotation
+	 */
+	private void setOrientation(World world, int x, int y, int z, int orientation, int rotation) {
 		
 		Block block  = Block.blocksList [world.getBlockId (x, y, z)];
 		int metadata = world.getBlockMetadata (x, y, z);
+		
+		orientation = this.rotateOrientation (rotation, orientation);
 		
 		if (block instanceof BlockTorch) {
 

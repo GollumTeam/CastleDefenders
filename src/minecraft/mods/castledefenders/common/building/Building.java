@@ -5,8 +5,15 @@ import java.util.Collections;
 
 import net.minecraft.block.Block;
 
-public class Building {
+public class Building implements Cloneable {
 
+
+	public static final int ROTATED_0  = 0;
+	public static final int ROTATED_90 = 1;
+	public static final int ROTATED_180 = 2;
+	public static final int ROTATED_240 = 3;
+	public static final int ROTATED_360 = 4;
+	
 	public int maxX;
 	public int maxY;
 	public int maxZ;
@@ -75,7 +82,53 @@ public class Building {
 	
 	//Liste des block de la constuction
 	private ArrayList<ArrayList<ArrayList<Unity>>> blocks = new ArrayList<ArrayList<ArrayList<Unity>>>();
-
+	
+	/**
+	 * Renvoie la matrice retourné de l'angle en parametre
+	 * @param enumAngle
+	 * @return
+	 */
+	public Building getRotatetedBuilding (int enumAngle) {
+		if (enumAngle == Building.ROTATED_90) {
+			Building rotatedBuilding = new Building ();
+			
+			for (int x = 0; x < this.maxX; x++) {
+				for (int y = 0; y < this.maxY; y++) {
+					for (int z = 0; z < this.maxZ; z++) {
+						rotatedBuilding.set (z, y, x, this.get(x, y, z));
+					}
+				}
+			}
+			
+			rotatedBuilding.reverseByX();
+			return rotatedBuilding;
+		}
+		if (enumAngle == Building.ROTATED_180) {
+			return this.getRotatetedBuilding(Building.ROTATED_90).getRotatetedBuilding(90);
+		}
+		if (enumAngle == Building.ROTATED_180) {
+			return this.getRotatetedBuilding(Building.ROTATED_180).getRotatetedBuilding(90);
+		}
+		
+		return (Building)this.clone ();
+	}
+	
+	/**
+	 * Clone l'objet
+	 */
+	public Object clone() {
+		Building o = new Building ();
+		
+		for (int x = 0; x < this.maxX; x++) {
+			for (int y = 0; y < this.maxY; y++) {
+				for (int z = 0; z < this.maxZ; z++) {
+					o.set (x, y, z, this.get(x, y, z));
+				}
+			}
+		}
+		return o;
+	}
+	
 	/**
 	 * Renverse la matrice par X
 	 */
