@@ -149,7 +149,8 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 
 			// Position initial de la génération en hauteur
 			int worldY = 64;
-			int rotate = random.nextInt(Building.ROTATED_180);
+			int rotate = random.nextInt(Building.ROTATED_360);
+			rotate = Building.ROTATED_180;
 			Building building = this.getBuildingInRate (buildings, random).getRotatetedBuilding (rotate);
 			
 			// Position initiale du batiment
@@ -164,6 +165,21 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			if (world.getBlockId(initX + 3, initY, initZ + 3) == Block.grass.blockID) {
 				
 				ModCastleDefenders.log.info("Create building width matrix :"+initX+" "+initY+" "+initZ);
+				
+
+				// Parcours la matrice et ajoute des blocks de stone pour les blocks qui s'accroche
+				for (int x= 0; x < building.maxX; x++) {
+					for (int y= 0; y < building.maxY; y++) {
+						for (int z= 0; z < building.maxZ; z++) {
+								// Position réél dans le monde du block
+								int finalX = initX + x;
+								int finalY = initY + y;
+								int finalZ = initZ + z;
+								world.setBlock(finalX, finalY, finalZ, Block.grass.blockID, 0, 2);
+				
+						}
+					}
+				}
 				
 				// Parcours la matrice et ajoute les blocks
 				for (int x= 0; x < building.maxX; x++) {
@@ -259,17 +275,22 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			switch (orientation) { 
 				case Unity.ORIENTATION_UP:
 					return Unity.ORIENTATION_RIGTH;
-				case Unity.ORIENTATION_LEFT:
+				case Unity.ORIENTATION_RIGTH:
 					return Unity.ORIENTATION_DOWN;
 				case Unity.ORIENTATION_DOWN:
 					return Unity.ORIENTATION_LEFT;
-				case Unity.ORIENTATION_RIGTH:
+				case Unity.ORIENTATION_LEFT:
 					return Unity.ORIENTATION_UP;
 				default:
 					return Unity.ORIENTATION_NONE;
 			}
 		}
 		if (rotate == Building.ROTATED_180) {
+			if (orientation != 0) {
+				ModCastleDefenders.log.info("rotation  : "+orientation);
+				ModCastleDefenders.log.info("rotation2 : "+this.rotateOrientation(Building.ROTATED_90, orientation));
+				ModCastleDefenders.log.info("rotation2 : "+this.rotateOrientation(Building.ROTATED_90, this.rotateOrientation(Building.ROTATED_90, orientation)));
+			}
 			return this.rotateOrientation(Building.ROTATED_90, this.rotateOrientation(Building.ROTATED_90, orientation));
 		}
 		if (rotate == Building.ROTATED_240) {

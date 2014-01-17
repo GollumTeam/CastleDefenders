@@ -52,6 +52,13 @@
 		},
 		"8x1x1": { "block": "net.minecraft.block.Block|chest"      , "orientation":"up" },
 		"9x1x1": { "block": "net.minecraft.block.Block|furnaceIdle", "orientation":"up" },
-		"1x3x1": { "block": "net.minecraft.block.Block|web" }
+		"1x3x1": { "block": "net.minecraft.block.Block|web" },
+		
+		
+        "5x2x8": { "block": "net.minecraft.block.Block|stone" },
+        "5x2x7": { "block": "net.minecraft.block.Block|torchWood", "orientation":"down" },
+        "5x2x9": { "block": "net.minecraft.block.Block|torchWood", "orientation":"up" },
+        "4x2x8": { "block": "net.minecraft.block.Block|torchWood", "orientation":"right" },
+        "6x2x8": { "block": "net.minecraft.block.Block|torchWood", "orientation":"left" }
 	}
 }
