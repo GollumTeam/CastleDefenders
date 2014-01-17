@@ -104,10 +104,10 @@ public class Building implements Cloneable {
 			return rotatedBuilding;
 		}
 		if (enumAngle == Building.ROTATED_180) {
-			return this.getRotatetedBuilding(Building.ROTATED_90).getRotatetedBuilding(90);
+			return this.getRotatetedBuilding(Building.ROTATED_90).getRotatetedBuilding(Building.ROTATED_90);
 		}
-		if (enumAngle == Building.ROTATED_180) {
-			return this.getRotatetedBuilding(Building.ROTATED_180).getRotatetedBuilding(90);
+		if (enumAngle == Building.ROTATED_240) {
+			return this.getRotatetedBuilding(Building.ROTATED_180).getRotatetedBuilding(Building.ROTATED_90);
 		}
 		
 		return (Building)this.clone ();
