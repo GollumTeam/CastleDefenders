@@ -135,7 +135,6 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 				
 				ModCastleDefenders.log.info("Create building width matrix :"+initX+" "+initY+" "+initZ);
 				
-
 				// Parcours la matrice et ajoute des blocks de stone pour les blocks qui s'accroche
 				for (int x= 0; x < building.maxX; x++) {
 					for (int y= 0; y < building.maxY; y++) {
@@ -170,6 +169,37 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 
 							this.setOrientation (world, finalX, finalY, finalZ, this.rotateOrientation(rotate, unity.orientation));
 							this.setContents    (world, random, finalX, finalY, finalZ, unity.contents);
+						}
+					}
+				}
+				
+
+				
+				//////////////////////////////////
+				// Ajoute les blocks aléatoires //
+				//////////////////////////////////
+				
+				for(ArrayList<Building> group: building.getRandomBlocksGroup()) {
+					
+					Building lisBlockRandom = group.get(random.nextInt(group.size ()));
+					
+					for (int x= 0; x < lisBlockRandom.maxX; x++) {
+						for (int y= 0; y < lisBlockRandom.maxY; y++) {
+							for (int z= 0; z < lisBlockRandom.maxZ; z++) {
+								Unity unity = lisBlockRandom.get(x, y, z);
+								
+								// Position réél dans le monde du block
+								int finalX = initX + x;
+								int finalY = initY + y;
+								int finalZ = initZ + z;
+								
+								if (unity.block != null && unity.block.blockID != 0) {
+									world.setBlock(finalX, finalY, finalZ, unity.block.blockID, unity.metadata, 2);
+									
+									this.setOrientation (world, finalX, finalY, finalZ, this.rotateOrientation(rotate, unity.orientation));
+									this.setContents    (world, random, finalX, finalY, finalZ, unity.contents);
+								}
+							}
 						}
 					}
 				}

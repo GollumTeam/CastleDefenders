@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.regex.Pattern;
@@ -71,15 +72,12 @@ public class BuildingParser {
 		// Liste de la correspondance couleur block
 		Hashtable<Integer, Unity> corlorBlockIndex = new Hashtable ();
 		
-		// Objet pour générer des ramdoms
-		Random random = new Random();
-		
 		try {
 			InputStream is      = this.getResource(BuildingParser.PATH_BUILDING_ASSETS + name + "/" + NAME_IMG);
 			BufferedImage image = ImageIO.read(is);
 			
-			InputStream isJson       = this.getResource(BuildingParser.PATH_BUILDING_ASSETS + name + "/" + NAME_JSON);
-			JsonRootNode json        = this.parser.parse(new InputStreamReader(isJson));
+			InputStream isJson = this.getResource(BuildingParser.PATH_BUILDING_ASSETS + name + "/" + NAME_JSON);
+			JsonRootNode json  = this.parser.parse(new InputStreamReader(isJson));
 			
 			
 			
@@ -171,6 +169,46 @@ public class BuildingParser {
 				}
 			} catch (Exception e) {
 			}
+			
+			try {
+				
+				for (JsonNode randomBlock: json.getArrayNode ("random")) {
+					
+					ArrayList<Building> listGroupRandomBlocks = new ArrayList();
+					
+					for (JsonNode group: randomBlock.getElements()) {
+						
+						Building randomBuilding = new Building();
+							
+						Map<JsonStringNode, JsonNode> map = group.getFields();
+						for (JsonStringNode key : map.keySet()) {
+							String position3D[] = key.getText().split("x");
+							x = Integer.parseInt(position3D[0]);
+							y = Integer.parseInt(position3D[1]);
+							z = Integer.parseInt(position3D[2]);
+							
+							Unity unity = this.parseBlockDescription(map.get(key));
+							randomBuilding.set(x, y, z, unity);
+						}
+						
+						// La randomBuilding doit etre de la meme taille que building pour les transformations
+						for (x = 0; x < building.maxX; x++) {
+							for (y = 0; y < building.maxY; y++) {
+								for (z = 0; z <building.maxZ; z++) {
+									randomBuilding.set (x, y, z, randomBuilding.get(x, y, z));
+								}
+							}
+						}
+						
+						listGroupRandomBlocks.add (randomBuilding);
+						
+					}
+					building.addRandomBlock (listGroupRandomBlocks);
+				}
+				
+			} catch (Exception e) {
+			}
+			
 			
 			//Renverse la matrice par X et par Z pour correspondre au position dans le monde
 			building.reverseByX();

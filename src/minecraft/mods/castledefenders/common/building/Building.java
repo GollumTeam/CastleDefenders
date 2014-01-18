@@ -79,9 +79,14 @@ public class Building implements Cloneable {
 	}
 	
 	
-	
-	//Liste des block de la constuction
+	/**
+	 * Liste des block de la constuction
+	 */
 	private ArrayList<ArrayList<ArrayList<Unity>>> blocks = new ArrayList<ArrayList<ArrayList<Unity>>>();
+	/**
+	 * Liste des blocks posés aléatoirements
+	 */
+	private ArrayList<ArrayList<Building>> groupsRandomBlocks = new ArrayList<ArrayList<Building>>();
 	
 	/**
 	 * Renvoie la matrice retourné de l'angle en parametre
@@ -100,7 +105,17 @@ public class Building implements Cloneable {
 				}
 			}
 			
-			rotatedBuilding.reverseByX();
+			rotatedBuilding.reverseByX(false);
+			
+			for (ArrayList<Building> groupBlock: this.groupsRandomBlocks) {
+				ArrayList<Building> newGroupsRandomBlocks = new ArrayList<Building>();
+				for (Building blocks: groupBlock) {
+					newGroupsRandomBlocks.add (blocks.getRotatetedBuilding (enumAngle));
+				}
+				rotatedBuilding.addRandomBlock(newGroupsRandomBlocks);
+			}
+			
+			
 			return rotatedBuilding;
 		}
 		if (enumAngle == Building.ROTATED_180) {
@@ -126,34 +141,76 @@ public class Building implements Cloneable {
 				}
 			}
 		}
+		
+		ArrayList<ArrayList<Building>> newGroupsRandomBlocks = new ArrayList();
+		for (ArrayList<Building> groupBlock: this.groupsRandomBlocks) {
+			
+			ArrayList<Building> newGroupBlock = new ArrayList();
+			for (Building blocks: groupBlock) {
+				newGroupBlock.add (blocks);
+			}
+			newGroupsRandomBlocks.add(newGroupBlock);
+		}
+		o.groupsRandomBlocks = newGroupsRandomBlocks;
 		return o;
 	}
+
+	public Building reverseByX () { return this.reverseByX(true); }
+	public Building reverseByY () { return this.reverseByY(true); }
+	public Building reverseByZ () { return this.reverseByZ(true); }
 	
 	/**
 	 * Renverse la matrice par X
 	 */
-	public void reverseByX () {
+	public Building reverseByX (boolean reverseRandom) {
 		Collections.reverse(this.blocks);
+		
+		if (reverseRandom) {
+			for (ArrayList<Building> groupBlock: this.groupsRandomBlocks) {
+				for (Building blocks: groupBlock) {
+					blocks.reverseByX ();
+				}
+			}
+		}
+		return this;
 	}
 	
 	/**
-	 * Renverse la matrice par X
+	 * Renverse la matrice par Y
 	 */
-	public void reverseByY () {
+	public Building reverseByY (boolean reverseRandom) {
 		for (ArrayList<ArrayList<Unity>> list: this.blocks) {
 			Collections.reverse(list);
 		}
+		
+		if (reverseRandom) {
+			for (ArrayList<Building> groupBlock: this.groupsRandomBlocks) {
+				for (Building blocks: groupBlock) {
+					blocks.reverseByY ();
+				}
+			}
+		}
+		return this;
 	}
 	
 	/**
-	 * Renverse la matrice par X
+	 * Renverse la matrice par Z
 	 */
-	public void reverseByZ () {
+	public Building reverseByZ (boolean reverseRandom) {
 		for (ArrayList<ArrayList<Unity>> list: this.blocks) {
 			for (ArrayList<Unity> list2: list) {
 				Collections.reverse(list2);
 			}
 		}
+		
+		if (reverseRandom) {
+			for (ArrayList<Building> groupBlock: this.groupsRandomBlocks) {
+				for (Building blocks: groupBlock) {
+					blocks.reverseByZ ();
+				}
+			}
+		}
+		return this;
 	}
 	
 	public void set (int x, int y, int z, Unity unity) {
@@ -192,4 +249,22 @@ public class Building implements Cloneable {
 			return new Unity();
 		}
 	}
+	
+	/**
+	 * Ajoute un groups de block aléatoire
+	 * @param listGroupRandomBlocks
+	 */
+	public void addRandomBlock(ArrayList<Building> listGroupRandomBlocks) {
+		this.groupsRandomBlocks.add (listGroupRandomBlocks);
+		
+	}
+	
+	/**
+	 * Renvoie la liste des groupes
+	 * @return
+	 */
+	public ArrayList<ArrayList<Building>> getRandomBlocksGroup () {
+		return this.groupsRandomBlocks;
+	}
+	
 }

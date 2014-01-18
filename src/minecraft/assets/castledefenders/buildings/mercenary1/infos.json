@@ -25,11 +25,12 @@
 		"5x5x3": { "block": "net.minecraft.block.Block|ladder", "orientation":"down" },
 		"5x6x3": { "block": "net.minecraft.block.Block|ladder", "orientation":"down" },
 		"5x7x3": { "block": "net.minecraft.block.Block|ladder", "orientation":"down" },
-		
+		 
 		"7x1x1": {
 			"block": "net.minecraft.block.Block|chest",
 			"orientation":"up",
 			"contents": [
+				
 				[
 					{ "element": "net.minecraft.item.Item|arrow", "min":30, "max":40 },
 					{ "element": "net.minecraft.item.Item|swordIron" },
@@ -50,7 +51,7 @@
 				]
 			]
 		},
-		"8x1x1": { "block": "net.minecraft.block.Block|chest"      , "orientation":"up" },
+		"8x1x1": { "block": "net.minecraft.block.Block|chest"	   , "orientation":"up" },
 		"9x1x1": { "block": "net.minecraft.block.Block|furnaceIdle", "orientation":"up" },
 		"1x3x1": { "block": "net.minecraft.block.Block|web" }
 	}
