@@ -4,6 +4,9 @@
 		{ "block": "net.minecraft.block.Block|grass" },
 		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockMerc" },
 		{ "block": "net.minecraft.block.Block|fence" },
-		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "up"}
+		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "up"},
+		{ "block": "net.minecraft.block.Block|fire" },
+		{ "block": "net.minecraft.block.Block|cobblestone" },
+		{ "block": "net.minecraft.block.Block|netherrack" }
 	]
 }

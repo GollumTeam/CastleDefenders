@@ -1,0 +1,69 @@
+{
+	"color" : [
+		{ "block": "net.minecraft.block.Block|cloth", "metadata":14 },
+		{ "block": "net.minecraft.block.Block|grass" },
+		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockEKnight" },
+		{ "block": "net.minecraft.block.Block|fence" },
+		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "up"},
+		{ "block": "net.minecraft.block.Block|fire" },
+		{ "block": "net.minecraft.block.Block|cobblestone" },
+		{ "block": "net.minecraft.block.Block|netherrack" }
+	],
+	"sets": {
+		"5x1x6": {
+			"block": "net.minecraft.block.Block|chest",
+			"orientation":"left",
+			"contents": [
+				
+				[
+					{ "element": "mods.castledefenders.common.ModCastleDefenders|itemMedallion", "min":1, "max":5 }
+				],
+				[
+					{ "element": "net.minecraft.item.Item|carrot", "min":1, "max":10 },
+					{ "element": "net.minecraft.item.Item|swordIron", "min":1, "max":4 },
+					{ "element": "net.minecraft.item.Item|ingotGold", "min":1, "max":4 },
+					{ "element": "net.minecraft.item.Item|compass" },
+					{ "element": "net.minecraft.item.Item|gunpowder", "min":1, "max":7 },
+					{ "element": "net.minecraft.item.Item|arrow", "min":20, "max":40 },
+					{ "element": "net.minecraft.item.Item|bucketEmpty" },
+					{ "element": "net.minecraft.item.Item|appleGold", "min":1, "max":2 },
+					{ "element": "net.minecraft.item.Item|redstone", "min":10, "max":20 },
+					{ "element": "net.minecraft.item.Item|helmetChain" },
+					{ "element": "net.minecraft.item.Item|egg", "min":4, "max":20 },
+					{ "element": "net.minecraft.item.Item|bootsChain" },
+					{ "element": "net.minecraft.item.Item|skull" }
+				],
+				[
+					{ "element": "net.minecraft.item.Item|carrot", "min":1, "max":10 },
+					{ "element": "net.minecraft.item.Item|swordIron", "min":1, "max":4 },
+					{ "element": "net.minecraft.item.Item|ingotGold", "min":1, "max":4 },
+					{ "element": "net.minecraft.item.Item|compass" },
+					{ "element": "net.minecraft.item.Item|gunpowder", "min":1, "max":7 },
+					{ "element": "net.minecraft.item.Item|arrow", "min":20, "max":40 },
+					{ "element": "net.minecraft.item.Item|bucketEmpty" },
+					{ "element": "net.minecraft.item.Item|appleGold", "min":1, "max":2 },
+					{ "element": "net.minecraft.item.Item|redstone", "min":10, "max":20 },
+					{ "element": "net.minecraft.item.Item|helmetChain" },
+					{ "element": "net.minecraft.item.Item|egg", "min":4, "max":20 },
+					{ "element": "net.minecraft.item.Item|bootsChain" },
+					{ "element": "net.minecraft.item.Item|skull" }
+				],
+				[
+					{ "element": "net.minecraft.item.Item|carrot", "min":1, "max":10 },
+					{ "element": "net.minecraft.item.Item|swordIron", "min":1, "max":4 },
+					{ "element": "net.minecraft.item.Item|ingotGold", "min":1, "max":4 },
+					{ "element": "net.minecraft.item.Item|compass" },
+					{ "element": "net.minecraft.item.Item|gunpowder", "min":1, "max":7 },
+					{ "element": "net.minecraft.item.Item|arrow", "min":20, "max":40 },
+					{ "element": "net.minecraft.item.Item|bucketEmpty" },
+					{ "element": "net.minecraft.item.Item|appleGold", "min":1, "max":2 },
+					{ "element": "net.minecraft.item.Item|redstone", "min":10, "max":20 },
+					{ "element": "net.minecraft.item.Item|helmetChain" },
+					{ "element": "net.minecraft.item.Item|egg", "min":4, "max":20 },
+					{ "element": "net.minecraft.item.Item|bootsChain" },
+					{ "element": "net.minecraft.item.Item|skull" }
+				]
+			]
+		}
+	}
+}

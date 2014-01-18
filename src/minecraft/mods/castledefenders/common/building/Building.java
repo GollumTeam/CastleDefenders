@@ -39,12 +39,14 @@ public class Building implements Cloneable {
 			public int id = 0;
 			public int min = 1;
 			public int max = 1;
+			public int metadata = -1;
 			
 			public Object clone() {
-				Content o = new Content ();
-				o.id    = this.id;
-				o.min   = this.min;
-				o.max   = this.max;
+				Content o  = new Content ();
+				o.id       = this.id;
+				o.min      = this.min;
+				o.max      = this.max;
+				o.metadata = this.metadata;
 				return o;
 			}
 			

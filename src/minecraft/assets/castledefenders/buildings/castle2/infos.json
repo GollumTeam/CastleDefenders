@@ -1,0 +1,248 @@
+{
+	"color" : [
+		{ "block": "net.minecraft.block.Block|stoneBrick" },
+		{ "block": "net.minecraft.block.Block|cobblestone" },
+		{ "block": "net.minecraft.block.Block|grass" },
+		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockEKnight" },
+		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockEArcher" },
+		{ "block": "net.minecraft.block.Block|planks" },
+		{ "block": "net.minecraft.block.Block|ladder", "orientation": "left" },
+		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "up"},
+		{ "block": "net.minecraft.block.Block|fenceIron"},
+		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockEMage"},
+		{ "block": "net.minecraft.block.Block|trapdoor", "orientation": "right"},
+		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "left"},
+		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "right"}
+	],
+	"sets": {
+		
+		
+		"5x8x9": { "block": "net.minecraft.block.Block|doorIron", "metadata": 0, "orientation":"down" },
+		"5x9x9": { "block": "net.minecraft.block.Block|doorIron", "metadata": 8, "orientation":"down" },
+		"4x9x10": { "block": "net.minecraft.block.Block|stoneButton", "orientation":"right" },
+		"6x9x10": { "block": "net.minecraft.block.Block|stoneButton", "orientation":"left" },
+		
+		"11x8x7": {
+			"block": "net.minecraft.block.Block|chest",
+			"orientation":"right",
+			"contents": [
+				[
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 1 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 2 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 3 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 4 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 5 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 6 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 7 }
+				],
+				[
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 1 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 2 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 3 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 4 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 5 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 6 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 7 }
+				],
+				[
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 1 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 2 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 3 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 4 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 5 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 6 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 7 }
+				],
+				[
+					{ "element": "mods.castledefenders.common.ModCastleDefenders|itemMedallion", "min":1, "max":5 }
+				]
+				
+			]
+		},
+		"11x8x8": { "block": "net.minecraft.block.Block|chest", "orientation":"right" },
+		
+		"12x15x7": {
+			"block": "net.minecraft.block.Block|chest",
+			"orientation":"right",
+			"contents": [
+				[
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 1 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 2 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 3 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 4 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 5 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 6 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 7 }
+				],
+				[
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 1 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 2 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 3 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 4 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 5 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 6 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 7 }
+				],
+				[
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 1 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 2 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 3 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 4 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 5 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 6 },
+					{ "element": "net.minecraft.item.Item|potion" , "metadata": 7 }
+				],
+				[
+					{ "element": "mods.castledefenders.common.ModCastleDefenders|itemMedallion", "min":1, "max":5 }
+				]
+			]
+		
+		},
+		"12x15x8": { "block": "net.minecraft.block.Block|chest", "orientation":"right" },
+		
+		"9x1x3": {
+			"block": "net.minecraft.block.Block|chest",
+			"orientation":"up",
+			
+			"contents": [
+				
+				[
+					{ "element": "mods.castledefenders.common.ModCastleDefenders|itemMedallion", "min":1, "max":5 }
+				],
+				
+				[
+					{ "element": "net.minecraft.item.Item|carrot", "min":1, "max":10 },
+					{ "element": "net.minecraft.item.Item|swordIron", "min":1, "max":4 },
+					{ "element": "net.minecraft.item.Item|ingotGold", "min":1, "max":4 },
+					{ "element": "net.minecraft.item.Item|compass" },
+					{ "element": "net.minecraft.item.Item|gunpowder", "min":1, "max":7 },
+					{ "element": "net.minecraft.item.Item|arrow", "min":20, "max":40 },
+					{ "element": "net.minecraft.item.Item|bucketEmpty" },
+					{ "element": "net.minecraft.item.Item|appleGold", "min":1, "max":2 },
+					{ "element": "net.minecraft.item.Item|redstone", "min":10, "max":20 },
+					{ "element": "net.minecraft.item.Item|helmetChain" },
+					{ "element": "net.minecraft.item.Item|egg", "min":4, "max":20 },
+					{ "element": "net.minecraft.item.Item|bootsChain" },
+					{ "element": "net.minecraft.item.Item|skull" }
+				],
+				[
+					{ "element": "net.minecraft.item.Item|arrow", "min":30, "max":40 },
+					{ "element": "net.minecraft.item.Item|bread" },
+					{ "element": "net.minecraft.item.Item|swordIron" },
+					{ "element": "net.minecraft.item.Item|emerald" },
+					{ "element": "net.minecraft.item.Item|bowlSoup" },
+					{ "element": "net.minecraft.item.Item|diamond" },
+					{ "element": "net.minecraft.item.Item|axeIron" },
+					{ "element": "net.minecraft.item.Item|bowlSoup" },
+					{ "element": "net.minecraft.item.Item|legsChain" }
+				],
+				
+				[
+					{ "element": "net.minecraft.item.Item|carrot", "min":1, "max":10 },
+					{ "element": "net.minecraft.item.Item|swordIron", "min":1, "max":4 },
+					{ "element": "net.minecraft.item.Item|ingotGold", "min":1, "max":4 },
+					{ "element": "net.minecraft.item.Item|compass" },
+					{ "element": "net.minecraft.item.Item|gunpowder", "min":1, "max":7 },
+					{ "element": "net.minecraft.item.Item|arrow", "min":20, "max":40 },
+					{ "element": "net.minecraft.item.Item|bucketEmpty" },
+					{ "element": "net.minecraft.item.Item|appleGold", "min":1, "max":2 },
+					{ "element": "net.minecraft.item.Item|redstone", "min":10, "max":20 },
+					{ "element": "net.minecraft.item.Item|helmetChain" },
+					{ "element": "net.minecraft.item.Item|egg", "min":4, "max":20 },
+					{ "element": "net.minecraft.item.Item|bootsChain" },
+					{ "element": "net.minecraft.item.Item|skull" }
+				],
+				[
+					{ "element": "net.minecraft.item.Item|arrow", "min":30, "max":40 },
+					{ "element": "net.minecraft.item.Item|bread" },
+					{ "element": "net.minecraft.item.Item|swordIron" },
+					{ "element": "net.minecraft.item.Item|emerald" },
+					{ "element": "net.minecraft.item.Item|bowlSoup" },
+					{ "element": "net.minecraft.item.Item|diamond" },
+					{ "element": "net.minecraft.item.Item|axeIron" },
+					{ "element": "net.minecraft.item.Item|bowlSoup" },
+					{ "element": "net.minecraft.item.Item|legsChain" }
+				],
+				
+				[
+					{ "element": "net.minecraft.item.Item|carrot", "min":1, "max":10 },
+					{ "element": "net.minecraft.item.Item|swordIron", "min":1, "max":4 },
+					{ "element": "net.minecraft.item.Item|ingotGold", "min":1, "max":4 },
+					{ "element": "net.minecraft.item.Item|compass" },
+					{ "element": "net.minecraft.item.Item|gunpowder", "min":1, "max":7 },
+					{ "element": "net.minecraft.item.Item|arrow", "min":20, "max":40 },
+					{ "element": "net.minecraft.item.Item|bucketEmpty" },
+					{ "element": "net.minecraft.item.Item|appleGold", "min":1, "max":2 },
+					{ "element": "net.minecraft.item.Item|redstone", "min":10, "max":20 },
+					{ "element": "net.minecraft.item.Item|helmetChain" },
+					{ "element": "net.minecraft.item.Item|egg", "min":4, "max":20 },
+					{ "element": "net.minecraft.item.Item|bootsChain" },
+					{ "element": "net.minecraft.item.Item|skull" }
+				],
+				[
+					{ "element": "net.minecraft.item.Item|arrow", "min":30, "max":40 },
+					{ "element": "net.minecraft.item.Item|bread" },
+					{ "element": "net.minecraft.item.Item|swordIron" },
+					{ "element": "net.minecraft.item.Item|emerald" },
+					{ "element": "net.minecraft.item.Item|bowlSoup" },
+					{ "element": "net.minecraft.item.Item|diamond" },
+					{ "element": "net.minecraft.item.Item|axeIron" },
+					{ "element": "net.minecraft.item.Item|bowlSoup" },
+					{ "element": "net.minecraft.item.Item|legsChain" }
+				],
+				
+				[
+					{ "element": "net.minecraft.item.Item|carrot", "min":1, "max":10 },
+					{ "element": "net.minecraft.item.Item|swordIron", "min":1, "max":4 },
+					{ "element": "net.minecraft.item.Item|ingotGold", "min":1, "max":4 },
+					{ "element": "net.minecraft.item.Item|compass" },
+					{ "element": "net.minecraft.item.Item|gunpowder", "min":1, "max":7 },
+					{ "element": "net.minecraft.item.Item|arrow", "min":20, "max":40 },
+					{ "element": "net.minecraft.item.Item|bucketEmpty" },
+					{ "element": "net.minecraft.item.Item|appleGold", "min":1, "max":2 },
+					{ "element": "net.minecraft.item.Item|redstone", "min":10, "max":20 },
+					{ "element": "net.minecraft.item.Item|helmetChain" },
+					{ "element": "net.minecraft.item.Item|egg", "min":4, "max":20 },
+					{ "element": "net.minecraft.item.Item|bootsChain" },
+					{ "element": "net.minecraft.item.Item|skull" }
+				],
+				[
+					{ "element": "net.minecraft.item.Item|arrow", "min":30, "max":40 },
+					{ "element": "net.minecraft.item.Item|bread" },
+					{ "element": "net.minecraft.item.Item|swordIron" },
+					{ "element": "net.minecraft.item.Item|emerald" },
+					{ "element": "net.minecraft.item.Item|bowlSoup" },
+					{ "element": "net.minecraft.item.Item|diamond" },
+					{ "element": "net.minecraft.item.Item|axeIron" },
+					{ "element": "net.minecraft.item.Item|bowlSoup" },
+					{ "element": "net.minecraft.item.Item|legsChain" }
+				]
+			]
+		},
+		"8x1x3": { "block": "net.minecraft.block.Block|chest"	  , "orientation":"up" }
+	},
+	
+	"random": [
+		[
+			{
+				"12x1x6": { "block": "net.minecraft.block.Block|tnt" },
+				"12x1x7": { "block": "net.minecraft.block.Block|tnt" },
+				"12x2x6": { "block": "net.minecraft.block.Block|tnt" }
+			},
+			{
+				"12x1x6": { "block": "net.minecraft.block.Block|blockIron" },
+				"12x1x7": { "block": "net.minecraft.block.Block|blockIron" },
+				"12x2x6": { "block": "net.minecraft.block.Block|blockIron" }
+			},
+			{
+				"12x1x6": { "block": "net.minecraft.block.Block|blockGold" },
+				"12x2x6": { "block": "net.minecraft.block.Block|blockGold" }
+			},
+			{
+				"12x1x6": { "block": "net.minecraft.block.Block|blockLapis" },
+				"12x1x7": { "block": "net.minecraft.block.Block|blockLapis" },
+				"12x2x6": { "block": "net.minecraft.block.Block|blockLapis" }
+			}
+		]
+	]
+}

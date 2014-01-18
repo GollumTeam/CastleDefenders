@@ -7,9 +7,13 @@
 		{ "block": "net.minecraft.block.Block|torchWood" },
 		{ "block": "net.minecraft.block.Block|woodSingleSlab" },
 		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockArcherM" },
-		{ "block":  "net.minecraft.block.Block|thinGlass" }
+		{ "block":  "net.minecraft.block.Block|thinGlass" },
+		{ "block":  "net.minecraft.block.Block|doorWood", "orientation":"up" }
 	],
 	"sets": {
+		"5x1x5": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"right" },
+		"5x2x5": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"right" },
+		
 		"4x2x4": { "block": "net.minecraft.block.Block|torchWood", "orientation":"down" },
 		"6x2x4": { "block": "net.minecraft.block.Block|torchWood", "orientation":"down" },
 		
@@ -31,6 +35,24 @@
 			"orientation":"up",
 			"contents": [
 				
+				[
+					{ "element": "net.minecraft.item.Item|arrow", "min":30, "max":40 },
+					{ "element": "net.minecraft.item.Item|swordIron" },
+					{ "element": "net.minecraft.item.Item|goldNugget", "min":1, "max":2 },
+					{ "element": "net.minecraft.item.Item|goldNugget", "min":1, "max":2 },
+					{ "element": "net.minecraft.item.Item|bread" },
+					{ "element": "net.minecraft.item.Item|carrot", "min":1, "max":10 },
+					{ "element": "net.minecraft.item.Item|bow" }
+				],
+				[
+					{ "element": "net.minecraft.item.Item|arrow", "min":30, "max":40 },
+					{ "element": "net.minecraft.item.Item|swordIron" },
+					{ "element": "net.minecraft.item.Item|goldNugget", "min":1, "max":2 },
+					{ "element": "net.minecraft.item.Item|goldNugget", "min":1, "max":2 },
+					{ "element": "net.minecraft.item.Item|bread" },
+					{ "element": "net.minecraft.item.Item|carrot", "min":1, "max":10 },
+					{ "element": "net.minecraft.item.Item|bow" }
+				],
 				[
 					{ "element": "net.minecraft.item.Item|arrow", "min":30, "max":40 },
 					{ "element": "net.minecraft.item.Item|swordIron" },
