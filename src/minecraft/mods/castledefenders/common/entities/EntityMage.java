@@ -15,17 +15,16 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityArcher extends EntityDefender {
+public class EntityMage extends EntityDefender {
 
-	public EntityArcher(World world) {
+	public EntityMage(World world) {
 
 		super(world);
-		this.blockSpawnId = ModCastleDefenders.blockArcherID;
-		this.defaultHeldItem = new ItemStack(Item.bow, 1);
+		this.blockSpawnId = ModCastleDefenders.blockMageID;
 		
 		this.setSize(1.1F, 1.8F);
 		
-		this.tasks.addTask(1, new EntityAIArcherArrowAttack (this, this.getMoveSpeed (), this.getFollowRange (), 1));
+//		this.tasks.addTask(1, new EntityAIArcherArrowAttack (this, this.getMoveSpeed (), this.getFollowRange (), 1));
 		this.tasks.addTask(2, new EntityAIWander(this, this.getMoveSpeed ()));
 		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget (this, IMob.class, 0, true));
 	}
@@ -33,7 +32,7 @@ public class EntityArcher extends EntityDefender {
 	/**
 	 * @return Zone de detection du mod
 	 */
-	public double getFollowRange() { return 80.D; }
+	public double getFollowRange() { return 100.D; }
 
 	/**
 	 * @return Vitesse du mod
@@ -43,16 +42,16 @@ public class EntityArcher extends EntityDefender {
 	/**
 	 * @return Point de vie du mod
 	 */
-	public double getHealt() { return 15.0D; }
+	public double getHealt() { return 20.0D; }
 
 	/**
 	 * @return Point de vie du mod
 	 */
-	public int getAttackStrength() { return 4; }
+	public int getAttackStrength() { return 0; }
 	
 	/**
-     * Determines if an entity can be despawned, used on idle far away entities
-     */
+	 * Determines if an entity can be despawned, used on idle far away entities
+	 */
 	protected boolean canDespawn() {
 		return false;
 	}

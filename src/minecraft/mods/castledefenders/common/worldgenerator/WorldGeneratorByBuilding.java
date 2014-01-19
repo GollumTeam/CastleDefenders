@@ -199,7 +199,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 				int initX = chunkX * 16 + random.nextInt(8) - random.nextInt(8);
 				int initY = worldY      + random.nextInt(8) - random.nextInt(8);
 				int initZ = chunkZ * 16 + random.nextInt(8) - random.nextInt(8);
-//				initY = 3; // Pour test sur un superflat
+				initY = 3; // Pour test sur un superflat
 				
 				
 				//Test si on est sur de la terre (faudrais aps que le batiment vol)

@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -29,12 +30,14 @@ import argo.jdom.JsonStringNode;
 import argo.saj.InvalidSyntaxException;
 
 public class BuildingParser {
-	
+
 	public static final String PATH_BUILDING_ASSETS = "/assets/castledefenders/buildings/";
+	public static final String PATH_REOBF_JSON      = "/assets/castledefenders/reobf/index.json";
 	public static final String NAME_IMG             = "structure.png";
 	public static final String NAME_JSON            = "infos.json";
 	
 	private static JdomParser parser = new JdomParser();
+	private static HashMap<String, String> reobfArray;
 	
 	/**
 	 * Renvoie le flux de fichier depuis le jar (depuis le système de fichier en mode DEV)
@@ -243,13 +246,22 @@ public class BuildingParser {
 			String orientation = "none"; try { orientation = type.getStringValue ("orientation"); } catch (Exception e) { }
 			JsonNode contents  = null; try { contents = type.getNode("contents"); } catch (Exception e) { }
 			
-			
 			// Récupère l'attribut
 			Class classBlock;
-			classBlock = Class.forName(explode[0]);
-			Field f = classBlock.getDeclaredField(explode[1]);
-			Block block = (Block) f.get(null);
-			
+			Block block = null;
+			try {
+				
+				classBlock = Class.forName(explode[0]);
+				Field f = classBlock.getDeclaredField(explode[1]);
+				block = (Block) f.get(null);
+				
+			} catch (Exception e) {
+				// Si le code est reofusqué
+				explode   = this.reobfKey (type.getStringValue ("block")).split(Pattern.quote("|"));
+				classBlock = Class.forName(explode[0]);
+				Field f = classBlock.getDeclaredField(explode[1]);
+				block = (Block) f.get(null);
+			}
 			
 			unity.block       = block;
 			unity.metadata    = Integer.parseInt(metadata);
@@ -276,6 +288,42 @@ public class BuildingParser {
 		return unity;
 	}
 	
+	
+	/**
+	 * Renvoie la valeur offusquée de la class
+	 * @param stringValue
+	 * @return
+	 * @throws FileNotFoundException 
+	 */
+	private String reobfKey(String stringValue) throws Exception {
+		HashMap<String, String> map = this.getReobfArray ();
+		return map.get(stringValue);
+	}
+	
+	/**
+	 * Renvoie le tableau reobfArray
+	 * @return
+	 * @throws InvalidSyntaxException 
+	 * @throws IOException 
+	 */
+	private HashMap<String, String> getReobfArray () throws Exception {
+		
+		if (BuildingParser.reobfArray == null) {
+			BuildingParser.reobfArray = new HashMap<String, String> ();
+			
+			InputStream isJson = this.getResource(BuildingParser.PATH_REOBF_JSON);
+			JsonRootNode json  = this.parser.parse(new InputStreamReader(isJson));
+			
+			Map<JsonStringNode, JsonNode> map = json.getFields();
+			for (JsonStringNode key : map.keySet()) {
+				BuildingParser.reobfArray.put(key.getText(), map.get(key).getText());
+			}
+			
+		}
+		
+		return BuildingParser.reobfArray;
+	}
+
 	/**
 	 * Parse un contenu d'objet (Les chests par exemple)
 	 * @param group
@@ -293,9 +341,21 @@ public class BuildingParser {
 				
 				// Récupère l'attribut
 				Class classEl;
-				classEl = Class.forName(explode[0]);
-				Field f = classEl.getDeclaredField(explode[1]);
-				Item item = (Item) f.get(null);
+				Item item = null;
+				try {
+					
+					classEl = Class.forName(explode[0]);
+					Field f = classEl.getDeclaredField(explode[1]);
+					item = (Item) f.get(null);
+					
+				} catch (Exception e) {
+					// Si le code est reofusqué
+					explode   = this.reobfKey (el.getStringValue ("element")).split(Pattern.quote("|"));
+					classEl = Class.forName(explode[0]);
+					Field f = classEl.getDeclaredField(explode[1]);
+					item = (Item) f.get(null);
+				}
+				
 				
 				Content content = new Content ();
 				

@@ -1,5 +1,6 @@
 package mods.castledefenders.common.entities;
 
+import mods.castledefenders.common.ModCastleDefenders;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -12,12 +13,13 @@ public class EntityArcher2 extends EntityArcher {
 
 	public EntityArcher2(World world) {
 		super(world);
+		this.blockSpawnId = ModCastleDefenders.blockArcher2ID;
 	}
 	
 	/**
 	 * @return Zone de detection du mod
 	 */
-	public double getFollowRange () { return 40.D; }
+	public double getFollowRange () { return 120.D; }
 	/**
 	 * @return Vitesse du mod
 	 */
