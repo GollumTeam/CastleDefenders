@@ -19,6 +19,7 @@ import mods.castledefenders.common.blocks.BlockMerc;
 import mods.castledefenders.common.building.Building;
 import mods.castledefenders.common.building.BuildingParser;
 import mods.castledefenders.common.entities.EntityArcher;
+import mods.castledefenders.common.entities.EntityArcher2;
 import mods.castledefenders.common.entities.EntityKnight;
 import mods.castledefenders.common.entities.EntityKnight2;
 import mods.castledefenders.common.items.ItemMedallion;
@@ -290,9 +291,10 @@ public class ModCastleDefenders {
 	 * Enregistrement des Mobs
 	 */
 	private void initMobs () {
-		this.registerMob(EntityKnight.class , "Knight", "Knight"           , this.knightID , 0x000000);
+		this.registerMob(EntityKnight.class , "Knight" , "Knight"          , this.knightID , 0x000000);
 		this.registerMob(EntityKnight2.class, "Knight2", "Knight - Level 2", this.knight2ID, 0x00FFFC);
-		this.registerMob(EntityArcher.class , "Archer", "Archer"           , this.archerID , 0x500000);
+		this.registerMob(EntityArcher.class , "Archer" , "Archer"          , this.archerID , 0x500000);
+		this.registerMob(EntityArcher2.class, "Archer2", "Archer - Level 2", this.archer2ID, 0x00FF88);
 	}
 
 	/**

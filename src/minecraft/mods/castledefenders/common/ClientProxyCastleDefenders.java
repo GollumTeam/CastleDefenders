@@ -1,6 +1,7 @@
 package mods.castledefenders.common;
 
 import mods.castledefenders.common.entities.EntityArcher;
+import mods.castledefenders.common.entities.EntityArcher2;
 import mods.castledefenders.common.entities.EntityKnight;
 import mods.castledefenders.common.entities.EntityKnight2;
 import net.minecraft.client.model.ModelBiped;
@@ -15,6 +16,7 @@ public class ClientProxyCastleDefenders extends CommonProxyCastleDefenders {
 		RenderingRegistry.registerEntityRenderingHandler(EntityKnight.class , new RenderCastleDefenders(new ModelBiped(), 0.5F, "Knight"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityKnight2.class, new RenderCastleDefenders(new ModelBiped(), 0.5F, "Knight2"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityArcher.class , new RenderCastleDefenders(new ModelBiped(), 0.5F, "Archer"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityArcher2.class, new RenderCastleDefenders(new ModelBiped(), 0.5F, "Archer2"));
 //		RenderingRegistry.registerEntityRenderingHandler(EntityMerc.class, new RenderBiped(new ModelBiped(), 0.5F));
 //		RenderingRegistry.registerEntityRenderingHandler(EntityEKnight.class, new RenderBiped(new ModelBiped(), 0.5F));
 //		RenderingRegistry.registerEntityRenderingHandler(EntityEArcher.class, new RenderBiped(new ModelBiped(), 0.5F));
