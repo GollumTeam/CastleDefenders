@@ -7,12 +7,16 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITempt;
+import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -25,36 +29,64 @@ public abstract class EntityEnemy extends EntityMob {
 	
 	public ItemStack defaultHeldItem = null;
 	public int blockSpawnId;
+	private int idTask = 0;
+	private int idTargetTask = 0;
 
 
 	public EntityEnemy(World world) {
 		super(world);
-
+		
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(this.getMoveSpeed ());
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setAttribute(this.getHealt ());
 		this.getEntityAttribute(SharedMonsterAttributes.followRange)  .setAttribute(this.getFollowRange ());
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage) .setAttribute(this.getAttackStrength ());
 		
-		this.tasks.addTask(1, new EntityAITempt(this, 0.35F, ModCastleDefenders.itemMedallion.itemID, false));
-		this.tasks.addTask(2, new EntityAISwimming(this));
+		this.getNavigator().setBreakDoors(true);
+		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
+		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMoveSpeed()));
+		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityPlayer.class, this.getMoveSpeed(), true));
+		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityDefender.class, this.getMoveSpeed(), true));
+//		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityMerc.class, this.getMoveSpeed(), true));
+//		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityArcherM.class, this.getMoveSpeed(), true));
+		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityDefender.class, 0, true));
+//		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityArcherM.class,  0, true));
+//		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityMerc.class,  0, true));
+
 	}
 
 	/**
+	 * Next Id Task
+	 * @return
+	 */
+	public int nextIdTask () {
+		return this.idTask++;
+	}
+	
+	/**
+	 * Next target Id Task
+	 * @return
+	 */
+	public int nextIdTargetTask () {
+		return this.idTargetTask++;
+	}
+	
+	/**
 	 * @return Zone de detection du mod
 	 */
-	public double getFollowRange () { return 20.D; }
+	public double getFollowRange () { return 16.D; }
 	/**
 	 * @return Vitesse du mod
 	 */
-	public double getMoveSpeed () { return 0.1D; }
+	public double getMoveSpeed () { return 0.5D; }
 	/**
 	 * @return Point de vie du mod
 	 */
-	public double getHealt () { return 0.0D; }
+	public double getHealt () { return 25.0D; }
 	/**
 	 * @return Point de vie du mod
 	 */
-	public int getAttackStrength () { return 10; }
+	public int getAttackStrength () { return 6; }
 	
 	
 	/**
@@ -76,70 +108,13 @@ public abstract class EntityEnemy extends EntityMob {
 	public boolean isAIEnabled() {
 		return true;
 	}
-
-	/**
-	 * Basic mob attack. Default to touch of death in EntityCreature. Overridden
-	 * by each mob to define their attack.
-	 */
-	@Override
-	protected void attackEntity(Entity entity, float var2) {
-		if (
-				this.attackTime <= 0 && var2 < 2.0F && 
-				entity.boundingBox.maxY > this.boundingBox.minY &&
-				entity.boundingBox.minY < this.boundingBox.maxY
-			) {
-			
-			this.attackTime = 10;
-			this.attackEntityAsMob(entity);
-		}
-	}
-
-	/**
-	 * Called when the entity is attacked.
-	 */
-	@Override
-	public boolean attackEntityFrom(DamageSource damageSource, float strength) {
-		
-		if (super.attackEntityFrom(damageSource, strength)) {
-			Entity entity = damageSource.getEntity();
-
-			if (this.riddenByEntity != entity && this.ridingEntity != entity) {
-				if (entity != this) {
-					this.entityToAttack = entity;
-				}
-
-				return true;
-			} else {
-				return true;
-			}
-		} else {
-			return false;
-		}
-	}
-
-	/**
-	 * Returns true if this entity can attack entities of the specified class.
-	 */
-	@Override
-	public boolean canAttackClass(Class entityClass) {
-		return EntityGhast.class != entityClass;
-	}
-
-	@Override
-	public boolean attackEntityAsMob(Entity entity) {
-		int strength = this.getAttackStrength();
-
-		if (this.isPotionActive(Potion.damageBoost)) {
-			strength += 3 << this.getActivePotionEffect(Potion.damageBoost).getAmplifier();
-		}
-
-		if (this.isPotionActive(Potion.weakness)) {
-			strength -= 2 << this.getActivePotionEffect(Potion.weakness).getAmplifier();
-		}
-
-		return entity.attackEntityFrom(DamageSource.causeMobDamage(this), strength);
-	}
 	
+	/**
+	 * Returns the item ID for the item the mob drops on death.
+	 */
+	protected int getDropItemId() {
+		return 0;
+	}
 	
 	/**
 	 * Checks if the entity's current position is a valid location to spawn this
@@ -147,12 +122,14 @@ public abstract class EntityEnemy extends EntityMob {
 	 */
 	@Override
 	public boolean getCanSpawnHere() {
-	
+		
 		int x = MathHelper.floor_double(this.posX);
 		int y = MathHelper.floor_double(this.boundingBox.minY);
 		int z = MathHelper.floor_double(this.posZ);
+		
 		int idBlock = this.worldObj.getBlockId(x, y - 1, z);
 		
+
 		List entityListBlockArround = this.worldObj.getEntitiesWithinAABB(
 			this.getClass(), 
 			AxisAlignedBB.getBoundingBox(

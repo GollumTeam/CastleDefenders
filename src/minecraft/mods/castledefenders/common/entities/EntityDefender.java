@@ -9,6 +9,7 @@ import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITempt;
+import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntityWitch;
@@ -25,19 +26,41 @@ public abstract class EntityDefender extends EntityAnimal {
 	
 	public ItemStack defaultHeldItem = null;
 	public int blockSpawnId;
+	private int idTask = 0;
+	private int idTargetTask = 0;
 
 
 	public EntityDefender(World world) {
 		super(world);
-
+		
+		this.setSize(1.1F, 1.8F);
+		
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(this.getMoveSpeed ());
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setAttribute(this.getHealt ());
 		this.getEntityAttribute(SharedMonsterAttributes.followRange)  .setAttribute(this.getFollowRange ());
 //		this.getEntityAttribute(SharedMonsterAttributes.attackDamage) .setAttribute(this.getAttackStrength ());
 		
-		this.tasks.addTask(1, new EntityAITempt(this, 0.35F, ModCastleDefenders.itemMedallion.itemID, false));
-		this.tasks.addTask(2, new EntityAISwimming(this));
+		this.tasks.addTask(this.nextIdTask (), new EntityAITempt(this, 0.35F, ModCastleDefenders.itemMedallion.itemID, false));
+		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
+		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMoveSpeed ()));
 	}
+	
+	/**
+	 * Next Id Task
+	 * @return
+	 */
+	public int nextIdTask () {
+		return this.idTask++;
+	}
+	
+	/**
+	 * Next target Id Task
+	 * @return
+	 */
+	public int nextIdTargetTask () {
+		return this.idTargetTask++;
+	}
+	
 
 	/**
 	 * @return Zone de detection du mod

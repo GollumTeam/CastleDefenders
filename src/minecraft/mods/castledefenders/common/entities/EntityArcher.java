@@ -24,11 +24,9 @@ public class EntityArcher extends EntityDefender {
 		this.blockSpawnId = ModCastleDefenders.blockArcherID;
 		this.defaultHeldItem = new ItemStack(Item.bow, 1);
 		
-		this.setSize(1.1F, 1.8F);
+		this.tasks.addTask(this.nextIdTask (), new EntityAIArcherArrowAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), 1));
 		
-		this.tasks.addTask(1, new EntityAIArcherArrowAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), 1));
-		this.tasks.addTask(2, new EntityAIWander(this, this.getMoveSpeed ()));
-		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget (this, IMob.class, 0, true));
+		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget (this, IMob.class, 0, true));
 	}
 	
 	/**

@@ -2,6 +2,8 @@ package mods.castledefenders.common;
 
 import mods.castledefenders.common.entities.EntityArcher;
 import mods.castledefenders.common.entities.EntityArcher2;
+import mods.castledefenders.common.entities.EntityEArcher;
+import mods.castledefenders.common.entities.EntityEKnight;
 import mods.castledefenders.common.entities.EntityKnight;
 import mods.castledefenders.common.entities.EntityKnight2;
 import mods.castledefenders.common.entities.EntityMage;
@@ -19,9 +21,9 @@ public class ClientProxyCastleDefenders extends CommonProxyCastleDefenders {
 		RenderingRegistry.registerEntityRenderingHandler(EntityArcher.class , new RenderCastleDefenders(new ModelBiped(), 0.5F, "Archer"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityArcher2.class, new RenderCastleDefenders(new ModelBiped(), 0.5F, "Archer2"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityMage.class   , new RenderCastleDefenders(new ModelBiped(), 0.5F, "Mage"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityEKnight.class, new RenderCastleDefenders(new ModelBiped(), 0.5F, "Enemy Knight"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityEArcher.class, new RenderCastleDefenders(new ModelBiped(), 0.5F, "Enemy Archer"));
 //		RenderingRegistry.registerEntityRenderingHandler(EntityMerc.class, new RenderBiped(new ModelBiped(), 0.5F));
-//		RenderingRegistry.registerEntityRenderingHandler(EntityEKnight.class, new RenderBiped(new ModelBiped(), 0.5F));
-//		RenderingRegistry.registerEntityRenderingHandler(EntityEArcher.class, new RenderBiped(new ModelBiped(), 0.5F));
 //		RenderingRegistry.registerEntityRenderingHandler(EntityArcherM.class, new RenderBiped(new ModelBiped(), 0.5F));
 		
 	}

@@ -36,10 +36,14 @@ public class Building implements Cloneable {
 		 */
 		static public class Content implements Cloneable {
 			
+			public static final int TYPE_ITEM  = 0;
+			public static final int TYPE_BLOCK = 1;
+			
 			public int id = 0;
 			public int min = 1;
 			public int max = 1;
 			public int metadata = -1;
+			public int type;
 			
 			public Object clone() {
 				Content o  = new Content ();
@@ -47,6 +51,7 @@ public class Building implements Cloneable {
 				o.min      = this.min;
 				o.max      = this.max;
 				o.metadata = this.metadata;
+				o.type = this.type;
 				return o;
 			}
 			

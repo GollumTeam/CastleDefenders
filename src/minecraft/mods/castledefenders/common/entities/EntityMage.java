@@ -22,8 +22,6 @@ public class EntityMage extends EntityDefender {
 
 		super(world);
 		this.blockSpawnId = ModCastleDefenders.blockMageID;
-		
-		this.setSize(1.1F, 1.8F);
 
 		this.tasks.addTask(1, new EntityAIMageAttack(this, IMob.class, this.getMoveSpeed(), true));
 		this.tasks.addTask(2, new EntityAIWander(this, this.getMoveSpeed ()));

@@ -20,6 +20,7 @@ import mods.castledefenders.common.building.Building;
 import mods.castledefenders.common.building.BuildingParser;
 import mods.castledefenders.common.entities.EntityArcher;
 import mods.castledefenders.common.entities.EntityArcher2;
+import mods.castledefenders.common.entities.EntityEKnight;
 import mods.castledefenders.common.entities.EntityKnight;
 import mods.castledefenders.common.entities.EntityKnight2;
 import mods.castledefenders.common.entities.EntityMage;
@@ -292,11 +293,13 @@ public class ModCastleDefenders {
 	 * Enregistrement des Mobs
 	 */
 	private void initMobs () {
-		this.registerMob(EntityKnight.class , "Knight" , "Knight"          , this.knightID , 0x000000);
-		this.registerMob(EntityKnight2.class, "Knight2", "Knight - Level 2", this.knight2ID, 0x00FFFC);
-		this.registerMob(EntityArcher.class , "Archer" , "Archer"          , this.archerID , 0x500000);
-		this.registerMob(EntityArcher2.class, "Archer2", "Archer - Level 2", this.archer2ID, 0x00FF88);
-		this.registerMob(EntityMage.class   , "Mage"   , "Mage"            , this.mageID   , 0xE10000);
+		this.registerMob(EntityKnight.class , "Knight"      , "Knight"          , this.knightID , 0x000000);
+		this.registerMob(EntityKnight2.class, "Knight2"     , "Knight - Level 2", this.knight2ID, 0x00FFFC);
+		this.registerMob(EntityArcher.class , "Archer"      , "Archer"          , this.archerID , 0x500000);
+		this.registerMob(EntityArcher2.class, "Archer2"     , "Archer - Level 2", this.archer2ID, 0x00FF88);
+		this.registerMob(EntityMage.class   , "Mage"        , "Mage"            , this.mageID   , 0xE10000);
+		this.registerMob(EntityEKnight.class, "Enemy Knight", "Enemy Knight"    , this.eKnightID, 0xE100AA);
+		this.registerMob(EntityEKnight.class, "Enemy Archer", "Enemy Archer"    , this.eArcherID, 0xE1AA00);
 	}
 	
 	/**
@@ -321,15 +324,15 @@ public class ModCastleDefenders {
 		WorldGeneratorByBuilding worldGeneratorByBuilding = new WorldGeneratorByBuilding();
 		
 		int idGroupMercery = worldGeneratorByBuilding.addGroup (this.mercenarySpawnRate);
-//		int idGroupCastle  = worldGeneratorByBuilding.addGroup (this.castleSpawnRate);
+		int idGroupCastle  = worldGeneratorByBuilding.addGroup (this.castleSpawnRate);
 		
 		// Ajout des batiments
 		worldGeneratorByBuilding.addBuilding (idGroupMercery, this.buildingMercenary1, this.mercenaryBuilding1SpawnRate);
-//		worldGeneratorByBuilding.addBuilding (idGroupMercery, this.buildingMercenary2, this.mercenaryBuilding2SpawnRate);
+		worldGeneratorByBuilding.addBuilding (idGroupMercery, this.buildingMercenary2, this.mercenaryBuilding2SpawnRate);
 		
-//		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle1, this.castleBuilding1SpawnRate);
-//		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle2, this.castleBuilding2SpawnRate);
-//		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle3, this.castleBuilding3SpawnRate);
+		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle1, this.castleBuilding1SpawnRate);
+		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle2, this.castleBuilding2SpawnRate);
+		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle3, this.castleBuilding3SpawnRate);
 		
 		// Enregistrement du worldgenerator mercenary
 		GameRegistry.registerWorldGenerator (worldGeneratorByBuilding);

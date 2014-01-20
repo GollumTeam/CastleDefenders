@@ -339,25 +339,44 @@ public class BuildingParser {
 				
 				// Récupère l'attribut
 				Class classEl;
+				int type = 0;
 				Item item = null;
+				Block block = null;
 				try {
 					
 					classEl = Class.forName(explode[0]);
 					Field f = classEl.getDeclaredField(explode[1]);
-					item    = (Item) f.get(null);
+					Object o = f.get(null);
+					if (o instanceof Item) {
+						item = (Item)o;
+						type = Content.TYPE_ITEM;
+					}
+					if (o instanceof Block) {
+						block = (Block)o;
+						type = Content.TYPE_BLOCK;
+					}
 					
 				} catch (Exception e) {
 					// Si le code est reofusqué
 					explode = this.reobfKey (el.getStringValue ("element")).split(Pattern.quote("|"));
 					classEl = Class.forName(explode[0]);
 					Field f = classEl.getDeclaredField(explode[1]);
-					item    = (Item) f.get(null);
+					Object o = f.get(null);
+					if (o instanceof Item) {
+						item = (Item)o;
+						type = Content.TYPE_ITEM;
+					}
+					if (o instanceof Block) {
+						block = (Block)o;
+						type = Content.TYPE_BLOCK;
+					}
 				}
 				
 				
 				Content content = new Content ();
-				
-				content.id       = (item != null) ? item.itemID : 1;
+
+				content.id       = (item != null) ? item.itemID : ((block != null) ? block.blockID : 0);
+				content.type     = type;
 				content.min      = 1;  try { content.min      = Integer.parseInt (el.getNumberValue ("min"));      } catch (Exception e) { }
 				content.max      = 1;  try { content.max      = Integer.parseInt (el.getNumberValue ("max"));      } catch (Exception e) { }
 				content.metadata = -1; try { content.metadata = Integer.parseInt (el.getNumberValue ("metadata")); } catch (Exception e) { }

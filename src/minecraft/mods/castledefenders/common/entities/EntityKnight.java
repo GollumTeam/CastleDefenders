@@ -25,15 +25,13 @@ public class EntityKnight extends EntityDefender {
 		this.blockSpawnId       = ModCastleDefenders.blockKnightID;
 		this.defaultHeldItem    = new ItemStack(Item.swordIron, 1);
 		
-		this.setSize(1.1F, 1.8F);
 		this.getNavigator().setBreakDoors(true);
 		
-		this.tasks.addTask(1, new EntityAIAttackOnCollide(this, IMob.class, this.getMoveSpeed (), true));
-		this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityCreeper.class, this.getMoveSpeed (), true));
-		this.tasks.addTask(3, new EntityAIWander(this, this.getMoveSpeed ()));
+		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, IMob.class, this.getMoveSpeed (), true));
+		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityCreeper.class, this.getMoveSpeed (), true));
 		
-		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, IMob.class         , 0, false, true));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityCreeper.class, 0, false, true));
+		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget(this, IMob.class         , 0, false, true));
+		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget(this, EntityCreeper.class, 0, false, true));
 	}
 	
 	/**

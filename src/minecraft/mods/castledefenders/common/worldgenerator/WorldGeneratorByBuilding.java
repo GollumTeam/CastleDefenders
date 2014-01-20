@@ -200,7 +200,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 				int initX = chunkX * 16 + random.nextInt(8) - random.nextInt(8);
 				int initY = worldY      + random.nextInt(8) - random.nextInt(8);
 				int initZ = chunkZ * 16 + random.nextInt(8) - random.nextInt(8);
-				initY = 3; // Pour test sur un superflat
+//				initY = 3; // Pour test sur un superflat
 				
 				
 				//Test si on est sur de la terre (faudrais aps que le batiment vol)
@@ -461,10 +461,18 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 					int nombre = content.min + ((diff > 0) ? random.nextInt (diff) : 0);
 					
 					ItemStack itemStack;
-					if (content.metadata == -1) {
-						itemStack = new ItemStack(Item.itemsList[content.id], nombre);
+					if (content.type == Content.TYPE_ITEM) {
+						if (content.metadata == -1) {
+							itemStack = new ItemStack(Item.itemsList[content.id], nombre);
+						} else {
+							itemStack = new ItemStack(Item.itemsList[content.id], nombre, content.metadata);
+						}
 					} else {
-						itemStack = new ItemStack(Item.itemsList[content.id], nombre, content.metadata);
+						if (content.metadata == -1) {
+							itemStack = new ItemStack(Block.blocksList [content.id], nombre);
+						} else {
+							itemStack = new ItemStack(Block.blocksList [content.id], nombre, content.metadata);
+						}
 					}
 					((TileEntityChest) te).setInventorySlotContents (i, itemStack);
 				}
