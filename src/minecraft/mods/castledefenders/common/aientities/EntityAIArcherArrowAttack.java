@@ -23,12 +23,12 @@ public class EntityAIArcherArrowAttack extends EntityAIBase
 	int nbTarget = 0;
 	int rangedAttackID;
 
-	public EntityAIArcherArrowAttack(EntityLiving entityLiving, double entityMoveSpeed, double rangedAttackDistance, double maxRangedAttackTime, int rangedAttackID) {
+	public EntityAIArcherArrowAttack(EntityLiving entityLiving, double entityMoveSpeed, double rangedAttackDistance, double rangedAttackTime, int rangedAttackID) {
 		this.entityHost = entityLiving;
 		this.worldObj = entityLiving.worldObj;
 		this.entityMoveSpeed = entityMoveSpeed;
 		this.rangedAttackDistance = rangedAttackDistance;
-		this.maxRangedAttackTime = maxRangedAttackTime;
+		this.maxRangedAttackTime = Math.min(10.D - rangedAttackTime, 1.D);
 		this.rangedAttackID = rangedAttackID;
 		this.setMutexBits(3);
 	}

@@ -34,7 +34,7 @@ public class EntityArcher extends EntityDefender {
 	/**
 	 * @return Vitesse de tir du mod
 	 */
-	public double getTimeRange() { return 10.D; }
+	public double getTimeRange() { return 6.D; }
 	
 	/**
 	 * @return Zone de detection du mod
