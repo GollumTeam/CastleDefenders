@@ -22,6 +22,7 @@ import mods.castledefenders.common.entities.EntityArcher;
 import mods.castledefenders.common.entities.EntityArcher2;
 import mods.castledefenders.common.entities.EntityKnight;
 import mods.castledefenders.common.entities.EntityKnight2;
+import mods.castledefenders.common.entities.EntityMage;
 import mods.castledefenders.common.items.ItemMedallion;
 import mods.castledefenders.common.tileentities.TileEntityBlockArcher;
 import mods.castledefenders.common.tileentities.TileEntityBlockArcher2;
@@ -295,8 +296,9 @@ public class ModCastleDefenders {
 		this.registerMob(EntityKnight2.class, "Knight2", "Knight - Level 2", this.knight2ID, 0x00FFFC);
 		this.registerMob(EntityArcher.class , "Archer" , "Archer"          , this.archerID , 0x500000);
 		this.registerMob(EntityArcher2.class, "Archer2", "Archer - Level 2", this.archer2ID, 0x00FF88);
+		this.registerMob(EntityMage.class   , "Mage"   , "Mage"            , this.mageID   , 0xE10000);
 	}
-
+	
 	/**
 	 * Enregistre les générateur de terrain
 	 * @throws IOException 
