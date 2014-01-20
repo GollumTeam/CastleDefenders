@@ -3,6 +3,7 @@ package mods.castledefenders.common.entities;
 import java.util.List;
 
 import mods.castledefenders.common.ModCastleDefenders;
+import mods.castledefenders.common.aientities.EntityAIArcherArrowAttack;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -25,11 +26,16 @@ public class EntityArcher extends EntityDefender {
 		
 		this.setSize(1.1F, 1.8F);
 		
-		this.tasks.addTask(1, new EntityAIArcherArrowAttack (this, this.getMoveSpeed (), this.getFollowRange (), 1));
+		this.tasks.addTask(1, new EntityAIArcherArrowAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), 1));
 		this.tasks.addTask(2, new EntityAIWander(this, this.getMoveSpeed ()));
 		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget (this, IMob.class, 0, true));
 	}
 
+	/**
+	 * @return Zone de detection du mod
+	 */
+	public double getTimeRange() { return 10.D; }
+	
 	/**
 	 * @return Zone de detection du mod
 	 */
