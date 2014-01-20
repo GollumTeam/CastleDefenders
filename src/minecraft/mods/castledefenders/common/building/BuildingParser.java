@@ -10,9 +10,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
-import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
@@ -68,7 +66,7 @@ public class BuildingParser {
 	 * @throws Exception
 	 */
 	public Building parse (String name) throws Exception {
-
+		
 		ModCastleDefenders.log.info ("Parse '"+name+"' building");
 		Building building = new Building ();
 		
@@ -76,12 +74,12 @@ public class BuildingParser {
 		Hashtable<Integer, Unity> corlorBlockIndex = new Hashtable ();
 		
 		try {
+			
 			InputStream is      = this.getResource(BuildingParser.PATH_BUILDING_ASSETS + name + "/" + NAME_IMG);
 			BufferedImage image = ImageIO.read(is);
 			
 			InputStream isJson = this.getResource(BuildingParser.PATH_BUILDING_ASSETS + name + "/" + NAME_JSON);
 			JsonRootNode json  = this.parser.parse(new InputStreamReader(isJson));
-			
 			
 			
 			//////////////////////////////////////////////////////////////
@@ -241,7 +239,8 @@ public class BuildingParser {
 		Unity unity = new Unity();
 		try {
 			// Découpe le type par ClassName|ObjetBlock ou ClassName|ObjetBlock:intMetadataOptional
-			String[] explode   = type.getStringValue ("block").split(Pattern.quote("|"));
+			String blockStr    = type.getStringValue ("block");
+			String[] explode   = blockStr.split(Pattern.quote("|"));
 			String metadata    = "0"; try { metadata = type.getNumberValue ("metadata"); } catch (Exception e) { }
 			String orientation = "none"; try { orientation = type.getStringValue ("orientation"); } catch (Exception e) { }
 			JsonNode contents  = null; try { contents = type.getNode("contents"); } catch (Exception e) { }
@@ -250,17 +249,16 @@ public class BuildingParser {
 			Class classBlock;
 			Block block = null;
 			try {
-				
 				classBlock = Class.forName(explode[0]);
-				Field f = classBlock.getDeclaredField(explode[1]);
-				block = (Block) f.get(null);
+				Field f    = classBlock.getDeclaredField(explode[1]);
+				block      = (Block) f.get(null);
 				
 			} catch (Exception e) {
 				// Si le code est reofusqué
-				explode   = this.reobfKey (type.getStringValue ("block")).split(Pattern.quote("|"));
+				explode    = this.reobfKey (blockStr).split(Pattern.quote("|"));
 				classBlock = Class.forName(explode[0]);
-				Field f = classBlock.getDeclaredField(explode[1]);
-				block = (Block) f.get(null);
+				Field f    = classBlock.getDeclaredField(explode[1]);
+				block      = (Block) f.get(null);
 			}
 			
 			unity.block       = block;
@@ -346,14 +344,14 @@ public class BuildingParser {
 					
 					classEl = Class.forName(explode[0]);
 					Field f = classEl.getDeclaredField(explode[1]);
-					item = (Item) f.get(null);
+					item    = (Item) f.get(null);
 					
 				} catch (Exception e) {
 					// Si le code est reofusqué
-					explode   = this.reobfKey (el.getStringValue ("element")).split(Pattern.quote("|"));
+					explode = this.reobfKey (el.getStringValue ("element")).split(Pattern.quote("|"));
 					classEl = Class.forName(explode[0]);
 					Field f = classEl.getDeclaredField(explode[1]);
-					item = (Item) f.get(null);
+					item    = (Item) f.get(null);
 				}
 				
 				

@@ -16,12 +16,14 @@ do
 	value=`echo "$FIELD" | cut -d" " -f2`
 	path=`echo $value | cut -d"/" -f1,2,3,4`
 	path=`php -r "echo str_replace('/', '.', '$path');"`
+	path=`php -r "echo str_replace('.src.Block', '.block.Block', '$path');"`
+	path=`php -r "echo str_replace('.src.Item', '.item.Item', '$path');"`
 	fieldName=`echo $value | cut -d"/" -f5`
 	att=`cat fields.csv | grep "$fieldName," | cut -d"," -f2`
 	
 	echo "key=$key | path=$path | fieldName=$fieldName | att=$att"
 	
-	echo "\t\"$path|$att\" : \"$key\"", >> $FE	
+	echo "\t\"$path|$att\" : \"$path|$fieldName\"", >> $FE	
 	
 done < Class.fields
 
