@@ -321,15 +321,15 @@ public class ModCastleDefenders {
 		WorldGeneratorByBuilding worldGeneratorByBuilding = new WorldGeneratorByBuilding();
 		
 		int idGroupMercery = worldGeneratorByBuilding.addGroup (this.mercenarySpawnRate);
-		int idGroupCastle  = worldGeneratorByBuilding.addGroup (this.castleSpawnRate);
+//		int idGroupCastle  = worldGeneratorByBuilding.addGroup (this.castleSpawnRate);
 		
 		// Ajout des batiments
 		worldGeneratorByBuilding.addBuilding (idGroupMercery, this.buildingMercenary1, this.mercenaryBuilding1SpawnRate);
-		worldGeneratorByBuilding.addBuilding (idGroupMercery, this.buildingMercenary2, this.mercenaryBuilding2SpawnRate);
+//		worldGeneratorByBuilding.addBuilding (idGroupMercery, this.buildingMercenary2, this.mercenaryBuilding2SpawnRate);
 		
-		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle1, this.castleBuilding1SpawnRate);
-		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle2, this.castleBuilding2SpawnRate);
-		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle3, this.castleBuilding3SpawnRate);
+//		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle1, this.castleBuilding1SpawnRate);
+//		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle2, this.castleBuilding2SpawnRate);
+//		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle3, this.castleBuilding3SpawnRate);
 		
 		// Enregistrement du worldgenerator mercenary
 		GameRegistry.registerWorldGenerator (worldGeneratorByBuilding);

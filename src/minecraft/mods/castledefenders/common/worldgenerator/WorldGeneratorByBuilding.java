@@ -17,6 +17,7 @@ import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockFurnace;
 import net.minecraft.block.BlockLadder;
+import net.minecraft.block.BlockStairs;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.BlockWall;
@@ -199,7 +200,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 				int initX = chunkX * 16 + random.nextInt(8) - random.nextInt(8);
 				int initY = worldY      + random.nextInt(8) - random.nextInt(8);
 				int initZ = chunkZ * 16 + random.nextInt(8) - random.nextInt(8);
-//				initY = 3; // Pour test sur un superflat
+				initY = 3; // Pour test sur un superflat
 				
 				
 				//Test si on est sur de la terre (faudrais aps que le batiment vol)
@@ -504,11 +505,23 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			world.setBlockMetadataWithNotify(x, y, z, metadata, 2);
 			return;
 		}
+
+		if (block instanceof BlockDirectional) {
+			
+			if (orientation == Unity.ORIENTATION_NONE)  { metadata = (metadata & 0x8) + 0; } else 
+			if (orientation == Unity.ORIENTATION_UP)    { metadata = (metadata & 0x8) + 0; } else 
+			if (orientation == Unity.ORIENTATION_DOWN)  { metadata = (metadata & 0x8) + 2; } else 
+			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = (metadata & 0x8) + 3; } else 
+			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = (metadata & 0x8) + 1; } else 
+			{
+				ModCastleDefenders.log.severe("Bad orientation : "+x+","+y+","+z);
+			}
+			
+			world.setBlockMetadataWithNotify(x, y, z, metadata, 2);
+			return;
+		}
 		
-		if (
-			block instanceof BlockDirectional ||
-			block instanceof BlockDoor
-		) {
+		if (block instanceof BlockDoor) {
 			
 			if (orientation == Unity.ORIENTATION_NONE)  { metadata = (metadata & 0x8) + 0; } else 
 			if (orientation == Unity.ORIENTATION_UP)    { metadata = (metadata & 0x8) + 0; } else 
@@ -525,11 +538,11 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 		
 		if (block instanceof BlockTrapDoor) {
 			
-			if (orientation == Unity.ORIENTATION_NONE)  { metadata = (metadata & 0x8) + 0; } else 
-			if (orientation == Unity.ORIENTATION_UP)    { metadata = (metadata & 0x8) + 0; } else 
+			if (orientation == Unity.ORIENTATION_NONE)  { metadata = (metadata & 0x8) + 3; } else 
+			if (orientation == Unity.ORIENTATION_UP)    { metadata = (metadata & 0x8) + 3; } else 
 			if (orientation == Unity.ORIENTATION_DOWN)  { metadata = (metadata & 0x8) + 1; } else 
 			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = (metadata & 0x8) + 2; } else 
-			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = (metadata & 0x8) + 3; } else 
+			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = (metadata & 0x8) + 0; } else 
 			{
 				ModCastleDefenders.log.severe("Bad orientation : "+x+","+y+","+z);
 			}
@@ -550,6 +563,21 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			if (orientation == Unity.ORIENTATION_DOWN)  { metadata = (metadata & 0x8) + 3; } else 
 			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = (metadata & 0x8) + 4; } else 
 			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = (metadata & 0x8) + 5; } else 
+			{
+				ModCastleDefenders.log.severe("Bad orientation : "+x+","+y+","+z);
+			}
+			
+			world.setBlockMetadataWithNotify(x, y, z, metadata, 2);
+			return;
+		}
+		
+		if (block instanceof BlockStairs) {
+			
+			if (orientation == Unity.ORIENTATION_NONE)  { metadata = (metadata & 0x4) + 2; } else 
+			if (orientation == Unity.ORIENTATION_UP)    { metadata = (metadata & 0x4) + 2; } else 
+			if (orientation == Unity.ORIENTATION_DOWN)  { metadata = (metadata & 0x4) + 3; } else 
+			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = (metadata & 0x4) + 0; } else 
+			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = (metadata & 0x4) + 1; } else 
 			{
 				ModCastleDefenders.log.severe("Bad orientation : "+x+","+y+","+z);
 			}

@@ -3,6 +3,7 @@ package mods.castledefenders.common.entities;
 import java.util.List;
 
 import mods.castledefenders.common.ModCastleDefenders;
+import mods.castledefenders.common.aientities.EntityAIMageAttack;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -23,8 +24,8 @@ public class EntityMage extends EntityDefender {
 		this.blockSpawnId = ModCastleDefenders.blockMageID;
 		
 		this.setSize(1.1F, 1.8F);
-		
-//		this.tasks.addTask(1, new EntityAIArcherArrowAttack (this, this.getMoveSpeed (), this.getFollowRange (), 1));
+
+		this.tasks.addTask(1, new EntityAIMageAttack(this, IMob.class, this.getMoveSpeed(), true));
 		this.tasks.addTask(2, new EntityAIWander(this, this.getMoveSpeed ()));
 		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget (this, IMob.class, 0, true));
 	}
