@@ -30,9 +30,9 @@ public class EntityArcher extends EntityDefender {
 		this.tasks.addTask(2, new EntityAIWander(this, this.getMoveSpeed ()));
 		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget (this, IMob.class, 0, true));
 	}
-
+	
 	/**
-	 * @return Zone de detection du mod
+	 * @return Vitesse de tir du mod
 	 */
 	public double getTimeRange() { return 10.D; }
 	

@@ -15,7 +15,11 @@ public class EntityArcher2 extends EntityArcher {
 		super(world);
 		this.blockSpawnId = ModCastleDefenders.blockArcher2ID;
 	}
-	
+
+	/**
+	 * @return Vitesse de tir du mod
+	 */
+	public double getTimeRange() { return 20.D; }
 	/**
 	 * @return Zone de detection du mod
 	 */
