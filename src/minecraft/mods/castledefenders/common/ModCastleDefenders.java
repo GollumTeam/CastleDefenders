@@ -61,7 +61,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "CastleDefenders", name = "Castle Defenders", version = "3.0.0 [Build Smeagol]", acceptedMinecraftVersions = "1.6.4")
+@Mod(modid = "CastleDefenders", name = "Castle Defenders", version = "3.0.0DEV [Build Smeagol]", acceptedMinecraftVersions = "1.6.4")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 public class ModCastleDefenders {
 	
@@ -124,14 +124,14 @@ public class ModCastleDefenders {
 	@ConfigProp(group = "Mobs Ids") public static int eMageID    = -26;
 	
 	// Ratio de building de chaque type
-	@ConfigProp(group = "Spawn rate group [0-10]") public static int castleSpawnRate    = 6;
+	@ConfigProp(group = "Spawn rate group [0-10]") public static int castleSpawnRate    = 5;
 	@ConfigProp(group = "Spawn rate group [0-10]") public static int mercenarySpawnRate = 5;
 	
 	// Ratio de building entre les batiments d'un meme type
 	@ConfigProp(group = "Spawn rate between mercenary building")
-	public static int mercenaryBuilding1SpawnRate = 1;
+	public static int mercenaryBuilding1SpawnRate = 6;
 	@ConfigProp(group = "Spawn rate between mercenary building")
-	public static int mercenaryBuilding2SpawnRate = 2;
+	public static int mercenaryBuilding2SpawnRate = 8;
 	@ConfigProp(group = "Spawn rate between mercenary building")
 	public static int mercenaryBuilding3SpawnRate = 1;
 	

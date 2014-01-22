@@ -12,7 +12,8 @@
 		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockEMage"},
 		{ "block": "net.minecraft.block.Block|trapdoor", "orientation": "right"},
 		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "left"},
-		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "right"}
+		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "right"},
+		{ "block": "net.minecraft.block.Block|stoneBrick", "metadata": 3 }
 	],
 	"sets": {
 		

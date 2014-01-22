@@ -17,8 +17,9 @@ public class Building implements Cloneable {
 	public int maxX;
 	public int maxY;
 	public int maxZ;
-	
+
 	public int height = -1;
+	public String name;
 	
 	/**
 	 * Liste des block de la constuction
@@ -98,6 +99,14 @@ public class Building implements Cloneable {
 		}
 	}
 	
+	public Building(String name) {
+		this.name = name;
+	}
+
+	public Building() {
+		this("");
+	}
+
 	/**
 	 * Renvoie la matrice retourné de l'angle en parametre
 	 * @param enumAngle
@@ -105,7 +114,7 @@ public class Building implements Cloneable {
 	 */
 	public Building getRotatetedBuilding (int enumAngle) {
 		if (enumAngle == Building.ROTATED_90) {
-			Building rotatedBuilding = new Building ();
+			Building rotatedBuilding = new Building (this.name);
 			
 			for (int x = 0; x < this.maxX; x++) {
 				for (int y = 0; y < this.maxY; y++) {
@@ -143,7 +152,7 @@ public class Building implements Cloneable {
 	 * Clone l'objet
 	 */
 	public Object clone() {
-		Building o = new Building ();
+		Building o = new Building (this.name);
 		
 		for (int x = 0; x < this.maxX; x++) {
 			for (int y = 0; y < this.maxY; y++) {

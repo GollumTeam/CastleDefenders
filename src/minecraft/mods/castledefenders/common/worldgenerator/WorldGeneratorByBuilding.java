@@ -158,8 +158,8 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 	 */
 	public boolean hasBuildingArround (int chunkX, int chunkZ) {
 
-		for (int x = chunkX - 4; x < chunkX + 4; x++) {
-			for (int z = chunkZ - 4; z < chunkZ + 4; z++) {
+		for (int x = chunkX - 6; x < chunkX + 6; x++) {
+			for (int z = chunkZ - 6; z < chunkZ + 6; z++) {
 				if (this.chunkHasBuilding (x, z)) {
 					return true;
 				}
@@ -213,7 +213,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 					
 					WorldGeneratorByBuilding.chunkHasABuilding.put(chunkX+"x"+chunkZ, true);
 					
-					ModCastleDefenders.log.info("Create building width matrix :"+initX+" "+initY+" "+initZ);
+					ModCastleDefenders.log.info("Create building width matrix : "+building.name+" "+initX+" "+initY+" "+initZ);
 					
 					// Parcours la matrice et ajoute des blocks de stone pour les blocks qui s'accroche
 					for (int x = 0; x < building.maxX; x++) {

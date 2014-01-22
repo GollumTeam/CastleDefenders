@@ -68,7 +68,7 @@ public class BuildingParser {
 	public Building parse (String name) throws Exception {
 		
 		ModCastleDefenders.log.info ("Parse '"+name+"' building");
-		Building building = new Building ();
+		Building building = new Building (name);
 		
 		// Liste de la correspondance couleur block
 		Hashtable<Integer, Unity> corlorBlockIndex = new Hashtable ();
