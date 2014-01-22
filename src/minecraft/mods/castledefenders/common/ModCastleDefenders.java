@@ -129,9 +129,9 @@ public class ModCastleDefenders {
 	
 	// Ratio de building entre les batiments d'un meme type
 	@ConfigProp(group = "Spawn rate between mercenary building")
-	public static int mercenaryBuilding1SpawnRate = 6;
+	public static int mercenaryBuilding1SpawnRate = 8;
 	@ConfigProp(group = "Spawn rate between mercenary building")
-	public static int mercenaryBuilding2SpawnRate = 8;
+	public static int mercenaryBuilding2SpawnRate = 10;
 	@ConfigProp(group = "Spawn rate between mercenary building")
 	public static int mercenaryBuilding3SpawnRate = 1;
 	
