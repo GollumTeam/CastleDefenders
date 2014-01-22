@@ -33,7 +33,7 @@ public class ConfigLoader {
 	 */
 	public ConfigLoader (Class clss, FMLPreInitializationEvent event) {
 		
-		this.dir = new File(Minecraft.getMinecraft().mcDataDir, "config");
+		this.dir = event.getModConfigurationDirectory();
 		
 		if (!this.dir.exists()) {
 			this.dir.mkdir();
