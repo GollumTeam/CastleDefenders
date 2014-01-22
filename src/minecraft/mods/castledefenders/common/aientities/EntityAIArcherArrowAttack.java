@@ -2,6 +2,7 @@ package mods.castledefenders.common.aientities;
 
 import java.util.Random;
 
+import mods.castledefenders.common.ModCastleDefenders;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;

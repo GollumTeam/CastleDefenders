@@ -11,12 +11,23 @@ public class Building implements Cloneable {
 	public static final int ROTATED_0  = 0;
 	public static final int ROTATED_90 = 1;
 	public static final int ROTATED_180 = 2;
-	public static final int ROTATED_240 = 3;
+	public static final int ROTATED_270 = 3;
 	public static final int ROTATED_360 = 4;
 	
 	public int maxX;
 	public int maxY;
 	public int maxZ;
+	
+	public int height = -1;
+	
+	/**
+	 * Liste des block de la constuction
+	 */
+	private ArrayList<ArrayList<ArrayList<Unity>>> blocks = new ArrayList<ArrayList<ArrayList<Unity>>>();
+	/**
+	 * Liste des blocks posés aléatoirements
+	 */
+	private ArrayList<ArrayList<Building>> groupsRandomBlocks = new ArrayList<ArrayList<Building>>();
 	
 	/**
 	 * Un element de lamatrice building
@@ -28,8 +39,10 @@ public class Building implements Cloneable {
 		public static final int ORIENTATION_DOWN   = 2;
 		public static final int ORIENTATION_LEFT   = 3;
 		public static final int ORIENTATION_RIGTH  = 4;
-		public static final int ORIENTATION_TOP    = 5;
-		public static final int ORIENTATION_BOTTOM = 6;
+		public static final int ORIENTATION_TOP_HORIZONTAL    = 5;
+		public static final int ORIENTATION_BOTTOM_HORIZONTAL = 6;
+		public static final int ORIENTATION_TOP_VERTICAL      = 7;
+		public static final int ORIENTATION_BOTTOM_VERTICAL   = 8;
 		
 		/**
 		 * Contenu d'un objet (des Item uniquement pour le moment)
@@ -85,16 +98,6 @@ public class Building implements Cloneable {
 		}
 	}
 	
-	
-	/**
-	 * Liste des block de la constuction
-	 */
-	private ArrayList<ArrayList<ArrayList<Unity>>> blocks = new ArrayList<ArrayList<ArrayList<Unity>>>();
-	/**
-	 * Liste des blocks posés aléatoirements
-	 */
-	private ArrayList<ArrayList<Building>> groupsRandomBlocks = new ArrayList<ArrayList<Building>>();
-	
 	/**
 	 * Renvoie la matrice retourné de l'angle en parametre
 	 * @param enumAngle
@@ -122,13 +125,14 @@ public class Building implements Cloneable {
 				rotatedBuilding.addRandomBlock(newGroupsRandomBlocks);
 			}
 			
+			rotatedBuilding.height = this.height;
 			
 			return rotatedBuilding;
 		}
 		if (enumAngle == Building.ROTATED_180) {
 			return this.getRotatetedBuilding(Building.ROTATED_90).getRotatetedBuilding(Building.ROTATED_90);
 		}
-		if (enumAngle == Building.ROTATED_240) {
+		if (enumAngle == Building.ROTATED_270) {
 			return this.getRotatetedBuilding(Building.ROTATED_180).getRotatetedBuilding(Building.ROTATED_90);
 		}
 		
@@ -159,6 +163,7 @@ public class Building implements Cloneable {
 			newGroupsRandomBlocks.add(newGroupBlock);
 		}
 		o.groupsRandomBlocks = newGroupsRandomBlocks;
+		o.height = this.height;
 		return o;
 	}
 

@@ -20,10 +20,15 @@ import mods.castledefenders.common.building.Building;
 import mods.castledefenders.common.building.BuildingParser;
 import mods.castledefenders.common.entities.EntityArcher;
 import mods.castledefenders.common.entities.EntityArcher2;
+import mods.castledefenders.common.entities.EntityArcherM;
+import mods.castledefenders.common.entities.EntityEArcher;
 import mods.castledefenders.common.entities.EntityEKnight;
+import mods.castledefenders.common.entities.EntityEMage;
+import mods.castledefenders.common.entities.EntityHealer;
 import mods.castledefenders.common.entities.EntityKnight;
 import mods.castledefenders.common.entities.EntityKnight2;
 import mods.castledefenders.common.entities.EntityMage;
+import mods.castledefenders.common.entities.EntityMerc;
 import mods.castledefenders.common.items.ItemMedallion;
 import mods.castledefenders.common.tileentities.TileEntityBlockArcher;
 import mods.castledefenders.common.tileentities.TileEntityBlockArcher2;
@@ -127,6 +132,8 @@ public class ModCastleDefenders {
 	public static int mercenaryBuilding1SpawnRate = 1;
 	@ConfigProp(group = "Spawn rate between mercenary building")
 	public static int mercenaryBuilding2SpawnRate = 2;
+	@ConfigProp(group = "Spawn rate between mercenary building")
+	public static int mercenaryBuilding3SpawnRate = 1;
 	
 	@ConfigProp(group = "Spawn rate between castle building")
 	public static int castleBuilding1SpawnRate = 1;
@@ -138,6 +145,7 @@ public class ModCastleDefenders {
 	// Liste des constructions
 	private Building buildingMercenary1;
 	private Building buildingMercenary2;
+	private Building buildingMercenary3;
 	private Building buildingCastle1;
 	private Building buildingCastle2;
 	private Building buildingCastle3;
@@ -265,7 +273,7 @@ public class ModCastleDefenders {
 		GameRegistry.registerTileEntity(TileEntityBlockArcher.class , "BlockArcher");
 		GameRegistry.registerTileEntity(TileEntityBlockArcher2.class, "BlockArcher2");
 		GameRegistry.registerTileEntity(TileEntityBlockMerc.class   , "Merc Block");
-		GameRegistry.registerTileEntity(TileEntityBlockArcherM.class, "Merc Archer Block");
+		GameRegistry.registerTileEntity(TileEntityBlockArcherM.class, "BlockArcherM"); // Id du TileEntity pour la retrocompatibilité
 		GameRegistry.registerTileEntity(TileEntityBlockMage.class   , "Mage Block");
 		GameRegistry.registerTileEntity(TileEntityBlockHealer.class , "Hearler Block");
 		GameRegistry.registerTileEntity(TileEntityBlockEKnight.class, "Enemy Knight Block");
@@ -298,8 +306,12 @@ public class ModCastleDefenders {
 		this.registerMob(EntityArcher.class , "Archer"      , "Archer"          , this.archerID , 0x500000);
 		this.registerMob(EntityArcher2.class, "Archer2"     , "Archer - Level 2", this.archer2ID, 0x00FF88);
 		this.registerMob(EntityMage.class   , "Mage"        , "Mage"            , this.mageID   , 0xE10000);
-		this.registerMob(EntityEKnight.class, "Enemy Knight", "Enemy Knight"    , this.eKnightID, 0xE100AA);
-		this.registerMob(EntityEKnight.class, "Enemy Archer", "Enemy Archer"    , this.eArcherID, 0xE1AA00);
+		this.registerMob(EntityEKnight.class, "Enemy Knight", "Enemy Knight"    , this.eKnightID, 0xFF00AA);
+		this.registerMob(EntityEArcher.class, "Enemy Archer", "Enemy Archer"    , this.eArcherID, 0xE1AA00);
+		this.registerMob(EntityEMage.class  , "Enemy Mage"  , "Enemy Mage"      , this.eMageID  , 0xE12AFF);
+		this.registerMob(EntityMerc.class   , "Merc"        , "Mercenary"       , this.mercID   , 0x875600);
+		this.registerMob(EntityArcherM.class, "ArcherM"     , "Archer Mercenary", this.archerMID, 0x747B21);
+		this.registerMob(EntityHealer.class , "Healer"      , "Healer"          , this.healerID , 0xFF84B4);
 	}
 	
 	/**
@@ -310,6 +322,7 @@ public class ModCastleDefenders {
 		BuildingParser parser = new BuildingParser ();
 		this.buildingMercenary1 = parser.parse ("mercenary1");
 		this.buildingMercenary2 = parser.parse ("mercenary2");
+		this.buildingMercenary3 = parser.parse ("mercenary3");
 		this.buildingCastle1    = parser.parse ("castle1");
 		this.buildingCastle2    = parser.parse ("castle2");
 		this.buildingCastle3    = parser.parse ("castle3");
@@ -323,12 +336,13 @@ public class ModCastleDefenders {
 		// Céation du world generator
 		WorldGeneratorByBuilding worldGeneratorByBuilding = new WorldGeneratorByBuilding();
 		
-		int idGroupMercery = worldGeneratorByBuilding.addGroup (this.mercenarySpawnRate);
-		int idGroupCastle  = worldGeneratorByBuilding.addGroup (this.castleSpawnRate);
+		int idGroupMercenary = worldGeneratorByBuilding.addGroup (this.mercenarySpawnRate);
+		int idGroupCastle    = worldGeneratorByBuilding.addGroup (this.castleSpawnRate);
 		
 		// Ajout des batiments
-		worldGeneratorByBuilding.addBuilding (idGroupMercery, this.buildingMercenary1, this.mercenaryBuilding1SpawnRate);
-		worldGeneratorByBuilding.addBuilding (idGroupMercery, this.buildingMercenary2, this.mercenaryBuilding2SpawnRate);
+		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary1, this.mercenaryBuilding1SpawnRate);
+		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary2, this.mercenaryBuilding2SpawnRate);
+		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary3, this.mercenaryBuilding3SpawnRate);
 		
 		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle1, this.castleBuilding1SpawnRate);
 		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle2, this.castleBuilding2SpawnRate);

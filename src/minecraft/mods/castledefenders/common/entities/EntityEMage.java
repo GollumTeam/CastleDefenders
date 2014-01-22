@@ -6,13 +6,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class EntityEArcher extends EntityEnemy {
+public class EntityEMage extends EntityEnemy {
 	
 	
-	public EntityEArcher(World world) {
+	public EntityEMage(World world) {
 		super(world);
-		this.blockSpawnId       = ModCastleDefenders.blockEArcherID;
-		this.defaultHeldItem    = new ItemStack(Item.bow, 1);
+		this.blockSpawnId       = ModCastleDefenders.blockEMageID;
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAIArcherArrowAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), 1));
 	}

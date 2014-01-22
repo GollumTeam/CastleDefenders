@@ -11,8 +11,8 @@
 		{ "block":  "net.minecraft.block.Block|doorWood", "orientation":"up" }
 	],
 	"sets": {
-		"5x1x5": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"right" },
-		"5x2x5": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"right" },
+		"5x1x5": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"down" },
+		"5x2x5": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"down" },
 		
 		"4x2x4": { "block": "net.minecraft.block.Block|torchWood", "orientation":"down" },
 		"6x2x4": { "block": "net.minecraft.block.Block|torchWood", "orientation":"down" },

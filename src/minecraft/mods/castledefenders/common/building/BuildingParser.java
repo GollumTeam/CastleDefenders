@@ -80,7 +80,18 @@ public class BuildingParser {
 			
 			InputStream isJson = this.getResource(BuildingParser.PATH_BUILDING_ASSETS + name + "/" + NAME_JSON);
 			JsonRootNode json  = this.parser.parse(new InputStreamReader(isJson));
+
 			
+			////////////////////////////////////
+			//                                //
+			// Hauteur par défaut du building //
+			//                                //
+			////////////////////////////////////
+			
+			try {
+				building.height = Integer.parseInt(json.getNumberValue("height"));
+			} catch (Exception e) {
+			}
 			
 			//////////////////////////////////////////////////////////////
 			//                                                          //
@@ -264,13 +275,15 @@ public class BuildingParser {
 			unity.block       = block;
 			unity.metadata    = Integer.parseInt(metadata);
 
-			if (orientation.equals("none"))   { unity.orientation = Unity.ORIENTATION_NONE;     } else 
-			if (orientation.equals("up"))     { unity.orientation = Unity.ORIENTATION_UP;     } else 
-			if (orientation.equals("down"))   { unity.orientation = Unity.ORIENTATION_DOWN;   } else 
-			if (orientation.equals("left"))   { unity.orientation = Unity.ORIENTATION_LEFT;   } else 
-			if (orientation.equals("right"))  { unity.orientation = Unity.ORIENTATION_RIGTH;  } else 
-			if (orientation.equals("top"))    { unity.orientation = Unity.ORIENTATION_TOP;    } else 
-			if (orientation.equals("bottom")) { unity.orientation = Unity.ORIENTATION_BOTTOM; }
+			if (orientation.equals("none"))            { unity.orientation = Unity.ORIENTATION_NONE;              } else 
+			if (orientation.equals("up"))              { unity.orientation = Unity.ORIENTATION_UP;                } else 
+			if (orientation.equals("down"))            { unity.orientation = Unity.ORIENTATION_DOWN;              } else 
+			if (orientation.equals("left"))            { unity.orientation = Unity.ORIENTATION_LEFT;              } else 
+			if (orientation.equals("right"))           { unity.orientation = Unity.ORIENTATION_RIGTH;             } else 
+			if (orientation.equals("top_vertical"))    { unity.orientation = Unity.ORIENTATION_TOP_VERTICAL;      } else 
+			if (orientation.equals("bottom_vertical")) { unity.orientation = Unity.ORIENTATION_BOTTOM_VERTICAL;   } else 
+			if (orientation.equals("top_horizontal"))  { unity.orientation = Unity.ORIENTATION_TOP_HORIZONTAL;    } else 
+			if (orientation.equals("bottom_vertical")) { unity.orientation = Unity.ORIENTATION_BOTTOM_HORIZONTAL; }
 			
 			if (contents != null) {
 				unity.contents = new ArrayList();

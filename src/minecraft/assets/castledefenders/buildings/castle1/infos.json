@@ -7,7 +7,12 @@
 		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockEArcher" },
 		{ "block": "net.minecraft.block.Block|planks" },
 		{ "block": "net.minecraft.block.Block|ladder", "orientation": "left" },
-		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "up"}
+		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "up"},
+		{ "block": "net.minecraft.block.Block|carpet", "metadata": 14 },
+		{ "block": "net.minecraft.block.Block|woodSingleSlab" },
+		{ "block": "net.minecraft.block.Block|cobblestoneWall" },
+		{ "block": "net.minecraft.block.Block|stoneBrick", "metadata": 3 },
+		{ "block": "net.minecraft.block.Block|torchWood" }
 	],
 	"sets": {
 		"9x1x3": {
@@ -41,7 +46,6 @@
 					{ "element": "net.minecraft.item.Item|swordIron" },
 					{ "element": "net.minecraft.item.Item|emerald" },
 					{ "element": "net.minecraft.item.Item|bowlSoup" },
-					{ "element": "net.minecraft.item.Item|diamond" },
 					{ "element": "net.minecraft.item.Item|axeIron" },
 					{ "element": "net.minecraft.item.Item|bowlSoup" },
 					{ "element": "net.minecraft.item.Item|legsChain" }
@@ -68,7 +72,6 @@
 					{ "element": "net.minecraft.item.Item|swordIron" },
 					{ "element": "net.minecraft.item.Item|emerald" },
 					{ "element": "net.minecraft.item.Item|bowlSoup" },
-					{ "element": "net.minecraft.item.Item|diamond" },
 					{ "element": "net.minecraft.item.Item|axeIron" },
 					{ "element": "net.minecraft.item.Item|bowlSoup" },
 					{ "element": "net.minecraft.item.Item|legsChain" }
@@ -93,7 +96,6 @@
 					{ "element": "net.minecraft.item.Item|arrow", "min":30, "max":40 },
 					{ "element": "net.minecraft.item.Item|bread" },
 					{ "element": "net.minecraft.item.Item|swordIron" },
-					{ "element": "net.minecraft.item.Item|emerald" },
 					{ "element": "net.minecraft.item.Item|bowlSoup" },
 					{ "element": "net.minecraft.item.Item|diamond" },
 					{ "element": "net.minecraft.item.Item|axeIron" },
