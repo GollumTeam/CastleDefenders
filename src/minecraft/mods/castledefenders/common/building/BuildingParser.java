@@ -255,6 +255,14 @@ public class BuildingParser {
 			String metadata    = "0"; try { metadata = type.getNumberValue ("metadata"); } catch (Exception e) { }
 			String orientation = "none"; try { orientation = type.getStringValue ("orientation"); } catch (Exception e) { }
 			JsonNode contents  = null; try { contents = type.getNode("contents"); } catch (Exception e) { }
+			HashMap<String, String> extra = new HashMap<String, String>();
+			try { 
+				Map<JsonStringNode, JsonNode> map = type.getNode("extra").getFields();
+				for (JsonStringNode key : map.keySet()) {
+					extra.put(key.getText(), map.get(key).getText());
+				}
+			} catch (Exception e) {
+			}
 			
 			// Récupère l'attribut
 			Class classBlock;

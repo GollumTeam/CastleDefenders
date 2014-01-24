@@ -13,6 +13,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.BlockButton;
 import net.minecraft.block.BlockChest;
+import net.minecraft.block.BlockCommandBlock;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockFurnace;
@@ -26,6 +27,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.tileentity.TileEntityCommandBlock;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Facing;
 import net.minecraft.world.World;
@@ -52,7 +54,11 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 	private ArrayList<ArrayList<BuildingAndInfos>> buildingsNether  = new ArrayList<ArrayList<BuildingAndInfos>> ();
 	private ArrayList<ArrayList<BuildingAndInfos>> buildingsSurface = new ArrayList<ArrayList<BuildingAndInfos>> ();
 	
-	
+	/**
+	 * Ajoute un groupe de spawn
+	 * @param groupSpawnRate
+	 * @return
+	 */
 	public int addGroup(int groupSpawnRate) {
 		int id = globalSpawnRate.size ();
 		this.globalSpawnRate.add (groupSpawnRate);
@@ -249,6 +255,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 	
 								this.setOrientation (world, finalX, finalY, finalZ, this.rotateOrientation(rotate, unity.orientation));
 								this.setContents    (world, random, finalX, finalY, finalZ, unity.contents);
+								this.setExtra       (world, random, finalX, finalY, finalZ, unity.extra, initX, initY, initZ, rotate, building.maxX, building.maxY);
 							}
 						}
 					}
@@ -278,6 +285,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 										
 										this.setOrientation (world, finalX, finalY, finalZ, this.rotateOrientation(rotate, unity.orientation));
 										this.setContents    (world, random, finalX, finalY, finalZ, unity.contents);
+										this.setExtra       (world, random, finalX, finalY, finalZ, unity.extra, initX, initY, initZ, rotate, building.maxX, building.maxY);
 									}
 								}
 							}
@@ -447,14 +455,95 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 		return orientation;
 	}
 	
-	
+
 	/**
-	 * Insert le contenu du block
+	 * Insert les extras informations du block
 	 * @param world
 	 * @param random
-	 * @param i
-	 * @param j
-	 * @param k
+	 * @param x
+	 * @param y
+	 * @param x
+	 * @param contents
+	 * @param initX
+	 * @param initY
+	 * @param initZ
+	 * @param rotate
+	 */
+	private void setExtra(World world, Random random, int x, int y, int z, HashMap<String, String> extra,int initX, int initY, int initZ, int rotate, int maxX, int maxZ) {
+		
+		Block block  = Block.blocksList [world.getBlockId (x, y, z)];
+		
+		if (block instanceof BlockCommandBlock) {
+			
+			TileEntity te  = world.getBlockTileEntity (x, y, z);
+			if (te instanceof TileEntityCommandBlock) {
+				
+				String command = ""; try { command = extra.get("command"); } catch (Exception e) {}
+				int varX = 0; try { varX = Integer.parseInt(extra.get("x")); } catch (Exception e) {}
+				int varY = 0; try { varY = Integer.parseInt(extra.get("y")); } catch (Exception e) {}
+				int varZ = 0; try { varZ = Integer.parseInt(extra.get("z")); } catch (Exception e) {}
+
+				command = command.replace("{$x}", ""+(this.getRotatedX(x, z, rotate, maxZ) + initX));
+				command = command.replace("{$y}", ""+ (y + initY));
+				command = command.replace("{$z}", ""+(this.getRotatedZ(x, z, rotate, maxX) + initZ));
+				
+				((TileEntityCommandBlock) te).setCommand(command);
+				
+			}
+			
+		}
+		
+	}
+	
+	/**
+	 * Retourne le block
+	 * @param x
+	 * @param z
+	 * @param rotate
+	 * @param maxZ
+	 * @return
+	 */
+	private int getRotatedX(int x, int z, int rotate, int maxZ) {
+		if (rotate == Building.ROTATED_90) {
+			return maxZ - z;
+		}
+		if (rotate == Building.ROTATED_180) {
+			this.getRotatedX (this.getRotatedX (x, z, Building.ROTATED_90, maxZ), this.getRotatedZ (x, z, Building.ROTATED_90, maxZ), Building.ROTATED_90, maxZ);
+		}
+		if (rotate == Building.ROTATED_270) {
+			this.getRotatedX (this.getRotatedX (x, z, Building.ROTATED_90, maxZ), this.getRotatedZ (x, z, Building.ROTATED_90, maxZ), Building.ROTATED_180, maxZ);
+		}
+		return x;
+	}
+	
+	/**
+	 * Retourne le block
+	 * @param x
+	 * @param z
+	 * @param rotate
+	 * @param maxX
+	 * @return
+	 */
+	private int getRotatedZ(int x, int z, int rotate, int maxX) {
+		if (rotate == Building.ROTATED_90) {
+			return maxX - x;
+		}
+		if (rotate == Building.ROTATED_180) {
+			this.getRotatedX (this.getRotatedZ (x, z, Building.ROTATED_90, maxX), this.getRotatedZ (x, z, Building.ROTATED_90, maxX), Building.ROTATED_90, maxX);
+		}
+		if (rotate == Building.ROTATED_270) {
+			this.getRotatedX (this.getRotatedZ (x, z, Building.ROTATED_90, maxX), this.getRotatedZ (x, z, Building.ROTATED_90, maxX), Building.ROTATED_180, maxX);
+		}
+		return z;
+	}
+
+	/**
+	 * Retourne le block
+	 * @param world
+	 * @param random
+	 * @param x
+	 * @param y
+	 * @param z
 	 * @param contents
 	 */
 	private void setContents(World world, Random random, int x, int y, int z, ArrayList<ArrayList<Content>> contents) {

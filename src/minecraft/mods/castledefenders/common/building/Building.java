@@ -2,6 +2,7 @@ package mods.castledefenders.common.building;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 import net.minecraft.block.Block;
 
@@ -17,7 +18,7 @@ public class Building implements Cloneable {
 	public int maxX;
 	public int maxY;
 	public int maxZ;
-
+	
 	public int height = -1;
 	public String name;
 	
@@ -75,6 +76,7 @@ public class Building implements Cloneable {
 		public int metadata    = 0;
 		public int orientation = Unity.ORIENTATION_NONE;
 		public ArrayList<ArrayList<Content>> contents = new ArrayList();
+		public HashMap<String, String> extra = new HashMap<String, String>();
 		
 		/**
 		 * Clone l'objet
@@ -84,6 +86,7 @@ public class Building implements Cloneable {
 			o.block       = this.block;
 			o.metadata    = this.metadata;
 			o.orientation = this.orientation;
+			o.extra       = (HashMap<String, String>) this.extra.clone();
 			
 			for (ArrayList<Content> groupEl : this.contents) {
 				
