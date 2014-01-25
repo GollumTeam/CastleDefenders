@@ -25,6 +25,8 @@ import net.minecraft.block.BlockStairs;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.BlockWall;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -36,10 +38,21 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.Facing;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraftforge.event.EventPriority;
+import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.terraingen.ChunkProviderEvent;
+import net.minecraftforge.event.world.WorldEvent;
 import cpw.mods.fml.common.IWorldGenerator;
 
-public class WorldGeneratorByBuilding implements IWorldGenerator {
+public class WorldGeneratorByBuilding extends WorldEvent {
 	
+
+	public WorldGeneratorByBuilding(World world) {
+		super(world);
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public static final int DIMENSION_ID_NETHER = -1;
 	public static final int DIMENSION_ID_SURFACE = 0;
 	
@@ -111,7 +124,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 	/**
 	 * Methode de genera
 	 */
-	@Override
+	@ForgeSubscribe(priority = EventPriority.LOWEST)
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
 		
 		// Generation diffenrente entre le nether et la surface
@@ -205,6 +218,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 				// Position initial de la génération en hauteur
 				int worldY = 64;
 				int rotate = random.nextInt(Building.ROTATED_360);
+				rotate = Building.ROTATED_0;
 				Building building = this.getBuildingInRate (buildings, random).getRotatetedBuilding (rotate);
 				
 				// Position initiale du batiment
@@ -264,7 +278,6 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 						}
 					}
 					
-	
 					
 					//////////////////////////////////
 					// Ajoute les blocks aléatoires //
@@ -380,7 +393,43 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 						}
 						
 					}
+					
+					
+					// /////////////////////
+					// Notifie les blocks //
+					// /////////////////////
+					for (int x = 0; x < building.maxX; x++) {
+						for (int y = building.maxY; y < 256; y++) {
+							for (int z = 0; z < building.maxZ; z++) {
+								// Position réél dans le monde du block
+								int finalX = initX + x;
+								int finalY = initY + y;
+								int finalZ = initZ + z;
+								world.setBlockMetadataWithNotify (finalX, finalY, finalZ, world.getBlockMetadata (finalX, finalY, finalZ), 2);
+							}
+						}
+					}
 				}
+				
+				// Position réél dans le monde du block
+				int finalXs = initX + 25;
+				int finalYs = initY + building.maxY - 6;
+				int finalZs = initZ + 25;
+
+				Entity entity = EntityList.createEntityByName("Villager", world);
+				entity.setLocationAndAngles(finalXs, finalYs, finalZs, world.rand.nextFloat() * 360.0F, world.rand.nextFloat() * 360.0F);
+				entity = EntityList.createEntityByName("Villager", world);
+				entity.setLocationAndAngles(finalXs, finalYs, finalZs, world.rand.nextFloat() * 360.0F, world.rand.nextFloat() * 360.0F);
+				entity = EntityList.createEntityByName("Villager", world);
+				entity.setLocationAndAngles(finalXs, finalYs, finalZs, world.rand.nextFloat() * 360.0F, world.rand.nextFloat() * 360.0F);
+				entity = EntityList.createEntityByName("Villager", world);
+				entity.setLocationAndAngles(finalXs, finalYs, finalZs, world.rand.nextFloat() * 360.0F, world.rand.nextFloat() * 360.0F);
+				entity = EntityList.createEntityByName("Villager", world);
+				entity.setLocationAndAngles(finalXs, finalYs, finalZs, world.rand.nextFloat() * 360.0F, world.rand.nextFloat() * 360.0F);
+				entity = EntityList.createEntityByName("Villager", world);
+				entity.setLocationAndAngles(finalXs, finalYs, finalZs, world.rand.nextFloat() * 360.0F, world.rand.nextFloat() * 360.0F);
+				entity = EntityList.createEntityByName("Villager", world);
+				entity.setLocationAndAngles(finalXs, finalYs, finalZs, world.rand.nextFloat() * 360.0F, world.rand.nextFloat() * 360.0F);
 			}
 		}
 	}
@@ -512,7 +561,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 	 */
 	private int getRotatedX(int x, int z, int rotate, int maxZ) {
 		if (rotate == Building.ROTATED_90) {
-			return maxZ - z;
+			return z;
 		}
 		if (rotate == Building.ROTATED_180) {
 			this.getRotatedX (this.getRotatedX (x, z, Building.ROTATED_90, maxZ), this.getRotatedZ (x, z, Building.ROTATED_90, maxZ), Building.ROTATED_90, maxZ);
@@ -533,7 +582,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 	 */
 	private int getRotatedZ(int x, int z, int rotate, int maxX) {
 		if (rotate == Building.ROTATED_90) {
-			return maxX - x;
+			return maxX - x -1;
 		}
 		if (rotate == Building.ROTATED_180) {
 			this.getRotatedX (this.getRotatedZ (x, z, Building.ROTATED_90, maxX), this.getRotatedZ (x, z, Building.ROTATED_90, maxX), Building.ROTATED_90, maxX);
@@ -641,13 +690,15 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 		}
 		
 		if (block instanceof BlockDoor) {
-			
-			if (orientation == Unity.ORIENTATION_UP)    { metadata = (metadata & 0xC) + 3; } else 
-			if (orientation == Unity.ORIENTATION_DOWN)  { metadata = (metadata & 0xC) + 1; } else 
-			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = (metadata & 0xC) + 2; } else 
-			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = (metadata & 0xC) + 0; } else 
-			{
-				ModCastleDefenders.log.severe("Bad orientation : "+orientation+" id:"+block.blockID+" pos:"+x+","+y+","+z);
+
+			if ((metadata & 0x8) != 0x8) {
+				if (orientation == Unity.ORIENTATION_UP)    { metadata = (metadata & 0x4) + 3; } else 
+				if (orientation == Unity.ORIENTATION_DOWN)  { metadata = (metadata & 0x4) + 1; } else 
+				if (orientation == Unity.ORIENTATION_LEFT)  { metadata = (metadata & 0x4) + 2; } else 
+				if (orientation == Unity.ORIENTATION_RIGTH) { metadata = (metadata & 0x4) + 0; } else 
+				{
+					ModCastleDefenders.log.severe("Bad orientation : "+orientation+" id:"+block.blockID+" pos:"+x+","+y+","+z);
+				}
 			}
 			
 			world.setBlockMetadataWithNotify(x, y, z, metadata, 2);
@@ -708,11 +759,11 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = (metadata & 0x8) + 2; } else 
 			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = (metadata & 0x8) + 1; } else 
 			
-			if (orientation == Unity.ORIENTATION_BOTTOM_VERTICAL)   { metadata = (metadata & 0x8) + 5; } else 
-			if (orientation == Unity.ORIENTATION_BOTTOM_HORIZONTAL) { metadata = (metadata & 0x8) + 6; } else
+			if (orientation == Unity.ORIENTATION_TOP_VERTICAL)   { metadata = (metadata & 0x8) + 5; } else 
+			if (orientation == Unity.ORIENTATION_TOP_HORIZONTAL) { metadata = (metadata & 0x8) + 6; } else
 			
-			if (orientation == Unity.ORIENTATION_TOP_VERTICAL)   { metadata = (metadata & 0x8) + 7; } else 
-			if (orientation == Unity.ORIENTATION_TOP_HORIZONTAL) { metadata = (metadata & 0x8) + 0; } else 
+			if (orientation == Unity.ORIENTATION_BOTTOM_VERTICAL)   { metadata = (metadata & 0x8) + 7; } else 
+			if (orientation == Unity.ORIENTATION_BOTTOM_HORIZONTAL) { metadata = (metadata & 0x8) + 0; } else 
 			{
 				ModCastleDefenders.log.severe("Bad orientation : "+orientation+" id:"+block.blockID+" pos:"+x+","+y+","+z);
 			}

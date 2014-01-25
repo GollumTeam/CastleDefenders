@@ -32,6 +32,11 @@ public class Building implements Cloneable {
 	private ArrayList<ArrayList<Building>> groupsRandomBlocks = new ArrayList<ArrayList<Building>>();
 	
 	/**
+	 * Element chargé apres
+	 */
+	public Building after;
+	
+	/**
 	 * Un element de lamatrice building
 	 */
 	static public class Unity implements Cloneable {

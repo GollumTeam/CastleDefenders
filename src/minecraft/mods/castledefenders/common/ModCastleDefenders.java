@@ -50,6 +50,7 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -327,13 +328,13 @@ public class ModCastleDefenders {
 	private void initBuildings () throws Exception {
 		BuildingParser parser = new BuildingParser ();
 		this.buildingMercenary1 = parser.parse ("mercenary1");
-		this.buildingMercenary2 = parser.parse ("mercenary2");
-		this.buildingMercenary3 = parser.parse ("mercenary3");
-		this.buildingMercenary4 = parser.parse ("mercenary4");
-		this.buildingCastle1    = parser.parse ("castle1");
-		this.buildingCastle2    = parser.parse ("castle2");
-		this.buildingCastle3    = parser.parse ("castle3");
-		this.buildingCastle4    = parser.parse ("castle4");
+//		this.buildingMercenary2 = parser.parse ("mercenary2");
+//		this.buildingMercenary3 = parser.parse ("mercenary3");
+//		this.buildingMercenary4 = parser.parse ("mercenary4");
+//		this.buildingCastle1    = parser.parse ("castle1");
+//		this.buildingCastle2    = parser.parse ("castle2");
+//		this.buildingCastle3    = parser.parse ("castle3");
+//		this.buildingCastle4    = parser.parse ("castle4");
 	}
 	
 	/**
@@ -349,17 +350,21 @@ public class ModCastleDefenders {
 		
 		// Ajout des batiments
 		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary1, this.mercenaryBuilding1SpawnRate);
-		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary2, this.mercenaryBuilding2SpawnRate);
-		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary3, this.mercenaryBuilding3SpawnRate);
-		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary4, this.mercenaryBuilding4SpawnRate);
+//		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary2, this.mercenaryBuilding2SpawnRate);
+//		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary3, this.mercenaryBuilding3SpawnRate);
+//		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary4, this.mercenaryBuilding4SpawnRate);
 		
-		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle1, this.castleBuilding1SpawnRate);
-		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle2, this.castleBuilding2SpawnRate);
-		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle3, this.castleBuilding3SpawnRate);
-		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle4, this.castleBuilding4SpawnRate);
+//		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle1, this.castleBuilding1SpawnRate);
+//		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle2, this.castleBuilding2SpawnRate);
+//		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle3, this.castleBuilding3SpawnRate);
+//		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle4, this.castleBuilding4SpawnRate);
 		
 		// Enregistrement du worldgenerator mercenary
-		GameRegistry.registerWorldGenerator (worldGeneratorByBuilding);
+		
+		
+		MinecraftForge.EVENT_BUS.register(worldGeneratorByBuilding);
+		
+//		GameRegistry.registerWorldGenerator (worldGeneratorByBuilding);
 	}
 	
 	/**
