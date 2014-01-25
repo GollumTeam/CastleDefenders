@@ -8,7 +8,7 @@
         { "block": "net.minecraft.block.Block|stone" },
         { "block": "net.minecraft.block.Block|cobblestone" },
         { "block": "net.minecraft.block.Block|stoneDoubleSlab", "metadata": 5 },
-        { "block": "net.minecraft.block.Block|ladder", "orientation": "south" },
+        { "block": "net.minecraft.block.Block|ladder", "orientation": "down" },
         { "block": "net.minecraft.block.Block|torchWood", "orientation":"up" },
         { "block": "net.minecraft.block.Block|torchWood", "orientation":"left" },
         { "block": "net.minecraft.block.Block|torchWood", "orientation":"down" },
