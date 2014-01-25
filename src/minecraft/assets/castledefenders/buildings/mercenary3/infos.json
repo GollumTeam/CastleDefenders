@@ -1,181 +1,180 @@
 {
-	"height": -9,
 	"color" : [
 		{ "block": "net.minecraft.block.Block|dirt" },
 		{ "block": "net.minecraft.block.Block|mycelium" },
-		{ "block": "net.minecraft.block.Block|stoneDoubleSlab", "metadata": 5 },
-		{ "block": "net.minecraft.block.Block|ladder", "orientation": "right" },
-		{ "block": "net.minecraft.block.Block|planks" },
-		{ "block": "net.minecraft.block.Block|fence" },
-		{ "block": "net.minecraft.block.Block|grass" },
-		{ "block": "net.minecraft.block.Block|stainedClay" },
-		{ "block": "net.minecraft.block.Block|wood", "metadata": 1 },
-		{ "block": "net.minecraft.block.Block|waterStill" },
-		{ "block": "net.minecraft.block.Block|planks", "metadata":2 },
-		{ "block": "net.minecraft.block.Block|thinGlass" },
-		{ "block": "net.minecraft.block.Block|stairsWoodOak", "orientation": "down" },
-		{ "block": "net.minecraft.block.Block|stairsWoodOak", "orientation": "up" },
+        { "block": "net.minecraft.block.Block|stoneDoubleSlab", "metadata": 5 },
+        { "block": "net.minecraft.block.Block|ladder", "orientation": "right" },
+        { "block": "net.minecraft.block.Block|planks" },
+        { "block": "net.minecraft.block.Block|fence" },
+        { "block": "net.minecraft.block.Block|grass" },
+        { "block": "net.minecraft.block.Block|stainedClay" },
+        { "block": "net.minecraft.block.Block|wood", "metadata": 1 },
+        { "block": "net.minecraft.block.Block|waterStill" },
+        { "block": "net.minecraft.block.Block|planks", "metadata":2 },
+        { "block": "net.minecraft.block.Block|thinGlass" },
+        { "block": "net.minecraft.block.Block|stairsWoodOak", "orientation": "down" },
+        { "block": "net.minecraft.block.Block|stairsWoodOak", "orientation": "up" },
 		{ "block": "net.minecraft.block.Block|stairsWoodOak", "orientation": "right" },
 		{ "block": "net.minecraft.block.Block|stairsWoodOak", "orientation": "left"},
 		{ "block": "net.minecraft.block.Block|torchWood" },
 		{ "block": "net.minecraft.block.Block|hay" },
 		{ "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "right" },
-		{ "block": "net.minecraft.block.Block|carpet", "metadata": 1 },
-		{ "block": "net.minecraft.block.Block|carpet" },
-		{ "block": "net.minecraft.block.Block|torchWood", "orientation":"up" },
-		{ "block": "net.minecraft.block.Block|torchWood", "orientation":"down" },
-		{ "block": "net.minecraft.block.Block|torchWood", "orientation":"right" },
-		{ "block": "net.minecraft.block.Block|mushroomRed" },
-		{ "block": "net.minecraft.block.Block|mushroomBrown" },
-		{ "block": "net.minecraft.block.Block|tilledField" },
-		{ "block": "net.minecraft.block.Block|crops" }
+        { "block": "net.minecraft.block.Block|carpet", "metadata": 1 },
+        { "block": "net.minecraft.block.Block|carpet" },
+        { "block": "net.minecraft.block.Block|torchWood", "orientation":"up" },
+        { "block": "net.minecraft.block.Block|torchWood", "orientation":"down" },
+        { "block": "net.minecraft.block.Block|torchWood", "orientation":"right" },
+        { "block": "net.minecraft.block.Block|mushroomRed" },
+        { "block": "net.minecraft.block.Block|mushroomBrown" },
+        { "block": "net.minecraft.block.Block|tilledField" },
+        { "block": "net.minecraft.block.Block|crops" }
 	],
 	"sets": {
-		"19x10x17": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"left" },
-		"19x11x17": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"left" },
-		"22x10x11": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
-		"22x11x11": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
-		"22x10x18": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
-		"22x11x18": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
-		"4x9x20": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
-		"4x10x20": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
-		
-		"14x13x25": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"right" },
-		"13x13x25": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"right" },
-		"25x14x22": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"down" },
-		"25x14x21": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"down" },
-		"21x10x22": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"down" },
-		"21x10x21": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"down" },
-		
-		"6x9x16": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "up", "metadata": 4 },
-		"7x9x16": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "up", "metadata": 4 },
-		"8x9x15": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "left", "metadata": 4 },
-		"8x9x14": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "left", "metadata": 4 },
-		"6x9x13": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "down", "metadata": 4 },
-		"7x9x13": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "down", "metadata": 4 },
-		"5x9x14": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "right", "metadata": 4 },
-		"5x9x15": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "right", "metadata": 4 },
-		
-		"14x9x13": { "block": "net.minecraft.block.Block|sapling" },
-		
-		"3x8x24": { "block": "net.minecraft.block.Block|netherrack" },
-		"3x8x25": { "block": "net.minecraft.block.Block|netherrack" },
-		
-		"3x9x24": { "block": "net.minecraft.block.Block|fire" },
-		"3x9x25": { "block": "net.minecraft.block.Block|fire" },
-		 
-		"22x1x18": {
-			"block": "net.minecraft.block.Block|chest",
-			"orientation":"left",
-			"contents": [
-				
-				[
-					{ "element": "net.minecraft.block.Block|mushroomBrown", "min":5, "max":10 },
-					{ "element": "net.minecraft.item.Item|swordIron" },
-					{ "element": "net.minecraft.item.Item|seeds", "min":2, "max":5 },
-					{ "element": "net.minecraft.item.Item|wheat", "min":2, "max":5 },
-					{ "element": "net.minecraft.item.Item|carrot" },
-					{ "element": "net.minecraft.item.Item|hoeIron" },
-					{ "element": "net.minecraft.item.Item|bow" }
-				],
-				[
-					{ "element": "net.minecraft.block.Block|mushroomBrown", "min":5, "max":10 },
-					{ "element": "net.minecraft.item.Item|swordIron" },
-					{ "element": "net.minecraft.item.Item|seeds", "min":2, "max":5 },
-					{ "element": "net.minecraft.item.Item|wheat", "min":2, "max":5 },
-					{ "element": "net.minecraft.item.Item|bread" },
-					{ "element": "net.minecraft.item.Item|shovelIron" },
-					{ "element": "net.minecraft.item.Item|bow" }
-				],
-				[
-					{ "element": "net.minecraft.block.Block|mushroomRed", "min":5, "max":10 },
-					{ "element": "net.minecraft.item.Item|swordIron" },
-					{ "element": "net.minecraft.item.Item|seeds", "min":2, "max":5 },
-					{ "element": "net.minecraft.item.Item|wheat", "min":2, "max":5 },
-					{ "element": "net.minecraft.item.Item|appleRed" },
-					{ "element": "net.minecraft.item.Item|pickaxeIron" },
-					{ "element": "net.minecraft.item.Item|bow" }
-				],
-				[
-					{ "element": "net.minecraft.block.Block|mushroomRed", "min":5, "max":10 },
-					{ "element": "net.minecraft.item.Item|swordIron" },
-					{ "element": "net.minecraft.item.Item|seeds", "min":2, "max":5 },
-					{ "element": "net.minecraft.item.Item|wheat", "min":2, "max":5 },
-					{ "element": "net.minecraft.item.Item|appleRed" },
-					{ "element": "net.minecraft.item.Item|axeIron" },
-					{ "element": "net.minecraft.item.Item|bow" }
-				]
-			]
-		},
-		"22x1x19": { "block": "net.minecraft.block.Block|chest"	  , "orientation":"left" },
-		 
-		"5x1x25": {
-			"block": "net.minecraft.block.Block|chest",
-			"orientation":"left",
-			"contents": [
-				
-				[
-					{ "element": "net.minecraft.block.Block|mushroomBrown", "min":5, "max":10 },
-					{ "element": "net.minecraft.item.Item|swordIron" },
-					{ "element": "net.minecraft.item.Item|seeds", "min":2, "max":5 },
-					{ "element": "net.minecraft.item.Item|wheat", "min":2, "max":5 },
-					{ "element": "net.minecraft.item.Item|carrot" },
-					{ "element": "net.minecraft.item.Item|pickaxeIron" },
-					{ "element": "net.minecraft.item.Item|bow" }
-				], 
-				[
-					{ "element": "net.minecraft.block.Block|mushroomBrown", "min":5, "max":10 },
-					{ "element": "net.minecraft.item.Item|swordIron" },
-					{ "element": "net.minecraft.item.Item|seeds", "min":2, "max":5 },
-					{ "element": "net.minecraft.item.Item|wheat", "min":2, "max":5 },
-					{ "element": "net.minecraft.item.Item|bread" },
-					{ "element": "net.minecraft.item.Item|shovelIron" },
-					{ "element": "net.minecraft.item.Item|bow" }
-				],
-				[
-					{ "element": "net.minecraft.block.Block|mushroomRed", "min":5, "max":10 },
-					{ "element": "net.minecraft.item.Item|swordIron" },
-					{ "element": "net.minecraft.item.Item|seeds", "min":2, "max":5 },
-					{ "element": "net.minecraft.item.Item|wheat", "min":2, "max":5 },
-					{ "element": "net.minecraft.item.Item|appleRed" },
-					{ "element": "net.minecraft.item.Item|pickaxeIron" },
-					{ "element": "net.minecraft.item.Item|bow" }
-				],
-				[
-					{ "element": "net.minecraft.block.Block|mushroomRed", "min":5, "max":10 },
-					{ "element": "net.minecraft.item.Item|swordIron" },
-					{ "element": "net.minecraft.item.Item|seeds", "min":2, "max":5 },
-					{ "element": "net.minecraft.item.Item|wheat", "min":2, "max":5 },
-					{ "element": "net.minecraft.item.Item|appleRed" },
-					{ "element": "net.minecraft.item.Item|axeIron" },
-					{ "element": "net.minecraft.item.Item|bow" }
-				]
-			]
-		},
-		"5x1x26": { "block": "net.minecraft.block.Block|chest"	  , "orientation":"left" },
-		 
-		"9x1x9": {
-			"block": "net.minecraft.block.Block|chest",
-			"orientation":"left",
-			"contents": [
-				
-				[
-					{ "element": "net.minecraft.item.Item|emerald" },
-					{ "element": "net.minecraft.item.Item|diamond" }
-				],
-				[
-					{ "element": "net.minecraft.item.Item|ingotGold", "min":4, "max":7 },
-					{ "element": "net.minecraft.item.Item|swordGold" }
-				],
-				[
-					
-					{ "element": "net.minecraft.item.Item|goldNugget", "min":2, "max":4 }
-				]
-			]
-		},
-		"8x8x26": { "block": "mods.castledefenders.common.ModCastleDefenders|blockMerc" },
-		"26x9x12": { "block": "mods.castledefenders.common.ModCastleDefenders|blockMerc" },
-		"21x9x12": { "block": "mods.castledefenders.common.ModCastleDefenders|blockArcherM" }
-		
-	}
+        "19x10x17": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"left" },
+        "19x11x17": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"left" },
+        "22x10x11": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
+        "22x11x11": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
+        "22x10x18": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
+        "22x11x18": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
+        "4x9x20": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
+        "4x10x20": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
+        
+        "14x13x25": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"right" },
+        "13x13x25": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"right" },
+        "25x14x22": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"down" },
+        "25x14x21": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"down" },
+        "21x10x22": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"down" },
+        "21x10x21": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"down" },
+        
+        "6x9x16": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "up", "metadata": 4 },
+        "7x9x16": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "up", "metadata": 4 },
+        "8x9x15": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "left", "metadata": 4 },
+        "8x9x14": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "left", "metadata": 4 },
+        "6x9x13": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "down", "metadata": 4 },
+        "7x9x13": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "down", "metadata": 4 },
+        "5x9x14": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "right", "metadata": 4 },
+        "5x9x15": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "right", "metadata": 4 },
+        
+        "14x9x13": { "block": "net.minecraft.block.Block|sapling" },
+        
+        "2x9x24": { "block": "net.minecraft.block.Block|lavaStill" },
+        "2x9x25": { "block": "net.minecraft.block.Block|lavaStill" },
+         
+        "22x1x18": {
+            "block": "net.minecraft.block.Block|chest",
+            "orientation":"left",
+            "contents": [
+                
+                [
+                    { "element": "net.minecraft.block.Block|mushroomBrown", "min":5, "max":10 },
+                    { "element": "net.minecraft.item.Item|swordIron" },
+                    { "element": "net.minecraft.item.Item|seeds", "min":2, "max":5 },
+                    { "element": "net.minecraft.item.Item|wheat", "min":2, "max":5 },
+                    { "element": "net.minecraft.item.Item|carrot" },
+                    { "element": "net.minecraft.item.Item|hoeIron" },
+                    { "element": "net.minecraft.item.Item|bow" }
+                ],
+                [
+                    { "element": "net.minecraft.block.Block|mushroomBrown", "min":5, "max":10 },
+                    { "element": "net.minecraft.item.Item|swordIron" },
+                    { "element": "net.minecraft.item.Item|seeds", "min":2, "max":5 },
+                    { "element": "net.minecraft.item.Item|wheat", "min":2, "max":5 },
+                    { "element": "net.minecraft.item.Item|bread" },
+                    { "element": "net.minecraft.item.Item|shovelIron" },
+                    { "element": "net.minecraft.item.Item|bow" }
+                ],
+                [
+                    { "element": "net.minecraft.block.Block|mushroomRed", "min":5, "max":10 },
+                    { "element": "net.minecraft.item.Item|swordIron" },
+                    { "element": "net.minecraft.item.Item|seeds", "min":2, "max":5 },
+                    { "element": "net.minecraft.item.Item|wheat", "min":2, "max":5 },
+                    { "element": "net.minecraft.item.Item|appleRed" },
+                    { "element": "net.minecraft.item.Item|pickaxeIron" },
+                    { "element": "net.minecraft.item.Item|bow" }
+                ],
+                [
+                    { "element": "net.minecraft.block.Block|mushroomRed", "min":5, "max":10 },
+                    { "element": "net.minecraft.item.Item|swordIron" },
+                    { "element": "net.minecraft.item.Item|seeds", "min":2, "max":5 },
+                    { "element": "net.minecraft.item.Item|wheat", "min":2, "max":5 },
+                    { "element": "net.minecraft.item.Item|appleRed" },
+                    { "element": "net.minecraft.item.Item|axeIron" },
+                    { "element": "net.minecraft.item.Item|bow" }
+                ]
+            ]
+        },
+        "22x1x19": { "block": "net.minecraft.block.Block|chest"      , "orientation":"left" },
+         
+        "5x1x25": {
+            "block": "net.minecraft.block.Block|chest",
+            "orientation":"left",
+            "contents": [
+                
+                [
+                    { "element": "net.minecraft.block.Block|mushroomBrown", "min":5, "max":10 },
+                    { "element": "net.minecraft.item.Item|swordIron" },
+                    { "element": "net.minecraft.item.Item|seeds", "min":2, "max":5 },
+                    { "element": "net.minecraft.item.Item|wheat", "min":2, "max":5 },
+                    { "element": "net.minecraft.item.Item|carrot" },
+                    { "element": "net.minecraft.item.Item|pickaxeIron" },
+                    { "element": "net.minecraft.item.Item|bow" }
+                ], 
+                [
+                    { "element": "net.minecraft.block.Block|mushroomBrown", "min":5, "max":10 },
+                    { "element": "net.minecraft.item.Item|swordIron" },
+                    { "element": "net.minecraft.item.Item|seeds", "min":2, "max":5 },
+                    { "element": "net.minecraft.item.Item|wheat", "min":2, "max":5 },
+                    { "element": "net.minecraft.item.Item|bread" },
+                    { "element": "net.minecraft.item.Item|shovelIron" },
+                    { "element": "net.minecraft.item.Item|bow" }
+                ],
+                [
+                    { "element": "net.minecraft.block.Block|mushroomRed", "min":5, "max":10 },
+                    { "element": "net.minecraft.item.Item|swordIron" },
+                    { "element": "net.minecraft.item.Item|seeds", "min":2, "max":5 },
+                    { "element": "net.minecraft.item.Item|wheat", "min":2, "max":5 },
+                    { "element": "net.minecraft.item.Item|appleRed" },
+                    { "element": "net.minecraft.item.Item|pickaxeIron" },
+                    { "element": "net.minecraft.item.Item|bow" }
+                ],
+                [
+                    { "element": "net.minecraft.block.Block|mushroomRed", "min":5, "max":10 },
+                    { "element": "net.minecraft.item.Item|swordIron" },
+                    { "element": "net.minecraft.item.Item|seeds", "min":2, "max":5 },
+                    { "element": "net.minecraft.item.Item|wheat", "min":2, "max":5 },
+                    { "element": "net.minecraft.item.Item|appleRed" },
+                    { "element": "net.minecraft.item.Item|axeIron" },
+                    { "element": "net.minecraft.item.Item|bow" }
+                ]
+            ]
+        },
+        "5x1x26": { "block": "net.minecraft.block.Block|chest"      , "orientation":"left" },
+         
+        "9x1x9": {
+            "block": "net.minecraft.block.Block|chest",
+            "orientation":"left",
+            "contents": [
+                
+                [
+                    { "element": "net.minecraft.item.Item|emerald" },
+                    { "element": "net.minecraft.item.Item|diamond" }
+                ],
+                [
+                    { "element": "net.minecraft.item.Item|ingotGold", "min":4, "max":7 },
+                    { "element": "net.minecraft.item.Item|swordGold" }
+                ],
+                [
+                    
+                    { "element": "net.minecraft.item.Item|goldNugget", "min":2, "max":4 }
+                ]
+            ]
+        },
+        "8x8x26": { "block": "mods.castledefenders.common.ModCastleDefenders|blockMerc" },
+        "26x9x12": { "block": "mods.castledefenders.common.ModCastleDefenders|blockMerc" },
+        "13x8x22": { "block": "mods.castledefenders.common.ModCastleDefenders|blockMerc" },
+        "21x9x12": { "block": "mods.castledefenders.common.ModCastleDefenders|blockArcherM" },
+        "18x9x15": { "block": "mods.castledefenders.common.ModCastleDefenders|blockArcherM" },
+        "18x9x19": { "block": "mods.castledefenders.common.ModCastleDefenders|blockArcherM" }
+        
+    }
 }

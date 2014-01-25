@@ -86,7 +86,10 @@ public class Building implements Cloneable {
 			o.block       = this.block;
 			o.metadata    = this.metadata;
 			o.orientation = this.orientation;
-			o.extra       = (HashMap<String, String>) this.extra.clone();
+			o.extra       = new HashMap<String, String>();
+			for (String key: this.extra.keySet()) {
+				o.extra.put(key, this.extra.get(key));
+			}
 			
 			for (ArrayList<Content> groupEl : this.contents) {
 				

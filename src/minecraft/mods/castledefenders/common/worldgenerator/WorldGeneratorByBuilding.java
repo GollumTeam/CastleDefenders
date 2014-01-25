@@ -14,7 +14,9 @@ import net.minecraft.block.BlockBed;
 import net.minecraft.block.BlockButton;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockCommandBlock;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockDirectional;
+import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockFurnace;
 import net.minecraft.block.BlockLadder;
@@ -23,11 +25,13 @@ import net.minecraft.block.BlockStairs;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.BlockWall;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.tileentity.TileEntityCommandBlock;
+import net.minecraft.tileentity.TileEntityDispenser;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Facing;
 import net.minecraft.world.World;
@@ -207,7 +211,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 				int initX = chunkX * 16 + random.nextInt(8) - random.nextInt(8);
 				int initY = worldY      + random.nextInt(8) - random.nextInt(8);
 				int initZ = chunkZ * 16 + random.nextInt(8) - random.nextInt(8);
-//				initY = 3; // Pour test sur un superflat
+				initY = 3; // Pour test sur un superflat
 				
 				
 				//Test si on est sur de la terre (faudrais aps que le batiment vol)
@@ -478,7 +482,10 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			TileEntity te  = world.getBlockTileEntity (x, y, z);
 			if (te instanceof TileEntityCommandBlock) {
 				
-				String command = ""; try { command = extra.get("command"); } catch (Exception e) {}
+				String command = ""; try { command = extra.get("command"); } catch (Exception e) {} command = (command != null) ? command : "";
+				
+				ModCastleDefenders.log.info("command : "+command);
+				
 				int varX = 0; try { varX = Integer.parseInt(extra.get("x")); } catch (Exception e) {}
 				int varY = 0; try { varY = Integer.parseInt(extra.get("y")); } catch (Exception e) {}
 				int varZ = 0; try { varZ = Integer.parseInt(extra.get("z")); } catch (Exception e) {}
@@ -550,10 +557,10 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 		
 		Block block  = Block.blocksList [world.getBlockId (x, y, z)];
 		
-		if (block instanceof BlockChest) {
-
+		if (block instanceof BlockContainer) {
+			
 			TileEntity te  = world.getBlockTileEntity (x, y, z);
-			if (te instanceof TileEntityChest) {
+			if (te instanceof IInventory) {
 				
 				for (int i = 0; i < contents.size(); i++) {
 					
@@ -579,10 +586,9 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 							itemStack = new ItemStack(Block.blocksList [content.id], nombre, content.metadata);
 						}
 					}
-					((TileEntityChest) te).setInventorySlotContents (i, itemStack);
+					((IInventory) te).setInventorySlotContents (i, itemStack);
 				}
 			}
-			
 		}
 		
 	}
@@ -612,7 +618,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = (metadata & 0x8) + 2; } else 
 			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = (metadata & 0x8) + 1; } else 
 			{
-				ModCastleDefenders.log.severe("Bad orientation : "+block.blockID+" "+x+","+y+","+z);
+				ModCastleDefenders.log.severe("Bad orientation : "+orientation+" id:"+block.blockID+" pos:"+x+","+y+","+z);
 			}
 			
 			world.setBlockMetadataWithNotify(x, y, z, metadata, 2);
@@ -627,7 +633,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = (metadata & 0xC) + 3; } else 
 			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = (metadata & 0xC) + 1; } else 
 			{
-				ModCastleDefenders.log.severe("Bad orientation : "+block.blockID+" "+x+","+y+","+z);
+				ModCastleDefenders.log.severe("Bad orientation : "+orientation+" id:"+block.blockID+" pos:"+x+","+y+","+z);
 			}
 			
 			world.setBlockMetadataWithNotify(x, y, z, metadata, 2);
@@ -641,7 +647,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = (metadata & 0xC) + 2; } else 
 			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = (metadata & 0xC) + 0; } else 
 			{
-				ModCastleDefenders.log.severe("Bad orientation : "+block.blockID+" "+x+","+y+","+z);
+				ModCastleDefenders.log.severe("Bad orientation : "+orientation+" id:"+block.blockID+" pos:"+x+","+y+","+z);
 			}
 			
 			world.setBlockMetadataWithNotify(x, y, z, metadata, 2);
@@ -655,7 +661,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = (metadata & 0x8) + 2; } else 
 			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = (metadata & 0x8) + 0; } else 
 			{
-				ModCastleDefenders.log.severe("Bad orientation : "+block.blockID+" "+x+","+y+","+z);
+				ModCastleDefenders.log.severe("Bad orientation : "+orientation+" id:"+block.blockID+" pos:"+x+","+y+","+z);
 			}
 			
 			world.setBlockMetadataWithNotify(x, y, z, metadata, 2);
@@ -673,7 +679,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = (metadata & 0x8) + 4; } else 
 			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = (metadata & 0x8) + 5; } else 
 			{
-				ModCastleDefenders.log.severe("Bad orientation : "+block.blockID+" "+x+","+y+","+z);
+				ModCastleDefenders.log.severe("Bad orientation : "+orientation+" id:"+block.blockID+" pos:"+x+","+y+","+z);
 			}
 			
 			world.setBlockMetadataWithNotify(x, y, z, metadata, 2);
@@ -687,7 +693,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = (metadata & 0xC) + 0; } else 
 			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = (metadata & 0xC) + 1; } else 
 			{
-				ModCastleDefenders.log.severe("Bad orientation : "+block.blockID+" "+x+","+y+","+z);
+				ModCastleDefenders.log.severe("Bad orientation : "+orientation+" id:"+block.blockID+" pos:"+x+","+y+","+z);
 			}
 			
 			world.setBlockMetadataWithNotify(x, y, z, metadata, 2);
@@ -708,7 +714,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			if (orientation == Unity.ORIENTATION_TOP_VERTICAL)   { metadata = (metadata & 0x8) + 7; } else 
 			if (orientation == Unity.ORIENTATION_TOP_HORIZONTAL) { metadata = (metadata & 0x8) + 0; } else 
 			{
-				ModCastleDefenders.log.severe("Bad orientation : "+block.blockID+" "+x+","+y+","+z);
+				ModCastleDefenders.log.severe("Bad orientation : "+orientation+" id:"+block.blockID+" pos:"+x+","+y+","+z);
 			}
 			
 			world.setBlockMetadataWithNotify(x, y, z, metadata, 2);

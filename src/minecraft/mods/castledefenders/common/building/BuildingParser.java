@@ -255,14 +255,6 @@ public class BuildingParser {
 			String metadata    = "0"; try { metadata = type.getNumberValue ("metadata"); } catch (Exception e) { }
 			String orientation = "none"; try { orientation = type.getStringValue ("orientation"); } catch (Exception e) { }
 			JsonNode contents  = null; try { contents = type.getNode("contents"); } catch (Exception e) { }
-			HashMap<String, String> extra = new HashMap<String, String>();
-			try { 
-				Map<JsonStringNode, JsonNode> map = type.getNode("extra").getFields();
-				for (JsonStringNode key : map.keySet()) {
-					extra.put(key.getText(), map.get(key).getText());
-				}
-			} catch (Exception e) {
-			}
 			
 			// Récupère l'attribut
 			Class classBlock;
@@ -282,7 +274,7 @@ public class BuildingParser {
 			
 			unity.block       = block;
 			unity.metadata    = Integer.parseInt(metadata);
-
+			
 			if (orientation.equals("none"))            { unity.orientation = Unity.ORIENTATION_NONE;              } else 
 			if (orientation.equals("up"))              { unity.orientation = Unity.ORIENTATION_UP;                } else 
 			if (orientation.equals("down"))            { unity.orientation = Unity.ORIENTATION_DOWN;              } else 
@@ -299,6 +291,15 @@ public class BuildingParser {
 					unity.contents.add (this.parseContents (group));
 				}
 						
+			}
+			
+			unity.extra = new HashMap<String, String>();
+			try { 
+				Map<JsonStringNode, JsonNode> map = type.getNode("extra").getFields();
+				for (JsonStringNode key : map.keySet()) {
+					unity.extra.put(key.getText(), map.get(key).getText());
+				}
+			} catch (Exception e) {
 			}
 			
 		} catch (Exception e) {

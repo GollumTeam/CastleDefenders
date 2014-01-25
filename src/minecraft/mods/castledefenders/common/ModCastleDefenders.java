@@ -129,11 +129,13 @@ public class ModCastleDefenders {
 	
 	// Ratio de building entre les batiments d'un meme type
 	@ConfigProp(group = "Spawn rate between mercenary building")
-	public static int mercenaryBuilding1SpawnRate = 8;
+	public static int mercenaryBuilding1SpawnRate = 14;
 	@ConfigProp(group = "Spawn rate between mercenary building")
-	public static int mercenaryBuilding2SpawnRate = 10;
+	public static int mercenaryBuilding2SpawnRate = 16;
 	@ConfigProp(group = "Spawn rate between mercenary building")
 	public static int mercenaryBuilding3SpawnRate = 1;
+	@ConfigProp(group = "Spawn rate between mercenary building")
+	public static int mercenaryBuilding4SpawnRate = 1;
 	
 	@ConfigProp(group = "Spawn rate between castle building")
 	public static int castleBuilding1SpawnRate = 1;
@@ -141,14 +143,18 @@ public class ModCastleDefenders {
 	public static int castleBuilding2SpawnRate = 1;
 	@ConfigProp(group = "Spawn rate between castle building")
 	public static int castleBuilding3SpawnRate = 1;
+	@ConfigProp(group = "Spawn rate between castle building")
+	public static int castleBuilding4SpawnRate = 1;
 	
 	// Liste des constructions
 	private Building buildingMercenary1;
 	private Building buildingMercenary2;
 	private Building buildingMercenary3;
+	private Building buildingMercenary4;
 	private Building buildingCastle1;
 	private Building buildingCastle2;
 	private Building buildingCastle3;
+	private Building buildingCastle4;
 	
 	/**
 	 * 1
@@ -323,9 +329,11 @@ public class ModCastleDefenders {
 		this.buildingMercenary1 = parser.parse ("mercenary1");
 		this.buildingMercenary2 = parser.parse ("mercenary2");
 		this.buildingMercenary3 = parser.parse ("mercenary3");
+		this.buildingMercenary4 = parser.parse ("mercenary4");
 		this.buildingCastle1    = parser.parse ("castle1");
 		this.buildingCastle2    = parser.parse ("castle2");
 		this.buildingCastle3    = parser.parse ("castle3");
+		this.buildingCastle4    = parser.parse ("castle4");
 	}
 	
 	/**
@@ -343,10 +351,12 @@ public class ModCastleDefenders {
 		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary1, this.mercenaryBuilding1SpawnRate);
 		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary2, this.mercenaryBuilding2SpawnRate);
 		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary3, this.mercenaryBuilding3SpawnRate);
+		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary4, this.mercenaryBuilding4SpawnRate);
 		
 		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle1, this.castleBuilding1SpawnRate);
 		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle2, this.castleBuilding2SpawnRate);
 		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle3, this.castleBuilding3SpawnRate);
+		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle4, this.castleBuilding4SpawnRate);
 		
 		// Enregistrement du worldgenerator mercenary
 		GameRegistry.registerWorldGenerator (worldGeneratorByBuilding);
