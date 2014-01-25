@@ -25,8 +25,6 @@ import net.minecraft.block.BlockStairs;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.BlockWall;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -38,21 +36,10 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.Facing;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraftforge.event.EventPriority;
-import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.event.terraingen.ChunkProviderEvent;
-import net.minecraftforge.event.world.WorldEvent;
 import cpw.mods.fml.common.IWorldGenerator;
 
-public class WorldGeneratorByBuilding extends WorldEvent {
+public class WorldGeneratorByBuilding implements IWorldGenerator {
 	
-
-	public WorldGeneratorByBuilding(World world) {
-		super(world);
-		// TODO Auto-generated constructor stub
-	}
-
-
 	public static final int DIMENSION_ID_NETHER = -1;
 	public static final int DIMENSION_ID_SURFACE = 0;
 	
@@ -124,7 +111,7 @@ public class WorldGeneratorByBuilding extends WorldEvent {
 	/**
 	 * Methode de genera
 	 */
-	@ForgeSubscribe(priority = EventPriority.LOWEST)
+	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
 		
 		// Generation diffenrente entre le nether et la surface
@@ -279,6 +266,8 @@ public class WorldGeneratorByBuilding extends WorldEvent {
 					}
 					
 					
+					
+					
 					//////////////////////////////////
 					// Ajoute les blocks aléatoires //
 					//////////////////////////////////
@@ -410,26 +399,6 @@ public class WorldGeneratorByBuilding extends WorldEvent {
 						}
 					}
 				}
-				
-				// Position réél dans le monde du block
-				int finalXs = initX + 25;
-				int finalYs = initY + building.maxY - 6;
-				int finalZs = initZ + 25;
-
-				Entity entity = EntityList.createEntityByName("Villager", world);
-				entity.setLocationAndAngles(finalXs, finalYs, finalZs, world.rand.nextFloat() * 360.0F, world.rand.nextFloat() * 360.0F);
-				entity = EntityList.createEntityByName("Villager", world);
-				entity.setLocationAndAngles(finalXs, finalYs, finalZs, world.rand.nextFloat() * 360.0F, world.rand.nextFloat() * 360.0F);
-				entity = EntityList.createEntityByName("Villager", world);
-				entity.setLocationAndAngles(finalXs, finalYs, finalZs, world.rand.nextFloat() * 360.0F, world.rand.nextFloat() * 360.0F);
-				entity = EntityList.createEntityByName("Villager", world);
-				entity.setLocationAndAngles(finalXs, finalYs, finalZs, world.rand.nextFloat() * 360.0F, world.rand.nextFloat() * 360.0F);
-				entity = EntityList.createEntityByName("Villager", world);
-				entity.setLocationAndAngles(finalXs, finalYs, finalZs, world.rand.nextFloat() * 360.0F, world.rand.nextFloat() * 360.0F);
-				entity = EntityList.createEntityByName("Villager", world);
-				entity.setLocationAndAngles(finalXs, finalYs, finalZs, world.rand.nextFloat() * 360.0F, world.rand.nextFloat() * 360.0F);
-				entity = EntityList.createEntityByName("Villager", world);
-				entity.setLocationAndAngles(finalXs, finalYs, finalZs, world.rand.nextFloat() * 360.0F, world.rand.nextFloat() * 360.0F);
 			}
 		}
 	}
