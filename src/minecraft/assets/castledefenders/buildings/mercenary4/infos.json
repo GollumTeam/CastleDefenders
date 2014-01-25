@@ -51,7 +51,9 @@
         "22x14x22": { "block": "net.minecraft.block.Block|redstoneWire" },
         "22x14x23": { "block": "net.minecraft.block.Block|redstoneWire" },
         "22x14x24": { "block": "net.minecraft.block.Block|redstoneWire" },
-        "22x14x25": { "block": "net.minecraft.block.Block|redstoneRepeaterIdle", "orientation":"down", "metadata": 12 },
+        "22x14x25": { "block": "net.minecraft.block.Block|redstoneWire" },
+        "21x14x20": { "block": "net.minecraft.block.Block|redstoneWire" },
+        
         "21x13x20": { 
             "block": "net.minecraft.block.Block|dispenser", 
             "orientation":"right", 
@@ -92,9 +94,12 @@
         "12x13x8": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
         "22x6x10": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"down" },
         "22x7x10": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"down" },
-        "23x6x10": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 4, "orientation":"right" },
-        "23x7x10": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 12, "orientation":"right" }
+        "23x6x10": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"down" },
+        "23x7x10": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 9, "orientation":"down" }
         
-    }
+    },
+    "random": [
+        [{"22x14x26": { "block": "net.minecraft.block.Block|blockRedstone" }}]
+    ]
 }
    
