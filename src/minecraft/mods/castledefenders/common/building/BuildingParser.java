@@ -275,15 +275,15 @@ public class BuildingParser {
 			unity.block       = block;
 			unity.metadata    = Integer.parseInt(metadata);
 			
-			if (orientation.equals("none"))            { unity.orientation = Unity.ORIENTATION_NONE;              } else 
-			if (orientation.equals("up"))              { unity.orientation = Unity.ORIENTATION_UP;                } else 
-			if (orientation.equals("down"))            { unity.orientation = Unity.ORIENTATION_DOWN;              } else 
-			if (orientation.equals("left"))            { unity.orientation = Unity.ORIENTATION_LEFT;              } else 
-			if (orientation.equals("right"))           { unity.orientation = Unity.ORIENTATION_RIGTH;             } else 
-			if (orientation.equals("top_vertical"))    { unity.orientation = Unity.ORIENTATION_TOP_VERTICAL;      } else 
-			if (orientation.equals("bottom_vertical")) { unity.orientation = Unity.ORIENTATION_BOTTOM_VERTICAL;   } else 
-			if (orientation.equals("top_horizontal"))  { unity.orientation = Unity.ORIENTATION_TOP_HORIZONTAL;    } else 
-			if (orientation.equals("bottom_vertical")) { unity.orientation = Unity.ORIENTATION_BOTTOM_HORIZONTAL; }
+			if (orientation.equals("none"))              { unity.orientation = Unity.ORIENTATION_NONE;              } else 
+			if (orientation.equals("up"))                { unity.orientation = Unity.ORIENTATION_UP;                } else 
+			if (orientation.equals("down"))              { unity.orientation = Unity.ORIENTATION_DOWN;              } else 
+			if (orientation.equals("left"))              { unity.orientation = Unity.ORIENTATION_LEFT;              } else 
+			if (orientation.equals("right"))             { unity.orientation = Unity.ORIENTATION_RIGTH;             } else 
+			if (orientation.equals("top_vertical"))      { unity.orientation = Unity.ORIENTATION_TOP_VERTICAL;      } else 
+			if (orientation.equals("bottom_vertical"))   { unity.orientation = Unity.ORIENTATION_BOTTOM_VERTICAL;   } else 
+			if (orientation.equals("top_horizontal"))    { unity.orientation = Unity.ORIENTATION_TOP_HORIZONTAL;    } else 
+			if (orientation.equals("bottom_horizontal")) { unity.orientation = Unity.ORIENTATION_BOTTOM_HORIZONTAL; }
 			
 			if (contents != null) {
 				unity.contents = new ArrayList();

@@ -6,9 +6,11 @@ import java.util.HashMap;
 import java.util.Random;
 
 import mods.castledefenders.common.ModCastleDefenders;
+import mods.castledefenders.common.blocks.BlockSpawner;
 import mods.castledefenders.common.building.Building;
 import mods.castledefenders.common.building.Building.Unity;
 import mods.castledefenders.common.building.Building.Unity.Content;
+import mods.castledefenders.common.tileentities.TileEntityBlockSpawner;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.BlockButton;
@@ -25,6 +27,8 @@ import net.minecraft.block.BlockStairs;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.BlockWall;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -36,7 +40,10 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.Facing;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraftforge.event.EventPriority;
+import net.minecraftforge.event.ForgeSubscribe;
 import cpw.mods.fml.common.IWorldGenerator;
+
 
 public class WorldGeneratorByBuilding implements IWorldGenerator {
 	
@@ -266,8 +273,6 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 					}
 					
 					
-					
-					
 					//////////////////////////////////
 					// Ajoute les blocks aléatoires //
 					//////////////////////////////////
@@ -399,6 +404,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 						}
 					}
 				}
+				
 			}
 		}
 	}
@@ -516,8 +522,11 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 				
 			}
 			
+			if (block instanceof BlockSpawner) {
+				String entity = ""; try { entity = extra.get("entity"); } catch (Exception e) {} entity = (entity != null) ? entity : "Chicken";
+				((TileEntityBlockSpawner) te).setModId (entity);
+			}
 		}
-		
 	}
 	
 	/**
@@ -691,7 +700,8 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 		if (
 			block instanceof BlockLadder ||
 			block instanceof BlockFurnace ||
-			block instanceof BlockChest
+			block instanceof BlockChest ||
+			block instanceof BlockDispenser
 		) {
 			
 			if (orientation == Unity.ORIENTATION_UP)    { metadata = (metadata & 0x8) + 2; } else 
@@ -728,11 +738,11 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			if (orientation == Unity.ORIENTATION_LEFT)  { metadata = (metadata & 0x8) + 2; } else 
 			if (orientation == Unity.ORIENTATION_RIGTH) { metadata = (metadata & 0x8) + 1; } else 
 			
-			if (orientation == Unity.ORIENTATION_TOP_VERTICAL)   { metadata = (metadata & 0x8) + 5; } else 
-			if (orientation == Unity.ORIENTATION_TOP_HORIZONTAL) { metadata = (metadata & 0x8) + 6; } else
+			if (orientation == Unity.ORIENTATION_BOTTOM_VERTICAL)   { metadata = (metadata & 0x8) + 5; } else 
+			if (orientation == Unity.ORIENTATION_BOTTOM_HORIZONTAL) { metadata = (metadata & 0x8) + 6; } else
 			
-			if (orientation == Unity.ORIENTATION_BOTTOM_VERTICAL)   { metadata = (metadata & 0x8) + 7; } else 
-			if (orientation == Unity.ORIENTATION_BOTTOM_HORIZONTAL) { metadata = (metadata & 0x8) + 0; } else 
+			if (orientation == Unity.ORIENTATION_TOP_VERTICAL)   { metadata = (metadata & 0x8) + 7; } else 
+			if (orientation == Unity.ORIENTATION_TOP_HORIZONTAL) { metadata = (metadata & 0x8) + 0; } else 
 			{
 				ModCastleDefenders.log.severe("Bad orientation : "+orientation+" id:"+block.blockID+" pos:"+x+","+y+","+z);
 			}

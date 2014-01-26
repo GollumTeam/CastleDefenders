@@ -1,6 +1,4 @@
 {
-	"height": -25,
-	
 	"color" : [
 		{ "block": "net.minecraft.block.Block|grass" },
 		{ "block": "net.minecraft.block.Block|dirt" },

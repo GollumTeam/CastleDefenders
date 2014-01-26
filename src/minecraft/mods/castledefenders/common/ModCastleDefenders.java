@@ -16,6 +16,7 @@ import mods.castledefenders.common.blocks.BlockKnight;
 import mods.castledefenders.common.blocks.BlockKnight2;
 import mods.castledefenders.common.blocks.BlockMage;
 import mods.castledefenders.common.blocks.BlockMerc;
+import mods.castledefenders.common.blocks.BlockSpawner;
 import mods.castledefenders.common.building.Building;
 import mods.castledefenders.common.building.BuildingParser;
 import mods.castledefenders.common.entities.EntityArcher;
@@ -41,6 +42,7 @@ import mods.castledefenders.common.tileentities.TileEntityBlockKnight;
 import mods.castledefenders.common.tileentities.TileEntityBlockKnight2;
 import mods.castledefenders.common.tileentities.TileEntityBlockMage;
 import mods.castledefenders.common.tileentities.TileEntityBlockMerc;
+import mods.castledefenders.common.tileentities.TileEntityBlockSpawner;
 import mods.castledefenders.common.worldgenerator.WorldGeneratorByBuilding;
 import mods.castledefenders.utils.ConfigLoader;
 import mods.castledefenders.utils.ConfigProp;
@@ -50,6 +52,7 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -92,6 +95,7 @@ public class ModCastleDefenders {
 	public static Block blockEKnight;
 	public static Block blockEArcher;
 	public static Block blockEMage;
+	public static Block blockSpawner;
 	
 	// Liste des items
 	public static Item itemMedallion;
@@ -108,6 +112,7 @@ public class ModCastleDefenders {
 	@ConfigProp(group = "Blocks Ids") public static int blockEKnightID = 1237;
 	@ConfigProp(group = "Blocks Ids") public static int blockEArcherID = 1236;
 	@ConfigProp(group = "Blocks Ids") public static int blockEMageID   = 1233;
+	@ConfigProp(group = "Blocks Ids") public static int blockSpawnerID = 1243;
 	
 	@ConfigProp(group = "Items Ids") public static int medallionID    = 13001;
 	
@@ -230,17 +235,18 @@ public class ModCastleDefenders {
 	public void initBlocks () {
 
 		// Création des blocks
-		this.blockKnight  = (new BlockKnight(this.blockKnightID))  .setUnlocalizedName("BlockKnight") .setHardness(2.0F).setResistance(5.0F);
-		this.blockKnight2 = (new BlockKnight2(this.blockKnight2ID)).setUnlocalizedName("BlockKnight2").setHardness(2.0F).setResistance(5.0F);
-		this.blockArcher  = (new BlockArcher(this.blockArcherID))  .setUnlocalizedName("BlockArcher") .setHardness(2.0F).setResistance(5.0F);
-		this.blockArcher2 = (new BlockArcher2(this.blockArcher2ID)).setUnlocalizedName("BlockArcher2").setHardness(2.0F).setResistance(5.0F);
-		this.blockMerc    = (new BlockMerc(this.blockMercID))      .setUnlocalizedName("BlockMerc")   .setHardness(2.0F).setResistance(5.0F);
-		this.blockArcherM = (new BlockArcherM(this.blockArcherMID)).setUnlocalizedName("BlockArcherM").setHardness(2.0F).setResistance(5.0F);
-		this.blockMage    = (new BlockMage(this.blockMageID))      .setUnlocalizedName("BlockMage")   .setHardness(2.0F).setResistance(5.0F);
-		this.blockHealer  = (new BlockHealer(this.blockHealerID))  .setUnlocalizedName("BlockHealer") .setHardness(2.0F).setResistance(5.0F);
-		this.blockEKnight = (new BlockEKnight(this.blockEKnightID)).setUnlocalizedName("BlockEKnight").setHardness(2.0F).setResistance(5.0F);
-		this.blockEArcher = (new BlockEArcher(this.blockEArcherID)).setUnlocalizedName("BlockEArcher").setHardness(2.0F).setResistance(5.0F);
-		this.blockEMage   = (new BlockEMage(this.blockEMageID))    .setUnlocalizedName("BlockEMage")  .setHardness(2.0F).setResistance(5.0F);
+		this.blockKnight  = (new BlockKnight(this.blockKnightID))  .setUnlocalizedName("BlockKnight")   .setHardness(2.0F).setResistance(5.0F);
+		this.blockKnight2 = (new BlockKnight2(this.blockKnight2ID)).setUnlocalizedName("BlockKnight2")  .setHardness(2.0F).setResistance(5.0F);
+		this.blockArcher  = (new BlockArcher(this.blockArcherID))  .setUnlocalizedName("BlockArcher")   .setHardness(2.0F).setResistance(5.0F);
+		this.blockArcher2 = (new BlockArcher2(this.blockArcher2ID)).setUnlocalizedName("BlockArcher2")  .setHardness(2.0F).setResistance(5.0F);
+		this.blockMerc    = (new BlockMerc(this.blockMercID))      .setUnlocalizedName("BlockMerc")     .setHardness(2.0F).setResistance(5.0F);
+		this.blockArcherM = (new BlockArcherM(this.blockArcherMID)).setUnlocalizedName("BlockArcherM")  .setHardness(2.0F).setResistance(5.0F);
+		this.blockMage    = (new BlockMage(this.blockMageID))      .setUnlocalizedName("BlockMage")     .setHardness(2.0F).setResistance(5.0F);
+		this.blockHealer  = (new BlockHealer(this.blockHealerID))  .setUnlocalizedName("BlockHealer")   .setHardness(2.0F).setResistance(5.0F);
+		this.blockEKnight = (new BlockEKnight(this.blockEKnightID)).setUnlocalizedName("BlockEKnight")  .setHardness(2.0F).setResistance(5.0F);
+		this.blockEArcher = (new BlockEArcher(this.blockEArcherID)).setUnlocalizedName("BlockEArcher")  .setHardness(2.0F).setResistance(5.0F);
+		this.blockEMage   = (new BlockEMage(this.blockEMageID))    .setUnlocalizedName("BlockEMage")    .setHardness(2.0F).setResistance(5.0F);
+		this.blockSpawner = (new BlockSpawner(this.blockSpawnerID)).setUnlocalizedName("CDBlockSpawner");
 		
 		
 		// Enregistrement des blocks
@@ -255,6 +261,7 @@ public class ModCastleDefenders {
 		GameRegistry.registerBlock(this.blockEKnight, "Enemy Knight Spawner");
 		GameRegistry.registerBlock(this.blockEArcher, "Enemy Archer Spawner");
 		GameRegistry.registerBlock(this.blockEMage  , "Enemy Mage Spawner");
+		GameRegistry.registerBlock(this.blockSpawner, "CDblockSpawner");
 		
 		// Nom des blocks
 		LanguageRegistry.addName(this.blockKnight , "Knight Spawner");
@@ -268,6 +275,8 @@ public class ModCastleDefenders {
 		LanguageRegistry.addName(this.blockEKnight, "Enemy Knight Spawner");
 		LanguageRegistry.addName(this.blockEArcher, "Enemy Archer Spawner");
 		LanguageRegistry.addName(this.blockEMage  , "Enemy Mage Spawner");
+		LanguageRegistry.addName(this.blockSpawner, "Custom Spawner");
+		
 	}
 	
 	/**
@@ -285,6 +294,7 @@ public class ModCastleDefenders {
 		GameRegistry.registerTileEntity(TileEntityBlockEKnight.class, "Enemy Knight Block");
 		GameRegistry.registerTileEntity(TileEntityBlockEArcher.class, "Enemy Archer Block");
 		GameRegistry.registerTileEntity(TileEntityBlockEMage.class  , "Enemy Mage Block");
+		GameRegistry.registerTileEntity(TileEntityBlockSpawner.class, "CastleDef:BlockSpawner");
 	}
 	
 	/**
@@ -348,17 +358,21 @@ public class ModCastleDefenders {
 		int idGroupCastle    = worldGeneratorByBuilding.addGroup (this.castleSpawnRate);
 		
 		// Ajout des batiments
-		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary1, this.mercenaryBuilding1SpawnRate);
-		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary2, this.mercenaryBuilding2SpawnRate);
+//		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary1, this.mercenaryBuilding1SpawnRate);
+//		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary2, this.mercenaryBuilding2SpawnRate);
 		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary3, this.mercenaryBuilding3SpawnRate);
 		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary4, this.mercenaryBuilding4SpawnRate);
 		
-		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle1, this.castleBuilding1SpawnRate);
-		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle2, this.castleBuilding2SpawnRate);
-		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle3, this.castleBuilding3SpawnRate);
+//		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle1, this.castleBuilding1SpawnRate);
+//		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle2, this.castleBuilding2SpawnRate);
+//		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle3, this.castleBuilding3SpawnRate);
 		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle4, this.castleBuilding4SpawnRate);
 		
 		// Enregistrement du worldgenerator mercenary
+		
+		
+//		MinecraftForge.EVENT_BUS.register(worldGeneratorByBuilding);
+		
 		GameRegistry.registerWorldGenerator (worldGeneratorByBuilding);
 	}
 	
