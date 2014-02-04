@@ -274,8 +274,7 @@ public class ModCastleDefenders {
 		LanguageRegistry.addName(this.blockHealer , "Mage Healer");
 		LanguageRegistry.addName(this.blockEKnight, "Enemy Knight Spawner");
 		LanguageRegistry.addName(this.blockEArcher, "Enemy Archer Spawner");
-		LanguageRegistry.addName(this.blockEMage  , "Enemy Mage Spawner");
-		LanguageRegistry.addName(this.blockSpawner, "Custom Spawner");
+//		LanguageRegistry.addName(this.blockEMage  , "Enemy Mage Spawner");
 		
 	}
 	

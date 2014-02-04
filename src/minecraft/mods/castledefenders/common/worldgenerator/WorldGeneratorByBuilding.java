@@ -23,6 +23,7 @@ import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockFurnace;
 import net.minecraft.block.BlockLadder;
 import net.minecraft.block.BlockLever;
+import net.minecraft.block.BlockPistonBase;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.block.BlockTrapDoor;
@@ -212,14 +213,14 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 				// Position initial de la génération en hauteur
 				int worldY = 64;
 				int rotate = random.nextInt(Building.ROTATED_360);
-				rotate = Building.ROTATED_0;
+//				rotate = Building.ROTATED_0;
 				Building building = this.getBuildingInRate (buildings, random).getRotatetedBuilding (rotate);
 				
 				// Position initiale du batiment
 				int initX = chunkX * 16 + random.nextInt(8) - random.nextInt(8);
 				int initY = worldY      + random.nextInt(8) - random.nextInt(8);
 				int initZ = chunkZ * 16 + random.nextInt(8) - random.nextInt(8);
-				initY = 3; // Pour test sur un superflat
+//				initY = 3; // Pour test sur un superflat
 				
 				
 				//Test si on est sur de la terre (faudrais aps que le batiment vol)
@@ -495,7 +496,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 	 * @param initX
 	 * @param initY
 	 * @param initZ
-	 * @param rotate
+	 * @param rotate	
 	 */
 	private void setExtra(World world, Random random, int x, int y, int z, HashMap<String, String> extra,int initX, int initY, int initZ, int rotate, int maxX, int maxZ) {
 		
@@ -514,15 +515,20 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 				int varY = 0; try { varY = Integer.parseInt(extra.get("y")); } catch (Exception e) {}
 				int varZ = 0; try { varZ = Integer.parseInt(extra.get("z")); } catch (Exception e) {}
 
-				command = command.replace("{$x}", ""+(this.getRotatedX(x, z, rotate, maxZ) + initX));
+				command = command.replace("{$x}", ""+(this.getRotatedX(x, z, rotate, maxX, maxZ) + initX));
 				command = command.replace("{$y}", ""+ (y + initY));
-				command = command.replace("{$z}", ""+(this.getRotatedZ(x, z, rotate, maxX) + initZ));
+				command = command.replace("{$z}", ""+(this.getRotatedZ(x, z, rotate, maxX, maxZ) + initZ));
 				
 				((TileEntityCommandBlock) te).setCommand(command);
 				
 			}
 			
-			if (block instanceof BlockSpawner) {
+		}
+		
+		if (block instanceof BlockSpawner) {
+			
+			TileEntity te  = world.getBlockTileEntity (x, y, z);
+			if (te instanceof TileEntityBlockSpawner) {
 				String entity = ""; try { entity = extra.get("entity"); } catch (Exception e) {} entity = (entity != null) ? entity : "Chicken";
 				((TileEntityBlockSpawner) te).setModId (entity);
 			}
@@ -537,15 +543,23 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 	 * @param maxZ
 	 * @return
 	 */
-	private int getRotatedX(int x, int z, int rotate, int maxZ) {
+	private int getRotatedX(int x, int z, int rotate, int maxX, int maxZ) {
 		if (rotate == Building.ROTATED_90) {
 			return z;
 		}
 		if (rotate == Building.ROTATED_180) {
-			this.getRotatedX (this.getRotatedX (x, z, Building.ROTATED_90, maxZ), this.getRotatedZ (x, z, Building.ROTATED_90, maxZ), Building.ROTATED_90, maxZ);
+
+			int newX = this.getRotatedX (x, z, Building.ROTATED_90, maxX, maxZ);
+			int newZ = this.getRotatedZ (x, z, Building.ROTATED_90, maxX, maxZ);
+			
+			return this.getRotatedX (newX, newZ, Building.ROTATED_90, maxX, maxZ);
 		}
 		if (rotate == Building.ROTATED_270) {
-			this.getRotatedX (this.getRotatedX (x, z, Building.ROTATED_90, maxZ), this.getRotatedZ (x, z, Building.ROTATED_90, maxZ), Building.ROTATED_180, maxZ);
+
+			int newX = this.getRotatedX (x, z, Building.ROTATED_180, maxX, maxZ);
+			int newZ = this.getRotatedZ (x, z, Building.ROTATED_180, maxX, maxZ);
+			
+			return this.getRotatedX (newX, newZ, Building.ROTATED_90, maxX, maxZ);
 		}
 		return x;
 	}
@@ -558,15 +572,23 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 	 * @param maxX
 	 * @return
 	 */
-	private int getRotatedZ(int x, int z, int rotate, int maxX) {
+	private int getRotatedZ(int x, int z, int rotate, int maxX, int maxZ) {
 		if (rotate == Building.ROTATED_90) {
 			return maxX - x -1;
 		}
 		if (rotate == Building.ROTATED_180) {
-			this.getRotatedX (this.getRotatedZ (x, z, Building.ROTATED_90, maxX), this.getRotatedZ (x, z, Building.ROTATED_90, maxX), Building.ROTATED_90, maxX);
+
+			int newX = this.getRotatedX (x, z, Building.ROTATED_90, maxX, maxZ);
+			int newZ = this.getRotatedZ (x, z, Building.ROTATED_90, maxX, maxZ);
+			
+			return this.getRotatedZ (newX, newZ, Building.ROTATED_90, maxX, maxZ);
 		}
 		if (rotate == Building.ROTATED_270) {
-			this.getRotatedX (this.getRotatedZ (x, z, Building.ROTATED_90, maxX), this.getRotatedZ (x, z, Building.ROTATED_90, maxX), Building.ROTATED_180, maxX);
+
+			int newX = this.getRotatedX (x, z, Building.ROTATED_180, maxX, maxZ);
+			int newZ = this.getRotatedZ (x, z, Building.ROTATED_180, maxX, maxZ);
+			
+			return this.getRotatedZ (newX, newZ, Building.ROTATED_90, maxX, maxZ);
 		}
 		return z;
 	}
@@ -701,7 +723,8 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			block instanceof BlockLadder ||
 			block instanceof BlockFurnace ||
 			block instanceof BlockChest ||
-			block instanceof BlockDispenser
+			block instanceof BlockDispenser ||
+			block instanceof BlockPistonBase
 		) {
 			
 			if (orientation == Unity.ORIENTATION_UP)    { metadata = (metadata & 0x8) + 2; } else 
@@ -729,7 +752,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			world.setBlockMetadataWithNotify(x, y, z, metadata, 2);
 			return;
 		}
-		
+
 		if (block instanceof BlockLever) {
 			
 

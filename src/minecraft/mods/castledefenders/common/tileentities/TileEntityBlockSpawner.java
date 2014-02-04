@@ -10,7 +10,7 @@ import net.minecraft.tileentity.TileEntity;
 public class TileEntityBlockSpawner extends TileEntity {
 	
 	// Le mob
-	private String mobID = "Pig";
+	private String mobID;
 	short delay = 30;
 	
 	
@@ -48,9 +48,10 @@ public class TileEntityBlockSpawner extends TileEntity {
 			double z = (double)this.zCoord + 0.5D;
 			EntityLiving entityLiving = entity instanceof EntityLiving ? (EntityLiving)entity : null;
 			entity.setLocationAndAngles(x, y, z, this.worldObj.rand.nextFloat() * 360.0F, this.worldObj.rand.nextFloat() * 360.0F);
+			this.worldObj.spawnEntityInWorld(entity);
+			
 			if (entityLiving == null || entityLiving.getCanSpawnHere()) {
 				
-				this.worldObj.spawnEntityInWorld(entity);
 				this.worldObj.playSoundEffect (this.xCoord, this.yCoord, this.zCoord, "dig.stone", 0.5F, this.worldObj.rand.nextFloat() * 0.25F + 0.6F);
 				
 				if (entityLiving != null) {
@@ -66,7 +67,10 @@ public class TileEntityBlockSpawner extends TileEntity {
 	@Override
 	public void readFromNBT(NBTTagCompound var1) {
 		super.readFromNBT(var1);
-		this.mobID = var1.getString("mobID");
+		String mobID = var1.getString("mobID");
+		if (!mobID.equals("")) {
+			this.mobID = mobID;
+		}		
 		this.delay = var1.getShort("delay");
 	}
 
@@ -76,6 +80,7 @@ public class TileEntityBlockSpawner extends TileEntity {
 	@Override
 	public void writeToNBT(NBTTagCompound var1) {
 		super.writeToNBT(var1);
+		String mobID = (this.mobID != null) ?this.mobID : "";
 		var1.setString("mobID", mobID);
 		var1.setShort("delay", delay);
 	}

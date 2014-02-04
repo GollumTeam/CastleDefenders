@@ -211,7 +211,7 @@
     
             {
             
-                "3x7x3": { "block": "net.minecraft.block.Block|mobSpawner" },
+                "3x8x3": { "block": "net.minecraft.block.Block|mobSpawner" },
                 "3x7x19": {
                     "block": "net.minecraft.block.Block|chest",
                     "orientation":"up",
@@ -287,7 +287,7 @@
              },
              {
                 
-                "23x7x11": { "block": "net.minecraft.block.Block|mobSpawner" },
+                "23x8x11": { "block": "net.minecraft.block.Block|mobSpawner" },
                 "3x7x3": {
                     "block": "net.minecraft.block.Block|chest",
                     "orientation":"right",
@@ -363,7 +363,7 @@
             },
             {
                 
-                "3x7x19": { "block": "net.minecraft.block.Block|mobSpawner" },
+                "3x8x19": { "block": "net.minecraft.block.Block|mobSpawner" },
                 "23x7x11": {
                     "block": "net.minecraft.block.Block|chest",
                     "orientation":"right",

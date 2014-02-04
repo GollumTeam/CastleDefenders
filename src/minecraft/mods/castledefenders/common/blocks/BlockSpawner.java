@@ -12,7 +12,6 @@ public class BlockSpawner extends BlockContainer {
 
 	public BlockSpawner(int id) {
 		super(id, Material.air);
-		this.setCreativeTab(ModCastleDefenders.tabCastleDefenders);
 	}
 
 	@Override
