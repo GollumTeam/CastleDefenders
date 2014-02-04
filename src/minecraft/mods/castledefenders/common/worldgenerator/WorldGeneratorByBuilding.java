@@ -204,8 +204,8 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 		
 		
 		// test du Spawn global
-		int multiplicateur = 2;
-		if (random.nextInt((int)((Math.pow (10 , multiplicateur) * ((float)this.globalSpawnRate.size()) / 1.5))) < (Math.pow (Math.min (groupSpawnRate, 10) , multiplicateur)) ) {
+		float multiplicateur = 2;
+		if (random.nextInt((int)((Math.pow (10 , multiplicateur) * this.globalSpawnRate.size()))) < (Math.pow (Math.min (groupSpawnRate, 10) , multiplicateur)) ) {
 			
 			
 			if (!this.hasBuildingArround (chunkX, chunkZ)) {
@@ -224,7 +224,11 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 				
 				
 				//Test si on est sur de la terre (faudrais aps que le batiment vol)
-				if (world.getBlockId(initX + 3, initY, initZ + 3) == Block.grass.blockID) {
+				if (
+					world.getBlockId(initX + 3, initY++, initZ + 3) == Block.grass.blockID || 
+					world.getBlockId(initX + 3, initY++, initZ + 3) == Block.grass.blockID || 
+					world.getBlockId(initX + 3, initY++, initZ + 3) == Block.grass.blockID
+				) {
 					
 					// Auteur initiale du batiment 
 					initY += building.height + 1;
@@ -323,30 +327,18 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 					// Rempli en dessous du batiment pour pas que ca sois vide //
 					/////////////////////////////////////////////////////////////
 					
-					int maxYdown = 0;
-					
 					for (int x = 0; x < building.maxX; x++) {
 						for (int z = 0; z < building.maxZ; z++) {
-							
-							int y = -1;
+							for (int y = -1; true; y--) {
 							int finalX = initX + x;
 							int finalY = initY + y;
 							int finalZ = initZ + z;
-							// recherche la profondeur maxi de Y
-							while (
-								world.getBlockId(finalX, finalY, finalZ) != Block.grass.blockID &&
-								world.getBlockId(finalX, finalY, finalZ) != Block.stone.blockID &&
-								world.getBlockId(finalX, finalY, finalZ) != Block.dirt.blockID &&
-								world.getBlockId(finalX, finalY, finalZ) != Block.bedrock.blockID &&
-								finalY > 0
-							){
-								
-								maxYdown = Math.min (maxYdown, y);
-								
-								y--;
 								finalX = initX + x;
 								finalY = initY + y;
 								finalZ = initZ + z;
+								if (!placeUnderBlock (world, finalX, finalY, finalZ, y)) {
+									break;
+								}
 							}
 						}
 					}
@@ -356,8 +348,9 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 					///////////////////////////////////////////////////////////////////////////////
 					
 					// Les bords
-					for (int x = -1 ; x >= -4; x--) {
-						for (int z = 0; z < building.maxZ; z++) {
+					for (int z = 0; z < building.maxZ; z++) {
+						for (int x = -1 ; x >= -4; x--) {
+							boolean first = true;
 							for (int y = -1; true; y--) {
 								
 								if (x < y) {
@@ -367,16 +360,21 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 								int finalX = initX + x;
 								int finalY = initY + y - building.height - 1;
 								int finalZ = initZ + z;
-								if (!placeEscalier (world, finalX, finalY, finalZ, y)) {
+								if (!placeUnderBlock (world, finalX, finalY, finalZ, y)) {
 									break;
 								}
+								first = false;
+							}
+							if (first) {
+								break;
 							}
 						}
 					}
-					
-					for (int x = building.maxX ; x < building.maxX+4; x++) {
-						for (int z = 0; z < building.maxZ; z++) {
+					for (int z = 0; z < building.maxZ; z++) {
+						for (int x = building.maxX ; x < building.maxX+4; x++) {
+							boolean first = true;
 							for (int y = -1; true; y--) {
+								
 								if (building.maxX - x <= y) {
 									continue;
 								}
@@ -384,14 +382,19 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 								int finalX = initX + x;
 								int finalY = initY + y - building.height - 1;
 								int finalZ = initZ + z;
-								if (!placeEscalier (world, finalX, finalY, finalZ, y)) {
+								if (!placeUnderBlock (world, finalX, finalY, finalZ, y)) {
 									break;
 								}
+								first = false;
+							}
+							if (first) {
+								break;
 							}
 						}
 					}
-					for (int z = -1 ; z >= -4; z--) {
-						for (int x = 0; x < building.maxX; x++) {
+					for (int x = 0; x < building.maxX; x++) {
+						for (int z = -1 ; z >= -4; z--) {
+							boolean first = true;
 							for (int y = -1; true; y--) {
 								
 								if (z < y) {
@@ -401,15 +404,21 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 								int finalX = initX + x;
 								int finalY = initY + y - building.height - 1;
 								int finalZ = initZ + z;
-								if (!placeEscalier (world, finalX, finalY, finalZ, y)) {
+								if (!placeUnderBlock (world, finalX, finalY, finalZ, y)) {
 									break;
 								}
+								first = false;
+							}
+							if (first) {
+								break;
 							}
 						}
 					}
-					for (int z = building.maxZ ; z < building.maxZ+4; z++) {
-						for (int x = 0; x < building.maxX; x++) {
+					for (int x = 0; x < building.maxX; x++) {
+						for (int z = building.maxZ ; z < building.maxZ+4; z++) {
+							boolean first = true;
 							for (int y = -1; true; y--) {
+								
 								if (building.maxZ - z <= y) {
 									continue;
 								}
@@ -417,12 +426,17 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 								int finalX = initX + x;
 								int finalY = initY + y - building.height - 1;
 								int finalZ = initZ + z;
-								if (!placeEscalier (world, finalX, finalY, finalZ, y)) {
+								if (!placeUnderBlock (world, finalX, finalY, finalZ, y)) {
 									break;
 								}
+								first = false;
+							}
+							if (first) {
+								break;
 							}
 						}
 					}
+					
 					// Les angles
 					for (int x = -1 ; x >= -4; x--) {
 						for (int z = -1 ; z >= -4; z--) {
@@ -433,7 +447,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 								int finalX = initX + x;
 								int finalY = initY + y - building.height - 1;
 								int finalZ = initZ + z;
-								if (!placeEscalier (world, finalX, finalY, finalZ, y)) {
+								if (!placeUnderBlock (world, finalX, finalY, finalZ, y)) {
 									break;
 								}
 							}
@@ -448,7 +462,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 								int finalX = initX + x;
 								int finalY = initY + y - building.height - 1;
 								int finalZ = initZ + z;
-								if (!placeEscalier (world, finalX, finalY, finalZ, y)) {
+								if (!placeUnderBlock (world, finalX, finalY, finalZ, y)) {
 									break;
 								}
 							}
@@ -463,7 +477,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 								int finalX = initX + x;
 								int finalY = initY + y - building.height - 1;
 								int finalZ = initZ + z;
-								if (!placeEscalier (world, finalX, finalY, finalZ, y)) {
+								if (!placeUnderBlock (world, finalX, finalY, finalZ, y)) {
 									break;
 								}
 							}
@@ -478,52 +492,12 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 								int finalX = initX + x;
 								int finalY = initY + y - building.height - 1;
 								int finalZ = initZ + z;
-								if (!placeEscalier (world, finalX, finalY, finalZ, y)) {
+								if (!placeUnderBlock (world, finalX, finalY, finalZ, y)) {
 									break;
 								}
 							}
 						}
 					}
-//					
-//					// Crée un escalier sur les block de remplissage pour que ca sois plus jolie
-//					for (int y = maxYdown; y < 0; y++) {
-//						
-//						// Les escalier sont au minimum de 4
-//						int yMin = Math.max (y, -3);
-//						
-//						for (int x = yMin ; x < building.maxX + (-yMin); x++) {
-//							for (int z = yMin; z < building.maxZ + (-yMin); z++) {
-//								int finalX = initX + x;
-//								int finalY = initY + y;
-//								int finalZ = initZ + z;
-//								
-//								
-//								// Fait des escalier sans angles
-//								if (x < 0 && z < 0                           && Math.abs(x)                 + Math.abs(z)                 >= Math.abs(yMin) + 1) { continue; }
-//								if (x < 0 && z >= building.maxZ              && Math.abs(x)                 + Math.abs(z - building.maxZ) >= Math.abs(yMin))     { continue; }
-//								if (z < 0 && x >= building.maxX              && Math.abs(z)                 + Math.abs(x - building.maxX) >= Math.abs(yMin))     { continue; }
-//								if (x >= building.maxX && z >= building.maxZ && Math.abs(x - building.maxX) + Math.abs(z - building.maxZ) >= Math.abs(yMin) - 1) { continue; }
-//								
-//								if (
-//									world.getBlockId(finalX, finalY, finalZ) != Block.grass.blockID   &&
-//									world.getBlockId(finalX, finalY, finalZ) != Block.stone.blockID   &&
-//									world.getBlockId(finalX, finalY, finalZ) != Block.dirt.blockID    &&
-//									world.getBlockId(finalX, finalY, finalZ) != Block.bedrock.blockID &&
-//									finalY > 0
-//								) {
-//									if (
-//										y > -4
-//									) {
-//										world.setBlock(finalX, finalY, finalZ, Block.grass.blockID, 0, 2);
-//									} else {
-//										world.setBlock(finalX, finalY, finalZ, Block.stone.blockID, 0, 2);
-//									}
-//								}
-//							}
-//						}
-//						
-//					}
-					
 					
 					// /////////////////////
 					// Notifie les blocks //
@@ -548,7 +522,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 	/**
 	 * Place des escalier
 	 */
-	private boolean placeEscalier (World world, int finalX, int finalY, int finalZ, int profondeur) {
+	private boolean placeUnderBlock (World world, int finalX, int finalY, int finalZ, int profondeur) {
 		if (
 			world.getBlockId(finalX, finalY, finalZ) != Block.grass.blockID   &&
 			world.getBlockId(finalX, finalY, finalZ) != Block.stone.blockID   &&
@@ -666,15 +640,20 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 				
 				String command = ""; try { command = extra.get("command"); } catch (Exception e) {} command = (command != null) ? command : "";
 				
-				ModCastleDefenders.log.info("command : "+command);
 				
 				int varX = 0; try { varX = Integer.parseInt(extra.get("x")); } catch (Exception e) {}
 				int varY = 0; try { varY = Integer.parseInt(extra.get("y")); } catch (Exception e) {}
 				int varZ = 0; try { varZ = Integer.parseInt(extra.get("z")); } catch (Exception e) {}
 
+				ModCastleDefenders.log.info("json x : "+varX);
+				ModCastleDefenders.log.info("json y : "+varY);
+				ModCastleDefenders.log.info("json z : "+varZ);
+				
 				command = command.replace("{$x}", ""+(this.getRotatedX(x, z, rotate, maxX, maxZ) + initX));
 				command = command.replace("{$y}", ""+ (y + initY));
 				command = command.replace("{$z}", ""+(this.getRotatedZ(x, z, rotate, maxX, maxZ) + initZ));
+				
+				ModCastleDefenders.log.info("command : "+command);
 				
 				((TileEntityCommandBlock) te).setCommand(command);
 				

@@ -64,7 +64,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "CastleDefenders", name = "Castle Defenders", version = "3.0.0DEV [Build Smeagol]", acceptedMinecraftVersions = "1.6.4")
+@Mod(modid = "CastleDefenders", name = "Castle Defenders", version = "3.0.0DEV2 [Build Smeagol]", acceptedMinecraftVersions = "1.6.4")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 public class ModCastleDefenders {
 	
@@ -134,18 +134,18 @@ public class ModCastleDefenders {
 	
 	// Ratio de building entre les batiments d'un meme type
 	@ConfigProp(group = "Spawn rate between mercenary building")
-	public static int mercenaryBuilding1SpawnRate = 14;
+	public static int mercenaryBuilding1SpawnRate = 7;
 	@ConfigProp(group = "Spawn rate between mercenary building")
-	public static int mercenaryBuilding2SpawnRate = 16;
+	public static int mercenaryBuilding2SpawnRate = 7;
 	@ConfigProp(group = "Spawn rate between mercenary building")
 	public static int mercenaryBuilding3SpawnRate = 1;
 	@ConfigProp(group = "Spawn rate between mercenary building")
 	public static int mercenaryBuilding4SpawnRate = 1;
 	
 	@ConfigProp(group = "Spawn rate between castle building")
-	public static int castleBuilding1SpawnRate = 1;
+	public static int castleBuilding1SpawnRate = 5;
 	@ConfigProp(group = "Spawn rate between castle building")
-	public static int castleBuilding2SpawnRate = 1;
+	public static int castleBuilding2SpawnRate = 5;
 	@ConfigProp(group = "Spawn rate between castle building")
 	public static int castleBuilding3SpawnRate = 1;
 	@ConfigProp(group = "Spawn rate between castle building")
@@ -357,21 +357,17 @@ public class ModCastleDefenders {
 		int idGroupCastle    = worldGeneratorByBuilding.addGroup (this.castleSpawnRate);
 		
 		// Ajout des batiments
-//		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary1, this.mercenaryBuilding1SpawnRate);
-//		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary2, this.mercenaryBuilding2SpawnRate);
+		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary1, this.mercenaryBuilding1SpawnRate);
+		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary2, this.mercenaryBuilding2SpawnRate);
 		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary3, this.mercenaryBuilding3SpawnRate);
 		worldGeneratorByBuilding.addBuilding (idGroupMercenary, this.buildingMercenary4, this.mercenaryBuilding4SpawnRate);
 		
-//		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle1, this.castleBuilding1SpawnRate);
-//		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle2, this.castleBuilding2SpawnRate);
-//		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle3, this.castleBuilding3SpawnRate);
+		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle1, this.castleBuilding1SpawnRate);
+		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle2, this.castleBuilding2SpawnRate);
+		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle3, this.castleBuilding3SpawnRate);
 		worldGeneratorByBuilding.addBuilding (idGroupCastle, this.buildingCastle4, this.castleBuilding4SpawnRate);
 		
 		// Enregistrement du worldgenerator mercenary
-		
-		
-//		MinecraftForge.EVENT_BUS.register(worldGeneratorByBuilding);
-		
 		GameRegistry.registerWorldGenerator (worldGeneratorByBuilding);
 	}
 	

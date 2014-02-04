@@ -18,8 +18,8 @@
 	"sets": {
 		
 		
-		"5x8x9": { "block": "net.minecraft.block.Block|doorIron", "metadata": 0, "orientation":"down" },
-		"5x9x9": { "block": "net.minecraft.block.Block|doorIron", "metadata": 8, "orientation":"down" },
+		"5x8x9": { "block": "net.minecraft.block.Block|doorIron", "metadata": 0, "orientation":"right" },
+		"5x9x9": { "block": "net.minecraft.block.Block|doorIron", "metadata": 8, "orientation":"right" },
 		"4x9x10": { "block": "net.minecraft.block.Block|stoneButton", "orientation":"right" },
 		"6x9x10": { "block": "net.minecraft.block.Block|stoneButton", "orientation":"left" },
 		

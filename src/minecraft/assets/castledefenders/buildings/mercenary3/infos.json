@@ -1,4 +1,6 @@
 {
+	"height": -9,
+	
 	"color" : [
 		{ "block": "net.minecraft.block.Block|dirt" },
 		{ "block": "net.minecraft.block.Block|mycelium" },
