@@ -349,44 +349,179 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 							}
 						}
 					}
-					// Crée un escalier sur les block de remplissage pour que ca sois plus jolie
-					for (int y = maxYdown; y < 0; y++) {
-						
-						// Les escalier sont au minimum de 4
-						int yMin = Math.max (y, -3);
-						
-						for (int x = yMin ; x < building.maxX + (-yMin); x++) {
-							for (int z = yMin; z < building.maxZ + (-yMin); z++) {
+
+					///////////////////////////////////////////////////////////////////////////////
+					// Crée un escalier sur les block de remplissage pour que ca sois plus jolie //
+					///////////////////////////////////////////////////////////////////////////////
+					
+					// Les bords
+					for (int x = -1 ; x >= -4; x--) {
+						for (int z = 0; z < building.maxZ; z++) {
+							for (int y = -1; true; y--) {
+								
+								if (x < y) {
+									continue;
+								}
+								
 								int finalX = initX + x;
-								int finalY = initY + y;
+								int finalY = initY + y - building.height - 1;
 								int finalZ = initZ + z;
-								
-								
-								// Fait des escalier sans angles
-								if (x < 0 && z < 0                           && Math.abs(x)                 + Math.abs(z)                 >= Math.abs(yMin) + 1) { continue; }
-								if (x < 0 && z >= building.maxZ              && Math.abs(x)                 + Math.abs(z - building.maxZ) >= Math.abs(yMin))     { continue; }
-								if (z < 0 && x >= building.maxX              && Math.abs(z)                 + Math.abs(x - building.maxX) >= Math.abs(yMin))     { continue; }
-								if (x >= building.maxX && z >= building.maxZ && Math.abs(x - building.maxX) + Math.abs(z - building.maxZ) >= Math.abs(yMin) - 1) { continue; }
-								
-								if (
-									world.getBlockId(finalX, finalY, finalZ) != Block.grass.blockID &&
-									world.getBlockId(finalX, finalY, finalZ) != Block.stone.blockID&&
-									world.getBlockId(finalX, finalY, finalZ) != Block.dirt.blockID &&
-									world.getBlockId(finalX, finalY, finalZ) != Block.bedrock.blockID &&
-									finalY > 0
-								) {
-									if (
-										y > -4
-									) {
-										world.setBlock(finalX, finalY, finalZ, Block.grass.blockID, 0, 2);
-									} else {
-										world.setBlock(finalX, finalY, finalZ, Block.stone.blockID, 0, 2);
-									}
+								if (!placeEscalier (world, finalX, finalY, finalZ, y)) {
+									break;
 								}
 							}
 						}
-						
 					}
+					
+					for (int x = building.maxX ; x < building.maxX+4; x++) {
+						for (int z = 0; z < building.maxZ; z++) {
+							for (int y = -1; true; y--) {
+								if (building.maxX - x <= y) {
+									continue;
+								}
+								
+								int finalX = initX + x;
+								int finalY = initY + y - building.height - 1;
+								int finalZ = initZ + z;
+								if (!placeEscalier (world, finalX, finalY, finalZ, y)) {
+									break;
+								}
+							}
+						}
+					}
+					for (int z = -1 ; z >= -4; z--) {
+						for (int x = 0; x < building.maxX; x++) {
+							for (int y = -1; true; y--) {
+								
+								if (z < y) {
+									continue;
+								}
+								
+								int finalX = initX + x;
+								int finalY = initY + y - building.height - 1;
+								int finalZ = initZ + z;
+								if (!placeEscalier (world, finalX, finalY, finalZ, y)) {
+									break;
+								}
+							}
+						}
+					}
+					for (int z = building.maxZ ; z < building.maxZ+4; z++) {
+						for (int x = 0; x < building.maxX; x++) {
+							for (int y = -1; true; y--) {
+								if (building.maxZ - z <= y) {
+									continue;
+								}
+								
+								int finalX = initX + x;
+								int finalY = initY + y - building.height - 1;
+								int finalZ = initZ + z;
+								if (!placeEscalier (world, finalX, finalY, finalZ, y)) {
+									break;
+								}
+							}
+						}
+					}
+					// Les angles
+					for (int x = -1 ; x >= -4; x--) {
+						for (int z = -1 ; z >= -4; z--) {
+							for (int y = -1; true; y--) {
+								if (Math.abs(x) + Math.abs(z) >= Math.abs(y) + 1) { continue; }
+								if (Math.abs(x) + Math.abs(z) >= 5) { break; }
+								
+								int finalX = initX + x;
+								int finalY = initY + y - building.height - 1;
+								int finalZ = initZ + z;
+								if (!placeEscalier (world, finalX, finalY, finalZ, y)) {
+									break;
+								}
+							}
+						}
+					}
+					for (int x = -1 ; x >= -4; x--) {
+						for (int z = building.maxZ ; z < building.maxZ+4; z++) {
+							for (int y = -1; true; y--) {
+								if (Math.abs(x) + Math.abs(z - building.maxZ) >= Math.abs(y)) { continue; }
+								if (Math.abs(x) + Math.abs(z - building.maxZ) >= 4) { break; }
+								
+								int finalX = initX + x;
+								int finalY = initY + y - building.height - 1;
+								int finalZ = initZ + z;
+								if (!placeEscalier (world, finalX, finalY, finalZ, y)) {
+									break;
+								}
+							}
+						}
+					}
+					for (int x = building.maxX ; x < building.maxX+4; x++) {
+						for (int z = -1 ; z >= -4; z--) {
+							for (int y = -1; true; y--) {
+								if (Math.abs(x - building.maxX) + Math.abs(z) >= Math.abs(y)) { continue; }
+								if (Math.abs(x - building.maxX) + Math.abs(z) >= 4) { break; }
+								
+								int finalX = initX + x;
+								int finalY = initY + y - building.height - 1;
+								int finalZ = initZ + z;
+								if (!placeEscalier (world, finalX, finalY, finalZ, y)) {
+									break;
+								}
+							}
+						}
+					}
+					for (int x = building.maxX ; x < building.maxX+4; x++) {
+						for (int z = building.maxZ ; z < building.maxZ+4; z++) {
+							for (int y = -1; true; y--) {
+								if (Math.abs(x - building.maxX) + Math.abs(z - building.maxZ) >= Math.abs(y) - 1) { continue; }
+								if (Math.abs(x - building.maxX) + Math.abs(z - building.maxZ) >= 3) { break; }
+								
+								int finalX = initX + x;
+								int finalY = initY + y - building.height - 1;
+								int finalZ = initZ + z;
+								if (!placeEscalier (world, finalX, finalY, finalZ, y)) {
+									break;
+								}
+							}
+						}
+					}
+//					
+//					// Crée un escalier sur les block de remplissage pour que ca sois plus jolie
+//					for (int y = maxYdown; y < 0; y++) {
+//						
+//						// Les escalier sont au minimum de 4
+//						int yMin = Math.max (y, -3);
+//						
+//						for (int x = yMin ; x < building.maxX + (-yMin); x++) {
+//							for (int z = yMin; z < building.maxZ + (-yMin); z++) {
+//								int finalX = initX + x;
+//								int finalY = initY + y;
+//								int finalZ = initZ + z;
+//								
+//								
+//								// Fait des escalier sans angles
+//								if (x < 0 && z < 0                           && Math.abs(x)                 + Math.abs(z)                 >= Math.abs(yMin) + 1) { continue; }
+//								if (x < 0 && z >= building.maxZ              && Math.abs(x)                 + Math.abs(z - building.maxZ) >= Math.abs(yMin))     { continue; }
+//								if (z < 0 && x >= building.maxX              && Math.abs(z)                 + Math.abs(x - building.maxX) >= Math.abs(yMin))     { continue; }
+//								if (x >= building.maxX && z >= building.maxZ && Math.abs(x - building.maxX) + Math.abs(z - building.maxZ) >= Math.abs(yMin) - 1) { continue; }
+//								
+//								if (
+//									world.getBlockId(finalX, finalY, finalZ) != Block.grass.blockID   &&
+//									world.getBlockId(finalX, finalY, finalZ) != Block.stone.blockID   &&
+//									world.getBlockId(finalX, finalY, finalZ) != Block.dirt.blockID    &&
+//									world.getBlockId(finalX, finalY, finalZ) != Block.bedrock.blockID &&
+//									finalY > 0
+//								) {
+//									if (
+//										y > -4
+//									) {
+//										world.setBlock(finalX, finalY, finalZ, Block.grass.blockID, 0, 2);
+//									} else {
+//										world.setBlock(finalX, finalY, finalZ, Block.stone.blockID, 0, 2);
+//									}
+//								}
+//							}
+//						}
+//						
+//					}
 					
 					
 					// /////////////////////
@@ -407,6 +542,28 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 				
 			}
 		}
+	}
+	
+	/**
+	 * Place des escalier
+	 */
+	private boolean placeEscalier (World world, int finalX, int finalY, int finalZ, int profondeur) {
+		if (
+			world.getBlockId(finalX, finalY, finalZ) != Block.grass.blockID   &&
+			world.getBlockId(finalX, finalY, finalZ) != Block.stone.blockID   &&
+			world.getBlockId(finalX, finalY, finalZ) != Block.dirt.blockID    &&
+			world.getBlockId(finalX, finalY, finalZ) != Block.bedrock.blockID &&
+			finalY > 0
+		) {
+			if (profondeur > -5) {
+				world.setBlock(finalX, finalY, finalZ, Block.grass.blockID, 0, 2);
+			} else {
+				world.setBlock(finalX, finalY, finalZ, Block.stone.blockID, 0, 2);
+			}
+			return true;
+		}
+		
+		return false;
 	}
 	
 	/**
