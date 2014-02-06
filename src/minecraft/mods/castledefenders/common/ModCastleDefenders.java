@@ -136,20 +136,20 @@ public class ModCastleDefenders {
 	@ConfigProp(group = "Spawn rate between mercenary building")
 	public static int mercenaryBuilding1SpawnRate = 7;
 	@ConfigProp(group = "Spawn rate between mercenary building")
-	public static int mercenaryBuilding2SpawnRate = 7;
+	public static int mercenaryBuilding2SpawnRate = 6;
 	@ConfigProp(group = "Spawn rate between mercenary building")
 	public static int mercenaryBuilding3SpawnRate = 1;
 	@ConfigProp(group = "Spawn rate between mercenary building")
 	public static int mercenaryBuilding4SpawnRate = 1;
 	
 	@ConfigProp(group = "Spawn rate between castle building")
-	public static int castleBuilding1SpawnRate = 5;
+	public static int castleBuilding1SpawnRate = 6;
 	@ConfigProp(group = "Spawn rate between castle building")
-	public static int castleBuilding2SpawnRate = 5;
+	public static int castleBuilding2SpawnRate = 6;
 	@ConfigProp(group = "Spawn rate between castle building")
-	public static int castleBuilding3SpawnRate = 1;
+	public static int castleBuilding3SpawnRate = 3;
 	@ConfigProp(group = "Spawn rate between castle building")
-	public static int castleBuilding4SpawnRate = 1;
+	public static int castleBuilding4SpawnRate = 2;
 	
 	// Liste des constructions
 	private Building buildingMercenary1;
@@ -274,7 +274,7 @@ public class ModCastleDefenders {
 		LanguageRegistry.addName(this.blockHealer , "Mage Healer");
 		LanguageRegistry.addName(this.blockEKnight, "Enemy Knight Spawner");
 		LanguageRegistry.addName(this.blockEArcher, "Enemy Archer Spawner");
-//		LanguageRegistry.addName(this.blockEMage  , "Enemy Mage Spawner");
+		LanguageRegistry.addName(this.blockEMage  , "Enemy Mage Spawner");
 		
 	}
 	

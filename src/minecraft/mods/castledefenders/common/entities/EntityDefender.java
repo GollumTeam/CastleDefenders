@@ -3,6 +3,7 @@ package mods.castledefenders.common.entities;
 import java.util.List;
 
 import mods.castledefenders.common.ModCastleDefenders;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityCreature;
@@ -174,7 +175,10 @@ public abstract class EntityDefender extends EntityAnimal {
 		int x = MathHelper.floor_double(this.posX);
 		int y = MathHelper.floor_double(this.boundingBox.minY);
 		int z = MathHelper.floor_double(this.posZ);
+		
 		int idBlock = this.worldObj.getBlockId(x, y - 1, z);
+		int up1 = this.worldObj.getBlockId(x, y, z);
+		int up2 = this.worldObj.getBlockId(x, y + 1, z);
 		
 		List entityListBlockArround = this.worldObj.getEntitiesWithinAABB(
 			this.getClass(), 
@@ -187,7 +191,8 @@ public abstract class EntityDefender extends EntityAnimal {
 		return
 			idBlock == this.blockSpawnId &&
 			this.worldObj.checkNoEntityCollision(this.boundingBox) &&
-			this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).size() == 0 &&
+			(up1 == 0 || !Block.blocksList[up1].isCollidable()) &&
+			(up2 == 0 || !Block.blocksList[up2].isCollidable()) &&
 			entityListBlockArround.isEmpty();
 	}
 	

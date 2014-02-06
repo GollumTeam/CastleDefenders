@@ -23,6 +23,7 @@ import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockFurnace;
 import net.minecraft.block.BlockLadder;
 import net.minecraft.block.BlockLever;
+import net.minecraft.block.BlockMobSpawner;
 import net.minecraft.block.BlockPistonBase;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.BlockTorch;
@@ -37,6 +38,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.tileentity.TileEntityCommandBlock;
 import net.minecraft.tileentity.TileEntityDispenser;
+import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Facing;
 import net.minecraft.world.World;
@@ -205,7 +207,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 		
 		// test du Spawn global
 		float multiplicateur = 2;
-		if (random.nextInt((int)((Math.pow (10 , multiplicateur) * this.globalSpawnRate.size()))) < (Math.pow (Math.min (groupSpawnRate, 10) , multiplicateur)) ) {
+		if (random.nextInt((int)((Math.pow (10 , multiplicateur) * ((float)this.globalSpawnRate.size())/1.5f))) < (Math.pow (Math.min (groupSpawnRate, 10) , multiplicateur)) ) {
 			
 			
 			if (!this.hasBuildingArround (chunkX, chunkZ)) {
@@ -213,7 +215,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 				// Position initial de la génération en hauteur
 				int worldY = 64;
 				int rotate = random.nextInt(Building.ROTATED_360);
-//				rotate = Building.ROTATED_0;
+//				rotate = Building.ROTATED_90;
 				Building building = this.getBuildingInRate (buildings, random).getRotatetedBuilding (rotate);
 				
 				// Position initiale du batiment
@@ -225,9 +227,7 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 				
 				//Test si on est sur de la terre (faudrais aps que le batiment vol)
 				if (
-					world.getBlockId(initX + 3, initY++, initZ + 3) == Block.grass.blockID || 
-					world.getBlockId(initX + 3, initY++, initZ + 3) == Block.grass.blockID || 
-					world.getBlockId(initX + 3, initY++, initZ + 3) == Block.grass.blockID
+					world.getBlockId(initX + 3, initY, initZ + 3) == Block.grass.blockID
 				) {
 					
 					// Auteur initiale du batiment 
@@ -644,15 +644,10 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 				int varX = 0; try { varX = Integer.parseInt(extra.get("x")); } catch (Exception e) {}
 				int varY = 0; try { varY = Integer.parseInt(extra.get("y")); } catch (Exception e) {}
 				int varZ = 0; try { varZ = Integer.parseInt(extra.get("z")); } catch (Exception e) {}
-
-				ModCastleDefenders.log.info("json x : "+varX);
-				ModCastleDefenders.log.info("json y : "+varY);
-				ModCastleDefenders.log.info("json z : "+varZ);
 				
-				command = command.replace("{$x}", ""+(this.getRotatedX(x, z, rotate, maxX, maxZ) + initX));
-				command = command.replace("{$y}", ""+ (y + initY));
-				command = command.replace("{$z}", ""+(this.getRotatedZ(x, z, rotate, maxX, maxZ) + initZ));
-				
+				command = command.replace("{$x}", ""+(this.getRotatedX(varX, varZ, rotate, maxX, maxZ) + initX));
+				command = command.replace("{$y}", ""+ (varY + initY));
+				command = command.replace("{$z}", ""+(this.getRotatedZ(varX, varZ, rotate, maxX, maxZ) + initZ));
 				ModCastleDefenders.log.info("command : "+command);
 				
 				((TileEntityCommandBlock) te).setCommand(command);
@@ -667,6 +662,16 @@ public class WorldGeneratorByBuilding implements IWorldGenerator {
 			if (te instanceof TileEntityBlockSpawner) {
 				String entity = ""; try { entity = extra.get("entity"); } catch (Exception e) {} entity = (entity != null) ? entity : "Chicken";
 				((TileEntityBlockSpawner) te).setModId (entity);
+			}
+		}
+		
+
+		if (block instanceof BlockMobSpawner) {
+
+			TileEntity te  = world.getBlockTileEntity (x, y, z);
+			if (te instanceof TileEntityMobSpawner) {
+				String entity = ""; try { entity = extra.get("entity"); } catch (Exception e) {} entity = (entity != null) ? entity : "Pigg";
+				((TileEntityMobSpawner) te).getSpawnerLogic().setMobID(entity);
 			}
 		}
 	}
