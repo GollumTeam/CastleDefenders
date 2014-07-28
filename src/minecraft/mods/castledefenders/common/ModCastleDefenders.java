@@ -61,7 +61,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "CastleDefenders", name = "Castle Defenders", version = "3.0.0DEV2 [Build Smeagol]", acceptedMinecraftVersions = "1.6.4", dependencies = "GollumCoreLib")
+@Mod(modid = "CastleDefenders", name = "Castle Defenders", version = "3.0.0DEV2 [Build Smeagol]", acceptedMinecraftVersions = "1.6.4", dependencies = "required-after:GollumCoreLib")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 public class ModCastleDefenders {
 	
@@ -179,7 +179,7 @@ public class ModCastleDefenders {
 		proxy.registerRenderers();
 		
 		// Creation du checker de version
-		VersionChecker.getInstance().check(this);
+		new VersionChecker().check(this);
 		
 		// Creation du tab creative
 		tabCastleDefenders = new GollumCreativeTabs("CastleDefender");

@@ -27,9 +27,9 @@
         { "block": "net.minecraft.block.Block|carpet", "metadata": 14 },
         { "block": "net.minecraft.block.Block|pressurePlatePlanks" },
         { "block": "net.minecraft.block.Block|glass" },
-        { "block": "mods.castledefenders.common.ModCastleDefenders|blockSpawner", "extra": {"entity": "Villager"} },
+        { "block": "mods.gollum.core.ModGollumCoreLib|blockSpawner", "extra": {"entity": "Villager"} },
         { "block": "net.minecraft.block.Block|redstoneWire" },
-        { "block": "mods.castledefenders.common.ModCastleDefenders|blockSpawner", "extra": {"entity": "Chicken"} },
+        { "block": "mods.gollum.core.ModGollumCoreLib|blockSpawner", "extra": {"entity": "Chicken"} },
         { "block": "net.minecraft.block.Block|stainedClay", "metadata": 14 }
         
 	],
