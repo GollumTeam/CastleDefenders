@@ -2,7 +2,6 @@ package mods.castledefenders.common;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
-import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import mods.castledefenders.common.blocks.BlockArcher;
@@ -16,9 +15,6 @@ import mods.castledefenders.common.blocks.BlockKnight;
 import mods.castledefenders.common.blocks.BlockKnight2;
 import mods.castledefenders.common.blocks.BlockMage;
 import mods.castledefenders.common.blocks.BlockMerc;
-import mods.castledefenders.common.blocks.BlockSpawner;
-import mods.castledefenders.common.building.Building;
-import mods.castledefenders.common.building.BuildingParser;
 import mods.castledefenders.common.entities.EntityArcher;
 import mods.castledefenders.common.entities.EntityArcher2;
 import mods.castledefenders.common.entities.EntityArcherM;
@@ -42,17 +38,18 @@ import mods.castledefenders.common.tileentities.TileEntityBlockKnight;
 import mods.castledefenders.common.tileentities.TileEntityBlockKnight2;
 import mods.castledefenders.common.tileentities.TileEntityBlockMage;
 import mods.castledefenders.common.tileentities.TileEntityBlockMerc;
-import mods.castledefenders.common.tileentities.TileEntityBlockSpawner;
-import mods.castledefenders.common.worldgenerator.WorldGeneratorByBuilding;
-import mods.castledefenders.utils.ConfigLoader;
-import mods.castledefenders.utils.ConfigProp;
-import mods.castledefenders.utils.VersionChecker;
+import mods.gollum.core.building.Building;
+import mods.gollum.core.building.BuildingParser;
+import mods.gollum.core.config.ConfigLoader;
+import mods.gollum.core.config.ConfigProp;
+import mods.gollum.core.creativetab.GollumCreativeTabs;
+import mods.gollum.core.version.VersionChecker;
+import mods.gollum.core.worldgenerator.WorldGeneratorByBuilding;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -64,7 +61,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "CastleDefenders", name = "Castle Defenders", version = "3.0.0DEV2 [Build Smeagol]", acceptedMinecraftVersions = "1.6.4")
+@Mod(modid = "CastleDefenders", name = "Castle Defenders", version = "3.0.0DEV3 [Build Smeagol]", acceptedMinecraftVersions = "1.6.4", dependencies = "required-after:GollumCoreLib")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 public class ModCastleDefenders {
 	
@@ -74,14 +71,11 @@ public class ModCastleDefenders {
 	@SidedProxy(clientSide = "mods.castledefenders.common.ClientProxyCastleDefenders", serverSide = "mods.castledefenders.common.CommonProxyCastleDefenders")
 	public static CommonProxyCastleDefenders proxy;
 	
-	@ConfigProp (info = "Display version checker message")
-	public static boolean versionChecker = true;
-	
 	// Gestion des logs
 	public static Logger log;
 	
 	// Tab du mode creative
-	public static CastleDefendersTabs tabCastleDefenders;
+	public static GollumCreativeTabs tabCastleDefenders;
 	
 	// Liste des blocks
 	public static Block blockKnight;
@@ -95,7 +89,6 @@ public class ModCastleDefenders {
 	public static Block blockEKnight;
 	public static Block blockEArcher;
 	public static Block blockEMage;
-	public static Block blockSpawner;
 	
 	// Liste des items
 	public static Item itemMedallion;
@@ -112,7 +105,6 @@ public class ModCastleDefenders {
 	@ConfigProp(group = "Blocks Ids") public static int blockEKnightID = 1237;
 	@ConfigProp(group = "Blocks Ids") public static int blockEArcherID = 1236;
 	@ConfigProp(group = "Blocks Ids") public static int blockEMageID   = 1233;
-	@ConfigProp(group = "Blocks Ids") public static int blockSpawnerID = 1243;
 	
 	@ConfigProp(group = "Items Ids") public static int medallionID    = 13001;
 	
@@ -187,10 +179,10 @@ public class ModCastleDefenders {
 		proxy.registerRenderers();
 		
 		// Creation du checker de version
-		VersionChecker.getInstance(this.versionChecker).check(this);
+		new VersionChecker().check(this);
 		
 		// Creation du tab creative
-		tabCastleDefenders = new CastleDefendersTabs("CastleDefender");
+		tabCastleDefenders = new GollumCreativeTabs("CastleDefender");
 		LanguageRegistry.instance().addStringLocalization("itemGroup.CastleDefender", "en_US", "Castle Defender");
 
 		//Initialisation des items
@@ -246,7 +238,6 @@ public class ModCastleDefenders {
 		this.blockEKnight = (new BlockEKnight(this.blockEKnightID)).setUnlocalizedName("BlockEKnight")  .setHardness(2.0F).setResistance(5.0F);
 		this.blockEArcher = (new BlockEArcher(this.blockEArcherID)).setUnlocalizedName("BlockEArcher")  .setHardness(2.0F).setResistance(5.0F);
 		this.blockEMage   = (new BlockEMage(this.blockEMageID))    .setUnlocalizedName("BlockEMage")    .setHardness(2.0F).setResistance(5.0F);
-		this.blockSpawner = (new BlockSpawner(this.blockSpawnerID)).setUnlocalizedName("CDBlockSpawner");
 		
 		
 		// Enregistrement des blocks
@@ -261,7 +252,6 @@ public class ModCastleDefenders {
 		GameRegistry.registerBlock(this.blockEKnight, "Enemy Knight Spawner");
 		GameRegistry.registerBlock(this.blockEArcher, "Enemy Archer Spawner");
 		GameRegistry.registerBlock(this.blockEMage  , "Enemy Mage Spawner");
-		GameRegistry.registerBlock(this.blockSpawner, "CDblockSpawner");
 		
 		// Nom des blocks
 		LanguageRegistry.addName(this.blockKnight , "Knight Spawner");
@@ -293,7 +283,6 @@ public class ModCastleDefenders {
 		GameRegistry.registerTileEntity(TileEntityBlockEKnight.class, "Enemy Knight Block");
 		GameRegistry.registerTileEntity(TileEntityBlockEArcher.class, "Enemy Archer Block");
 		GameRegistry.registerTileEntity(TileEntityBlockEMage.class  , "Enemy Mage Block");
-		GameRegistry.registerTileEntity(TileEntityBlockSpawner.class, "CastleDef:BlockSpawner");
 	}
 	
 	/**
@@ -335,14 +324,14 @@ public class ModCastleDefenders {
 	 */
 	private void initBuildings () throws Exception {
 		BuildingParser parser = new BuildingParser ();
-		this.buildingMercenary1 = parser.parse ("mercenary1");
-		this.buildingMercenary2 = parser.parse ("mercenary2");
-		this.buildingMercenary3 = parser.parse ("mercenary3");
-		this.buildingMercenary4 = parser.parse ("mercenary4");
-		this.buildingCastle1    = parser.parse ("castle1");
-		this.buildingCastle2    = parser.parse ("castle2");
-		this.buildingCastle3    = parser.parse ("castle3");
-		this.buildingCastle4    = parser.parse ("castle4");
+		this.buildingMercenary1 = parser.parse ("mercenary1", this.getModid());
+		this.buildingMercenary2 = parser.parse ("mercenary2", this.getModid());
+		this.buildingMercenary3 = parser.parse ("mercenary3", this.getModid());
+		this.buildingMercenary4 = parser.parse ("mercenary4", this.getModid());
+		this.buildingCastle1    = parser.parse ("castle1", this.getModid());
+		this.buildingCastle2    = parser.parse ("castle2", this.getModid());
+		this.buildingCastle3    = parser.parse ("castle3", this.getModid());
+		this.buildingCastle4    = parser.parse ("castle4", this.getModid());
 	}
 	
 	/**

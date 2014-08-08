@@ -4,239 +4,238 @@
 	"color" : [
 		{ "block": "net.minecraft.block.Block|grass" },
 		{ "block": "net.minecraft.block.Block|dirt" },
-        { "block": "net.minecraft.block.Block|stainedClay" },
-        { "block": "net.minecraft.block.Block|stainedClay", "metadata": 8 },
-        { "block": "net.minecraft.block.Block|brick" },
-        { "block": "net.minecraft.block.Block|stairsBrick", "orientation":"down" },
-        { "block": "net.minecraft.block.Block|stairsBrick", "orientation":"right" },
-        { "block": "net.minecraft.block.Block|stairsBrick", "orientation":"up" },
-        { "block": "net.minecraft.block.Block|stairsBrick", "orientation":"left" },
-        { "block": "net.minecraft.block.Block|torchWood", "orientation":"up" },
-        { "block": "net.minecraft.block.Block|torchWood", "orientation":"left" },
-        { "block": "net.minecraft.block.Block|torchWood", "orientation":"down" },
-        { "block": "net.minecraft.block.Block|torchWood", "orientation":"right" },
-        { "block": "net.minecraft.block.Block|cobblestone" },
-        { "block": "net.minecraft.block.Block|stoneSingleSlab", "metadata": 3 },
-        { "block": "net.minecraft.block.Block|stoneDoubleSlab", "metadata": 5 },
-        { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"up" },
-        { "block": "net.minecraft.block.Block|fence" },
-        { "block": "net.minecraft.block.Block|planks" },
-        { "block": "net.minecraft.block.Block|stairsWoodOak", "orientation": "left"},
-        { "block": "net.minecraft.block.Block|ladder", "orientation": "down" },
-        { "block": "net.minecraft.block.Block|bookShelf" },
-        { "block": "net.minecraft.block.Block|carpet", "metadata": 14 },
-        { "block": "net.minecraft.block.Block|pressurePlatePlanks" },
-        { "block": "net.minecraft.block.Block|glass" },
-        { "block": "mods.castledefenders.common.ModCastleDefenders|blockSpawner", "extra": {"entity": "Villager"} },
-        { "block": "net.minecraft.block.Block|redstoneWire" },
-        { "block": "mods.castledefenders.common.ModCastleDefenders|blockSpawner", "extra": {"entity": "Chicken"} },
-        { "block": "net.minecraft.block.Block|stainedClay", "metadata": 14 }
-        
+		{ "block": "net.minecraft.block.Block|stainedClay" },
+		{ "block": "net.minecraft.block.Block|stainedClay", "metadata": 8 },
+		{ "block": "net.minecraft.block.Block|brick" },
+		{ "block": "net.minecraft.block.Block|stairsBrick", "orientation":"down" },
+		{ "block": "net.minecraft.block.Block|stairsBrick", "orientation":"right" },
+		{ "block": "net.minecraft.block.Block|stairsBrick", "orientation":"up" },
+		{ "block": "net.minecraft.block.Block|stairsBrick", "orientation":"left" },
+		{ "block": "net.minecraft.block.Block|torchWood", "orientation":"up" },
+		{ "block": "net.minecraft.block.Block|torchWood", "orientation":"left" },
+		{ "block": "net.minecraft.block.Block|torchWood", "orientation":"down" },
+		{ "block": "net.minecraft.block.Block|torchWood", "orientation":"right" },
+		{ "block": "net.minecraft.block.Block|cobblestone" },
+		{ "block": "net.minecraft.block.Block|stoneSingleSlab", "metadata": 3 },
+		{ "block": "net.minecraft.block.Block|stoneDoubleSlab", "metadata": 5 },
+		{ "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"up" },
+		{ "block": "net.minecraft.block.Block|fence" },
+		{ "block": "net.minecraft.block.Block|planks" },
+		{ "block": "net.minecraft.block.Block|stairsWoodOak", "orientation": "left"},
+		{ "block": "net.minecraft.block.Block|ladder", "orientation": "down" },
+		{ "block": "net.minecraft.block.Block|bookShelf" },
+		{ "block": "net.minecraft.block.Block|carpet", "metadata": 14 },
+		{ "block": "net.minecraft.block.Block|pressurePlatePlanks" },
+		{ "block": "net.minecraft.block.Block|glass" },
+		{ "block": "mods.gollum.core.ModGollumCoreLib|blockSpawner", "extra": {"entity": "Villager"} },
+		{ "block": "net.minecraft.block.Block|redstoneWire" },
+		{ "block": "mods.gollum.core.ModGollumCoreLib|blockSpawner", "extra": {"entity": "Chicken"} },
+		{ "block": "net.minecraft.block.Block|stainedClay", "metadata": 14 }
+		
 	],
-    "sets": {
-         
-        "16x3x22": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"left" },
-        "16x3x23": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"left" },
-        "16x3x24": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"left" },
-        "17x2x22": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"left" },
-        "17x2x23": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"left" },
-        "17x2x24": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"left" },
-        "25x2x20": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"right" },
-        "24x2x21": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"right" },
-        "24x2x22": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"right" },
-        "24x2x23": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"right" },
-        "24x2x24": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"right" },
-        "24x2x25": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"right" },
-        "25x3x23": { "block": "net.minecraft.block.Block|stairsNetherQuartz", "orientation": "right", "metadata": 4 },
-        "25x3x22": { "block": "net.minecraft.block.Block|stairsNetherQuartz", "orientation": "down", "metadata": 4 },
-        "25x3x24": { "block": "net.minecraft.block.Block|stairsNetherQuartz", "orientation": "up", "metadata": 4 },
-        
-        "8x2x16": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"right" },
-        "7x2x16": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"right" },
-        "8x4x16": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"right" },
-        "7x4x16": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"right" },
-        "4x2x14": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"left" },
-        "5x2x14": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"left" },
-        "4x2x11": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"left" },
-        "5x2x11": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"left" },
-        "9x2x5": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"left" },
-        "10x2x5": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"left" },
-        "9x4x5": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"left" },
-        "10x4x5": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"left" },
-        "6x2x6": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"up" },
-        "6x2x7": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"up" },
-        "8x2x6": { "block": "net.minecraft.block.Block|ladder", "orientation": "up" },
-        "8x3x6": { "block": "net.minecraft.block.Block|ladder", "orientation": "up" },
-        "8x4x6": { "block": "net.minecraft.block.Block|ladder", "orientation": "up" },
-        "10x6x10": { "block": "net.minecraft.block.Block|torchWood" },
-        "11x6x11": { "block": "net.minecraft.block.Block|torchWood" },
-        "10x6x12": { "block": "net.minecraft.block.Block|torchWood" },
-        "9x6x11": { "block": "net.minecraft.block.Block|torchWood" },
-        
-        "8x12x13": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"left" },
-        "8x13x13": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"left" },
-        "7x12x12": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"down" },
-        "7x13x12": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"down" },
-        "11x12x16": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"down" },
-        "11x13x16": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"down" },
-        "14x12x12": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"right" },
-        "14x13x12": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"right" },
-        "6x12x8": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
-        "6x13x8": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
-        "9x12x7": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
-        "9x13x7": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
-        "12x12x8": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
-        "12x13x8": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
-        "22x6x10": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"down" },
-        "22x7x10": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"down" },
-        "23x6x10": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"down" },
-        "23x7x10": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 9, "orientation":"down" },
-        
-        "9x12x11": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"right" },
-        "8x12x11": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"right" },
-        "12x12x15": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"down" },
-        "12x12x14": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"down" },
-        "14x2x5": { "block": "net.minecraft.block.Block|pistonStickyBase", "orientation":"right" },
-        "14x3x5": { "block": "net.minecraft.block.Block|pistonStickyBase", "orientation":"right" },
-        "12x3x7": { "block": "net.minecraft.block.Block|stoneButton", "orientation":"right" },
-        
-        
-        
-        "7x3x25": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"right" },
-        "7x4x25": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"right" },
-        "7x8x25": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"right" },
-        "7x9x25": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"right" },
-        "4x8x21": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
-        "4x9x21": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
-        "3x8x28": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"down" },
-        "3x9x28": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"down" },
-        
-        "25x8x11": { "block": "net.minecraft.block.Block|stoneSingleSlab", "metadata": 2 },
-        "25x8x12": { "block": "net.minecraft.block.Block|stoneSingleSlab", "metadata": 2 },
-        "25x8x13": { "block": "net.minecraft.block.Block|stoneSingleSlab", "metadata": 2 },
-        "25x8x14": { "block": "net.minecraft.block.Block|stoneSingleSlab", "metadata": 2 },
-        "25x8x15": { "block": "net.minecraft.block.Block|stoneSingleSlab", "metadata": 2 },
-        "25x8x16": { "block": "net.minecraft.block.Block|stoneSingleSlab", "metadata": 2 },
-        "3x2x24": { "block": "net.minecraft.block.Block|lavaStill" },
-        "3x3x24": { "block": "net.minecraft.block.Block|fenceIron" },
-        "3x3x25": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "up", "metadata": 4 },
-        "4x3x24": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "left", "metadata": 4 },
-        "3x3x23": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "down", "metadata": 4 },
-        "2x3x24": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "right", "metadata": 4 },
-        "3x8x24": { "block": "net.minecraft.block.Block|workbench" },
-        "2x8x25": { "block": "net.minecraft.block.Block|furnaceIdle" },
-        
-        "26x2x23": { "block": "mods.castledefenders.common.ModCastleDefenders|blockHealer" },
-        "9x1x8": { "block": "mods.castledefenders.common.ModCastleDefenders|blockHealer" },
-        "10x1x13": { "block": "mods.castledefenders.common.ModCastleDefenders|blockHealer" },
-        "9x7x5": { "block": "mods.castledefenders.common.ModCastleDefenders|blockHealer" },
-        "5x7x19": { "block": "mods.castledefenders.common.ModCastleDefenders|blockArcher2" },
-        "9x7x18": { "block": "mods.castledefenders.common.ModCastleDefenders|blockArcher2" },
-        "25x9x11": { "block": "mods.castledefenders.common.ModCastleDefenders|blockArcher2" },
-        "6x11x13": { "block": "mods.castledefenders.common.ModCastleDefenders|blockKnight2" },
-        "25x11x7": { "block": "net.minecraft.block.Block|enchantmentTable" },
-        
-        "4x3x27": {
-            "block": "net.minecraft.block.Block|chest",
-            "orientation":"up",
-            "contents": [
-                        
-                [
-                    { "element": "net.minecraft.item.Item|plateLeather" },
-                    { "element": "net.minecraft.item.Item|plateIron" },
-                    { "element": "net.minecraft.item.Item|ingotIron", "min":2, "max":4 },
-                    { "element": "net.minecraft.item.Item|leather", "min":2, "max":4 },
-                    { "element": "net.minecraft.item.Item|legsIron" },
-                    { "element": "net.minecraft.item.Item|legsLeather" },
-                    { "element": "net.minecraft.item.Item|shovelIron" },
-                    { "element": "net.minecraft.item.Item|stick", "min":1, "max":3 },
-                    { "element": "net.minecraft.item.Item|coal", "min":3, "max":9 },
-                    { "element": "net.minecraft.item.Item|wheat", "min":3, "max":5 }
-                ],
-                [
-                    { "element": "net.minecraft.item.Item|cookie" },
-                    { "element": "net.minecraft.item.Item|chickenRaw" },
-                    { "element": "net.minecraft.item.Item|melon", "min":1, "max":3 }
-                ]
-            ]
-        },
-        "5x3x27": { "block": "net.minecraft.block.Block|chest", "orientation":"up" },
-        "4x8x27": {
-            "block": "net.minecraft.block.Block|chest",
-            "orientation":"up",
-            "contents": [
-                        
-                [
-                    { "element": "net.minecraft.item.Item|plateLeather" },
-                    { "element": "net.minecraft.item.Item|plateIron" },
-                    { "element": "net.minecraft.item.Item|ingotIron", "min":2, "max":4 },
-                    { "element": "net.minecraft.item.Item|leather", "min":2, "max":4 },
-                    { "element": "net.minecraft.item.Item|legsIron" },
-                    { "element": "net.minecraft.item.Item|legsLeather" },
-                    { "element": "net.minecraft.item.Item|shovelIron" },
-                    { "element": "net.minecraft.item.Item|stick", "min":1, "max":3 },
-                    { "element": "net.minecraft.item.Item|coal", "min":3, "max":9 },
-                    { "element": "net.minecraft.item.Item|wheat", "min":3, "max":5 }
-                ],
-                [
-                    { "element": "net.minecraft.item.Item|cookie" },
-                    { "element": "net.minecraft.item.Item|chickenRaw" },
-                    { "element": "net.minecraft.item.Item|melon", "min":1, "max":3 }
-                ]
-            ]
-        },
-        "5x8x27": { "block": "net.minecraft.block.Block|chest", "orientation":"up" },
-        "24x1x5": {
-            "block": "net.minecraft.block.Block|chest",
-            "orientation":"left",
-            "contents": [
-                        
-                [
-                    
-                    { "element": "net.minecraft.item.Item|paper", "min":2, "max":4 },
-                    { "element": "net.minecraft.item.Item|leather", "min":1, "max":3 },
-                    { "element": "net.minecraft.item.Item|dyePowder", "min":1, "max":3 },
-                    { "element": "net.minecraft.item.Item|bone", "min":2, "max":4 }
-                ],
-                [
-                    { "element": "net.minecraft.item.Item|writableBook" },
-                    { "element": "net.minecraft.item.Item|book" },
-                    { "element": "net.minecraft.item.Item|paper", "min":1, "max":3 }
-                ]
-            ]
-        },
-        "24x1x6": { "block": "net.minecraft.block.Block|chest", "orientation":"left" },
-        "21x11x6": {
-            "block": "net.minecraft.block.Block|chest",
-            "orientation":"right",
-            "contents": [
-                        
-                [
-                    
-                    { "element": "net.minecraft.item.Item|potion", "metadata":1 },
-                    { "element": "net.minecraft.item.Item|potion", "metadata":2 },
-                    { "element": "net.minecraft.item.Item|potion", "metadata":3 },
-                    { "element": "net.minecraft.item.Item|potion", "metadata":5 },
-                    { "element": "net.minecraft.item.Item|potion", "metadata":6 },
-                    { "element": "net.minecraft.item.Item|potion", "metadata":9 },
-                    { "element": "net.minecraft.item.Item|potion", "metadata":12 }
-                ]
-            ]
-        },
-        "21x11x7": { "block": "net.minecraft.block.Block|chest", "orientation":"right" },
-        "18x2x2": {
-            "block": "net.minecraft.block.Block|chest",
-            "orientation":"left",
-            "contents": [
-                        
-                [{ "element": "net.minecraft.item.Item|potion", "metadata":5, "min":1, "max":3 }],
-                [{ "element": "net.minecraft.item.Item|ingotGold", "min":4, "max":7 }]
-            ]
-        }
-        
-        
-        
-    }
-    
+	"sets": {
+		 
+		"16x3x22": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"left" },
+		"16x3x23": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"left" },
+		"16x3x24": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"left" },
+		"17x2x22": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"left" },
+		"17x2x23": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"left" },
+		"17x2x24": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"left" },
+		"25x2x20": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"right" },
+		"24x2x21": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"right" },
+		"24x2x22": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"right" },
+		"24x2x23": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"right" },
+		"24x2x24": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"right" },
+		"24x2x25": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation":"right" },
+		"25x3x23": { "block": "net.minecraft.block.Block|stairsNetherQuartz", "orientation": "right", "metadata": 4 },
+		"25x3x22": { "block": "net.minecraft.block.Block|stairsNetherQuartz", "orientation": "down", "metadata": 4 },
+		"25x3x24": { "block": "net.minecraft.block.Block|stairsNetherQuartz", "orientation": "up", "metadata": 4 },
+		
+		"8x2x16": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"right" },
+		"7x2x16": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"right" },
+		"8x4x16": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"right" },
+		"7x4x16": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"right" },
+		"4x2x14": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"left" },
+		"5x2x14": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"left" },
+		"4x2x11": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"left" },
+		"5x2x11": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"left" },
+		"9x2x5": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"left" },
+		"10x2x5": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"left" },
+		"9x4x5": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"left" },
+		"10x4x5": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"left" },
+		"6x2x6": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"up" },
+		"6x2x7": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"up" },
+		"8x2x6": { "block": "net.minecraft.block.Block|ladder", "orientation": "up" },
+		"8x3x6": { "block": "net.minecraft.block.Block|ladder", "orientation": "up" },
+		"8x4x6": { "block": "net.minecraft.block.Block|ladder", "orientation": "up" },
+		"10x6x10": { "block": "net.minecraft.block.Block|torchWood" },
+		"11x6x11": { "block": "net.minecraft.block.Block|torchWood" },
+		"10x6x12": { "block": "net.minecraft.block.Block|torchWood" },
+		"9x6x11": { "block": "net.minecraft.block.Block|torchWood" },
+		
+		"8x12x13": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"left" },
+		"8x13x13": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"left" },
+		"7x12x12": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"down" },
+		"7x13x12": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"down" },
+		"11x12x16": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"down" },
+		"11x13x16": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"down" },
+		"14x12x12": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"right" },
+		"14x13x12": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"right" },
+		"6x12x8": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
+		"6x13x8": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
+		"9x12x7": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
+		"9x13x7": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
+		"12x12x8": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
+		"12x13x8": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
+		"22x6x10": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"down" },
+		"22x7x10": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"down" },
+		"23x6x10": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"down" },
+		"23x7x10": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 9, "orientation":"down" },
+		
+		"9x12x11": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"right" },
+		"8x12x11": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"right" },
+		"12x12x15": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"down" },
+		"12x12x14": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"down" },
+		"14x2x5": { "block": "net.minecraft.block.Block|pistonStickyBase", "orientation":"right" },
+		"14x3x5": { "block": "net.minecraft.block.Block|pistonStickyBase", "orientation":"right" },
+		"12x3x7": { "block": "net.minecraft.block.Block|stoneButton", "orientation":"right" },
+		
+		
+		
+		"7x3x25": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"right" },
+		"7x4x25": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"right" },
+		"7x8x25": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"right" },
+		"7x9x25": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"right" },
+		"4x8x21": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
+		"4x9x21": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
+		"3x8x28": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"down" },
+		"3x9x28": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"down" },
+		
+		"25x8x11": { "block": "net.minecraft.block.Block|stoneSingleSlab", "metadata": 2 },
+		"25x8x12": { "block": "net.minecraft.block.Block|stoneSingleSlab", "metadata": 2 },
+		"25x8x13": { "block": "net.minecraft.block.Block|stoneSingleSlab", "metadata": 2 },
+		"25x8x14": { "block": "net.minecraft.block.Block|stoneSingleSlab", "metadata": 2 },
+		"25x8x15": { "block": "net.minecraft.block.Block|stoneSingleSlab", "metadata": 2 },
+		"25x8x16": { "block": "net.minecraft.block.Block|stoneSingleSlab", "metadata": 2 },
+		"3x2x24": { "block": "net.minecraft.block.Block|lavaStill" },
+		"3x3x24": { "block": "net.minecraft.block.Block|fenceIron" },
+		"3x3x25": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "up", "metadata": 4 },
+		"4x3x24": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "left", "metadata": 4 },
+		"3x3x23": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "down", "metadata": 4 },
+		"2x3x24": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "right", "metadata": 4 },
+		"3x8x24": { "block": "net.minecraft.block.Block|workbench" },
+		"2x8x25": { "block": "net.minecraft.block.Block|furnaceIdle" },
+		
+		"26x2x23": { "block": "mods.castledefenders.common.ModCastleDefenders|blockHealer" },
+		"9x1x8": { "block": "mods.castledefenders.common.ModCastleDefenders|blockHealer" },
+		"10x1x13": { "block": "mods.castledefenders.common.ModCastleDefenders|blockHealer" },
+		"9x7x5": { "block": "mods.castledefenders.common.ModCastleDefenders|blockHealer" },
+		"5x7x19": { "block": "mods.castledefenders.common.ModCastleDefenders|blockArcher2" },
+		"9x7x18": { "block": "mods.castledefenders.common.ModCastleDefenders|blockArcher2" },
+		"25x9x11": { "block": "mods.castledefenders.common.ModCastleDefenders|blockArcher2" },
+		"6x11x13": { "block": "mods.castledefenders.common.ModCastleDefenders|blockKnight2" },
+		"25x11x7": { "block": "net.minecraft.block.Block|enchantmentTable" },
+		
+		"4x3x27": {
+			"block": "net.minecraft.block.Block|chest",
+			"orientation":"up",
+			"contents": [
+						
+				[
+					{ "element": "net.minecraft.item.Item|plateLeather" },
+					{ "element": "net.minecraft.item.Item|plateIron" },
+					{ "element": "net.minecraft.item.Item|ingotIron", "min":2, "max":4 },
+					{ "element": "net.minecraft.item.Item|leather", "min":2, "max":4 },
+					{ "element": "net.minecraft.item.Item|legsIron" },
+					{ "element": "net.minecraft.item.Item|legsLeather" },
+					{ "element": "net.minecraft.item.Item|shovelIron" },
+					{ "element": "net.minecraft.item.Item|stick", "min":1, "max":3 },
+					{ "element": "net.minecraft.item.Item|coal", "min":3, "max":9 },
+					{ "element": "net.minecraft.item.Item|wheat", "min":3, "max":5 }
+				],
+				[
+					{ "element": "net.minecraft.item.Item|cookie" },
+					{ "element": "net.minecraft.item.Item|chickenRaw" },
+					{ "element": "net.minecraft.item.Item|melon", "min":1, "max":3 }
+				]
+			]
+		},
+		"5x3x27": { "block": "net.minecraft.block.Block|chest", "orientation":"up" },
+		"4x8x27": {
+			"block": "net.minecraft.block.Block|chest",
+			"orientation":"up",
+			"contents": [
+						
+				[
+					{ "element": "net.minecraft.item.Item|plateLeather" },
+					{ "element": "net.minecraft.item.Item|plateIron" },
+					{ "element": "net.minecraft.item.Item|ingotIron", "min":2, "max":4 },
+					{ "element": "net.minecraft.item.Item|leather", "min":2, "max":4 },
+					{ "element": "net.minecraft.item.Item|legsIron" },
+					{ "element": "net.minecraft.item.Item|legsLeather" },
+					{ "element": "net.minecraft.item.Item|shovelIron" },
+					{ "element": "net.minecraft.item.Item|stick", "min":1, "max":3 },
+					{ "element": "net.minecraft.item.Item|coal", "min":3, "max":9 },
+					{ "element": "net.minecraft.item.Item|wheat", "min":3, "max":5 }
+				],
+				[
+					{ "element": "net.minecraft.item.Item|cookie" },
+					{ "element": "net.minecraft.item.Item|chickenRaw" },
+					{ "element": "net.minecraft.item.Item|melon", "min":1, "max":3 }
+				]
+			]
+		},
+		"5x8x27": { "block": "net.minecraft.block.Block|chest", "orientation":"up" },
+		"24x1x5": {
+			"block": "net.minecraft.block.Block|chest",
+			"orientation":"left",
+			"contents": [
+						
+				[
+					
+					{ "element": "net.minecraft.item.Item|paper", "min":2, "max":4 },
+					{ "element": "net.minecraft.item.Item|leather", "min":1, "max":3 },
+					{ "element": "net.minecraft.item.Item|dyePowder", "min":1, "max":3 },
+					{ "element": "net.minecraft.item.Item|bone", "min":2, "max":4 }
+				],
+				[
+					{ "element": "net.minecraft.item.Item|writableBook" },
+					{ "element": "net.minecraft.item.Item|book" },
+					{ "element": "net.minecraft.item.Item|paper", "min":1, "max":3 }
+				]
+			]
+		},
+		"24x1x6": { "block": "net.minecraft.block.Block|chest", "orientation":"left" },
+		"21x11x6": {
+			"block": "net.minecraft.block.Block|chest",
+			"orientation":"right",
+			"contents": [
+						
+				[
+					
+					{ "element": "net.minecraft.item.Item|potion", "metadata":1 },
+					{ "element": "net.minecraft.item.Item|potion", "metadata":2 },
+					{ "element": "net.minecraft.item.Item|potion", "metadata":3 },
+					{ "element": "net.minecraft.item.Item|potion", "metadata":5 },
+					{ "element": "net.minecraft.item.Item|potion", "metadata":6 },
+					{ "element": "net.minecraft.item.Item|potion", "metadata":9 },
+					{ "element": "net.minecraft.item.Item|potion", "metadata":12 }
+				]
+			]
+		},
+		"21x11x7": { "block": "net.minecraft.block.Block|chest", "orientation":"right" },
+		"18x2x2": {
+			"block": "net.minecraft.block.Block|chest",
+			"orientation":"left",
+			"contents": [
+						
+				[{ "element": "net.minecraft.item.Item|potion", "metadata":5, "min":1, "max":3 }],
+				[{ "element": "net.minecraft.item.Item|ingotGold", "min":4, "max":7 }]
+			]
+		}
+		
+		
+		
+	}
+	
 }
-   
