@@ -126,14 +126,14 @@
 		"3x8x24": { "block": "net.minecraft.block.Block|workbench" },
 		"2x8x25": { "block": "net.minecraft.block.Block|furnaceIdle" },
 		
-		"26x2x23": { "block": "mods.castledefenders.common.ModCastleDefenders|blockHealer" },
-		"9x1x8": { "block": "mods.castledefenders.common.ModCastleDefenders|blockHealer" },
-		"10x1x13": { "block": "mods.castledefenders.common.ModCastleDefenders|blockHealer" },
-		"9x7x5": { "block": "mods.castledefenders.common.ModCastleDefenders|blockHealer" },
-		"5x7x19": { "block": "mods.castledefenders.common.ModCastleDefenders|blockArcher2" },
-		"9x7x18": { "block": "mods.castledefenders.common.ModCastleDefenders|blockArcher2" },
-		"25x9x11": { "block": "mods.castledefenders.common.ModCastleDefenders|blockArcher2" },
-		"6x11x13": { "block": "mods.castledefenders.common.ModCastleDefenders|blockKnight2" },
+		"26x2x23": { "block": "mods.castledefenders.ModCastleDefenders|blockHealer" },
+		"9x1x8": { "block": "mods.castledefenders.ModCastleDefenders|blockHealer" },
+		"10x1x13": { "block": "mods.castledefenders.ModCastleDefenders|blockHealer" },
+		"9x7x5": { "block": "mods.castledefenders.ModCastleDefenders|blockHealer" },
+		"5x7x19": { "block": "mods.castledefenders.ModCastleDefenders|blockArcher2" },
+		"9x7x18": { "block": "mods.castledefenders.ModCastleDefenders|blockArcher2" },
+		"25x9x11": { "block": "mods.castledefenders.ModCastleDefenders|blockArcher2" },
+		"6x11x13": { "block": "mods.castledefenders.ModCastleDefenders|blockKnight2" },
 		"25x11x7": { "block": "net.minecraft.block.Block|enchantmentTable" },
 		
 		"4x3x27": {

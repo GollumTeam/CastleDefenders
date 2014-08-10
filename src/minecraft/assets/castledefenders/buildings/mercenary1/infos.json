@@ -2,11 +2,11 @@
 	"color" : [
 		{ "block": "net.minecraft.block.Block|planks" },
 		{ "block": "net.minecraft.block.Block|grass" },
-		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockMerc" },
+		{ "block": "mods.castledefenders.ModCastleDefenders|blockMerc" },
 		{ "block": "net.minecraft.block.Block|fence" },
 		{ "block": "net.minecraft.block.Block|torchWood" },
 		{ "block": "net.minecraft.block.Block|woodSingleSlab" },
-		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockArcherM" },
+		{ "block": "mods.castledefenders.ModCastleDefenders|blockArcherM" },
 		{ "block":  "net.minecraft.block.Block|thinGlass" },
 		{ "block":  "net.minecraft.block.Block|doorWood", "orientation":"up" }
 	],

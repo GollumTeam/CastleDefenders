@@ -171,12 +171,12 @@
 				]
 			]
 		},
-		"8x8x26": { "block": "mods.castledefenders.common.ModCastleDefenders|blockMerc" },
-		"26x9x12": { "block": "mods.castledefenders.common.ModCastleDefenders|blockMerc" },
-		"13x8x22": { "block": "mods.castledefenders.common.ModCastleDefenders|blockMerc" },
-		"21x9x12": { "block": "mods.castledefenders.common.ModCastleDefenders|blockArcherM" },
-		"18x9x15": { "block": "mods.castledefenders.common.ModCastleDefenders|blockArcherM" },
-		"18x9x19": { "block": "mods.castledefenders.common.ModCastleDefenders|blockArcherM" }
+		"8x8x26": { "block": "mods.castledefenders.ModCastleDefenders|blockMerc" },
+		"26x9x12": { "block": "mods.castledefenders.ModCastleDefenders|blockMerc" },
+		"13x8x22": { "block": "mods.castledefenders.ModCastleDefenders|blockMerc" },
+		"21x9x12": { "block": "mods.castledefenders.ModCastleDefenders|blockArcherM" },
+		"18x9x15": { "block": "mods.castledefenders.ModCastleDefenders|blockArcherM" },
+		"18x9x19": { "block": "mods.castledefenders.ModCastleDefenders|blockArcherM" }
 		
 	}
 }

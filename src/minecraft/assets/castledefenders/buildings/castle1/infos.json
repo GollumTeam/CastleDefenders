@@ -3,8 +3,8 @@
 		{ "block": "net.minecraft.block.Block|stoneBrick" },
 		{ "block": "net.minecraft.block.Block|cobblestone" },
 		{ "block": "net.minecraft.block.Block|grass" },
-		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockEKnight" },
-		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockEArcher" },
+		{ "block": "mods.castledefenders.ModCastleDefenders|blockEKnight" },
+		{ "block": "mods.castledefenders.ModCastleDefenders|blockEArcher" },
 		{ "block": "net.minecraft.block.Block|planks" },
 		{ "block": "net.minecraft.block.Block|ladder", "orientation": "left" },
 		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "up"},
@@ -22,7 +22,7 @@
 			"contents": [
 				
 				[
-					{ "element": "mods.castledefenders.common.ModCastleDefenders|itemMedallion", "min":1, "max":5 }
+					{ "element": "mods.castledefenders.ModCastleDefenders|itemMedallion", "min":1, "max":5 }
 				],
 				
 				[

@@ -44,6 +44,8 @@ import mods.gollum.core.building.BuildingParser;
 import mods.gollum.core.config.ConfigLoader;
 import mods.gollum.core.config.ConfigProp;
 import mods.gollum.core.creativetab.GollumCreativeTabs;
+import mods.gollum.core.facory.BlockFactory;
+import mods.gollum.core.facory.ItemFactory;
 import mods.gollum.core.version.VersionChecker;
 import mods.gollum.core.worldgenerator.WorldGeneratorByBuilding;
 import net.minecraft.block.Block;
@@ -217,56 +219,31 @@ public class ModCastleDefenders {
 	 * Initialisation des items
 	 */
 	public void initItems () {
-
-		this.itemMedallion = (new ItemMedallion(this.medallionID)).setUnlocalizedName("MedallionCD");
-		GameRegistry.registerItem(this.itemMedallion, "Medallion", this.getModid());
-		LanguageRegistry.addName(this.itemMedallion, "Medallion");
+		
+		ItemFactory factory = new ItemFactory();
+		
+		this.itemMedallion = factory.create(new ItemMedallion(this.medallionID), "Medallion", this.getModid(), "Medallion");
 	}
 	
 	/**
 	 * Initialisation des blocks
 	 */
 	public void initBlocks () {
-
+		
+		BlockFactory factory = new BlockFactory();
+		
 		// Création des blocks
-		this.blockKnight  = (new BlockKnight(this.blockKnightID))  .setUnlocalizedName("BlockKnight")   .setHardness(2.0F).setResistance(5.0F);
-		this.blockKnight2 = (new BlockKnight2(this.blockKnight2ID)).setUnlocalizedName("BlockKnight2")  .setHardness(2.0F).setResistance(5.0F);
-		this.blockArcher  = (new BlockArcher(this.blockArcherID))  .setUnlocalizedName("BlockArcher")   .setHardness(2.0F).setResistance(5.0F);
-		this.blockArcher2 = (new BlockArcher2(this.blockArcher2ID)).setUnlocalizedName("BlockArcher2")  .setHardness(2.0F).setResistance(5.0F);
-		this.blockMerc    = (new BlockMerc(this.blockMercID))      .setUnlocalizedName("BlockMerc")     .setHardness(2.0F).setResistance(5.0F);
-		this.blockArcherM = (new BlockArcherM(this.blockArcherMID)).setUnlocalizedName("BlockArcherM")  .setHardness(2.0F).setResistance(5.0F);
-		this.blockMage    = (new BlockMage(this.blockMageID))      .setUnlocalizedName("BlockMage")     .setHardness(2.0F).setResistance(5.0F);
-		this.blockHealer  = (new BlockHealer(this.blockHealerID))  .setUnlocalizedName("BlockHealer")   .setHardness(2.0F).setResistance(5.0F);
-		this.blockEKnight = (new BlockEKnight(this.blockEKnightID)).setUnlocalizedName("BlockEKnight")  .setHardness(2.0F).setResistance(5.0F);
-		this.blockEArcher = (new BlockEArcher(this.blockEArcherID)).setUnlocalizedName("BlockEArcher")  .setHardness(2.0F).setResistance(5.0F);
-		this.blockEMage   = (new BlockEMage(this.blockEMageID))    .setUnlocalizedName("BlockEMage")    .setHardness(2.0F).setResistance(5.0F);
-		
-		
-		// Enregistrement des blocks
-		GameRegistry.registerBlock(this.blockKnight , "Knight Spawner");
-		GameRegistry.registerBlock(this.blockKnight2, "Knight Spawner - Level 2");
-		GameRegistry.registerBlock(this.blockArcher , "Archer Spawner");
-		GameRegistry.registerBlock(this.blockArcher2, "Archer Spawner - Level 2");
-		GameRegistry.registerBlock(this.blockMerc   , "Merc Spawner");
-		GameRegistry.registerBlock(this.blockArcherM, "Merc Archer Spawner");
-		GameRegistry.registerBlock(this.blockMage   , "Mage Spawner");
-		GameRegistry.registerBlock(this.blockHealer , "Healer Spawner");
-		GameRegistry.registerBlock(this.blockEKnight, "Enemy Knight Spawner");
-		GameRegistry.registerBlock(this.blockEArcher, "Enemy Archer Spawner");
-		GameRegistry.registerBlock(this.blockEMage  , "Enemy Mage Spawner");
-		
-		// Nom des blocks
-		LanguageRegistry.addName(this.blockKnight , "Knight Spawner");
-		LanguageRegistry.addName(this.blockKnight2, "Knight Spawner - Level 2");
-		LanguageRegistry.addName(this.blockArcher , "Archer Spawner");
-		LanguageRegistry.addName(this.blockArcher2, "Archer Spawner - Level 2");
-		LanguageRegistry.addName(this.blockMerc   , "Mercenary Spawner");
-		LanguageRegistry.addName(this.blockArcherM, "Mercenary Archer Spawner");
-		LanguageRegistry.addName(this.blockMage   , "Mage Spawner");
-		LanguageRegistry.addName(this.blockHealer , "Mage Healer");
-		LanguageRegistry.addName(this.blockEKnight, "Enemy Knight Spawner");
-		LanguageRegistry.addName(this.blockEArcher, "Enemy Archer Spawner");
-		LanguageRegistry.addName(this.blockEMage  , "Enemy Mage Spawner");
+		this.blockKnight  = factory.create (new BlockKnight(this.blockKnightID), "BlockKnight"   , "Knight Spawner")          .setHardness(2.0F).setResistance(5.0F);
+		this.blockKnight2 = factory.create (new BlockKnight2(this.blockKnight2ID), "BlockKnight2", "Knight Spawner - Level 2").setHardness(2.0F).setResistance(5.0F);
+		this.blockArcher  = factory.create (new BlockArcher(this.blockArcherID), "BlockArcher"   , "Archer Spawner")          .setHardness(2.0F).setResistance(5.0F);
+		this.blockArcher2 = factory.create (new BlockArcher2(this.blockArcher2ID), "BlockArcher2", "Archer Spawner - Level 2").setHardness(2.0F).setResistance(5.0F);
+		this.blockMerc    = factory.create (new BlockMerc(this.blockMercID), "BlockMerc"         , "Mercenary Spawner")       .setHardness(2.0F).setResistance(5.0F);
+		this.blockArcherM = factory.create (new BlockArcherM(this.blockArcherMID), "BlockArcherM", "Mercenary Archer Spawner").setHardness(2.0F).setResistance(5.0F);
+		this.blockMage    = factory.create (new BlockMage(this.blockMageID), "BlockMage"         , "Mage Spawner")            .setHardness(2.0F).setResistance(5.0F);
+		this.blockHealer  = factory.create (new BlockHealer(this.blockHealerID), "BlockHealer"   , "Mage Healer")             .setHardness(2.0F).setResistance(5.0F);
+		this.blockEKnight = factory.create (new BlockEKnight(this.blockEKnightID), "BlockEKnight", "Enemy Knight Spawner")    .setHardness(2.0F).setResistance(5.0F);
+		this.blockEArcher = factory.create (new BlockEArcher(this.blockEArcherID), "BlockEArcher", "Enemy Archer Spawner")    .setHardness(2.0F).setResistance(5.0F);
+		this.blockEMage   = factory.create (new BlockEMage(this.blockEMageID), "BlockEMage"      , "Enemy Mage Spawner")      .setHardness(2.0F).setResistance(5.0F);
 		
 	}
 	

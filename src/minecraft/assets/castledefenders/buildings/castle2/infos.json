@@ -3,13 +3,13 @@
 		{ "block": "net.minecraft.block.Block|stoneBrick" },
 		{ "block": "net.minecraft.block.Block|cobblestone" },
 		{ "block": "net.minecraft.block.Block|grass" },
-		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockEKnight" },
-		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockEArcher" },
+		{ "block": "mods.castledefenders.ModCastleDefenders|blockEKnight" },
+		{ "block": "mods.castledefenders.ModCastleDefenders|blockEArcher" },
 		{ "block": "net.minecraft.block.Block|planks" },
 		{ "block": "net.minecraft.block.Block|ladder", "orientation": "left" },
 		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "up"},
 		{ "block": "net.minecraft.block.Block|fenceIron"},
-		{ "block": "mods.castledefenders.common.ModCastleDefenders|blockEMage"},
+		{ "block": "mods.castledefenders.ModCastleDefenders|blockEMage"},
 		{ "block": "net.minecraft.block.Block|trapdoor", "orientation": "right"},
 		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "left"},
 		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "right"},
@@ -55,7 +55,7 @@
 					{ "element": "net.minecraft.item.Item|potion" , "metadata": 7 }
 				],
 				[
-					{ "element": "mods.castledefenders.common.ModCastleDefenders|itemMedallion", "min":1, "max":5 }
+					{ "element": "mods.castledefenders.ModCastleDefenders|itemMedallion", "min":1, "max":5 }
 				]
 				
 			]
@@ -94,7 +94,7 @@
 					{ "element": "net.minecraft.item.Item|potion" , "metadata": 7 }
 				],
 				[
-					{ "element": "mods.castledefenders.common.ModCastleDefenders|itemMedallion", "min":1, "max":5 }
+					{ "element": "mods.castledefenders.ModCastleDefenders|itemMedallion", "min":1, "max":5 }
 				]
 			]
 		
@@ -108,7 +108,7 @@
 			"contents": [
 				
 				[
-					{ "element": "mods.castledefenders.common.ModCastleDefenders|itemMedallion", "min":1, "max":5 }
+					{ "element": "mods.castledefenders.ModCastleDefenders|itemMedallion", "min":1, "max":5 }
 				],
 				
 				[
