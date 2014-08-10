@@ -2,7 +2,7 @@ package mods.castledefenders.common.tileentities;
 
 import java.util.Iterator;
 
-import mods.castledefenders.common.ModCastleDefenders;
+import mods.castledefenders.ModCastleDefenders;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;

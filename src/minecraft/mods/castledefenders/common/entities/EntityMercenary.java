@@ -2,7 +2,7 @@ package mods.castledefenders.common.entities;
 
 import java.util.List;
 
-import mods.castledefenders.common.ModCastleDefenders;
+import mods.castledefenders.ModCastleDefenders;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;

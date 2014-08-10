@@ -1,6 +1,6 @@
 package mods.castledefenders.common.entities;
 
-import mods.castledefenders.common.ModCastleDefenders;
+import mods.castledefenders.ModCastleDefenders;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;

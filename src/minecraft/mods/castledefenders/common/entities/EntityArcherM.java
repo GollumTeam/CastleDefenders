@@ -1,6 +1,6 @@
 package mods.castledefenders.common.entities;
 
-import mods.castledefenders.common.ModCastleDefenders;
+import mods.castledefenders.ModCastleDefenders;
 import mods.castledefenders.common.aientities.EntityAIArcherArrowAttack;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;

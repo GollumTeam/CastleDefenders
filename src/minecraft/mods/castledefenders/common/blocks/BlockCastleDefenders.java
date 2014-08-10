@@ -1,6 +1,6 @@
 package mods.castledefenders.common.blocks;
 
-import mods.castledefenders.common.ModCastleDefenders;
+import mods.castledefenders.ModCastleDefenders;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;

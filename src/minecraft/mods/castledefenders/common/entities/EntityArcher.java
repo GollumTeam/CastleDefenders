@@ -2,7 +2,7 @@ package mods.castledefenders.common.entities;
 
 import java.util.List;
 
-import mods.castledefenders.common.ModCastleDefenders;
+import mods.castledefenders.ModCastleDefenders;
 import mods.castledefenders.common.aientities.EntityAIArcherArrowAttack;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
