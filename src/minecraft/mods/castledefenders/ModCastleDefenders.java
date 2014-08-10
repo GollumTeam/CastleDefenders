@@ -39,13 +39,11 @@ import mods.castledefenders.common.tileentities.TileEntityBlockKnight;
 import mods.castledefenders.common.tileentities.TileEntityBlockKnight2;
 import mods.castledefenders.common.tileentities.TileEntityBlockMage;
 import mods.castledefenders.common.tileentities.TileEntityBlockMerc;
-import mods.gollum.core.blocks.BlockSpawner;
 import mods.gollum.core.building.Building;
 import mods.gollum.core.building.BuildingParser;
 import mods.gollum.core.config.ConfigLoader;
 import mods.gollum.core.config.ConfigProp;
 import mods.gollum.core.creativetab.GollumCreativeTabs;
-import mods.gollum.core.tileentities.TileEntityBlockSpawner;
 import mods.gollum.core.version.VersionChecker;
 import mods.gollum.core.worldgenerator.WorldGeneratorByBuilding;
 import net.minecraft.block.Block;
@@ -64,7 +62,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "CastleDefenders", name = "Castle Defenders", version = "3.0.0DEV2 [Build Smeagol]", acceptedMinecraftVersions = "1.6.4", dependencies = "required-after:GollumCoreLib")
+@Mod(modid = "CastleDefenders", name = "Castle Defenders", version = "3.0.0DEV3 [Build Smeagol]", acceptedMinecraftVersions = "1.6.4", dependencies = "required-after:GollumCoreLib")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 public class ModCastleDefenders {
 	
@@ -92,7 +90,6 @@ public class ModCastleDefenders {
 	public static Block blockEKnight;
 	public static Block blockEArcher;
 	public static Block blockEMage;
-	public static Block blockSpawner;
 	
 	// Liste des items
 	public static Item itemMedallion;
@@ -109,7 +106,6 @@ public class ModCastleDefenders {
 	@ConfigProp(group = "Blocks Ids") public static int blockEKnightID = 1237;
 	@ConfigProp(group = "Blocks Ids") public static int blockEArcherID = 1236;
 	@ConfigProp(group = "Blocks Ids") public static int blockEMageID   = 1233;
-	@ConfigProp(group = "Blocks Ids") public static int blockSpawnerID = 1243;
 	
 	@ConfigProp(group = "Items Ids") public static int medallionID    = 13001;
 	
@@ -258,7 +254,6 @@ public class ModCastleDefenders {
 		GameRegistry.registerBlock(this.blockEKnight, "Enemy Knight Spawner");
 		GameRegistry.registerBlock(this.blockEArcher, "Enemy Archer Spawner");
 		GameRegistry.registerBlock(this.blockEMage  , "Enemy Mage Spawner");
-		GameRegistry.registerBlock(this.blockSpawner, "CDblockSpawner");
 		
 		// Nom des blocks
 		LanguageRegistry.addName(this.blockKnight , "Knight Spawner");
@@ -290,7 +285,6 @@ public class ModCastleDefenders {
 		GameRegistry.registerTileEntity(TileEntityBlockEKnight.class, "Enemy Knight Block");
 		GameRegistry.registerTileEntity(TileEntityBlockEArcher.class, "Enemy Archer Block");
 		GameRegistry.registerTileEntity(TileEntityBlockEMage.class  , "Enemy Mage Block");
-		GameRegistry.registerTileEntity(TileEntityBlockSpawner.class, "CastleDef:BlockSpawner");
 	}
 	
 	/**
