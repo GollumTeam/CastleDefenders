@@ -6,7 +6,7 @@
 		{ "block": "net.minecraft.block.Block|fence" },
 		{ "block": "net.minecraft.block.Block|torchWood" },
 		{ "block": "net.minecraft.block.Block|woodSingleSlab" },
-		{ "block": "mods.castledefenders.ModCastleDefenders|blockArcherM" },
+		{ "block": "mods.castledefenders.ModCastleDefenders|blockMercArcher" },
 		{ "block":  "net.minecraft.block.Block|thinGlass" },
 		{ "block":  "net.minecraft.block.Block|doorWood", "orientation":"up" }
 	],

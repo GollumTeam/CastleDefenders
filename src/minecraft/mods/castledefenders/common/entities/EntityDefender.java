@@ -6,16 +6,12 @@ import mods.castledefenders.ModCastleDefenders;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.EntityGhast;
-import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.AxisAlignedBB;
@@ -25,8 +21,8 @@ import net.minecraft.world.World;
 
 public abstract class EntityDefender extends EntityAnimal {
 	
-	public ItemStack defaultHeldItem = null;
-	public int blockSpawnId;
+	protected ItemStack defaultHeldItem = null;
+	protected int blockSpawnId;
 	private int idTask = 0;
 	private int idTargetTask = 0;
 
@@ -39,7 +35,6 @@ public abstract class EntityDefender extends EntityAnimal {
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(this.getMoveSpeed ());
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setAttribute(this.getHealt ());
 		this.getEntityAttribute(SharedMonsterAttributes.followRange)  .setAttribute(this.getFollowRange ());
-//		this.getEntityAttribute(SharedMonsterAttributes.attackDamage) .setAttribute(this.getAttackStrength ());
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAITempt(this, 0.35F, ModCastleDefenders.itemMedallion.itemID, false));
 		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
@@ -90,7 +85,6 @@ public abstract class EntityDefender extends EntityAnimal {
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed) .setAttribute(this.getMoveSpeed ());
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)     .setAttribute(this.getHealt ());
 		this.getEntityAttribute(SharedMonsterAttributes.followRange)   .setAttribute(this.getFollowRange ());
-//		this.getEntityAttribute(SharedMonsterAttributes.attackDamage)  .setAttribute(this.getAttackStrength ());
 	}
 	
 	/**
@@ -100,7 +94,7 @@ public abstract class EntityDefender extends EntityAnimal {
 	public boolean isAIEnabled() {
 		return true;
 	}
-
+	
 	/**
 	 * Basic mob attack. Default to touch of death in EntityCreature. Overridden
 	 * by each mob to define their attack.
@@ -117,7 +111,7 @@ public abstract class EntityDefender extends EntityAnimal {
 			this.attackEntityAsMob(entity);
 		}
 	}
-
+	
 	/**
 	 * Called when the entity is attacked.
 	 */
@@ -148,7 +142,7 @@ public abstract class EntityDefender extends EntityAnimal {
 	public boolean canAttackClass(Class entityClass) {
 		return EntityGhast.class != entityClass;
 	}
-
+	
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
 		int strength = this.getAttackStrength();

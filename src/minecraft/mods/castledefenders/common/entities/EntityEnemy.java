@@ -2,34 +2,22 @@ package mods.castledefenders.common.entities;
 
 import java.util.List;
 
-import mods.castledefenders.ModCastleDefenders;
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.monster.EntityWitch;
-import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public abstract class EntityEnemy extends EntityMob {
 	
-	public ItemStack defaultHeldItem = null;
-	public int blockSpawnId;
+	protected ItemStack defaultHeldItem = null;
+	protected int blockSpawnId;
 	private int idTask = 0;
 	private int idTargetTask = 0;
 
@@ -45,14 +33,10 @@ public abstract class EntityEnemy extends EntityMob {
 		this.getNavigator().setBreakDoors(true);
 		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMoveSpeed()));
-		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityPlayer.class, this.getMoveSpeed(), true));
-		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityDefender.class, this.getMoveSpeed(), true));
-//		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityMerc.class, this.getMoveSpeed(), true));
-//		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityArcherM.class, this.getMoveSpeed(), true));
 		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityDefender.class, 0, true));
-//		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityArcherM.class,  0, true));
-//		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityMerc.class,  0, true));
+		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityMercArcher.class,  0, true));
+		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityMerc.class,  0, true));
 
 	}
 

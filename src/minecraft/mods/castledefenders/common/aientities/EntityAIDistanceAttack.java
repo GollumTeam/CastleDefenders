@@ -2,6 +2,7 @@ package mods.castledefenders.common.aientities;
 
 import java.util.Random;
 
+import cpw.mods.fml.common.Mod;
 import mods.castledefenders.ModCastleDefenders;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLiving;
@@ -12,8 +13,11 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityAIArcherArrowAttack extends EntityAIBase
+public class EntityAIDistanceAttack extends EntityAIBase
 {
+	public static final int TYPE_ARROW = 0;
+	public static final int TYPE_FIRE = 1;
+	
 	World worldObj;
 	EntityLiving entityHost;
 	EntityLivingBase attackTarget;
@@ -24,12 +28,12 @@ public class EntityAIArcherArrowAttack extends EntityAIBase
 	int nbTarget = 0;
 	int rangedAttackID;
 
-	public EntityAIArcherArrowAttack(EntityLiving entityLiving, double entityMoveSpeed, double rangedAttackDistance, double rangedAttackTime, int rangedAttackID) {
+	public EntityAIDistanceAttack(EntityLiving entityLiving, double entityMoveSpeed, double rangedAttackDistance, double rangedAttackTime, int rangedAttackID) {
 		this.entityHost = entityLiving;
 		this.worldObj = entityLiving.worldObj;
 		this.entityMoveSpeed = entityMoveSpeed;
 		this.rangedAttackDistance = rangedAttackDistance;
-		this.maxRangedAttackTime = Math.min(10.D - rangedAttackTime, 1.D);
+		this.maxRangedAttackTime = rangedAttackTime;
 		this.rangedAttackID = rangedAttackID;
 		this.setMutexBits(3);
 	}
@@ -66,7 +70,6 @@ public class EntityAIArcherArrowAttack extends EntityAIBase
 	 */
 	public void updateTask() {
 		
-		double maxDistance = 100.0D;
 		double distance = this.entityHost.getDistanceSq(this.attackTarget.posX, this.attackTarget.boundingBox.minY, this.attackTarget.posZ);
 		boolean canSeeEntity = this.entityHost.getEntitySenses().canSee(this.attackTarget);
 		
@@ -76,7 +79,7 @@ public class EntityAIArcherArrowAttack extends EntityAIBase
 			this.nbTarget = 0;
 		}
 		
-		if (distance <= maxDistance && this.nbTarget >= 20) {
+		if (this.nbTarget >= 20) {
 			this.entityHost.getNavigator().clearPathEntity();
 		} else {
 			this.entityHost.getNavigator().tryMoveToEntityLiving(this.attackTarget, this.entityMoveSpeed);
@@ -85,7 +88,8 @@ public class EntityAIArcherArrowAttack extends EntityAIBase
 		this.entityHost.getLookHelper().setLookPositionWithEntity(this.attackTarget, (float)this.rangedAttackDistance, (float)this.rangedAttackDistance);
 		this.rangedAttackTime = Math.max(this.rangedAttackTime - 1, 0);
 		
-		if (this.rangedAttackTime <= 0 && distance <= maxDistance && canSeeEntity) {
+		if (this.rangedAttackTime <= 0 && canSeeEntity) {
+			ModCastleDefenders.log.debug ("updateTask : rangedAttackTime="+this.rangedAttackTime);
 			this.doRangedAttack();
 			this.rangedAttackTime = this.maxRangedAttackTime;
 		}
@@ -98,11 +102,10 @@ public class EntityAIArcherArrowAttack extends EntityAIBase
 		int z;
 		Random random = new Random();
 		
-		// TODO Pourle moment l'id n'est que de 1
 		switch (this.rangedAttackID) {
 			
 			default:
-			case 1:
+			case TYPE_ARROW:
 				
 				EntityArrow eArrow = new EntityArrow(this.worldObj, this.entityHost, this.attackTarget, 1.6F, 12.0F);
 				this.worldObj.playSoundAtEntity(this.entityHost, "random.bow", 1.0F, 1.0F / (this.entityHost.getRNG().nextFloat() * 0.4F + 0.8F));
@@ -110,42 +113,30 @@ public class EntityAIArcherArrowAttack extends EntityAIBase
 				
 				break;
 				
-			case 2:
+			case TYPE_FIRE:
 				
-				x = MathHelper.floor_double(this.attackTarget.posX);
+				ModCastleDefenders.log.debug ("Attack Fire");
+				
+				x = MathHelper.floor_double(this.attackTarget.posX) + random.nextInt(5) - 2;
 				y = MathHelper.floor_double(this.attackTarget.posY);
-				z = MathHelper.floor_double(this.attackTarget.posZ);
+				z = MathHelper.floor_double(this.attackTarget.posZ + random.nextInt(5) - 2);
 				
-				this.worldObj.spawnEntityInWorld(new EntityLightningBolt(this.worldObj, this.attackTarget.posX + random.nextInt(3) - 1, this.attackTarget.posY, this.attackTarget.posZ + random.nextInt(3) - 1));
-				
-				if (this.worldObj.getBlockId(x, y, z) == 0) {
-					this.worldObj.setBlock(x + random.nextInt(3) - 1, y, z + random.nextInt(3) - 1, Block.fire.blockID, 0, 2);
+				for (int i = 0; i < 2 && this.worldObj.getBlockId(x, y, z) != 0; i++) {
+					y++;
 				}
 				
-				break;
-			
-			case 3:
-				
-				x= MathHelper.floor_double(this.attackTarget.posX);
-				y = MathHelper.floor_double(this.attackTarget.posY);
-				z = MathHelper.floor_double(this.attackTarget.posZ);
-				
 				if (this.worldObj.getBlockId(x, y, z) == 0) {
-					this.worldObj.setBlock(x, y, z, Block.fire.blockID, 0, 2);
-				}
-				
-				switch (random.nextInt(5)) {
 					
-					case 0: if (this.worldObj.getBlockId(x + 1, y    , z    ) == 0) this.worldObj.setBlock(x + 1, y    , z    , Block.fire.blockID, 0, 2); break;
-					case 1: if (this.worldObj.getBlockId(x    , y    , z + 1) == 0) this.worldObj.setBlock(x    , y    , z + 1, Block.fire.blockID, 0, 2); break;
-					case 2: if (this.worldObj.getBlockId(x    , y + 1, z    ) == 0) this.worldObj.setBlock(x    , y + 1, z    , Block.fire.blockID, 0, 2); break;
-					case 3: if (this.worldObj.getBlockId(x - 1, y    , z    ) == 0) this.worldObj.setBlock(x - 1, y    , z    , Block.fire.blockID, 0, 2); break;
-					case 4: if (this.worldObj.getBlockId(x    , y    , z - 1) == 0) this.worldObj.setBlock(x    , y    , z - 1, Block.fire.blockID, 0, 2); break;
+					this.worldObj.setBlock(x, y, z, Block.fire.blockID, 0, 2);
+					this.worldObj.playSoundEffect(x, y, z, "ambient.weather.thunder", 2.0F, 0.8F + random.nextFloat() * 0.2F);
+					this.worldObj.playSoundEffect(x, y, z, "random.explode", 2.0F, 0.6F + random.nextFloat() * 0.2F);
+					
+					if (random.nextInt(3) == 0) {
+						this.entityHost.attackEntityAsMob(this.attackTarget);
+					}
+					
 				}
 				
-				if (random.nextInt(10) == 1) {
-					this.worldObj.spawnEntityInWorld(new EntityLightningBolt(this.worldObj, this.attackTarget.posX, this.attackTarget.posY, this.attackTarget.posZ));
-				}
 				break;
 		}
 	}

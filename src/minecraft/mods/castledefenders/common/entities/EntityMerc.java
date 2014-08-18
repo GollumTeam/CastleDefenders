@@ -16,14 +16,12 @@ public class EntityMerc extends EntityMercenary {
 		super(world);
 		this.blockSpawnId       = ModCastleDefenders.blockMercID;
 		this.defaultHeldItem    = new ItemStack(Item.swordIron, 1);
-		
-		this.getNavigator().setBreakDoors(true);
-		
-		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, IMob.class, this.getMoveSpeed (), true));
-		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityCreeper.class, this.getMoveSpeed (), true));
-		
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget(this, IMob.class         , 0, false, true));
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget(this, EntityCreeper.class, 0, false, true));
+		this.listItemCost       = ModCastleDefenders.mercenaryCost;
+//		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, IMob.class, this.getMoveSpeed (), true));
+//		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityCreeper.class, this.getMoveSpeed (), true));
+//		
+//		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget(this, IMob.class         , 0, false, true));
+//		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget(this, EntityCreeper.class, 0, false, true));
 	}
 	
 	/**
@@ -33,15 +31,15 @@ public class EntityMerc extends EntityMercenary {
 	/**
 	 * @return Vitesse du mod
 	 */
-	public double getMoveSpeed () { return 0.D; }
+	public double getMaxSpeed () { return 0.60D; }
 	/**
 	 * @return Point de vie du mod
 	 */
-	public double getHealt () { return 15.0D; }
+	public double getHealt () { return 20.0D; }
 	/**
 	 * @return Point de vie du mod
 	 */
-	public int getAttackStrength () { return 4; }
+	public int getAttackStrength () { return 5; }
 	
 	
 }

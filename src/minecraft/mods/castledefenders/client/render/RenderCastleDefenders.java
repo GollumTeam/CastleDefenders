@@ -1,8 +1,7 @@
-package mods.castledefenders.common;
+package mods.castledefenders.client.render;
 
 import java.util.Hashtable;
 
-import mods.castledefenders.common.entities.EntityKnight;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.entity.Entity;
@@ -22,7 +21,7 @@ public class RenderCastleDefenders extends RenderBiped {
 		this.name = name;
 	}
 	
-	private ResourceLocation getResource(String name) {
+	protected ResourceLocation getResource(String name) {
 		
 		ResourceLocation texture;
 		

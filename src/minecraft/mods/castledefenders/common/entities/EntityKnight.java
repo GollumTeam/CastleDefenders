@@ -1,20 +1,12 @@
 package mods.castledefenders.common.entities;
 
-import java.util.List;
-
 import mods.castledefenders.ModCastleDefenders;
-import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityKnight extends EntityDefender {
@@ -37,19 +29,19 @@ public class EntityKnight extends EntityDefender {
 	/**
 	 * @return Zone de detection du mod
 	 */
-	public double getFollowRange () { return 20.D; }
+	public double getFollowRange () { return ModCastleDefenders.knightFollowRange; }
 	/**
 	 * @return Vitesse du mod
 	 */
-	public double getMoveSpeed () { return 0.55D; }
+	public double getMoveSpeed () { return ModCastleDefenders.knightMoveSpeed; }
 	/**
 	 * @return Point de vie du mod
 	 */
-	public double getHealt () { return 15.0D; }
+	public double getHealt () { return ModCastleDefenders.knightHealt; }
 	/**
 	 * @return Point de vie du mod
 	 */
-	public int getAttackStrength () { return 4; }
+	public int getAttackStrength () { return ModCastleDefenders.knightAttackStrength; }
 	
 	
 }

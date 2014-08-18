@@ -1,0 +1,18 @@
+itemGroup.CastleDefender=Castle Defender
+
+item.Medallion.name=Medallion
+
+tile.BlockKnight.name=Knight Spawner
+tile.BlockKnight2.name=Knight Spawner - Level 2
+tile.BlockArcher.name=Archer Spawner
+tile.BlockArcher2.name=Archer Spawner - Level 2
+tile.BlockMerc.name=Mercenary Spawner
+tile.BlockMercArcher.name=Mercenary Archer Spawner
+tile.BlockMage.name=Mage Spawner
+tile.BlockHealer.name=Mage Healer
+tile.BlockEKnight.name=Enemy Knight Spawner
+tile.BlockEArcher.name=Enemy Archer Spawner
+tile.BlockEMage.name=Enemy Mage Spawner
+
+castledefenders.message.buymercenary=You can hire me with items
+castledefenders.message.okfor=It's ok for %d %s

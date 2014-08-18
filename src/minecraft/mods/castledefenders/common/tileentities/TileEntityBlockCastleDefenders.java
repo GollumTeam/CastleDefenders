@@ -60,6 +60,8 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity {
 			
 			if (!this.worldObj.isRemote) {
 				
+//				ModCastleDefenders.log.debug("updateEntity : delay=" + delay);
+				
 				// Lance un timeout
 				if (this.delay == -1) {
 					this.updateDelay();

@@ -16,18 +16,18 @@ public class EntityKnight2 extends EntityKnight {
 	/**
 	 * @return Zone de detection du mod
 	 */
-	public double getFollowRange () { return 25.D; }
+	public double getFollowRange () { return ModCastleDefenders.knight2FollowRange; }
 	/**
 	 * @return Vitesse du mod
 	 */
-	public double getMoveSpeed () { return 0.60D; }
+	public double getMoveSpeed () { return ModCastleDefenders.knight2MoveSpeed; }
 	/**
 	 * @return Point de vie du mod
 	 */
-	public double getHealt () { return 30.0D; }
+	public double getHealt () { return ModCastleDefenders.knight2Healt; }
 	/**
 	 * @return Point de vie du mod
 	 */
-	public int getAttackStrength () { return 8; }
+	public int getAttackStrength () { return ModCastleDefenders.knight2AttackStrength; }
 	
 }

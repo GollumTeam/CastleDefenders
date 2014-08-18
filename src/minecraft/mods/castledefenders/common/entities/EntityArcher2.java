@@ -1,12 +1,6 @@
 package mods.castledefenders.common.entities;
 
 import mods.castledefenders.ModCastleDefenders;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIAttackOnCollide;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.monster.IMob;
 import net.minecraft.world.World;
 
 public class EntityArcher2 extends EntityArcher {
@@ -15,26 +9,26 @@ public class EntityArcher2 extends EntityArcher {
 		super(world);
 		this.blockSpawnId = ModCastleDefenders.blockArcher2ID;
 	}
-
+	
 	/**
 	 * @return Vitesse de tir du mod
 	 */
-	public double getTimeRange() { return 10.D; }
+	public double getTimeRange() { return ModCastleDefenders.archer2TimeRange; }
 	/**
 	 * @return Zone de detection du mod
 	 */
-	public double getFollowRange () { return 120.D; }
+	public double getFollowRange () { return ModCastleDefenders.archer2FollowRange; }
 	/**
 	 * @return Vitesse du mod
 	 */
-	public double getMoveSpeed () { return 0.0D; }
+	public double getMoveSpeed () { return ModCastleDefenders.archer2MoveSpeed; }
 	/**
 	 * @return Point de vie du mod
 	 */
-	public double getHealt () { return 30.0D; }
+	public double getHealt () { return ModCastleDefenders.archer2Healt; }
 	/**
 	 * @return Point de vie du mod
 	 */
-	public int getAttackStrength () { return 7; }
+	public int getAttackStrength () { return ModCastleDefenders.archer2AttackStrength; }
 	
 }
