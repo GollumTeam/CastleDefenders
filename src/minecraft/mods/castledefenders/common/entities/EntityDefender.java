@@ -3,6 +3,8 @@ package mods.castledefenders.common.entities;
 import java.util.List;
 
 import mods.castledefenders.ModCastleDefenders;
+import mods.gollum.core.config.container.ItemStackConfig;
+import mods.gollum.core.config.container.MobCapacitiesConfig;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -33,7 +35,7 @@ public abstract class EntityDefender extends EntityAnimal {
 		this.setSize(1.1F, 1.8F);
 		
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setAttribute(this.getHealt ());
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setAttribute(this.getMaxHealt ());
 		this.getEntityAttribute(SharedMonsterAttributes.followRange)  .setAttribute(this.getFollowRange ());
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAITempt(this, 0.35F, ModCastleDefenders.itemMedallion.itemID, false));
@@ -57,23 +59,31 @@ public abstract class EntityDefender extends EntityAnimal {
 		return this.idTargetTask++;
 	}
 	
-
-	/**
-	 * @return Zone de detection du mod
-	 */
-	public double getFollowRange () { return 20.D; }
 	/**
 	 * @return Vitesse du mod
 	 */
-	public double getMoveSpeed () { return 0.1D; }
+	protected double getMoveSpeed () { return this.getCapacities ().moveSpeed; }
 	/**
 	 * @return Point de vie du mod
 	 */
-	public double getHealt () { return 0.0D; }
+	protected double getMaxHealt () { return this.getCapacities ().maxHealt; }
 	/**
 	 * @return Point de vie du mod
 	 */
-	public int getAttackStrength () { return 10; }
+	protected double getAttackStrength () { return this.getCapacities ().attackStrength; }
+	/**
+	 * @return Zone de detection du mod
+	 */
+	protected double getFollowRange () { return this.getCapacities ().followRange; }
+	/**
+	 * @return Vitesse de tir du mod
+	 */
+	protected double getTimeRange() { return this.getCapacities ().timeRange; }
+	
+	/**
+	 * @return les capacitées du mod
+	 */
+	protected abstract MobCapacitiesConfig getCapacities ();
 	
 	
 	/**
@@ -83,7 +93,7 @@ public abstract class EntityDefender extends EntityAnimal {
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes ();
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed) .setAttribute(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)     .setAttribute(this.getHealt ());
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)     .setAttribute(this.getMaxHealt ());
 		this.getEntityAttribute(SharedMonsterAttributes.followRange)   .setAttribute(this.getFollowRange ());
 	}
 	
@@ -145,7 +155,7 @@ public abstract class EntityDefender extends EntityAnimal {
 	
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
-		int strength = this.getAttackStrength();
+		double strength = this.getAttackStrength();
 
 		if (this.isPotionActive(Potion.damageBoost)) {
 			strength += 3 << this.getActivePotionEffect(Potion.damageBoost).getAmplifier();
@@ -155,7 +165,7 @@ public abstract class EntityDefender extends EntityAnimal {
 			strength -= 2 << this.getActivePotionEffect(Potion.weakness).getAmplifier();
 		}
 
-		return entity.attackEntityFrom(DamageSource.causeMobDamage(this), strength);
+		return entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float)strength);
 	}
 	
 	

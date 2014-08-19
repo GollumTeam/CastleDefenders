@@ -1,6 +1,7 @@
 package mods.castledefenders.common.entities;
 
 import mods.castledefenders.ModCastleDefenders;
+import mods.gollum.core.config.container.MobCapacitiesConfig;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.EntityCreeper;
@@ -14,8 +15,8 @@ public class EntityKnight extends EntityDefender {
 	public EntityKnight(World world) {
 		
 		super(world);
-		this.blockSpawnId       = ModCastleDefenders.blockKnightID;
-		this.defaultHeldItem    = new ItemStack(Item.swordIron, 1);
+		this.blockSpawnId    = ModCastleDefenders.blockKnightID;
+		this.defaultHeldItem = new ItemStack(Item.swordIron, 1);
 		
 		this.getNavigator().setBreakDoors(true);
 		
@@ -27,21 +28,9 @@ public class EntityKnight extends EntityDefender {
 	}
 	
 	/**
-	 * @return Zone de detection du mod
+	 * @return les capacitées du mod
 	 */
-	public double getFollowRange () { return ModCastleDefenders.knightFollowRange; }
-	/**
-	 * @return Vitesse du mod
-	 */
-	public double getMoveSpeed () { return ModCastleDefenders.knightMoveSpeed; }
-	/**
-	 * @return Point de vie du mod
-	 */
-	public double getHealt () { return ModCastleDefenders.knightHealt; }
-	/**
-	 * @return Point de vie du mod
-	 */
-	public int getAttackStrength () { return ModCastleDefenders.knightAttackStrength; }
+	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.knightCapacities; }
 	
 	
 }

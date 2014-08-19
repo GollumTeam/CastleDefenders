@@ -2,6 +2,8 @@ package mods.castledefenders.common.entities;
 
 import java.util.List;
 
+import mods.gollum.core.config.container.ItemStackConfig;
+import mods.gollum.core.config.container.MobCapacitiesConfig;
 import net.minecraft.block.Block;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -26,7 +28,7 @@ public abstract class EntityEnemy extends EntityMob {
 		super(world);
 		
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setAttribute(this.getHealt ());
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setAttribute(this.getMaxHealt ());
 		this.getEntityAttribute(SharedMonsterAttributes.followRange)  .setAttribute(this.getFollowRange ());
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage) .setAttribute(this.getAttackStrength ());
 		
@@ -57,21 +59,30 @@ public abstract class EntityEnemy extends EntityMob {
 	}
 	
 	/**
-	 * @return Zone de detection du mod
-	 */
-	public double getFollowRange () { return 16.D; }
-	/**
 	 * @return Vitesse du mod
 	 */
-	public double getMoveSpeed () { return 0.5D; }
+	protected double getMoveSpeed () { return this.getCapacities ().moveSpeed; }
 	/**
 	 * @return Point de vie du mod
 	 */
-	public double getHealt () { return 25.0D; }
+	protected double getMaxHealt () { return this.getCapacities ().maxHealt; }
 	/**
 	 * @return Point de vie du mod
 	 */
-	public int getAttackStrength () { return 6; }
+	protected double getAttackStrength () { return this.getCapacities ().attackStrength; }
+	/**
+	 * @return Zone de detection du mod
+	 */
+	protected double getFollowRange () { return this.getCapacities ().followRange; }
+	/**
+	 * @return Vitesse de tir du mod
+	 */
+	protected double getTimeRange() { return this.getCapacities ().timeRange; }
+	
+	/**
+	 * @return les capacitées du mod
+	 */
+	protected abstract MobCapacitiesConfig getCapacities ();
 	
 	
 	/**
@@ -81,7 +92,7 @@ public abstract class EntityEnemy extends EntityMob {
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes ();
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed) .setAttribute(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)     .setAttribute(this.getHealt ());
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)     .setAttribute(this.getMaxHealt ());
 		this.getEntityAttribute(SharedMonsterAttributes.followRange)   .setAttribute(this.getFollowRange ());
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage)  .setAttribute(this.getAttackStrength ());
 	}

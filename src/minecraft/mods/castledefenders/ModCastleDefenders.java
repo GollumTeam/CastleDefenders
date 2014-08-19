@@ -42,12 +42,15 @@ import mods.gollum.core.building.Building;
 import mods.gollum.core.building.BuildingParser;
 import mods.gollum.core.config.ConfigLoader;
 import mods.gollum.core.config.ConfigProp;
-import mods.gollum.core.config.ItemStackConfig;
+import mods.gollum.core.config.container.ItemStackConfig;
+import mods.gollum.core.config.container.MobCapacitiesConfig;
 import mods.gollum.core.creativetab.GollumCreativeTabs;
 import mods.gollum.core.facory.BlockFactory;
 import mods.gollum.core.facory.ItemFactory;
 import mods.gollum.core.i18n.I18n;
 import mods.gollum.core.log.Logger;
+import mods.gollum.core.mod.ModMetaInfos;
+import mods.gollum.core.sound.SoundRegistry;
 import mods.gollum.core.version.VersionChecker;
 import mods.gollum.core.worldgenerator.WorldGeneratorByBuilding;
 import net.minecraft.block.Block;
@@ -115,153 +118,68 @@ public class ModCastleDefenders {
 	@ConfigProp(group = "Display") public static double mercenaryLifeWidth = 40.D;
 	
 	// Liste des IDs
-	@ConfigProp(group = "Blocks Ids") public static int blockKnightID  = 1238;
-	@ConfigProp(group = "Blocks Ids") public static int blockKnight2ID = 1240;
-	@ConfigProp(group = "Blocks Ids") public static int blockArcherID  = 1239;
-	@ConfigProp(group = "Blocks Ids") public static int blockArcher2ID = 1241;
-	@ConfigProp(group = "Blocks Ids") public static int blockMercID    = 1234;
+	@ConfigProp(group = "Blocks Ids") public static int blockKnightID     = 1238;
+	@ConfigProp(group = "Blocks Ids") public static int blockKnight2ID    = 1240;
+	@ConfigProp(group = "Blocks Ids") public static int blockArcherID     = 1239;
+	@ConfigProp(group = "Blocks Ids") public static int blockArcher2ID    = 1241;
+	@ConfigProp(group = "Blocks Ids") public static int blockMercID       = 1234;
 	@ConfigProp(group = "Blocks Ids") public static int blockMercArcherID = 1232;
-	@ConfigProp(group = "Blocks Ids") public static int blockMageID    = 1235;
-	@ConfigProp(group = "Blocks Ids") public static int blockHealerID  = 1242;
-	@ConfigProp(group = "Blocks Ids") public static int blockEKnightID = 1237;
-	@ConfigProp(group = "Blocks Ids") public static int blockEArcherID = 1236;
-	@ConfigProp(group = "Blocks Ids") public static int blockEMageID   = 1233;
+	@ConfigProp(group = "Blocks Ids") public static int blockMageID       = 1235;
+	@ConfigProp(group = "Blocks Ids") public static int blockHealerID     = 1242;
+	@ConfigProp(group = "Blocks Ids") public static int blockEKnightID    = 1237;
+	@ConfigProp(group = "Blocks Ids") public static int blockEArcherID    = 1236;
+	@ConfigProp(group = "Blocks Ids") public static int blockEMageID      = 1233;
 	
 	@ConfigProp(group = "Items Ids") public static int medallionID    = 13001;
 	
-	@ConfigProp(group = "Mobs Ids") public static int knightID      = -31;
-	@ConfigProp(group = "Mobs Ids") public static int knight2ID     = -32;
-	@ConfigProp(group = "Mobs Ids") public static int archerID      = -30;
-	@ConfigProp(group = "Mobs Ids") public static int archer2ID     = -33;
-	@ConfigProp(group = "Mobs Ids") public static int mercID        = -29;
-	@ConfigProp(group = "Mobs Ids") public static int MercArcherID  = -25;
-	@ConfigProp(group = "Mobs Ids") public static int mageID        = -13;
-	@ConfigProp(group = "Mobs Ids") public static int healerID      = -34;
-	@ConfigProp(group = "Mobs Ids") public static int eKnightID     = -28;
-	@ConfigProp(group = "Mobs Ids") public static int eArcherID     = -27;
-	@ConfigProp(group = "Mobs Ids") public static int eMageID       = -26;
+	@ConfigProp(group = "Mobs Ids") public static int knightID     = -31;
+	@ConfigProp(group = "Mobs Ids") public static int knight2ID    = -32;
+	@ConfigProp(group = "Mobs Ids") public static int archerID     = -30;
+	@ConfigProp(group = "Mobs Ids") public static int archer2ID    = -33;
+	@ConfigProp(group = "Mobs Ids") public static int mercID       = -29;
+	@ConfigProp(group = "Mobs Ids") public static int MercArcherID = -25;
+	@ConfigProp(group = "Mobs Ids") public static int mageID       = -13;
+	@ConfigProp(group = "Mobs Ids") public static int healerID     = -34;
+	@ConfigProp(group = "Mobs Ids") public static int eKnightID    = -28;
+	@ConfigProp(group = "Mobs Ids") public static int eArcherID    = -27;
+	@ConfigProp(group = "Mobs Ids") public static int eMageID      = -26;
 
 	// Config des mercenaire
-	@ConfigProp(group = "Mercenary", info="ItemID:metadata:number,...") 
-	public static ItemStackConfig[] mercenaryCost  = {new ItemStackConfig(Item.ingotGold.itemID, 1), new ItemStackConfig(Item.ingotIron.itemID, 10)};
+	@ConfigProp(group = "Mercenary", info="[ItemID,metadata,number],...") 
+	public static ItemStackConfig[] mercenaryCost  = {new ItemStackConfig(Item.ingotGold.itemID), new ItemStackConfig(Item.ingotIron.itemID, 10)};
 	@ConfigProp(group = "Mercenary")
-	public static ItemStackConfig[] mercArcherCost = {new ItemStackConfig(Item.ingotGold.itemID, 1), new ItemStackConfig(Item.ingotIron.itemID, 10)};
+	public static ItemStackConfig[] mercArcherCost = {new ItemStackConfig(Item.ingotGold.itemID), new ItemStackConfig(Item.ingotIron.itemID, 10)};
 	@ConfigProp(group = "Mercenary")
-	public static ItemStackConfig[] healerCost     = {new ItemStackConfig(Item.ingotGold.itemID, 1), new ItemStackConfig(Item.ingotIron.itemID, 10)};
+	public static ItemStackConfig[] healerCost     = {new ItemStackConfig(Item.ingotGold.itemID), new ItemStackConfig(Item.ingotIron.itemID, 10)};
+	@ConfigProp(group = "Mercenary")
+	public static int healPointByTimeRange = 1;
 	
 	// Ratio de building de chaque type
 	@ConfigProp(group = "Spawn rate group [0-10]") public static int castleSpawnRate    = 5;
 	@ConfigProp(group = "Spawn rate group [0-10]") public static int mercenarySpawnRate = 5;
 	
 	// Ratio de building entre les batiments d'un meme type
-	@ConfigProp(group = "Spawn rate between mercenary building")
-	public static int mercenaryBuilding1SpawnRate = 7;
-	@ConfigProp(group = "Spawn rate between mercenary building")
-	public static int mercenaryBuilding2SpawnRate = 6;
-	@ConfigProp(group = "Spawn rate between mercenary building")
-	public static int mercenaryBuilding3SpawnRate = 1;
-	@ConfigProp(group = "Spawn rate between mercenary building")
-	public static int mercenaryBuilding4SpawnRate = 1;
+	@ConfigProp(group = "Spawn rate between mercenary building") public static int mercenaryBuilding1SpawnRate = 7;
+	@ConfigProp(group = "Spawn rate between mercenary building") public static int mercenaryBuilding2SpawnRate = 6;
+	@ConfigProp(group = "Spawn rate between mercenary building") public static int mercenaryBuilding3SpawnRate = 1;
+	@ConfigProp(group = "Spawn rate between mercenary building") public static int mercenaryBuilding4SpawnRate = 1;
 	
-	@ConfigProp(group = "Spawn rate between castle building")
-	public static int castleBuilding1SpawnRate = 6;
-	@ConfigProp(group = "Spawn rate between castle building")
-	public static int castleBuilding2SpawnRate = 6;
-	@ConfigProp(group = "Spawn rate between castle building")
-	public static int castleBuilding3SpawnRate = 3;
-	@ConfigProp(group = "Spawn rate between castle building")
-	public static int castleBuilding4SpawnRate = 2;
-
-	@ConfigProp(group = "Entity Knight capacities")
-	public static double knightFollowRange = 20.D;
-	@ConfigProp(group = "Entity Knight capacities")
-	public static double knightMoveSpeed = 0.5D;
-	@ConfigProp(group = "Entity Knight capacities")
-	public static double knightHealt = 20.D;
-	@ConfigProp(group = "Entity Knight capacities")
-	public static int knightAttackStrength = 4;
-
-	@ConfigProp(group = "Entity Knight 2 capacities")
-	public static double knight2FollowRange = 25.D;
-	@ConfigProp(group = "Entity Knight 2 capacities")
-	public static double knight2MoveSpeed = 0.6D;
-	@ConfigProp(group = "Entity Knight 2 capacities")
-	public static double knight2Healt = 30.D;
-	@ConfigProp(group = "Entity Knight 2 capacities")
-	public static int knight2AttackStrength = 8;
-
-	@ConfigProp(group = "Entity Enemy Knight capacities")
-	public static double eKnightFollowRange = 16.D;
-	@ConfigProp(group = "Entity Enemy Knight capacities")
-	public static double eKnightMoveSpeed = 0.55D;
-	@ConfigProp(group = "Entity Enemy Knight capacities")
-	public static double eKnightHealt = 25.D;
-	@ConfigProp(group = "Entity Enemy Knight capacities")
-	public static int eKnightAttackStrength = 6;
+	@ConfigProp(group = "Spawn rate between castle building") public static int castleBuilding1SpawnRate = 6;
+	@ConfigProp(group = "Spawn rate between castle building") public static int castleBuilding2SpawnRate = 6;
+	@ConfigProp(group = "Spawn rate between castle building") public static int castleBuilding3SpawnRate = 3;
+	@ConfigProp(group = "Spawn rate between castle building") public static int castleBuilding4SpawnRate = 2;
 	
-	@ConfigProp(group = "Entity Archer capacities")
-	public static double archerTimeRange = 30.D;
-	@ConfigProp(group = "Entity Archer capacities")
-	public static double archerFollowRange = 30.D;
-	@ConfigProp(group = "Entity Archer capacities")
-	public static double archerMoveSpeed = 0.1D;
-	@ConfigProp(group = "Entity Archer capacities")
-	public static double archerHealt = 15.D;
-	@ConfigProp(group = "Entity Archer capacities")
-	public static int archerAttackStrength = 4;
-	
-	@ConfigProp(group = "Entity Archer 2 capacities")
-	public static double archer2TimeRange = 15.D;
-	@ConfigProp(group = "Entity Archer 2 capacities")
-	public static double archer2FollowRange = 25.D;
-	@ConfigProp(group = "Entity Archer 2 capacities")
-	public static double archer2MoveSpeed = 0.1D;
-	@ConfigProp(group = "Entity Archer 2 capacities")
-	public static double archer2Healt = 30.D;
-	@ConfigProp(group = "Entity Archer 2 capacities")
-	public static int archer2AttackStrength = 7;
-	
-	@ConfigProp(group = "Entity Enemy Archer capacities")
-	public static double eArcherTimeRange = 20.D;
-	@ConfigProp(group = "Entity Enemy Archer capacities")
-	public static double eArcherFollowRange = 17.D;
-	@ConfigProp(group = "Entity Enemy Archer capacities")
-	public static double eArcherMoveSpeed = 0.1D;
-	@ConfigProp(group = "Entity Enemy Archer capacities")
-	public static double eArcherHealt = 20.D;
-	@ConfigProp(group = "Entity Enemy Archer capacities")
-	public static int eArcherAttackStrength = 6;
-	
-	@ConfigProp(group = "Entity Mage capacities")
-	public static double mageTimeRange = 40.D;
-	@ConfigProp(group = "Entity Mage capacities")
-	public static double mageFollowRange = 10.D;
-	@ConfigProp(group = "Entity Mage capacities")
-	public static double mageMoveSpeed = 0.1D;
-	@ConfigProp(group = "Entity Mage capacities")
-	public static double mageHealt = 25.D;
-	@ConfigProp(group = "Entity Mage capacities")
-	public static int mageAttackStrength = 3;
-	
-	@ConfigProp(group = "Entity Enemy Mage capacities")
-	public static double eMageTimeRange = 40.D;
-	@ConfigProp(group = "Entity Enemy Mage capacities")
-	public static double eMageFollowRange = 10.D;
-	@ConfigProp(group = "Entity Enemy Mage capacities")
-	public static double eMageMoveSpeed = 0.1D;
-	@ConfigProp(group = "Entity Enemy Mage capacities")
-	public static double eMageHealt = 30.D;
-	@ConfigProp(group = "Entity Enemy Mage capacities")
-	public static int eMageAttackStrength = 5;
-	
-	@ConfigProp(group = "Entity Mercenary capacities")
-	public static double mercFollowRange = 10.D;
-	@ConfigProp(group = "Entity Mercenary capacities")
-	public static double mercMoveSpeed = 0.1D;
-	@ConfigProp(group = "Entity Mercenary capacities")
-	public static double mercHealt = 25.D;
-	@ConfigProp(group = "Entity Mercenary capacities")
-	public static int mercAttackStrength = 3;
+	@ConfigProp(group = "Entity capacities") public static MobCapacitiesConfig knightCapacities     = new MobCapacitiesConfig(0.55D, 20.D, 4.D , 20.D);
+	@ConfigProp(group = "Entity capacities") public static MobCapacitiesConfig knight2Capacities    = new MobCapacitiesConfig(0.60D, 30.D, 8.D , 25.D);
+	@ConfigProp(group = "Entity capacities") public static MobCapacitiesConfig eKnightCapacities    = new MobCapacitiesConfig(0.55D, 25.D, 6.D , 16.D);
+	@ConfigProp(group = "Entity capacities") public static MobCapacitiesConfig archerCapacities     = new MobCapacitiesConfig(0.1D , 15.D, 4.D , 25.D, 30.D);
+	@ConfigProp(group = "Entity capacities") public static MobCapacitiesConfig archer2Capacities    = new MobCapacitiesConfig(0.1D , 25.D, 7.D , 30.D, 15.D);
+	@ConfigProp(group = "Entity capacities") public static MobCapacitiesConfig eArcherCapacities    = new MobCapacitiesConfig(0.1D , 20.D, 6.D , 18.D, 20.D);
+	@ConfigProp(group = "Entity capacities") public static MobCapacitiesConfig mageCapacities       = new MobCapacitiesConfig(0.1D , 25.D, 5.D , 10.D, 40.D);
+	@ConfigProp(group = "Entity capacities") public static MobCapacitiesConfig eMageCapacities      = new MobCapacitiesConfig(0.1D , 30.D, 5.D , 10.D, 40.D);
+	@ConfigProp(group = "Entity capacities") public static MobCapacitiesConfig mercCapacities       = new MobCapacitiesConfig(0.60D, 20.D, 5.D , 20.D);
+	@ConfigProp(group = "Entity capacities") public static MobCapacitiesConfig mercArcherCapacities = new MobCapacitiesConfig(0.60D, 20.D, 5.D , 25.D, 17.D);
+	@ConfigProp(group = "Entity capacities") public static MobCapacitiesConfig healerCapacities     = new MobCapacitiesConfig(0.60D, 15.D, 0.3D, 3.D , 10.D);
 	
 	
 	// Liste des constructions
@@ -291,9 +209,8 @@ public class ModCastleDefenders {
 		ConfigLoader configLoader = new ConfigLoader(this.getClass(), event);
 		configLoader.loadConfig();
 		
-		//Test la version du mod
+		// Test la version du mod
 		new VersionChecker(this);
-		
 	}
 	
 	/**
@@ -308,14 +225,16 @@ public class ModCastleDefenders {
 		
 		// Creation du tab creative
 		tabCastleDefenders = new GollumCreativeTabs("CastleDefender");
-//		LanguageRegistry.instance().addStringLocalization("itemGroup.CastleDefender", "en_US", "Castle Defender");
-
+		
+		// Initialisation des sons
+		this.initSounds ();
+		
 		//Initialisation des items
 		this.initItems();
 		
 		// Initialisation des blocks
 		this.initBlocks ();
-
+		
 		// Initialisation les TileEntities
 		this.initTileEntities ();
 		
@@ -324,7 +243,7 @@ public class ModCastleDefenders {
 		
 		// Initialisation des Mobs
 		this.initMobs ();
-
+		
 		// Initialisation des buildings
 		this.initBuildings();
 		
@@ -344,6 +263,15 @@ public class ModCastleDefenders {
 		ItemFactory factory = new ItemFactory();
 		
 		this.itemMedallion = factory.create(new ItemMedallion(this.medallionID), "Medallion", this.getModid());
+	}
+	
+	/**
+	 * Initialisation des sons
+	 */
+	public void initSounds () {
+		String modid = new ModMetaInfos(this).getModid();
+		
+		SoundRegistry.register("monk", modid);
 	}
 	
 	/**

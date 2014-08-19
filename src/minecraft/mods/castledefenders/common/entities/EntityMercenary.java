@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mods.castledefenders.ModCastleDefenders;
-import mods.gollum.core.config.ItemStackConfig;
+import mods.gollum.core.config.container.ItemStackConfig;
+import mods.gollum.core.config.container.MobCapacitiesConfig;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -41,9 +42,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class EntityMercenary extends EntityTameable {
-
+	
 	protected ItemStack defaultHeldItem = null;
-	protected ItemStackConfig[] listItemCost = null;
 	protected int blockSpawnId;
 	private int idTask = 0;
 	private int idTargetTask = 0;
@@ -59,24 +59,8 @@ public abstract class EntityMercenary extends EntityTameable {
 		this.getNavigator().setAvoidsWater(false);
 		
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setAttribute(this.getHealt ());
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setAttribute(this.getMaxHealt ());
 		this.getEntityAttribute(SharedMonsterAttributes.followRange)  .setAttribute(this.getFollowRange ());
-		
-		
-		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
-		this.tasks.addTask(this.nextIdTask (), this.aiSit);
-		this.tasks.addTask(this.nextIdTask (), new EntityAILeapAtTarget(this, 0.4F));
-		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, this.getMaxSpeed(), true));
-		this.tasks.addTask(this.nextIdTask (), new EntityAIFollowOwner(this, this.getMaxSpeed(), 10.0F, 2.0F));
-		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMaxSpeed()));
-		this.tasks.addTask(this.nextIdTask (), new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-		this.tasks.addTask(this.nextIdTask (), new EntityAILookIdle(this));
-		
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIOwnerHurtByTarget(this));
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIOwnerHurtTarget(this));
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIHurtByTarget(this, true));
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAITargetNonTamed(this, IMob.class, 200, false));
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget(this, IMob.class, 0, true));
 	}
 	
 	/**
@@ -96,29 +80,42 @@ public abstract class EntityMercenary extends EntityTameable {
 	}
 	
 	/**
+	 * @return Vitesse du mod
+	 */
+	protected double getMinSpeed () { return 0.D; }
+	/**
+	 * @return Vitesse du mod
+	 */
+	protected double getMaxSpeed () { return this.getCapacities ().moveSpeed; }
+	/**
+	 * @return Vitesse du mod
+	 */
+	protected double getMoveSpeed () { return this.isTamed() ? this.getMaxSpeed() : this.getMinSpeed (); }
+	/**
+	 * @return Point de vie du mod
+	 */
+	protected double getMaxHealt () { return this.getCapacities ().maxHealt; }
+	/**
+	 * @return Point de vie du mod
+	 */
+	protected double getAttackStrength () { return this.getCapacities ().attackStrength; }
+	/**
 	 * @return Zone de detection du mod
 	 */
-	public double getFollowRange () { return 20.D; }
+	protected double getFollowRange () { return this.getCapacities ().followRange; }
 	/**
-	 * @return Vitesse du mod
+	 * @return Vitesse de tir du mod
 	 */
-	public double getMaxSpeed () { return 0.55D; }
+	protected double getTimeRange() { return this.getCapacities ().timeRange; }
+	
 	/**
-	 * @return Vitesse du mod
+	 * @return les capacitées du mod
 	 */
-	public double getMinSpeed () { return 0.D; }
+	protected abstract MobCapacitiesConfig getCapacities ();
 	/**
-	 * @return Vitesse du mod
+	 * @return Coût du mod
 	 */
-	public double getMoveSpeed () { return this.isTamed() ? this.getMaxSpeed() : this.getMinSpeed (); }
-	/**
-	 * @return Point de vie du mod
-	 */
-	public double getHealt () { return 0.0D; }
-	/**
-	 * @return Point de vie du mod
-	 */
-	public int getAttackStrength () { return 10; }
+	protected abstract ItemStackConfig[] getCost ();
 
 	@SideOnly(Side.CLIENT)
 	public String getMessagePlayer () {
@@ -134,11 +131,11 @@ public abstract class EntityMercenary extends EntityTameable {
 	public ItemStack hasBuyItemInHand (EntityPlayer player) {
 		ItemStack item = player.inventory.getCurrentItem();
 		
-		if (this.listItemCost == null) {
+		if (this.getCapacities() == null) {
 			return null;
 		}
 		
-		for (ItemStackConfig config : this.listItemCost) {
+		for (ItemStackConfig config : this.getCost ()) {
 			ItemStack cStack = config.getItemStak();
 			if (cStack.itemID == item.itemID) {
 				return cStack;
@@ -155,7 +152,7 @@ public abstract class EntityMercenary extends EntityTameable {
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes ();
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed) .setAttribute(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)     .setAttribute(this.getHealt ());
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)     .setAttribute(this.getMaxHealt ());
 		this.getEntityAttribute(SharedMonsterAttributes.followRange)   .setAttribute(this.getFollowRange ());
 	}
 	
@@ -164,7 +161,7 @@ public abstract class EntityMercenary extends EntityTameable {
 		super.setTamed(tamed);
 		
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setAttribute(this.getHealt ());
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setAttribute(this.getMaxHealt ());
 	}
 	
 	/**
@@ -263,6 +260,14 @@ public abstract class EntityMercenary extends EntityTameable {
 	@Override
 	protected boolean canDespawn() { 
 		return false;
+	}
+	
+	/**
+	 * Determines if an entity can be despawned, used on idle far away entities
+	 */
+	@Override
+	public int getMaxSpawnedInChunk () { 
+		return 8;
 	}
 	
 	/**
@@ -384,7 +389,7 @@ public abstract class EntityMercenary extends EntityTameable {
 	
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
-		int strength = this.getAttackStrength();
+		double strength = this.getAttackStrength();
 
 		if (this.isPotionActive(Potion.damageBoost)) {
 			strength += 3 << this.getActivePotionEffect(Potion.damageBoost).getAmplifier();
@@ -394,31 +399,34 @@ public abstract class EntityMercenary extends EntityTameable {
 			strength -= 2 << this.getActivePotionEffect(Potion.weakness).getAmplifier();
 		}
 
-		return entity.attackEntityFrom(DamageSource.causeMobDamage(this), strength);
+		return entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float)strength);
 	}
 	
 	
-	private boolean buy (EntityPlayer player, Class itemClass) {
-		return this.buy(player, 0, itemClass);
+	private boolean buy (EntityPlayer player, Class itemClass, int nb) {
+		return this.buy(player, 0, itemClass, nb);
 	}
-	private boolean buy (EntityPlayer player, int itemId) {
-		return this.buy(player, itemId, null);
+	private boolean buy (EntityPlayer player, int itemId, int nb) {
+		return this.buy(player, itemId, null, nb);
 	}
 	/**
 	 * Buy item
 	 */
-	private boolean buy (EntityPlayer player, int itemId, Class itemClass) {
+	private boolean buy (EntityPlayer player, int itemId, Class itemClass, int nb) {
 		
 		ItemStack item = player.inventory.getCurrentItem();
 		
-		if ( item != null && (
-			(itemClass != null && itemClass.isInstance (Item.itemsList[item.itemID])) ||
-			(itemId != 0 && item.itemID == itemId)
-		)) {
+		if (
+			item != null && 
+			item.stackSize >= nb && (
+				(itemClass != null && itemClass.isInstance (Item.itemsList[item.itemID])) ||
+				(itemId != 0 && item.itemID == itemId)
+			)
+		) {
 			
 			// Enleve l'item
 			if (!player.capabilities.isCreativeMode) {
-				--item.stackSize;
+				item.stackSize -= nb;
 			}
 			if (item.stackSize <= 0) {
 				player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack) null);
@@ -464,13 +472,20 @@ public abstract class EntityMercenary extends EntityTameable {
 		if (!this.worldObj.isRemote) {
 			if (!this.isTamed()) {
 				
-				if (
-					this.ownerList.contains (player.username) || 
-					this.buy (player, Item.ingotGold.itemID)
-				) {
+				boolean buy = this.ownerList.contains (player.username);
+				
+				if (!buy) {
+					for (ItemStackConfig stackConfig: this.getCost ()) {
+						ItemStack stack = stackConfig.getItemStak();
+						if (buy = this.buy (player, stack.itemID, stack.stackSize)) {
+							break;
+						}
+					}
+				}
+				
+				if (buy) {
 					
 					this.linkOwner(player);
-					
 					return true;
 				}
 				
@@ -478,7 +493,7 @@ public abstract class EntityMercenary extends EntityTameable {
 				
 				ModCastleDefenders.log.debug("Interract with owner: "+player.username);
 				
-				if (this.buy (player, ItemFood.class)) {
+				if (this.buy (player, ItemFood.class, 1)) {
 					
 					ItemFood food = (ItemFood) Item.itemsList[item.itemID];
 					this.heal(food.getHealAmount());
@@ -520,6 +535,10 @@ public abstract class EntityMercenary extends EntityTameable {
 	
 	@SideOnly(Side.CLIENT)
 	public boolean isOwner() {
-		return this.getOwnerName().equals(Minecraft.getMinecraft().thePlayer.username);
+		return this.isOwner(Minecraft.getMinecraft().thePlayer);
+	}
+	
+	public boolean isOwner(EntityPlayer player) {
+		return this.getOwnerName().equals(player.username);
 	}
 }

@@ -1,6 +1,8 @@
 package mods.castledefenders.common.entities;
 
 import mods.castledefenders.ModCastleDefenders;
+import mods.gollum.core.config.container.ItemStackConfig;
+import mods.gollum.core.config.container.MobCapacitiesConfig;
 import net.minecraft.world.World;
 
 public class EntityArcher2 extends EntityArcher {
@@ -11,24 +13,12 @@ public class EntityArcher2 extends EntityArcher {
 	}
 	
 	/**
-	 * @return Vitesse de tir du mod
+	 * @return les capacitées du mod
 	 */
-	public double getTimeRange() { return ModCastleDefenders.archer2TimeRange; }
+	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.healerCapacities; }
 	/**
-	 * @return Zone de detection du mod
+	 * @return les capacitées du mod
 	 */
-	public double getFollowRange () { return ModCastleDefenders.archer2FollowRange; }
-	/**
-	 * @return Vitesse du mod
-	 */
-	public double getMoveSpeed () { return ModCastleDefenders.archer2MoveSpeed; }
-	/**
-	 * @return Point de vie du mod
-	 */
-	public double getHealt () { return ModCastleDefenders.archer2Healt; }
-	/**
-	 * @return Point de vie du mod
-	 */
-	public int getAttackStrength () { return ModCastleDefenders.archer2AttackStrength; }
+	protected ItemStackConfig[] getCost () { return ModCastleDefenders.healerCost; }
 	
 }
