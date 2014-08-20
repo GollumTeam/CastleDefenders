@@ -17,7 +17,7 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity {
 	public int delay = 20;
 	protected int minSpawnDelay = 200;
 	protected int maxSpawnDelay = 800;
-	protected int spawnCount = 4;
+	protected int maxSpawn = 0;
 	
 	// Le mob
 	private String mobID;
@@ -60,8 +60,6 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity {
 			
 			if (!this.worldObj.isRemote) {
 				
-//				ModCastleDefenders.log.debug("updateEntity : delay=" + delay);
-				
 				// Lance un timeout
 				if (this.delay == -1) {
 					this.updateDelay();
@@ -71,40 +69,38 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity {
 					return;
 				}
 				
-				for (int i = 0; i < this.spawnCount; ++i) {
-					Entity entity = EntityList.createEntityByName(this.mobID, this.worldObj);
-					
-					// L'entity n'existe pas
-					if (entity == null) {
-						ModCastleDefenders.log.warning("This mob "+this.mobID+" isn't  register");
-						return;
-					}
+				Entity entity = EntityList.createEntityByName(this.mobID, this.worldObj);
+				
+				// L'entity n'existe pas
+				if (entity == null) {
+					ModCastleDefenders.log.warning("This mob "+this.mobID+" isn't  register");
+					return;
+				}
 
-					int nbEntityArround = this.worldObj.getEntitiesWithinAABB(entity.getClass(), AxisAlignedBB.getAABBPool().getAABB((double)this.xCoord, (double)this.yCoord, (double)this.zCoord, (double)(this.xCoord + 1), (double)(this.yCoord + 1), (double)(this.zCoord + 1)).expand(12.0D, 4.0D, 12.0D)).size();
+				int nbEntityArround = this.worldObj.getEntitiesWithinAABB(entity.getClass(), AxisAlignedBB.getAABBPool().getAABB((double)this.xCoord, (double)this.yCoord, (double)this.zCoord, (double)(this.xCoord + 1), (double)(this.yCoord + 1), (double)(this.zCoord + 1)).expand(12.0D, 4.0D, 12.0D)).size();
+				
+				//Le nombre d'entity est supérieur à 6 autour du block
+				if (nbEntityArround >= this.maxSpawn) {
+					this.updateDelay();
+					return;
+				}
+				
+				double x = (double)this.xCoord + 0.5D;
+				double y = (double)(this.yCoord + 1);
+				double z = (double)this.zCoord + 0.5D;
+				EntityLiving entityLiving = entity instanceof EntityLiving ? (EntityLiving)entity : null;
+				entity.setLocationAndAngles(x, y, z, this.worldObj.rand.nextFloat() * 360.0F, this.worldObj.rand.nextFloat() * 360.0F);
+				
+				if (entityLiving == null || entityLiving.getCanSpawnHere()) {
 					
-					//Le nombre d'entity est supérieur à 6 autour du block
-					if (nbEntityArround >= 6) {
-						this.updateDelay();
-						return;
+					this.worldObj.spawnEntityInWorld(entity);
+					this.worldObj.playSoundEffect (this.xCoord, this.yCoord, this.zCoord, "dig.stone", 0.5F, this.worldObj.rand.nextFloat() * 0.25F + 0.6F);
+					
+					if (entityLiving != null) {
+						entityLiving.spawnExplosionParticle();
 					}
 					
-					double x = (double)this.xCoord + 0.5D;// + (this.worldObj.rand.nextDouble() - this.worldObj.rand.nextDouble()) * 4.0D;
-					double y = (double)(this.yCoord + 1);// + this.worldObj.rand.nextInt(3) - 1);
-					double z = (double)this.zCoord + 0.5D;// + (this.worldObj.rand.nextDouble() - this.worldObj.rand.nextDouble()) * 4.0D;
-					EntityLiving entityLiving = entity instanceof EntityLiving ? (EntityLiving)entity : null;
-					entity.setLocationAndAngles(x, y, z, this.worldObj.rand.nextFloat() * 360.0F, this.worldObj.rand.nextFloat() * 360.0F);
-					
-					if (entityLiving == null || entityLiving.getCanSpawnHere()) {
-						
-						this.worldObj.spawnEntityInWorld(entity);
-						this.worldObj.playSoundEffect (this.xCoord, this.yCoord, this.zCoord, "dig.stone", 0.5F, this.worldObj.rand.nextFloat() * 0.25F + 0.6F);
-						
-						if (entityLiving != null) {
-							entityLiving.spawnExplosionParticle();
-						}
-						
-						this.updateDelay();
-					}
+					this.updateDelay();
 				}
 			}
 		}

@@ -56,11 +56,29 @@ public abstract class EntityMercenary extends EntityTameable {
 		
 		this.setSize(1.1F, 1.8F);
 		
-		this.getNavigator().setAvoidsWater(false);
+		this.getNavigator().setBreakDoors(true); // Permet d'ouvrir les port
+		this.getNavigator().setAvoidsWater(false); // Evite l'eau
 		
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(this.getMoveSpeed ());
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setAttribute(this.getMaxHealt ());
 		this.getEntityAttribute(SharedMonsterAttributes.followRange)  .setAttribute(this.getFollowRange ());
+		
+		float follow = Math.min((float)(this.getFollowRange()-1), 10F);
+		if (follow < 1.0F) {
+			follow = 1.0F;
+		}
+		
+		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
+		this.tasks.addTask(this.nextIdTask (), this.aiSit);
+		this.tasks.addTask(this.nextIdTask (), new EntityAILeapAtTarget(this, 0.4F));
+		this.tasks.addTask(this.nextIdTask (), new EntityAIFollowOwner(this, this.getMaxSpeed(), follow, 1.0F));
+		
+		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIOwnerHurtByTarget(this));
+		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIOwnerHurtTarget(this));
+		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIHurtByTarget(this, true));
+		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAITargetNonTamed(this, IMob.class, 200, false));
+		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget(this, IMob.class, 0, true));
+		
 	}
 	
 	/**
@@ -103,6 +121,7 @@ public abstract class EntityMercenary extends EntityTameable {
 	 * @return Zone de detection du mod
 	 */
 	protected double getFollowRange () { return this.getCapacities ().followRange; }
+//	protected double getFollowRange () { return 11.0; }
 	/**
 	 * @return Vitesse de tir du mod
 	 */
@@ -131,17 +150,19 @@ public abstract class EntityMercenary extends EntityTameable {
 	public ItemStack hasBuyItemInHand (EntityPlayer player) {
 		ItemStack item = player.inventory.getCurrentItem();
 		
-		if (this.getCapacities() == null) {
-			return null;
-		}
-		
-		for (ItemStackConfig config : this.getCost ()) {
-			ItemStack cStack = config.getItemStak();
-			if (cStack.itemID == item.itemID) {
-				return cStack;
+		if (item != null) {
+			
+			if (this.getCapacities() == null) {
+				return null;
+			}
+			
+			for (ItemStackConfig config : this.getCost ()) {
+				ItemStack cStack = config.getItemStak();
+				if (cStack.itemID == item.itemID) {
+					return cStack;
+				}
 			}
 		}
-		
 		return null;
 	}
 	
@@ -276,7 +297,7 @@ public abstract class EntityMercenary extends EntityTameable {
 	 */
 	@Override
 	public boolean getCanSpawnHere() { 
-	
+		
 		int x = MathHelper.floor_double(this.posX);
 		int y = MathHelper.floor_double(this.boundingBox.minY);
 		int z = MathHelper.floor_double(this.posZ);
@@ -293,11 +314,18 @@ public abstract class EntityMercenary extends EntityTameable {
 			).expand(2.0D, 2.0D, 2.0D)
 		);
 		
+		boolean found = false;
+		for (Object arroundEntity : entityListBlockArround) {
+			if (arroundEntity.getClass() == this.getClass()) {
+				found = true;
+			}
+		}
+		
 		return
 			idBlock == this.blockSpawnId &&
 			(up1 == 0 || !Block.blocksList[up1].isCollidable()) &&
 			(up2 == 0 || !Block.blocksList[up2].isCollidable()) &&
-			entityListBlockArround.isEmpty();
+			!found;
 	}
 	
 	/**

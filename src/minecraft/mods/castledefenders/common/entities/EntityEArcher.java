@@ -11,7 +11,7 @@ public class EntityEArcher extends EntityEnemy {
 	
 	public EntityEArcher(World world) {
 		super(world);
-		this.blockSpawnId    = ModCastleDefenders.blockEArcherID;
+		this.blockSpawnId    = ModCastleDefenders.blockEArcher.blockID;
 		this.defaultHeldItem = new ItemStack(Item.bow, 1);
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), EntityAIDistanceAttack.TYPE_ARROW));
@@ -27,5 +27,5 @@ public class EntityEArcher extends EntityEnemy {
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.eArcherCapacities; }
+	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.config.eArcherCapacities; }
 }

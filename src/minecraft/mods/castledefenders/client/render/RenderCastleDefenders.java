@@ -2,6 +2,7 @@ package mods.castledefenders.client.render;
 
 import java.util.Hashtable;
 
+import mods.castledefenders.ModCastleDefenders;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.entity.Entity;
@@ -16,8 +17,8 @@ public class RenderCastleDefenders extends RenderBiped {
 	
 	protected String name;
 	
-	public RenderCastleDefenders(ModelBiped biped, float tailleOmbre, String name) {
-		super(biped, tailleOmbre);
+	public RenderCastleDefenders (String name) {
+		super(new ModelBiped(), 0.5F);
 		this.name = name;
 	}
 	
@@ -28,7 +29,7 @@ public class RenderCastleDefenders extends RenderBiped {
 		if (cacheResource.containsKey(name)) {
 			texture = cacheResource.get(name);
 		} else {
-			texture = new ResourceLocation("castledefenders:"+name+".png");
+			texture = new ResourceLocation(ModCastleDefenders.MODID.toLowerCase()+":"+name+".png");
 			cacheResource.put(name, texture);
 		}
 		

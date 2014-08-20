@@ -13,8 +13,8 @@ import org.lwjgl.opengl.GL11;
 
 public class RenderMercCastleDefenders extends RenderCastleDefenders {
 	
-	public RenderMercCastleDefenders(ModelBiped biped, float tailleOmbre, String name) {
-		super(biped, tailleOmbre, name);
+	public RenderMercCastleDefenders(String name) {
+		super(name);
 	}
 
 	@Override
@@ -38,6 +38,12 @@ public class RenderMercCastleDefenders extends RenderCastleDefenders {
 		} else {
 			this.renderLivingLabel(entityMercenary, entityMercenary.getMessagePlayer(), x, y, z, 64);
 		}
+
+		GL11.glPushMatrix();
+		this.modelBipedMain.bipedRightArm.rotateAngleY = 1.6F;
+		this.modelBipedMain.bipedRightArm.postRender(0.0222F);
+		GL11.glPopMatrix();
+		
 	}
 	
 	/**
@@ -47,15 +53,15 @@ public class RenderMercCastleDefenders extends RenderCastleDefenders {
 		
 		boolean display = ModCastleDefenders.proxy.getDisplayHealth();
 		
-		if (display && ModCastleDefenders.displayMercenaryLife) {
+		if (display && ModCastleDefenders.config.displayMercenaryLife) {
 			
 			EntityMercenary entityMerc = (EntityMercenary)entityLivingBase;
 			
 			float zoom = 0.01666667F * 1.6F;
 			Tessellator tessellator = Tessellator.instance;
-			double top = -ModCastleDefenders.mercenaryLifeTop;
-			double height = ModCastleDefenders.mercenaryLifeHeight;
-			double width = ModCastleDefenders.mercenaryLifeWidth;
+			double top = -ModCastleDefenders.config.mercenaryLifeTop;
+			double height = ModCastleDefenders.config.mercenaryLifeHeight;
+			double width = ModCastleDefenders.config.mercenaryLifeWidth;
 			
 			GL11.glDisable(GL11.GL_TEXTURE_2D);
 			GL11.glPushMatrix();

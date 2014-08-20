@@ -1,5 +1,7 @@
 package mods.castledefenders.common.tileentities;
 
+import mods.castledefenders.ModCastleDefenders;
+
 public class TileEntityBlockMercArcher extends TileEntityBlockCastleDefenders {
 	
 	/**
@@ -7,5 +9,6 @@ public class TileEntityBlockMercArcher extends TileEntityBlockCastleDefenders {
 	 */
 	public TileEntityBlockMercArcher() {
 		super("MercArcher");
+		this.maxSpawn = ModCastleDefenders.config.maxSpawnMercArcher;
 	}
 }

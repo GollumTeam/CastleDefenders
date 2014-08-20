@@ -27,6 +27,11 @@ public abstract class EntityEnemy extends EntityMob {
 	public EntityEnemy(World world) {
 		super(world);
 		
+		this.setSize(1.1F, 1.8F);
+		
+		this.getNavigator().setBreakDoors(false); // Permet d'ouvrir les port
+		this.getNavigator().setAvoidsWater(true); // Evite l'eau
+		
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(this.getMoveSpeed ());
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setAttribute(this.getMaxHealt ());
 		this.getEntityAttribute(SharedMonsterAttributes.followRange)  .setAttribute(this.getFollowRange ());
@@ -136,12 +141,18 @@ public abstract class EntityEnemy extends EntityMob {
 			).expand(2.0D, 2.0D, 2.0D)
 		);
 		
+		boolean found = false;
+		for (Object arroundEntity : entityListBlockArround) {
+			if (arroundEntity.getClass() == this.getClass()) {
+				found = true;
+			}
+		}
+		
 		return
 			idBlock == this.blockSpawnId &&
-			this.worldObj.checkNoEntityCollision(this.boundingBox) &&
 			(up1 == 0 || !Block.blocksList[up1].isCollidable()) &&
 			(up2 == 0 || !Block.blocksList[up2].isCollidable()) &&
-			entityListBlockArround.isEmpty();
+			!found;
 	}
 	
 	/**

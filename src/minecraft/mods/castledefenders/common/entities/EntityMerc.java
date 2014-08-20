@@ -26,32 +26,22 @@ public class EntityMerc extends EntityMercenary {
 	public EntityMerc(World world) {
 		
 		super(world);
-		this.blockSpawnId    = ModCastleDefenders.blockMercID;
+		this.blockSpawnId    = ModCastleDefenders.blockMerc.blockID;
 		this.defaultHeldItem = new ItemStack(Item.swordIron, 1);
 		
-		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
-		this.tasks.addTask(this.nextIdTask (), this.aiSit);
-		this.tasks.addTask(this.nextIdTask (), new EntityAILeapAtTarget(this, 0.4F));
-		this.tasks.addTask(this.nextIdTask (), new EntityAIFollowOwner(this, this.getMaxSpeed(), 10.0F, 2.0F));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, this.getMaxSpeed(), true));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMaxSpeed()));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(this.nextIdTask (), new EntityAILookIdle(this));
-		
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIOwnerHurtByTarget(this));
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIOwnerHurtTarget(this));
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIHurtByTarget(this, true));
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAITargetNonTamed(this, IMob.class, 200, false));
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget(this, IMob.class, 0, true));
 	}
 	
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.mercCapacities; }
+	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.config.mercCapacities; }
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected ItemStackConfig[] getCost () { return ModCastleDefenders.mercenaryCost; }
+	protected ItemStackConfig[] getCost () { return ModCastleDefenders.config.mercenaryCost; }
 	
 }

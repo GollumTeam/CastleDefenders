@@ -5,6 +5,7 @@ import java.util.List;
 import mods.castledefenders.ModCastleDefenders;
 import mods.gollum.core.config.container.ItemStackConfig;
 import mods.gollum.core.config.container.MobCapacitiesConfig;
+import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIFollowOwner;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
@@ -23,42 +24,43 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
-public class EntityHealer extends EntityMercenary {
+public class EntityHealer extends EntityMerc {
+	
+	private final static int maxCouldDownMusic = 300;
+	
+	int couldDown = 0;
+	int couldDownMusic = maxCouldDownMusic;
 	
 	public EntityHealer(World world) {
 		
 		super(world);
-		this.blockSpawnId       = ModCastleDefenders.blockHealerID;
+		this.blockSpawnId       = ModCastleDefenders.blockHealer.blockID;
 		this.defaultHeldItem    = new ItemStack(Item.book, 1);
 		
-		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
-		this.tasks.addTask(this.nextIdTask (), this.aiSit);
-		this.tasks.addTask(this.nextIdTask (), new EntityAILeapAtTarget(this, 0.4F));
-		this.tasks.addTask(this.nextIdTask (), new EntityAIFollowOwner(this, this.getMaxSpeed(), 10.0F, 2.0F));
-		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMaxSpeed()));
-		this.tasks.addTask(this.nextIdTask (), new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-		this.tasks.addTask(this.nextIdTask (), new EntityAILookIdle(this));
-		
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIOwnerHurtByTarget(this));
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIOwnerHurtTarget(this));
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIHurtByTarget(this, true));
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAITargetNonTamed(this, IMob.class, 200, false));
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget(this, IMob.class, 0, true));
 	}
 	
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.healerCapacities; }
+	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.config.healerCapacities; }
+	
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected ItemStackConfig[] getCost () { return ModCastleDefenders.healerCost; }
+	protected ItemStackConfig[] getCost () { return ModCastleDefenders.config.healerCost; }
 	
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		//TODO faire le compteur de tick
-		this.healEntitiesNearby();
+		
+		if (this.couldDown > this.getTimeRange()) {
+			this.healEntitiesNearby();
+		} else {
+			this.couldDown++;
+		}
+		
+		if (this.couldDownMusic <= maxCouldDownMusic) {
+			this.couldDownMusic++;
+		}
 		
 	}
 	
@@ -66,14 +68,24 @@ public class EntityHealer extends EntityMercenary {
 		
 		List<EntityPlayer> entitiesNearby = this.worldObj.getEntitiesWithinAABB (
 			EntityPlayer.class, AxisAlignedBB.getBoundingBox(
-				this.posX                        , this.posY                        , this.posZ, 
+				this.posX - this.getFollowRange(), this.posY - this.getFollowRange(), this.posZ - this.getFollowRange(), 
 				this.posX + this.getFollowRange(), this.posY + this.getFollowRange(), this.posZ + this.getFollowRange()
 			)
 		);
+		
 		for (EntityPlayer player: entitiesNearby) {
 			if (this.isOwner(player)) {
-				ModCastleDefenders.log.debug("Heal player");
-				player.heal(ModCastleDefenders.healPointByTimeRange);
+				
+				if (this.couldDownMusic > maxCouldDownMusic) {
+					this.couldDownMusic = 0;
+					this.worldObj.playSoundAtEntity (this, ModCastleDefenders.MODID.toLowerCase()+":monk", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.2F);
+				}
+				
+				if (player.getHealth() != player.getMaxHealth()) {
+					ModCastleDefenders.log.debug("Heal player");
+					player.heal(ModCastleDefenders.config.healPointByTimeRange);
+					this.couldDown = 0;
+				}
 			}
 		}
 	}
