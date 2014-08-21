@@ -29,7 +29,7 @@ public class RenderCastleDefenders extends RenderBiped {
 		if (cacheResource.containsKey(name)) {
 			texture = cacheResource.get(name);
 		} else {
-			texture = new ResourceLocation(ModCastleDefenders.MODID.toLowerCase()+":"+name+".png");
+			texture = new ResourceLocation(ModCastleDefenders.MODID.toLowerCase()+":models/"+name+".png");
 			cacheResource.put(name, texture);
 		}
 		

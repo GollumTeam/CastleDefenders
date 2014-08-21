@@ -151,11 +151,11 @@ public class ModCastleDefenders extends GollumMod {
 		// Initialisation des sons
 		this.initSounds ();
 		
-		//Initialisation des items
-		this.initItems();
-		
 		// Initialisation des blocks
 		this.initBlocks ();
+		
+		//Initialisation des items
+		this.initItems();
 		
 		// Initialisation les TileEntities
 		this.initTileEntities ();
@@ -181,14 +181,7 @@ public class ModCastleDefenders extends GollumMod {
 	 * Initialisation des sons
 	 */
 	public void initSounds () {
-		SoundRegistry.register("monk", this.getModId());
-	}
-
-	/**
-	 * Initialisation des items
-	 */
-	public void initItems () {
-		this.itemMedallion = new HItem (this.config.medallionID, "Medallion").setCreativeTab(this.tabCastleDefenders);
+		SoundRegistry.register("monk");
 	}
 	
 	/**
@@ -209,6 +202,13 @@ public class ModCastleDefenders extends GollumMod {
 		this.blockEArcher    = new BlockEArcher   (this.config.blockEArcherID,    "BlockEArcher"   ).setHardness(2.0F).setResistance(5.0F);
 		this.blockEMage      = new BlockEMage     (this.config.blockEMageID,      "BlockEMage"     ).setHardness(2.0F).setResistance(5.0F);
 		
+	}
+	
+	/**
+	 * Initialisation des items
+	 */
+	public void initItems () {
+		this.itemMedallion = new HItem (this.config.medallionID, "Medallion").setCreativeTab(this.tabCastleDefenders);
 	}
 	
 	/**
@@ -246,7 +246,6 @@ public class ModCastleDefenders extends GollumMod {
 		
 	}
 	
-	// TODO Factory
 	/**
 	 * Enregistrement des Mobs
 	 */
