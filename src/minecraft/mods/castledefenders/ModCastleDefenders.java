@@ -26,7 +26,6 @@ import mods.castledefenders.common.entities.EntityKnight2;
 import mods.castledefenders.common.entities.EntityMage;
 import mods.castledefenders.common.entities.EntityMerc;
 import mods.castledefenders.common.entities.EntityMercArcher;
-import mods.castledefenders.common.items.ItemMedallion;
 import mods.castledefenders.common.tileentities.TileEntityBlockArcher;
 import mods.castledefenders.common.tileentities.TileEntityBlockArcher2;
 import mods.castledefenders.common.tileentities.TileEntityBlockEArcher;
@@ -42,6 +41,7 @@ import mods.gollum.core.building.Building;
 import mods.gollum.core.building.BuildingParser;
 import mods.gollum.core.creativetab.GollumCreativeTabs;
 import mods.gollum.core.facory.Mobactory;
+import mods.gollum.core.helper.items.HItem;
 import mods.gollum.core.mod.GollumMod;
 import mods.gollum.core.sound.SoundRegistry;
 import mods.gollum.core.version.VersionChecker;
@@ -188,7 +188,7 @@ public class ModCastleDefenders extends GollumMod {
 	 * Initialisation des items
 	 */
 	public void initItems () {
-		this.itemMedallion = new ItemMedallion (this.config.medallionID, "Medallion");
+		this.itemMedallion = new HItem (this.config.medallionID, "Medallion").setCreativeTab(this.tabCastleDefenders);
 	}
 	
 	/**
