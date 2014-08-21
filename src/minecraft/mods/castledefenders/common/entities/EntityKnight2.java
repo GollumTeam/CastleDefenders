@@ -10,13 +10,13 @@ public class EntityKnight2 extends EntityKnight {
 
 	public EntityKnight2(World world) {
 		super(world);
-		this.blockSpawnId    = ModCastleDefenders.blockKnight2ID;
+		this.blockSpawnId    = ModCastleDefenders.blockKnight2.blockID;
 		this.defaultHeldItem = new ItemStack(Item.swordDiamond, 1);
 	}
 	
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.knight2Capacities; }
+	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.config.knight2Capacities; }
 	
 }

@@ -11,8 +11,8 @@ public class BlockHealer extends BlockCastleDefenders {
 	 * Constructeur
 	 * @param id
 	 */
-	public BlockHealer (int id) {
-		super(id, Material.rock);
+	public BlockHealer (int id, String registerName) {
+		super(id, registerName, Material.rock);
 	}
 	
 	/**

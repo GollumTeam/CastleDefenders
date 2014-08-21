@@ -14,5 +14,17 @@ tile.BlockEKnight.name=Enemy Knight Spawner
 tile.BlockEArcher.name=Enemy Archer Spawner
 tile.BlockEMage.name=Enemy Mage Spawner
 
+entity.Knight.name=Knight
+entity.Knight2.name=Knight - Level 2
+entity.Archer.name=Archer
+entity.Archer2.name=Archer - Level 2
+entity.Mage.name=Mage
+entity.EnemyKnight.name=Enemy Knight
+entity.EnemyArcher.name=Enemy Archer
+entity.EnemyMage.name=Enemy Mage
+entity.Merc.name=Mercenary
+entity.MercArcher.name=Mercenary Archer
+entity.Healer.name=Healer
+
 castledefenders.message.buymercenary=You can hire me with items
 castledefenders.message.okfor=It's ok for %d %s

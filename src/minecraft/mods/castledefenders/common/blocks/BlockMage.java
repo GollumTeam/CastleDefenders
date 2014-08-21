@@ -13,8 +13,8 @@ public class BlockMage extends BlockCastleDefenders {
 	 * Constructeur
 	 * @param id
 	 */
-	public BlockMage (int id) {
-		super(id, Material.rock);
+	public BlockMage (int id, String registerName) {
+		super(id, registerName, Material.rock);
 	}
 	
 	/**

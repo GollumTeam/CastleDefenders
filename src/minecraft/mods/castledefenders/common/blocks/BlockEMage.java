@@ -15,8 +15,8 @@ public class BlockEMage extends BlockCastleDefenders {
 	 * Constructeur
 	 * @param id
 	 */
-	public BlockEMage (int id) {
-		super(id, Material.rock);
+	public BlockEMage (int id, String registerName) {
+		super(id, registerName, Material.rock);
 	}
 	
 	/**

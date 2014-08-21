@@ -3,7 +3,7 @@ itemGroup.CastleDefender=Castle Defender
 item.Medallion.name=Médallion
 
 tile.BlockKnight.name=Générateur de Chevalier
-tile.BlockKnight2.name=Générateur de Chevalier - Level 2
+tile.BlockKnight2.name=Générateur de Chevalier - Niveau 2
 tile.BlockArcher.name=Générateur d'Archer
 tile.BlockArcher2.name=Générateur d'Archer - Level 2
 tile.BlockMerc.name=Générateur de Mercenaire
@@ -14,5 +14,17 @@ tile.BlockEKnight.name=Générateur de Chevalier Ennemi
 tile.BlockEArcher.name=Générateur d'Archer Ennemi
 tile.BlockEMage.name=Générateur de Mage Ennemi
 
-castledefenders.message.buymercenary=Des objet contre mes services
+entity.Knight.name=Chevalier
+entity.Knight2.name=Chevalier - Niveau 2
+entity.Archer.name=Archer
+entity.Archer2.name=Archer - Niveau 2
+entity.Mage.name=Mage
+entity.EnemyKnight.name=Chevalier Ennemi
+entity.EnemyArcher.name=Archer Ennemi
+entity.EnemyMage.name=Mage Ennemi
+entity.Merc.name=Mercenaire
+entity.MercArcher.name=Mercenaire Archer
+entity.Healer.name=Guérisseur
+
+castledefenders.message.buymercenary=Des objets contre mes services
 castledefenders.message.okfor=Ça marche pour %s %s

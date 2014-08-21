@@ -15,8 +15,8 @@ public class BlockMerc extends BlockCastleDefenders {
 	 * Constructeur
 	 * @param id
 	 */
-	public BlockMerc (int id) {
-		super(id, Material.rock);
+	public BlockMerc (int id, String registerName) {
+		super(id, registerName, Material.rock);
 	}
 	
 	/**
@@ -33,13 +33,13 @@ public class BlockMerc extends BlockCastleDefenders {
 	 * register icons.
 	 */
 	public void registerIcons(IconRegister register) {
-		this.sides  = register.registerIcon("castledefenders:BlockMerc-side");
+		this.sides  = this.logic.loadTexture(register, "_side"); 
 		super.registerIcons (register);
 	}
 	
 	@Override
 	public Icon getIcon(int face, int medtadata) {
-		return face == 0 ? this.blockIcon : (face == 1 ? this.blockIcon : this.sides);
+		return face == 0 ?  this.logic.icon : (face == 1 ? this.logic.icon : this.sides);
 	}
 	
 }

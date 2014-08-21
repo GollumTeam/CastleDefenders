@@ -9,7 +9,7 @@ public class EntityEMage extends EntityEnemy {
 	
 	public EntityEMage(World world) {
 		super(world);
-		this.blockSpawnId = ModCastleDefenders.blockEMageID;
+		this.blockSpawnId = ModCastleDefenders.blockEMage.blockID;
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), EntityAIDistanceAttack.TYPE_FIRE));
 		
@@ -25,5 +25,5 @@ public class EntityEMage extends EntityEnemy {
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.eMageCapacities; }
+	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.config.eMageCapacities; }
 }

@@ -15,10 +15,8 @@ public class EntityKnight extends EntityDefender {
 	public EntityKnight(World world) {
 		
 		super(world);
-		this.blockSpawnId    = ModCastleDefenders.blockKnightID;
+		this.blockSpawnId    = ModCastleDefenders.blockKnight.blockID;
 		this.defaultHeldItem = new ItemStack(Item.swordIron, 1);
-		
-		this.getNavigator().setBreakDoors(true);
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, IMob.class, this.getMoveSpeed (), true));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityCreeper.class, this.getMoveSpeed (), true));
@@ -30,7 +28,7 @@ public class EntityKnight extends EntityDefender {
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.knightCapacities; }
+	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.config.knightCapacities; }
 	
 	
 }

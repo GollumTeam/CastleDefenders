@@ -1,7 +1,7 @@
 package mods.castledefenders.common.blocks;
 
 import mods.castledefenders.ModCastleDefenders;
-import net.minecraft.block.BlockContainer;
+import mods.gollum.core.helper.blocks.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntity;
@@ -13,19 +13,9 @@ public abstract class BlockCastleDefenders extends BlockContainer {
 	 * Constructeur
 	 * @param id
 	 */
-	public BlockCastleDefenders (int id, Material material) {
-		super(id, material);
+	public BlockCastleDefenders (int id, String registerName, Material material) {
+		super(id, registerName, material);
 		this.setCreativeTab(ModCastleDefenders.tabCastleDefenders);
-	}
-	
-	/**
-	 * Renregistrement des textures
-	 */
-	@Override
-	public void registerIcons(IconRegister register) {
-		String texturePath = ModCastleDefenders.MODID.toLowerCase()+":" + this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".") + 1);
-		ModCastleDefenders.log.info ("Register block texture : "+ texturePath);
-		this.blockIcon = register.registerIcon(texturePath);
 	}
 	
 	/**

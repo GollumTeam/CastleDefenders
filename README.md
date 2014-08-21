@@ -1,10 +1,12 @@
 CastleDefender
 
-This is a new implementation of the Castle Defenders mod. All sources were rewritten.
+This mod "Castle Defenders" is a full rewrite of the original mod for Minecraft 1.5.2.
 
-  - Added new buildings
-  - Added healer
-  - Update of old buildings
-  - Rewrote the mob mercenaries
-  - More Advanced Configuration
-  - Generator building for a couple of image files and json
+There are additions of content and new features:
+
+  - Added Healer
+  - Added 3 Buildings
+  - Improved buildings origins
+  - Using an engine using an image and a JSON file for buildings
+  - Life bar on mercenaries, Ability to idle.
+  - Advanced Configuration mod

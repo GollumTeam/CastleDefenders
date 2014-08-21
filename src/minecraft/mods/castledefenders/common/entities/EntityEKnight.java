@@ -12,7 +12,7 @@ public class EntityEKnight extends EntityEnemy {
 	
 	public EntityEKnight(World world) {
 		super(world);
-		this.blockSpawnId    = ModCastleDefenders.blockEKnightID;
+		this.blockSpawnId    = ModCastleDefenders.blockEKnight.blockID;
 		this.defaultHeldItem = new ItemStack(Item.swordIron, 1);
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityPlayer.class, this.getMoveSpeed(), true));
@@ -24,6 +24,6 @@ public class EntityEKnight extends EntityEnemy {
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.eKnightCapacities; }
+	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.config.eKnightCapacities; }
 	
 }

@@ -9,16 +9,16 @@ public class EntityArcher2 extends EntityArcher {
 
 	public EntityArcher2(World world) {
 		super(world);
-		this.blockSpawnId = ModCastleDefenders.blockArcher2ID;
+		this.blockSpawnId = ModCastleDefenders.blockArcher2.blockID;
 	}
 	
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.healerCapacities; }
+	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.config.healerCapacities; }
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected ItemStackConfig[] getCost () { return ModCastleDefenders.healerCost; }
+	protected ItemStackConfig[] getCost () { return ModCastleDefenders.config.healerCost; }
 	
 }

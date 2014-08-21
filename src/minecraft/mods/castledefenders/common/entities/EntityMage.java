@@ -12,7 +12,7 @@ public class EntityMage extends EntityDefender {
 	public EntityMage(World world) {
 
 		super(world);
-		this.blockSpawnId = ModCastleDefenders.blockMageID;
+		this.blockSpawnId = ModCastleDefenders.blockMage.blockID;
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), EntityAIDistanceAttack.TYPE_FIRE));
 		
@@ -29,6 +29,6 @@ public class EntityMage extends EntityDefender {
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.mageCapacities; }
+	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.config.mageCapacities; }
 	
 }
