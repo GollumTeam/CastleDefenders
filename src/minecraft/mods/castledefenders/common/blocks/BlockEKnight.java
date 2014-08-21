@@ -15,8 +15,8 @@ public class BlockEKnight extends BlockCastleDefenders {
 	 * Constructeur
 	 * @param id
 	 */
-	public BlockEKnight (int id) {
-		super(id, Material.circuits);
+	public BlockEKnight (int id, String registerName) {
+		super(id, registerName, Material.circuits);
 	}
 	
 	/**

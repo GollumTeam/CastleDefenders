@@ -13,8 +13,8 @@ public class BlockArcher extends BlockCastleDefenders {
 	 * Constructeur
 	 * @param id
 	 */
-	public BlockArcher (int id) {
-		super(id, Material.rock);
+	public BlockArcher (int id, String registerName) {
+		super(id, registerName, Material.rock);
 	}
 	
 	/**

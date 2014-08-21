@@ -1,4 +1,4 @@
-package mods.castledefenders.config;
+package mods.castledefenders.common.config;
 
 import mods.castledefenders.ModCastleDefenders;
 import mods.gollum.core.config.Config;
@@ -8,10 +8,6 @@ import mods.gollum.core.config.container.MobCapacitiesConfig;
 import net.minecraft.item.Item;
 
 public class ConfigCastleDefender extends Config {
-	
-	public ConfigCastleDefender(ModCastleDefenders mod) {
-		super (mod);
-	}
 	
 	// Config d'affichage
 	@ConfigProp(group = "Display") public static boolean displayMercenaryMessage = true;
