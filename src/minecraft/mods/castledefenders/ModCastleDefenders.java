@@ -71,7 +71,7 @@ public class ModCastleDefenders extends GollumMod {
 	public final static String MINECRAFT_VERSION = "1.6.4";
 	public final static String DEPENDENCIES = "required-after:GollumCoreLib";
 	
-	@Instance("ModCastleDefenders")
+	@Instance(ModCastleDefenders.MODID)
 	public static ModCastleDefenders instance;
 	
 	@SidedProxy(clientSide = "mods.castledefenders.client.ClientProxyCastleDefenders", serverSide = "mods.castledefenders.common.CommonProxyCastleDefenders")
@@ -137,8 +137,7 @@ public class ModCastleDefenders extends GollumMod {
 	
 	/**
 	 * 2 
-	 * @throws IOException
-	 * **/
+	 **/
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		
