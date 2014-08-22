@@ -43,7 +43,7 @@ import mods.gollum.core.creativetab.GollumCreativeTabs;
 import mods.gollum.core.facory.Mobactory;
 import mods.gollum.core.helper.items.HItem;
 import mods.gollum.core.mod.GollumMod;
-import mods.gollum.core.sound.SoundRegistry;
+import mods.gollum.core.registry.SoundRegistry;
 import mods.gollum.core.version.VersionChecker;
 import mods.gollum.core.worldgenerator.WorldGeneratorByBuilding;
 import net.minecraft.block.Block;
@@ -85,7 +85,7 @@ public class ModCastleDefenders extends GollumMod {
 	/**
 	 * Tab du mode creative
 	 */
-	public static GollumCreativeTabs tabCastleDefenders;
+	public static GollumCreativeTabs tabCastleDefenders = new GollumCreativeTabs("CastleDefender");;
 	
 	/////////////////////
 	// Liste des blocs //
@@ -133,6 +133,15 @@ public class ModCastleDefenders extends GollumMod {
 		
 		// Test la version du mod
 		new VersionChecker();
+		
+		// Initialisation des sons
+		this.initSounds ();
+		
+		// Initialisation des blocks
+		this.initBlocks ();
+		
+		//Initialisation des items
+		this.initItems();
 	}
 	
 	/**
@@ -143,18 +152,6 @@ public class ModCastleDefenders extends GollumMod {
 		
 		// Execution du renderer en fonction du serveur ou du client
 		proxy.registerRenderers();
-		
-		// Creation du tab creative
-		tabCastleDefenders = new GollumCreativeTabs("CastleDefender");
-		
-		// Initialisation des sons
-		this.initSounds ();
-		
-		// Initialisation des blocks
-		this.initBlocks ();
-		
-		//Initialisation des items
-		this.initItems();
 		
 		// Initialisation les TileEntities
 		this.initTileEntities ();
