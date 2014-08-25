@@ -1,5 +1,7 @@
 package mods.castledefenders.common.blocks;
 
+import java.util.Random;
+
 import mods.castledefenders.common.tileentities.TileEntityBlockArcher;
 import mods.castledefenders.common.tileentities.TileEntityBlockMercArcher;
 import mods.castledefenders.common.tileentities.TileEntityBlockMerc;
@@ -23,6 +25,11 @@ public class BlockMercArcher extends BlockCastleDefenders {
 	@Override
 	public TileEntity createNewTileEntity(World world) {
 		return new TileEntityBlockMercArcher();
+	}
+	
+	@Override
+	public int idDropped(int metadata, Random random, int j) {
+		return 0;
 	}
 
 }

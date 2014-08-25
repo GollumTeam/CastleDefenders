@@ -59,14 +59,6 @@ public class BlockEKnight extends BlockCastleDefenders {
 	public int idDropped(int par1, Random par2Random, int par3) {
 		return 0;
 	}
-
-	/**
-	 * Returns the quantity of items to drop on block destruction.
-	 */
-	@Override
-	public int quantityDropped(Random var1) {
-		return 0;
-	}
 	
 	/**
 	 * Drops the block items with a specified chance of dropping the specified

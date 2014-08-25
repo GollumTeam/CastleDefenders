@@ -1,5 +1,7 @@
 package mods.castledefenders.common.blocks;
 
+import java.util.Random;
+
 import mods.castledefenders.common.tileentities.TileEntityBlockMerc;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -41,5 +43,11 @@ public class BlockMerc extends BlockCastleDefenders {
 	public Icon getIcon(int face, int medtadata) {
 		return face == 0 ?  this.blockIcon : (face == 1 ? this.blockIcon : this.sides);
 	}
+	
+	@Override
+	public int idDropped(int metadata, Random random, int j) {
+		return 0;
+	}
+	
 	
 }

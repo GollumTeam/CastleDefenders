@@ -37,4 +37,9 @@ public class BlockEMage extends BlockCastleDefenders {
 		int var8 = 15 + var1.rand.nextInt(15) + var1.rand.nextInt(15);
 		this.dropXpOnBlockBreak(var1, var2, var3, var4, var8);
 	}
+	
+	@Override
+	public int idDropped(int metadata, Random random, int j) {
+		return 0;
+	}
 }
