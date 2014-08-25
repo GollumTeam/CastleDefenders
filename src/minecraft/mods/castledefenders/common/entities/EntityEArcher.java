@@ -2,7 +2,7 @@ package mods.castledefenders.common.entities;
 
 import mods.castledefenders.ModCastleDefenders;
 import mods.castledefenders.common.aientities.EntityAIDistanceAttack;
-import mods.gollum.core.config.container.MobCapacitiesConfig;
+import mods.gollum.core.common.config.container.MobCapacitiesConfig;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;

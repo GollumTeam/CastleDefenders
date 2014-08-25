@@ -5,7 +5,6 @@ import mods.castledefenders.client.render.RenderMercCastleDefenders;
 import mods.castledefenders.common.CommonProxyCastleDefenders;
 import mods.castledefenders.common.entities.EntityArcher;
 import mods.castledefenders.common.entities.EntityArcher2;
-import mods.castledefenders.common.entities.EntityMercArcher;
 import mods.castledefenders.common.entities.EntityEArcher;
 import mods.castledefenders.common.entities.EntityEKnight;
 import mods.castledefenders.common.entities.EntityEMage;
@@ -14,7 +13,7 @@ import mods.castledefenders.common.entities.EntityKnight;
 import mods.castledefenders.common.entities.EntityKnight2;
 import mods.castledefenders.common.entities.EntityMage;
 import mods.castledefenders.common.entities.EntityMerc;
-import net.minecraft.client.model.ModelBiped;
+import mods.castledefenders.common.entities.EntityMercArcher;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class ClientProxyCastleDefenders extends CommonProxyCastleDefenders {

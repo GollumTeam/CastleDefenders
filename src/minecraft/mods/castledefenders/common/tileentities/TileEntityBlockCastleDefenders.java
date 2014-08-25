@@ -1,12 +1,9 @@
 package mods.castledefenders.common.tileentities;
 
-import java.util.Iterator;
-
 import mods.castledefenders.ModCastleDefenders;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;

@@ -1,10 +1,8 @@
 package mods.castledefenders.common.blocks;
 
 import mods.castledefenders.ModCastleDefenders;
-import mods.gollum.core.helper.blocks.HBlockContainer;
+import mods.gollum.core.tools.helper.blocks.HBlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 public abstract class BlockCastleDefenders extends HBlockContainer {

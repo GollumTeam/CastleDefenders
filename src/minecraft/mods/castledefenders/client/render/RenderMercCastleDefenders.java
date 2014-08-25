@@ -2,7 +2,6 @@ package mods.castledefenders.client.render;
 
 import mods.castledefenders.ModCastleDefenders;
 import mods.castledefenders.common.entities.EntityMercenary;
-import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

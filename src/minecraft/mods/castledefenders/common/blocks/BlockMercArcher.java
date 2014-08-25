@@ -2,9 +2,7 @@ package mods.castledefenders.common.blocks;
 
 import java.util.Random;
 
-import mods.castledefenders.common.tileentities.TileEntityBlockArcher;
 import mods.castledefenders.common.tileentities.TileEntityBlockMercArcher;
-import mods.castledefenders.common.tileentities.TileEntityBlockMerc;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;

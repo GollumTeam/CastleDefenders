@@ -2,13 +2,11 @@ package mods.castledefenders.common.aientities;
 
 import java.util.Random;
 
-import cpw.mods.fml.common.Mod;
 import mods.castledefenders.ModCastleDefenders;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;

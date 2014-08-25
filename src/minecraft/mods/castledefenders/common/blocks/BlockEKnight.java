@@ -3,7 +3,6 @@ package mods.castledefenders.common.blocks;
 import java.util.Random;
 
 import mods.castledefenders.common.tileentities.TileEntityBlockEKnight;
-import mods.castledefenders.common.tileentities.TileEntityBlockMerc;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
