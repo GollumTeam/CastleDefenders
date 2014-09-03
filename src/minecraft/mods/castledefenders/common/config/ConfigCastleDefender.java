@@ -63,21 +63,5 @@ public class ConfigCastleDefender extends Config {
 	public ItemStackConfig[] healerCost     = {new ItemStackConfig(Item.ingotGold.itemID), new ItemStackConfig(Item.ingotIron.itemID, 10)};
 	@ConfigProp(group = "Mercenary")
 	public float healPointByTimeRange = 1.5F;
-
-	// TODO doit disparaitre
-	// Ratio de building de chaque type
-	@ConfigProp(group = "Spawn rate group [0-10]") public int castleSpawnRate    = 5;
-	@ConfigProp(group = "Spawn rate group [0-10]") public int mercenarySpawnRate = 5;
-	
-	// Ratio de building entre les batiments d'un meme type
-	@ConfigProp(group = "Spawn rate between mercenary building") public int mercenaryBuilding1SpawnRate = 7;
-	@ConfigProp(group = "Spawn rate between mercenary building") public int mercenaryBuilding2SpawnRate = 6;
-	@ConfigProp(group = "Spawn rate between mercenary building") public int mercenaryBuilding3SpawnRate = 1;
-	@ConfigProp(group = "Spawn rate between mercenary building") public int mercenaryBuilding4SpawnRate = 1;
-	
-	@ConfigProp(group = "Spawn rate between castle building") public int castleBuilding1SpawnRate = 6;
-	@ConfigProp(group = "Spawn rate between castle building") public int castleBuilding2SpawnRate = 6;
-	@ConfigProp(group = "Spawn rate between castle building") public int castleBuilding3SpawnRate = 3;
-	@ConfigProp(group = "Spawn rate between castle building") public int castleBuilding4SpawnRate = 2;
 	
 }

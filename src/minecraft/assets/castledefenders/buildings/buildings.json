@@ -1,0 +1,27 @@
+[
+	{
+		"global_spawn_rate":5,
+		"buildings":{
+			"castle1":{
+				"dimention":[0],
+				"spawnRate":6,
+				"blockSpawn":["net.minecraft.block.Block|grass"]
+			},
+			"castle2":{
+				"dimention":[0],
+				"spawnRate":6,
+				"blockSpawn":["net.minecraft.block.Block|grass"]
+			},
+			"castle3":{
+				"dimention":[0],
+				"spawnRate":3,
+				"blockSpawn":["net.minecraft.block.Block|grass"]
+			},
+			"castle4":{
+				"dimention":[0],
+				"spawnRate":2,
+				"blockSpawn":["net.minecraft.block.Block|grass"]
+			}
+		}
+	}
+]
