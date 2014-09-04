@@ -6,7 +6,7 @@ import mods.gollum.core.common.config.container.ItemStackConfig;
 import mods.gollum.core.common.config.container.MobCapacitiesConfig;
 import net.minecraft.item.Item;
 
-public class ConfigCastleDefender extends Config {
+public class ConfigCastleDefender extends Config<ConfigCastleDefender> {
 	
 	// Config d'affichage
 	@ConfigProp(group = "Display") public boolean displayMercenaryMessage = true;

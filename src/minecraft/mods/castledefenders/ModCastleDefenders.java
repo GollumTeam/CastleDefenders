@@ -41,6 +41,8 @@ import mods.gollum.core.common.building.Building;
 import mods.gollum.core.common.building.BuildingParser;
 import mods.gollum.core.common.creativetab.GollumCreativeTabs;
 import mods.gollum.core.common.facory.Mobactory;
+import mods.gollum.core.common.i18n.I18n;
+import mods.gollum.core.common.log.Logger;
 import mods.gollum.core.common.mod.GollumMod;
 import mods.gollum.core.common.version.VersionChecker;
 import mods.gollum.core.common.worldgenerator.WorldGeneratorByBuilding;
@@ -78,6 +80,16 @@ public class ModCastleDefenders extends GollumMod {
 	@SidedProxy(clientSide = "mods.castledefenders.client.ClientProxyCastleDefenders", serverSide = "mods.castledefenders.common.CommonProxyCastleDefenders")
 	public static CommonProxyCastleDefenders proxy;
 
+	/**
+	 * Gestion des logs
+	 */
+	public static Logger log;
+	
+	/**
+	 * Gestion de l'i18n
+	 */
+	public static I18n i18n;
+	
 	/**
 	 * La configuration
 	 */
@@ -118,7 +130,7 @@ public class ModCastleDefenders extends GollumMod {
 	public void preInit(FMLPreInitializationEvent event) {
 		
 		// Charge la configuration
-		this.config = new ConfigCastleDefender();
+		this.config = new ConfigCastleDefender().loadConfig();
 		
 		// Test la version du mod
 		new VersionChecker();

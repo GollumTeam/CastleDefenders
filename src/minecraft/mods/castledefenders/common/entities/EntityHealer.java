@@ -63,12 +63,13 @@ public class EntityHealer extends EntityMerc {
 		for (EntityPlayer player: entitiesNearby) {
 			if (this.isOwner(player)) {
 				
-				if (this.couldDownMusic > maxCouldDownMusic) {
-					this.couldDownMusic = 0;
-					this.worldObj.playSoundAtEntity (this, ModCastleDefenders.MODID.toLowerCase()+":monk", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.2F);
-				}
-				
 				if (player.getHealth() != player.getMaxHealth()) {
+					
+					if (this.couldDownMusic > maxCouldDownMusic) {
+						this.couldDownMusic = 0;
+						this.worldObj.playSoundAtEntity (this, ModCastleDefenders.MODID.toLowerCase()+":monk", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.2F);
+					}
+					
 					ModCastleDefenders.log.debug("Heal player");
 					player.heal(ModCastleDefenders.config.healPointByTimeRange);
 					this.couldDown = 0;
