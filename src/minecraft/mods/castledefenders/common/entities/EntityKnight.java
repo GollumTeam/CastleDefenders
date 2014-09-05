@@ -1,7 +1,7 @@
 package mods.castledefenders.common.entities;
 
 import mods.castledefenders.ModCastleDefenders;
-import mods.gollum.core.common.config.container.MobCapacitiesConfig;
+import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.EntityCreeper;
@@ -28,7 +28,7 @@ public class EntityKnight extends EntityDefender {
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.config.knightCapacities; }
+	protected MobCapacitiesConfigType getCapacities () { return ModCastleDefenders.config.knightCapacities; }
 	
 	
 }

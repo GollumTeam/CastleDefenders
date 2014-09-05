@@ -3,8 +3,8 @@ package mods.castledefenders.common.entities;
 import java.util.List;
 
 import mods.castledefenders.ModCastleDefenders;
-import mods.gollum.core.common.config.container.ItemStackConfig;
-import mods.gollum.core.common.config.container.MobCapacitiesConfig;
+import mods.gollum.core.common.config.container.ItemStackConfigType;
+import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -29,12 +29,12 @@ public class EntityHealer extends EntityMerc {
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.config.healerCapacities; }
+	protected MobCapacitiesConfigType getCapacities () { return ModCastleDefenders.config.healerCapacities; }
 	
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected ItemStackConfig[] getCost () { return ModCastleDefenders.config.healerCost; }
+	protected ItemStackConfigType[] getCost () { return ModCastleDefenders.config.healerCost; }
 	
 	public void onLivingUpdate() {
 		super.onLivingUpdate();

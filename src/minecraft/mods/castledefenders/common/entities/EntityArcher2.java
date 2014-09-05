@@ -1,8 +1,8 @@
 package mods.castledefenders.common.entities;
 
 import mods.castledefenders.ModCastleDefenders;
-import mods.gollum.core.common.config.container.ItemStackConfig;
-import mods.gollum.core.common.config.container.MobCapacitiesConfig;
+import mods.gollum.core.common.config.container.ItemStackConfigType;
+import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.world.World;
 
 public class EntityArcher2 extends EntityArcher {
@@ -15,10 +15,10 @@ public class EntityArcher2 extends EntityArcher {
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.config.healerCapacities; }
+	protected MobCapacitiesConfigType getCapacities () { return ModCastleDefenders.config.healerCapacities; }
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected ItemStackConfig[] getCost () { return ModCastleDefenders.config.healerCost; }
+	protected ItemStackConfigType[] getCost () { return ModCastleDefenders.config.healerCost; }
 	
 }

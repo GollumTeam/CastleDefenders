@@ -2,8 +2,8 @@ package mods.castledefenders.common.entities;
 
 import mods.castledefenders.ModCastleDefenders;
 import mods.castledefenders.common.aientities.EntityAIDistanceAttack;
-import mods.gollum.core.common.config.container.ItemStackConfig;
-import mods.gollum.core.common.config.container.MobCapacitiesConfig;
+import mods.gollum.core.common.config.container.ItemStackConfigType;
+import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
@@ -29,10 +29,10 @@ public class EntityMercArcher extends EntityMercenary {
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.config.mercArcherCapacities; }
+	protected MobCapacitiesConfigType getCapacities () { return ModCastleDefenders.config.mercArcherCapacities; }
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected ItemStackConfig[] getCost () { return ModCastleDefenders.config.mercArcherCost; }
+	protected ItemStackConfigType[] getCost () { return ModCastleDefenders.config.mercArcherCost; }
 	
 }

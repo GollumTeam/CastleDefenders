@@ -2,7 +2,7 @@ package mods.castledefenders.common.entities;
 
 import mods.castledefenders.ModCastleDefenders;
 import mods.castledefenders.common.aientities.EntityAIDistanceAttack;
-import mods.gollum.core.common.config.container.MobCapacitiesConfig;
+import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -27,5 +27,5 @@ public class EntityEArcher extends EntityEnemy {
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.config.eArcherCapacities; }
+	protected MobCapacitiesConfigType getCapacities () { return ModCastleDefenders.config.eArcherCapacities; }
 }

@@ -2,75 +2,94 @@
 	"castle": {
 		"globalSpawnRate":5,
 		"buildings": {
-			"castle1":[
-				{
-					"dimention":0,
-					"spawnRate":6,
-					"blocksSpawn":["net.minecraft.block.Block|grass"],
-					"spawnHeight":64
+			"castle1": {
+				"disabled": false,
+				"dimentions": {
+					"0": {
+						"spawnRate":6,
+						"blocksSpawn":["net.minecraft.block.Block|grass"],
+						"spawnHeight":64
+					}
+			
 				}
-			],
-			"castle2":[
-				{
-					"dimention":0,
-					"spawnRate":6,
-					"blocksSpawn":["net.minecraft.block.Block|grass"],
-					"spawnHeight":64
+			},{
+			"castle2": {
+				"disabled": false,
+				"dimentions": {
+					"0": {
+						"spawnRate":6,
+						"blocksSpawn":["net.minecraft.block.Block|grass"],
+						"spawnHeight":64
+					}
+			
 				}
-			],
-			"castle3":[
-				{
-					"dimention":0,
-					"spawnRate":3,
-					"blocksSpawn":["net.minecraft.block.Block|grass"],
-					"spawnHeight":64
+			},{
+			"castle3": {
+				"disabled": false,
+				"dimentions": {
+					"0": {
+						"spawnRate":3,
+						"blocksSpawn":["net.minecraft.block.Block|grass"],
+						"spawnHeight":64
+					}
+			
 				}
-			],
-			"castle4":[
-				{
-					"dimention":0,
-					"spawnRate":2,
-					"blocksSpawn":["net.minecraft.block.Block|grass"],
-					"spawnHeight":64
+			},{
+			"castle4": {
+				"disabled": false,
+				"dimentions": {
+					"0": {
+						"spawnRate":2,
+						"blocksSpawn":["net.minecraft.block.Block|grass"],
+						"spawnHeight":64
+					}
 				}
-			]
+			}
 		}
 	},
 	"mercenary": {
 		"globalSpawnRate":5,
 		"buildings": {
-			"mercenary1":[
-				{
-					"dimention":0,
-					"spawnRate":6,
-					"blocksSpawn":["net.minecraft.block.Block|grass"],
-					"spawnHeight":64
+			"mercenary1": {
+				"disabled": false,
+				"dimentions": {
+					"0": {
+						"spawnRate":6,
+						"blocksSpawn":["net.minecraft.block.Block|grass"],
+						"spawnHeight":64
+					}
 				}
-			],
-			"mercenary2":[
-				{
-					"dimention":0,
-					"spawnRate":6,
-					"blocksSpawn":["net.minecraft.block.Block|grass"],
-					"spawnHeight":64
+			},
+			"mercenary2": {
+				"disabled": false,
+				"dimentions": {
+					"0": {
+						"spawnRate":6,
+						"blocksSpawn":["net.minecraft.block.Block|grass"],
+						"spawnHeight":64
+					}
 				}
-			],
-			"mercenary3":[
-				{
-					"dimention":0,
-					"spawnRate":1,
-					"blocksSpawn":["net.minecraft.block.Block|grass"],
-					"spawnHeight":64
+			},
+			"mercenary3": {
+				"disabled": false,
+				"dimentions": {
+					"0": {
+						"spawnRate":1,
+						"blocksSpawn":["net.minecraft.block.Block|grass"],
+						"spawnHeight":64
+					}
 				}
-			],
-			"mercenary4":[
-				{
-					"dimention":0,
-					"spawnRate":1,
-					"blocksSpawn":["net.minecraft.block.Block|grass"],
-					"spawnHeight":64
+			},
+			"mercenary4": {
+				"disabled": false,
+				"dimentions": {
+					"0": {
+						"spawnRate":1,
+						"blocksSpawn":["net.minecraft.block.Block|grass"],
+						"spawnHeight":64
+					}
 				}
-			]
+			}
 		}
 	}
 }

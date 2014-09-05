@@ -2,7 +2,7 @@ package mods.castledefenders.common.entities;
 
 import mods.castledefenders.ModCastleDefenders;
 import mods.castledefenders.common.aientities.EntityAIDistanceAttack;
-import mods.gollum.core.common.config.container.MobCapacitiesConfig;
+import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.world.World;
@@ -29,6 +29,6 @@ public class EntityMage extends EntityDefender {
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected MobCapacitiesConfig getCapacities () { return ModCastleDefenders.config.mageCapacities; }
+	protected MobCapacitiesConfigType getCapacities () { return ModCastleDefenders.config.mageCapacities; }
 	
 }

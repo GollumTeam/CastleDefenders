@@ -3,7 +3,7 @@ package mods.castledefenders.common.entities;
 import java.util.List;
 
 import mods.castledefenders.ModCastleDefenders;
-import mods.gollum.core.common.config.container.MobCapacitiesConfig;
+import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -85,7 +85,7 @@ public abstract class EntityDefender extends EntityAnimal {
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected abstract MobCapacitiesConfig getCapacities ();
+	protected abstract MobCapacitiesConfigType getCapacities ();
 	
 	
 	/**

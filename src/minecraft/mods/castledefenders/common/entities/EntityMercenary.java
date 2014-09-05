@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mods.castledefenders.ModCastleDefenders;
-import mods.gollum.core.common.config.container.ItemStackConfig;
-import mods.gollum.core.common.config.container.MobCapacitiesConfig;
+import mods.gollum.core.common.config.container.ItemStackConfigType;
+import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -126,11 +126,11 @@ public abstract class EntityMercenary extends EntityTameable {
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected abstract MobCapacitiesConfig getCapacities ();
+	protected abstract MobCapacitiesConfigType getCapacities ();
 	/**
 	 * @return Coût du mod
 	 */
-	protected abstract ItemStackConfig[] getCost ();
+	protected abstract ItemStackConfigType[] getCost ();
 
 	@SideOnly(Side.CLIENT)
 	public String getMessagePlayer () {
@@ -152,7 +152,7 @@ public abstract class EntityMercenary extends EntityTameable {
 				return null;
 			}
 			
-			for (ItemStackConfig config : this.getCost ()) {
+			for (ItemStackConfigType config : this.getCost ()) {
 				ItemStack cStack = config.getItemStak();
 				if (cStack.itemID == item.itemID) {
 					return cStack;
@@ -499,7 +499,7 @@ public abstract class EntityMercenary extends EntityTameable {
 				boolean buy = this.ownerList.contains (player.username);
 				
 				if (!buy) {
-					for (ItemStackConfig stackConfig: this.getCost ()) {
+					for (ItemStackConfigType stackConfig: this.getCost ()) {
 						ItemStack stack = stackConfig.getItemStak();
 						if (buy = this.buy (player, stack.itemID, stack.stackSize)) {
 							break;

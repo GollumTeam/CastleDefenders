@@ -2,7 +2,7 @@ package mods.castledefenders.common.entities;
 
 import java.util.List;
 
-import mods.gollum.core.common.config.container.MobCapacitiesConfig;
+import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.block.Block;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -86,7 +86,7 @@ public abstract class EntityEnemy extends EntityMob {
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected abstract MobCapacitiesConfig getCapacities ();
+	protected abstract MobCapacitiesConfigType getCapacities ();
 	
 	
 	/**

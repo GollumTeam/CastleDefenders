@@ -2,8 +2,8 @@ package mods.castledefenders.common.config;
 
 import mods.gollum.core.common.config.Config;
 import mods.gollum.core.common.config.ConfigProp;
-import mods.gollum.core.common.config.container.ItemStackConfig;
-import mods.gollum.core.common.config.container.MobCapacitiesConfig;
+import mods.gollum.core.common.config.container.ItemStackConfigType;
+import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.item.Item;
 
 public class ConfigCastleDefender extends Config<ConfigCastleDefender> {
@@ -42,25 +42,25 @@ public class ConfigCastleDefender extends Config<ConfigCastleDefender> {
 	@ConfigProp(group = "Spawn count") public int maxSpawnMercArcher = 6;
 	@ConfigProp(group = "Spawn count") public int maxSpawnHealer     = 6;
 	
-	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfig knightCapacities     = new MobCapacitiesConfig(0.55D, 20.D, 4.D , 20.D);
-	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfig knight2Capacities    = new MobCapacitiesConfig(0.6D , 30.D, 8.D , 25.D);
-	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfig eKnightCapacities    = new MobCapacitiesConfig(0.55D, 25.D, 6.D , 16.D);
-	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfig archerCapacities     = new MobCapacitiesConfig(0.1D , 15.D, 4.D , 25.D, 30.D);
-	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfig archer2Capacities    = new MobCapacitiesConfig(0.1D , 25.D, 7.D , 30.D, 15.D);
-	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfig eArcherCapacities    = new MobCapacitiesConfig(0.1D , 20.D, 6.D , 18.D, 20.D);
-	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfig mageCapacities       = new MobCapacitiesConfig(0.1D , 25.D, 5.D , 10.D, 40.D);
-	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfig eMageCapacities      = new MobCapacitiesConfig(0.1D , 30.D, 5.D , 10.D, 40.D);
-	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfig mercCapacities       = new MobCapacitiesConfig(0.6D , 20.D, 5.D , 20.D);
-	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfig mercArcherCapacities = new MobCapacitiesConfig(0.6D , 20.D, 5.D , 25.D, 17.D);
-	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfig healerCapacities     = new MobCapacitiesConfig(0.6D , 15.D, 0.3D, 5.D , 100.D);
+	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfigType knightCapacities     = new MobCapacitiesConfigType(0.55D, 20.D, 4.D , 20.D);
+	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfigType knight2Capacities    = new MobCapacitiesConfigType(0.6D , 30.D, 8.D , 25.D);
+	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfigType eKnightCapacities    = new MobCapacitiesConfigType(0.55D, 25.D, 6.D , 16.D);
+	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfigType archerCapacities     = new MobCapacitiesConfigType(0.1D , 15.D, 4.D , 25.D, 30.D);
+	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfigType archer2Capacities    = new MobCapacitiesConfigType(0.1D , 25.D, 7.D , 30.D, 15.D);
+	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfigType eArcherCapacities    = new MobCapacitiesConfigType(0.1D , 20.D, 6.D , 18.D, 20.D);
+	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfigType mageCapacities       = new MobCapacitiesConfigType(0.1D , 25.D, 5.D , 10.D, 40.D);
+	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfigType eMageCapacities      = new MobCapacitiesConfigType(0.1D , 30.D, 5.D , 10.D, 40.D);
+	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfigType mercCapacities       = new MobCapacitiesConfigType(0.6D , 20.D, 5.D , 20.D);
+	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfigType mercArcherCapacities = new MobCapacitiesConfigType(0.6D , 20.D, 5.D , 25.D, 17.D);
+	@ConfigProp(group = "Entity capacities") public MobCapacitiesConfigType healerCapacities     = new MobCapacitiesConfigType(0.6D , 15.D, 0.3D, 5.D , 100.D);
 	
 	// Config des mercenaire
 	@ConfigProp(group = "Mercenary", info="[ItemID,metadata,number],...") 
-	public ItemStackConfig[] mercenaryCost  = {new ItemStackConfig(Item.ingotGold.itemID), new ItemStackConfig(Item.ingotIron.itemID, 10)};
+	public ItemStackConfigType[] mercenaryCost  = {new ItemStackConfigType(Item.ingotGold.itemID), new ItemStackConfigType(Item.ingotIron.itemID, 10)};
 	@ConfigProp(group = "Mercenary")
-	public ItemStackConfig[] mercArcherCost = {new ItemStackConfig(Item.ingotGold.itemID), new ItemStackConfig(Item.ingotIron.itemID, 10)};
+	public ItemStackConfigType[] mercArcherCost = {new ItemStackConfigType(Item.ingotGold.itemID), new ItemStackConfigType(Item.ingotIron.itemID, 10)};
 	@ConfigProp(group = "Mercenary")
-	public ItemStackConfig[] healerCost     = {new ItemStackConfig(Item.ingotGold.itemID), new ItemStackConfig(Item.ingotIron.itemID, 10)};
+	public ItemStackConfigType[] healerCost     = {new ItemStackConfigType(Item.ingotGold.itemID), new ItemStackConfigType(Item.ingotIron.itemID, 10)};
 	@ConfigProp(group = "Mercenary")
 	public float healPointByTimeRange = 1.5F;
 	
