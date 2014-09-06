@@ -1,4 +1,6 @@
 {
+	"height": -1,
+	
 	"color" : [
 		{ "block": "net.minecraft.block.Block|planks" },
 		{ "block": "net.minecraft.block.Block|grass" },

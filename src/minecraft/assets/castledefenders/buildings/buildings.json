@@ -7,41 +7,38 @@
 				"dimentions": {
 					"0": {
 						"spawnRate":6,
-						"blocksSpawn":["net.minecraft.block.Block|grass"],
-						"spawnHeight":64
+						"spawnHeight":64,
+						"blocksSpawn":["net.minecraft.block.Block|grass"]
 					}
-			
 				}
-			},{
+			},
 			"castle2": {
 				"disabled": false,
 				"dimentions": {
 					"0": {
 						"spawnRate":6,
-						"blocksSpawn":["net.minecraft.block.Block|grass"],
-						"spawnHeight":64
+						"spawnHeight":64,
+						"blocksSpawn":["net.minecraft.block.Block|grass"]
 					}
-			
 				}
-			},{
+			},
 			"castle3": {
 				"disabled": false,
 				"dimentions": {
 					"0": {
 						"spawnRate":3,
-						"blocksSpawn":["net.minecraft.block.Block|grass"],
-						"spawnHeight":64
+						"spawnHeight":64,
+						"blocksSpawn":["net.minecraft.block.Block|grass"]
 					}
-			
 				}
-			},{
+			},
 			"castle4": {
 				"disabled": false,
 				"dimentions": {
 					"0": {
 						"spawnRate":2,
-						"blocksSpawn":["net.minecraft.block.Block|grass"],
-						"spawnHeight":64
+						"spawnHeight":64,
+						"blocksSpawn":["net.minecraft.block.Block|grass"]
 					}
 				}
 			}
@@ -55,8 +52,8 @@
 				"dimentions": {
 					"0": {
 						"spawnRate":6,
-						"blocksSpawn":["net.minecraft.block.Block|grass"],
-						"spawnHeight":64
+						"spawnHeight":64,
+						"blocksSpawn":["net.minecraft.block.Block|grass"]
 					}
 				}
 			},
@@ -65,8 +62,8 @@
 				"dimentions": {
 					"0": {
 						"spawnRate":6,
-						"blocksSpawn":["net.minecraft.block.Block|grass"],
-						"spawnHeight":64
+						"spawnHeight":64,
+						"blocksSpawn":["net.minecraft.block.Block|grass"]
 					}
 				}
 			},
@@ -75,8 +72,8 @@
 				"dimentions": {
 					"0": {
 						"spawnRate":1,
-						"blocksSpawn":["net.minecraft.block.Block|grass"],
-						"spawnHeight":64
+						"spawnHeight":64,
+						"blocksSpawn":["net.minecraft.block.Block|grass"]
 					}
 				}
 			},
@@ -85,8 +82,18 @@
 				"dimentions": {
 					"0": {
 						"spawnRate":1,
-						"blocksSpawn":["net.minecraft.block.Block|grass"],
-						"spawnHeight":64
+						"spawnHeight":64,
+						"blocksSpawn":["net.minecraft.block.Block|grass"]
+					}
+				}
+			},
+			"test": {
+				"disabled": true,
+				"dimentions": {
+					"0": {
+						"spawnRate":1,
+						"spawnHeight":64,
+						"blocksSpawn":["net.minecraft.block.Block|grass"]
 					}
 				}
 			}

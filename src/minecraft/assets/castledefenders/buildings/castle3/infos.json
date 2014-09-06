@@ -1,4 +1,6 @@
 {
+	"height": -1,
+	
 	"color" : [
 		{ "block": "net.minecraft.block.Block|cloth", "metadata":14 },
 		{ "block": "net.minecraft.block.Block|grass" },

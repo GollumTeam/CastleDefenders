@@ -1,9 +1,7 @@
 {
-	"height": -1,
-	
 	"color" : [
 		{ "block": "net.minecraft.block.Block|cloth" },
-		{ "block": "net.minecraft.block.Block|grass" },
+		{ "block": "net.minecraft.block.Block|stone" },
 		{ "block": "mods.castledefenders.ModCastleDefenders|blockMerc" },
 		{ "block": "net.minecraft.block.Block|fence" },
 		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "up"},
@@ -11,4 +9,5 @@
 		{ "block": "net.minecraft.block.Block|cobblestone" },
 		{ "block": "net.minecraft.block.Block|netherrack" }
 	]
+	
 }

@@ -1,4 +1,6 @@
 {
+	"height": -1,
+	
 	"color" : [
 		{ "block": "net.minecraft.block.Block|stoneBrick" },
 		{ "block": "net.minecraft.block.Block|cobblestone" },
@@ -15,7 +17,7 @@
 		{ "block": "net.minecraft.block.Block|torchWood" }
 	],
 	"sets": {
-		"9x1x3": {
+		"9x1x10": {
 			"block": "net.minecraft.block.Block|chest",
 			"orientation":"up",
 			
@@ -131,29 +133,29 @@
 				]
 			]
 		},
-		"8x1x3": { "block": "net.minecraft.block.Block|chest"	  , "orientation":"up" }
+		"8x1x10": { "block": "net.minecraft.block.Block|chest"	  , "orientation":"up" }
 	},
 	
 	"random": [
 		[
 			{
-				"12x1x6": { "block": "net.minecraft.block.Block|tnt" },
-				"12x1x7": { "block": "net.minecraft.block.Block|tnt" },
-				"12x2x6": { "block": "net.minecraft.block.Block|tnt" }
+				"12x1x11": { "block": "net.minecraft.block.Block|tnt" },
+				"12x1x10": { "block": "net.minecraft.block.Block|tnt" },
+				"12x2x11": { "block": "net.minecraft.block.Block|tnt" }
 			},
 			{
-				"12x1x6": { "block": "net.minecraft.block.Block|blockIron" },
-				"12x1x7": { "block": "net.minecraft.block.Block|blockIron" },
-				"12x2x6": { "block": "net.minecraft.block.Block|blockIron" }
+				"12x1x10": { "block": "net.minecraft.block.Block|blockIron" },
+				"12x1x11": { "block": "net.minecraft.block.Block|blockIron" },
+				"12x2x10": { "block": "net.minecraft.block.Block|blockIron" }
 			},
 			{
-				"12x1x6": { "block": "net.minecraft.block.Block|blockGold" },
-				"12x2x6": { "block": "net.minecraft.block.Block|blockGold" }
+				"12x1x10": { "block": "net.minecraft.block.Block|blockGold" },
+				"12x2x10": { "block": "net.minecraft.block.Block|blockGold" }
 			},
 			{
-				"12x1x6": { "block": "net.minecraft.block.Block|blockLapis" },
-				"12x1x7": { "block": "net.minecraft.block.Block|blockLapis" },
-				"12x2x6": { "block": "net.minecraft.block.Block|blockLapis" }
+				"12x1x11": { "block": "net.minecraft.block.Block|blockLapis" },
+				"12x1x10": { "block": "net.minecraft.block.Block|blockLapis" },
+				"12x2x11": { "block": "net.minecraft.block.Block|blockLapis" }
 			}
 		]
 	]

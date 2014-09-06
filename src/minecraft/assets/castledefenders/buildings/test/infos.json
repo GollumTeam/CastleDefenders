@@ -1,0 +1,47 @@
+{
+	"height":-1,
+	"color" : [
+		{ "block": "net.minecraft.block.Block|cloth" },
+		{ "block": "net.minecraft.block.Block|grass" },
+		{ "block": "mods.castledefenders.ModCastleDefenders|blockMerc" },
+		{ "block": "net.minecraft.block.Block|fence" },
+		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "up"},
+		{ "block": "net.minecraft.block.Block|fire" },
+		{ "block": "net.minecraft.block.Block|cobblestone" },
+		{ "block": "net.minecraft.block.Block|netherrack" }
+	],
+	
+	"sets": {
+		"2x1x2": {
+			"block": "net.minecraft.block.Block|netherrack",
+			"orientation":"down"
+		},
+		"2x2x2": {
+			"block": "net.minecraft.block.Block|netherrack",
+			"orientation":"down"
+		},
+		"2x3x2": {
+			"block": "net.minecraft.block.Block|netherrack",
+			"orientation":"down"
+		},
+		"2x4x2": {
+			"block": "net.minecraft.block.Block|netherrack",
+			"orientation":"down"
+		}
+	},
+	
+	"buildings": {
+		"2x2x2": "mercenary2/test"
+	},
+	
+	"randomBuildings": [
+		[
+			{
+				"3x5x3": "test/test"
+			},
+			{
+				"3x15x3": "test/test"
+			}
+		]
+	]
+}
