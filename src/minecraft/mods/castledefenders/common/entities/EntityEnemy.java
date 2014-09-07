@@ -41,8 +41,7 @@ public abstract class EntityEnemy extends EntityMob {
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMoveSpeed()));
 		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityDefender.class, 0, true));
-		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityMercArcher.class,  0, true));
-		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityMerc.class,  0, true));
+		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityMercenary.class,  0, true));
 
 	}
 

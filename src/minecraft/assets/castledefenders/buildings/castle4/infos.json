@@ -31,32 +31,32 @@
 		
 	],
 	"sets": {
-		"14x13x25": { "block": "net.minecraft.block.Block|redstoneRepeaterIdle", "orientation":"down" },
-		"22x13x25": { "block": "net.minecraft.block.Block|redstoneRepeaterIdle", "orientation":"down" },
-		"14x13x4": { "block": "net.minecraft.block.Block|redstoneRepeaterIdle", "orientation":"up" },
-		"1x13x14": { "block": "net.minecraft.block.Block|redstoneRepeaterIdle", "orientation":"up" },
-		"2x13x1": { "block": "net.minecraft.block.Block|redstoneRepeaterIdle", "orientation":"right" },
+		"14x13x4": { "block": "net.minecraft.block.Block|redstoneRepeaterIdle", "orientation":"down" },
+		"22x13x4": { "block": "net.minecraft.block.Block|redstoneRepeaterIdle", "orientation":"down" },
+		"14x13x25": { "block": "net.minecraft.block.Block|redstoneRepeaterIdle", "orientation":"up" },
+		"1x13x15": { "block": "net.minecraft.block.Block|redstoneRepeaterIdle", "orientation":"up" },
+		"2x13x28": { "block": "net.minecraft.block.Block|redstoneRepeaterIdle", "orientation":"right" },
 		
-		"7x11x3": { "block": "net.minecraft.block.Block|lever", "orientation":"down" },
+		"7x11x26": { "block": "net.minecraft.block.Block|lever", "orientation":"down" },
 		
-		"10x14x20": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 0, "orientation":"up" },
-		"10x15x20": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 8, "orientation":"up" },
-		"18x14x20": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 0, "orientation":"up" },
-		"18x15x20": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 8, "orientation":"up" },
-		"26x14x21": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 0, "orientation":"up" },
-		"26x15x21": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 8, "orientation":"up" },
-		"10x14x9": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 0, "orientation":"down" },
-		"10x15x9": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 8, "orientation":"down" },
-		"18x14x9": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 0, "orientation":"down" },
-		"18x15x9": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 8, "orientation":"down" },
-		"11x8x15": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 0, "orientation":"left" },
-		"11x9x15": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 8, "orientation":"left" },
+		"10x14x9": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 0, "orientation":"up" },
+		"10x15x9": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 8, "orientation":"up" },
+		"18x14x9": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 0, "orientation":"up" },
+		"18x15x9": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 8, "orientation":"up" },
+		"26x14x8": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 0, "orientation":"up" },
+		"26x15x8": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 8, "orientation":"up" },
+		"10x14x20": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 0, "orientation":"down" },
+		"10x15x20": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 8, "orientation":"down" },
+		"18x14x20": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 0, "orientation":"down" },
+		"18x15x20": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 8, "orientation":"down" },
+		"11x8x14": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 0, "orientation":"left" },
+		"11x9x14": { "block":  "net.minecraft.block.Block|doorIron", "metadata": 8, "orientation":"left" },
 		
-		"15x2x16": { "block": "mods.castledefenders.ModCastleDefenders|blockEMage" },
+		"15x2x13": { "block": "mods.castledefenders.ModCastleDefenders|blockEMage" },
 		
-		"18x2x5": { "block": "net.minecraft.block.Block|pressurePlateStone" },
+		"18x2x24": { "block": "net.minecraft.block.Block|pressurePlateStone" },
 		
-		"17x1x5": {
+		"17x1x24": {
 			 
 			 "block": "net.minecraft.block.Block|commandBlock",
 			 "extra": {
@@ -68,141 +68,141 @@
 	"random": [
 		[
 			{
-				"15x19x4": { "block": "net.minecraft.block.Block|cobblestone" },
-				"11x19x8": { "block": "net.minecraft.block.Block|cobblestone" },
-				"8x19x11": { "block": "net.minecraft.block.Block|cobblestone" },
-				"4x19x15": { "block": "net.minecraft.block.Block|cobblestone" },
-				"18x19x14": { "block": "net.minecraft.block.Block|cobblestone" },
-				"7x19x18": { "block": "net.minecraft.block.Block|cobblestone" },
+				"15x19x25": { "block": "net.minecraft.block.Block|cobblestone" },
+				"11x19x21": { "block": "net.minecraft.block.Block|cobblestone" },
 				"8x19x18": { "block": "net.minecraft.block.Block|cobblestone" },
-				"22x19x18": { "block": "net.minecraft.block.Block|cobblestone" },
-				"22x19x25": { "block": "net.minecraft.block.Block|cobblestone" },
+				"4x19x14": { "block": "net.minecraft.block.Block|cobblestone" },
+				"18x19x15": { "block": "net.minecraft.block.Block|cobblestone" },
+				"7x19x11": { "block": "net.minecraft.block.Block|cobblestone" },
+				"8x19x11": { "block": "net.minecraft.block.Block|cobblestone" },
+				"22x19x11": { "block": "net.minecraft.block.Block|cobblestone" },
+				"22x19x4": { "block": "net.minecraft.block.Block|cobblestone" },
 			   
-				"14x19x4": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"11x19x7": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"7x19x11": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"4x19x14": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"18x19x15": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"21x19x18": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"21x19x25": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"14x19x25": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"11x19x22": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"7x19x18": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"4x19x15": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"18x19x14": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"21x19x11": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"21x19x4": { "block": "net.minecraft.block.Block|lavaMoving" },
 				
-				"15x20x4": { "block": "net.minecraft.block.Block|cobblestone" },
-				"11x20x8": { "block": "net.minecraft.block.Block|cobblestone" },
-				"8x20x11": { "block": "net.minecraft.block.Block|cobblestone" },
-				"4x20x15": { "block": "net.minecraft.block.Block|cobblestone" },
-				"18x20x14": { "block": "net.minecraft.block.Block|cobblestone" },
-				"7x20x18": { "block": "net.minecraft.block.Block|cobblestone" },
+				"15x20x25": { "block": "net.minecraft.block.Block|cobblestone" },
+				"11x20x21": { "block": "net.minecraft.block.Block|cobblestone" },
 				"8x20x18": { "block": "net.minecraft.block.Block|cobblestone" },
-				"22x20x18": { "block": "net.minecraft.block.Block|cobblestone" },
-				"22x20x25": { "block": "net.minecraft.block.Block|cobblestone" },
+				"4x20x14": { "block": "net.minecraft.block.Block|cobblestone" },
+				"18x20x15": { "block": "net.minecraft.block.Block|cobblestone" },
+				"7x20x11": { "block": "net.minecraft.block.Block|cobblestone" },
+				"8x20x11": { "block": "net.minecraft.block.Block|cobblestone" },
+				"22x20x11": { "block": "net.minecraft.block.Block|cobblestone" },
+				"22x20x4": { "block": "net.minecraft.block.Block|cobblestone" },
 			   
-				"14x20x4": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"11x20x7": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"7x20x11": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"4x20x14": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"18x20x15": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"21x20x18": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"21x20x25": { "block": "net.minecraft.block.Block|lavaMoving" }
+				"14x20x25": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"11x20x22": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"7x20x18": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"4x20x15": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"18x20x14": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"21x20x11": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"21x20x4": { "block": "net.minecraft.block.Block|lavaMoving" }
 			},
 			{
 			  
-				"21x19x4": { "block": "net.minecraft.block.Block|cobblestone" },
-				"11x19x7": { "block": "net.minecraft.block.Block|cobblestone" },
-				"11x19x8": { "block": "net.minecraft.block.Block|cobblestone" },
-				"14x19x11": { "block": "net.minecraft.block.Block|cobblestone" },
-				"15x19x11": { "block": "net.minecraft.block.Block|cobblestone" },
-				"21x19x11": { "block": "net.minecraft.block.Block|cobblestone" },
-				"4x19x14": { "block": "net.minecraft.block.Block|cobblestone" },
-				"4x19x15": { "block": "net.minecraft.block.Block|cobblestone" },
-				"25x19x15": { "block": "net.minecraft.block.Block|cobblestone" },
+				"21x19x25": { "block": "net.minecraft.block.Block|cobblestone" },
+				"11x19x22": { "block": "net.minecraft.block.Block|cobblestone" },
+				"11x19x21": { "block": "net.minecraft.block.Block|cobblestone" },
 				"14x19x18": { "block": "net.minecraft.block.Block|cobblestone" },
 				"15x19x18": { "block": "net.minecraft.block.Block|cobblestone" },
-				"4x19x21": { "block": "net.minecraft.block.Block|cobblestone" },
-				"11x19x21": { "block": "net.minecraft.block.Block|cobblestone" },
-				"18x19x21": { "block": "net.minecraft.block.Block|cobblestone" },
-				"22x19x25": { "block": "net.minecraft.block.Block|cobblestone" },
+				"21x19x18": { "block": "net.minecraft.block.Block|cobblestone" },
+				"4x19x15": { "block": "net.minecraft.block.Block|cobblestone" },
+				"4x19x14": { "block": "net.minecraft.block.Block|cobblestone" },
+				"25x19x14": { "block": "net.minecraft.block.Block|cobblestone" },
+				"14x19x11": { "block": "net.minecraft.block.Block|cobblestone" },
+				"15x19x11": { "block": "net.minecraft.block.Block|cobblestone" },
+				"4x19x8": { "block": "net.minecraft.block.Block|cobblestone" },
+				"11x19x8": { "block": "net.minecraft.block.Block|cobblestone" },
+				"18x19x8": { "block": "net.minecraft.block.Block|cobblestone" },
+				"22x19x4": { "block": "net.minecraft.block.Block|cobblestone" },
 			   
-				"22x19x4": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"22x19x11": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"25x19x14": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"4x19x22": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"11x19x22": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"18x19x22": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"21x19x25": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"22x19x25": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"22x19x18": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"25x19x15": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"4x19x7": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"11x19x7": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"18x19x7": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"21x19x4": { "block": "net.minecraft.block.Block|lavaMoving" },
 				
-				"21x20x4": { "block": "net.minecraft.block.Block|cobblestone" },
-				"11x20x7": { "block": "net.minecraft.block.Block|cobblestone" },
-				"11x20x8": { "block": "net.minecraft.block.Block|cobblestone" },
-				"14x20x11": { "block": "net.minecraft.block.Block|cobblestone" },
-				"15x20x11": { "block": "net.minecraft.block.Block|cobblestone" },
-				"21x20x11": { "block": "net.minecraft.block.Block|cobblestone" },
-				"4x20x14": { "block": "net.minecraft.block.Block|cobblestone" },
-				"4x20x15": { "block": "net.minecraft.block.Block|cobblestone" },
-				"25x20x15": { "block": "net.minecraft.block.Block|cobblestone" },
+				"21x20x25": { "block": "net.minecraft.block.Block|cobblestone" },
+				"11x20x22": { "block": "net.minecraft.block.Block|cobblestone" },
+				"11x20x21": { "block": "net.minecraft.block.Block|cobblestone" },
 				"14x20x18": { "block": "net.minecraft.block.Block|cobblestone" },
 				"15x20x18": { "block": "net.minecraft.block.Block|cobblestone" },
-				"4x20x21": { "block": "net.minecraft.block.Block|cobblestone" },
-				"11x20x21": { "block": "net.minecraft.block.Block|cobblestone" },
-				"18x20x21": { "block": "net.minecraft.block.Block|cobblestone" },
-				"22x20x25": { "block": "net.minecraft.block.Block|cobblestone" },
+				"21x20x18": { "block": "net.minecraft.block.Block|cobblestone" },
+				"4x20x15": { "block": "net.minecraft.block.Block|cobblestone" },
+				"4x20x14": { "block": "net.minecraft.block.Block|cobblestone" },
+				"25x20x14": { "block": "net.minecraft.block.Block|cobblestone" },
+				"14x20x11": { "block": "net.minecraft.block.Block|cobblestone" },
+				"15x20x11": { "block": "net.minecraft.block.Block|cobblestone" },
+				"4x20x8": { "block": "net.minecraft.block.Block|cobblestone" },
+				"11x20x8": { "block": "net.minecraft.block.Block|cobblestone" },
+				"18x20x8": { "block": "net.minecraft.block.Block|cobblestone" },
+				"22x20x4": { "block": "net.minecraft.block.Block|cobblestone" },
 			   
-				"22x20x4": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"22x20x11": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"25x20x14": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"4x20x22": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"11x20x22": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"18x20x22": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"21x20x25": { "block": "net.minecraft.block.Block|lavaMoving" }
+				"22x20x25": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"22x20x18": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"25x20x15": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"4x20x7": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"11x20x7": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"18x20x7": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"21x20x4": { "block": "net.minecraft.block.Block|lavaMoving" }
 			},
 			{
 			
-				"14x19x4": { "block": "net.minecraft.block.Block|cobblestone" },
-				"18x19x8": { "block": "net.minecraft.block.Block|cobblestone" },
-				"7x19x11": { "block": "net.minecraft.block.Block|cobblestone" },
-				"8x19x11": { "block": "net.minecraft.block.Block|cobblestone" },
-				"21x19x11": { "block": "net.minecraft.block.Block|cobblestone" },
-				"11x19x14": { "block": "net.minecraft.block.Block|cobblestone" },
+				"14x19x25": { "block": "net.minecraft.block.Block|cobblestone" },
+				"18x19x21": { "block": "net.minecraft.block.Block|cobblestone" },
 				"7x19x18": { "block": "net.minecraft.block.Block|cobblestone" },
-				"15x19x18": { "block": "net.minecraft.block.Block|cobblestone" },
+				"8x19x18": { "block": "net.minecraft.block.Block|cobblestone" },
 				"21x19x18": { "block": "net.minecraft.block.Block|cobblestone" },
-				"4x19x21": { "block": "net.minecraft.block.Block|cobblestone" },
-				"25x19x22": { "block": "net.minecraft.block.Block|cobblestone" },
-				"15x19x25": { "block": "net.minecraft.block.Block|cobblestone" },
+				"11x19x15": { "block": "net.minecraft.block.Block|cobblestone" },
+				"7x19x11": { "block": "net.minecraft.block.Block|cobblestone" },
+				"15x19x11": { "block": "net.minecraft.block.Block|cobblestone" },
+				"21x19x11": { "block": "net.minecraft.block.Block|cobblestone" },
+				"4x19x8": { "block": "net.minecraft.block.Block|cobblestone" },
+				"25x19x7": { "block": "net.minecraft.block.Block|cobblestone" },
+				"15x19x4": { "block": "net.minecraft.block.Block|cobblestone" },
 				
-				"15x19x4": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"18x19x7": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"22x19x11": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"11x19x15": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"8x19x18": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"14x19x18": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"15x19x25": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"18x19x22": { "block": "net.minecraft.block.Block|lavaMoving" },
 				"22x19x18": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"4x19x22": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"25x19x21": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"14x19x25": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"11x19x14": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"8x19x11": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"14x19x11": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"22x19x11": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"4x19x7": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"25x19x8": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"14x19x4": { "block": "net.minecraft.block.Block|lavaMoving" },
 				
-				"14x20x4": { "block": "net.minecraft.block.Block|cobblestone" },
-				"18x20x8": { "block": "net.minecraft.block.Block|cobblestone" },
-				"7x20x11": { "block": "net.minecraft.block.Block|cobblestone" },
-				"8x20x11": { "block": "net.minecraft.block.Block|cobblestone" },
-				"21x20x11": { "block": "net.minecraft.block.Block|cobblestone" },
-				"11x20x14": { "block": "net.minecraft.block.Block|cobblestone" },
+				"14x20x25": { "block": "net.minecraft.block.Block|cobblestone" },
+				"18x20x21": { "block": "net.minecraft.block.Block|cobblestone" },
 				"7x20x18": { "block": "net.minecraft.block.Block|cobblestone" },
-				"15x20x18": { "block": "net.minecraft.block.Block|cobblestone" },
+				"8x20x18": { "block": "net.minecraft.block.Block|cobblestone" },
 				"21x20x18": { "block": "net.minecraft.block.Block|cobblestone" },
-				"4x20x21": { "block": "net.minecraft.block.Block|cobblestone" },
-				"25x20x22": { "block": "net.minecraft.block.Block|cobblestone" },
-				"15x20x25": { "block": "net.minecraft.block.Block|cobblestone" },
+				"11x20x15": { "block": "net.minecraft.block.Block|cobblestone" },
+				"7x20x11": { "block": "net.minecraft.block.Block|cobblestone" },
+				"15x20x11": { "block": "net.minecraft.block.Block|cobblestone" },
+				"21x20x11": { "block": "net.minecraft.block.Block|cobblestone" },
+				"4x20x8": { "block": "net.minecraft.block.Block|cobblestone" },
+				"25x20x7": { "block": "net.minecraft.block.Block|cobblestone" },
+				"15x20x4": { "block": "net.minecraft.block.Block|cobblestone" },
 				
-				"15x20x4": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"18x20x7": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"22x20x11": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"11x20x15": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"8x20x18": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"14x20x18": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"15x20x25": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"18x20x22": { "block": "net.minecraft.block.Block|lavaMoving" },
 				"22x20x18": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"4x20x22": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"25x20x21": { "block": "net.minecraft.block.Block|lavaMoving" },
-				"14x20x25": { "block": "net.minecraft.block.Block|lavaMoving" }
+				"11x20x14": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"8x20x11": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"14x20x11": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"22x20x11": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"4x20x7": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"25x20x8": { "block": "net.minecraft.block.Block|lavaMoving" },
+				"14x20x4": { "block": "net.minecraft.block.Block|lavaMoving" }
 			}
 			
 		],
@@ -211,8 +211,8 @@
 	
 			{
 			
-				"3x8x3": { "block": "net.minecraft.block.Block|mobSpawner", "extra": {"entity": "Spider"} },
-				"3x7x19": {
+				"3x8x26": { "block": "net.minecraft.block.Block|mobSpawner", "extra": {"entity": "Spider"} },
+				"3x7x10": {
 					"block": "net.minecraft.block.Block|chest",
 					"orientation":"up",
 					"contents": [
@@ -248,7 +248,7 @@
 						]
 					]
 				},
-				"23x7x11": {
+				"23x7x18": {
 					"block": "net.minecraft.block.Block|chest",
 					"orientation":"right",
 					"contents": [
@@ -287,8 +287,8 @@
 			 },
 			 {
 				
-				"23x8x11": { "block": "net.minecraft.block.Block|mobSpawner", "extra": {"entity": "Spider"} },
-				"3x7x3": {
+				"23x8x18": { "block": "net.minecraft.block.Block|mobSpawner", "extra": {"entity": "Spider"} },
+				"3x7x26": {
 					"block": "net.minecraft.block.Block|chest",
 					"orientation":"right",
 					"contents": [
@@ -324,7 +324,7 @@
 						]
 					]
 				},
-				"3x7x19": {
+				"3x7x10": {
 					"block": "net.minecraft.block.Block|chest",
 					"orientation":"right",
 					"contents": [
@@ -363,8 +363,8 @@
 			},
 			{
 				
-				"3x8x19": { "block": "net.minecraft.block.Block|mobSpawner", "extra": {"entity": "Spider"} },
-				"23x7x11": {
+				"3x8x10": { "block": "net.minecraft.block.Block|mobSpawner", "extra": {"entity": "Spider"} },
+				"23x7x18": {
 					"block": "net.minecraft.block.Block|chest",
 					"orientation":"right",
 					"contents": [
@@ -400,7 +400,7 @@
 						]
 					]
 				},
-				"3x7x3": {
+				"3x7x26": {
 					"block": "net.minecraft.block.Block|chest",
 					"orientation":"right",
 					"contents": [
@@ -441,7 +441,7 @@
 		[
 		
 			{
-				"20x2x3" : {
+				"20x2x26" : {
 					"block": "net.minecraft.block.Block|chest",
 					"orientation":"down",
 					"contents": [
@@ -464,10 +464,10 @@
 						]
 					]
 				},
-				"21x2x3": { "block": "net.minecraft.block.Block|chest"	  , "orientation":"down" }
+				"21x2x26": { "block": "net.minecraft.block.Block|chest"	  , "orientation":"down" }
 			},
 			{
-				"20x2x3" : {
+				"20x2x26" : {
 					"block": "net.minecraft.block.Block|chest",
 					"orientation":"down",
 					"contents": [
@@ -491,10 +491,10 @@
 						]
 					]
 				},
-				"21x2x3": { "block": "net.minecraft.block.Block|chest"	  , "orientation":"down" }
+				"21x2x26": { "block": "net.minecraft.block.Block|chest"	  , "orientation":"down" }
 			},
 			{
-				"20x2x3" : {
+				"20x2x26" : {
 					"block": "net.minecraft.block.Block|chest",
 					"orientation":"down",
 					"contents": [
@@ -518,7 +518,7 @@
 						]
 					]
 				},
-				"21x2x3": { "block": "net.minecraft.block.Block|chest"	  , "orientation":"down" }
+				"21x2x26": { "block": "net.minecraft.block.Block|chest"	  , "orientation":"down" }
 			}
 			
 		]

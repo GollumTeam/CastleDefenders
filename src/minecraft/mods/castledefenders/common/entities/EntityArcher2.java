@@ -15,10 +15,6 @@ public class EntityArcher2 extends EntityArcher {
 	/**
 	 * @return les capacitées du mod
 	 */
-	protected MobCapacitiesConfigType getCapacities () { return ModCastleDefenders.config.healerCapacities; }
-	/**
-	 * @return les capacitées du mod
-	 */
-	protected ItemStackConfigType[] getCost () { return ModCastleDefenders.config.healerCost; }
+	protected MobCapacitiesConfigType getCapacities () { return ModCastleDefenders.config.archer2Capacities; }
 	
 }

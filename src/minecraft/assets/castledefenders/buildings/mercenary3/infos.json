@@ -32,37 +32,37 @@
 		{ "block": "net.minecraft.block.Block|crops" }
 	],
 	"sets": {
-		"19x10x17": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"left" },
-		"19x11x17": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"left" },
-		"22x10x11": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
-		"22x11x11": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
+		"19x10x12": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"left" },
+		"19x11x12": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"left" },
 		"22x10x18": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
 		"22x11x18": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
-		"4x9x20": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
-		"4x10x20": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
+		"22x10x11": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
+		"22x11x11": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
+		"4x9x9": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 0, "orientation":"up" },
+		"4x10x9": { "block":  "net.minecraft.block.Block|doorWood", "metadata": 8, "orientation":"up" },
 		
-		"14x13x25": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"right" },
-		"13x13x25": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"right" },
-		"25x14x22": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"down" },
-		"25x14x21": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"down" },
-		"21x10x22": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"down" },
-		"21x10x21": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"down" },
+		"14x13x4": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"right" },
+		"13x13x4": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"right" },
+		"25x14x7": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"down" },
+		"25x14x8": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"down" },
+		"21x10x7": { "block": "net.minecraft.block.Block|bed", "metadata": 8, "orientation":"down" },
+		"21x10x8": { "block": "net.minecraft.block.Block|bed", "metadata": 0, "orientation":"down" },
 		
-		"6x9x16": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "up", "metadata": 4 },
-		"7x9x16": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "up", "metadata": 4 },
-		"8x9x15": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "left", "metadata": 4 },
+		"6x9x13": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "up", "metadata": 4 },
+		"7x9x13": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "up", "metadata": 4 },
 		"8x9x14": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "left", "metadata": 4 },
-		"6x9x13": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "down", "metadata": 4 },
-		"7x9x13": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "down", "metadata": 4 },
-		"5x9x14": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "right", "metadata": 4 },
+		"8x9x15": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "left", "metadata": 4 },
+		"6x9x16": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "down", "metadata": 4 },
+		"7x9x16": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "down", "metadata": 4 },
 		"5x9x15": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "right", "metadata": 4 },
+		"5x9x14": { "block": "net.minecraft.block.Block|stairsStoneBrick", "orientation": "right", "metadata": 4 },
 		
-		"14x9x13": { "block": "net.minecraft.block.Block|sapling" },
+		"14x9x16": { "block": "net.minecraft.block.Block|sapling" },
 		
-		"2x9x24": { "block": "net.minecraft.block.Block|lavaStill" },
-		"2x9x25": { "block": "net.minecraft.block.Block|lavaStill" },
+		"2x9x5": { "block": "net.minecraft.block.Block|lavaStill" },
+		"2x9x4": { "block": "net.minecraft.block.Block|lavaStill" },
 		 
-		"22x1x18": {
+		"22x1x11": {
 			"block": "net.minecraft.block.Block|chest",
 			"orientation":"left",
 			"contents": [
@@ -105,9 +105,9 @@
 				]
 			]
 		},
-		"22x1x19": { "block": "net.minecraft.block.Block|chest"	  , "orientation":"left" },
+		"22x1x10": { "block": "net.minecraft.block.Block|chest"	  , "orientation":"left" },
 		 
-		"5x1x25": {
+		"5x1x4": {
 			"block": "net.minecraft.block.Block|chest",
 			"orientation":"left",
 			"contents": [
@@ -150,9 +150,9 @@
 				]
 			]
 		},
-		"5x1x26": { "block": "net.minecraft.block.Block|chest"	  , "orientation":"left" },
+		"5x1x3": { "block": "net.minecraft.block.Block|chest"	  , "orientation":"left" },
 		 
-		"9x1x9": {
+		"9x1x20": {
 			"block": "net.minecraft.block.Block|chest",
 			"orientation":"left",
 			"contents": [
@@ -171,12 +171,12 @@
 				]
 			]
 		},
-		"8x8x26": { "block": "mods.castledefenders.ModCastleDefenders|blockMerc" },
-		"26x9x12": { "block": "mods.castledefenders.ModCastleDefenders|blockMerc" },
-		"13x8x22": { "block": "mods.castledefenders.ModCastleDefenders|blockMerc" },
-		"21x9x12": { "block": "mods.castledefenders.ModCastleDefenders|blockMercArcher" },
-		"18x9x15": { "block": "mods.castledefenders.ModCastleDefenders|blockMercArcher" },
-		"18x9x19": { "block": "mods.castledefenders.ModCastleDefenders|blockMercArcher" }
+		"8x8x3": { "block": "mods.castledefenders.ModCastleDefenders|blockMerc" },
+		"26x9x17": { "block": "mods.castledefenders.ModCastleDefenders|blockMerc" },
+		"13x8x7": { "block": "mods.castledefenders.ModCastleDefenders|blockMerc" },
+		"21x9x17": { "block": "mods.castledefenders.ModCastleDefenders|blockMercArcher" },
+		"18x9x14": { "block": "mods.castledefenders.ModCastleDefenders|blockMercArcher" },
+		"18x9x10": { "block": "mods.castledefenders.ModCastleDefenders|blockMercArcher" }
 		
 	}
 }
