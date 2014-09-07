@@ -1,31 +1,31 @@
 {
 	"height":-1,
 	"color" : [
-		{ "block": "net.minecraft.block.Block|cloth" },
-		{ "block": "net.minecraft.block.Block|grass" },
-		{ "block": "mods.castledefenders.ModCastleDefenders|blockMerc" },
-		{ "block": "net.minecraft.block.Block|fence" },
-		{ "block": "net.minecraft.block.Block|torchWood", "orientation": "up"},
-		{ "block": "net.minecraft.block.Block|fire" },
-		{ "block": "net.minecraft.block.Block|cobblestone" },
-		{ "block": "net.minecraft.block.Block|netherrack" }
+		{ "block": "minecraft:wool" },
+		{ "block": "minecraft:grass" },
+		{ "block": "CastleDefenders:BlockMerc" },
+		{ "block": "minecraft:fence" },
+		{ "block": "minecraft:torch", "orientation": "up"},
+		{ "block": "minecraft:fire" },
+		{ "block": "minecraft:cobblestone" },
+		{ "block": "minecraft:netherrack" }
 	],
 	
 	"sets": {
 		"2x1x2": {
-			"block": "net.minecraft.block.Block|netherrack",
+			"block": "minecraft:netherrack",
 			"orientation":"down"
 		},
 		"2x2x2": {
-			"block": "net.minecraft.block.Block|netherrack",
+			"block": "minecraft:netherrack",
 			"orientation":"down"
 		},
 		"2x3x2": {
-			"block": "net.minecraft.block.Block|netherrack",
+			"block": "minecraft:netherrack",
 			"orientation":"down"
 		},
 		"2x4x2": {
-			"block": "net.minecraft.block.Block|netherrack",
+			"block": "minecraft:netherrack",
 			"orientation":"down"
 		}
 	},

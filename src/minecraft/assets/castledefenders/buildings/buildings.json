@@ -8,7 +8,7 @@
 					"0": {
 						"spawnRate":6,
 						"spawnHeight":64,
-						"blocksSpawn":["net.minecraft.block.Block|grass"]
+						"blocksSpawn":["minecraft:grass"]
 					}
 				}
 			},
@@ -18,7 +18,7 @@
 					"0": {
 						"spawnRate":6,
 						"spawnHeight":64,
-						"blocksSpawn":["net.minecraft.block.Block|grass"]
+						"blocksSpawn":["minecraft:grass"]
 					}
 				}
 			},
@@ -28,7 +28,7 @@
 					"0": {
 						"spawnRate":3,
 						"spawnHeight":64,
-						"blocksSpawn":["net.minecraft.block.Block|grass"]
+						"blocksSpawn":["minecraft:grass"]
 					}
 				}
 			},
@@ -38,7 +38,7 @@
 					"0": {
 						"spawnRate":2,
 						"spawnHeight":64,
-						"blocksSpawn":["net.minecraft.block.Block|grass"]
+						"blocksSpawn":["minecraft:grass"]
 					}
 				}
 			}
@@ -53,7 +53,7 @@
 					"0": {
 						"spawnRate":6,
 						"spawnHeight":64,
-						"blocksSpawn":["net.minecraft.block.Block|grass"]
+						"blocksSpawn":["minecraft:grass"]
 					}
 				}
 			},
@@ -63,7 +63,7 @@
 					"0": {
 						"spawnRate":6,
 						"spawnHeight":64,
-						"blocksSpawn":["net.minecraft.block.Block|grass"]
+						"blocksSpawn":["minecraft:grass"]
 					}
 				}
 			},
@@ -73,7 +73,7 @@
 					"0": {
 						"spawnRate":1,
 						"spawnHeight":64,
-						"blocksSpawn":["net.minecraft.block.Block|grass"]
+						"blocksSpawn":["minecraft:grass"]
 					}
 				}
 			},
@@ -83,7 +83,7 @@
 					"0": {
 						"spawnRate":1,
 						"spawnHeight":64,
-						"blocksSpawn":["net.minecraft.block.Block|grass"]
+						"blocksSpawn":["minecraft:grass"]
 					}
 				}
 			},
@@ -93,7 +93,7 @@
 					"0": {
 						"spawnRate":1,
 						"spawnHeight":1,
-						"blocksSpawn":["net.minecraft.block.Block|grass"]
+						"blocksSpawn":["minecraft:grass"]
 					}
 				}
 			}
