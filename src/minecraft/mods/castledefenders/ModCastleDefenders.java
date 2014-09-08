@@ -210,17 +210,17 @@ public class ModCastleDefenders extends GollumMod {
 	 */
 	private void initTileEntities () {
 		
-		GameRegistry.registerTileEntity(TileEntityBlockKnight.class    , "KnightBlock");
-		GameRegistry.registerTileEntity(TileEntityBlockKnight2.class   , "Knight2Block");
-		GameRegistry.registerTileEntity(TileEntityBlockArcher.class    , "ArcherBlock");
-		GameRegistry.registerTileEntity(TileEntityBlockArcher2.class   , "Archer2Block");
-		GameRegistry.registerTileEntity(TileEntityBlockMerc.class      , "MercBlock");
-		GameRegistry.registerTileEntity(TileEntityBlockMercArcher.class, "MercArcherBlock");
-		GameRegistry.registerTileEntity(TileEntityBlockMage.class      , "MageBlock");
-		GameRegistry.registerTileEntity(TileEntityBlockHealer.class    , "HearlerBlock");
-		GameRegistry.registerTileEntity(TileEntityBlockEKnight.class   , "EnemyKnightBlock");
-		GameRegistry.registerTileEntity(TileEntityBlockEArcher.class   , "EnemyArcherBlock");
-		GameRegistry.registerTileEntity(TileEntityBlockEMage.class     , "EnemyMageBlock");
+		GameRegistry.registerTileEntity(TileEntityBlockKnight.class    , this.MODID+"KnightBlock");
+		GameRegistry.registerTileEntity(TileEntityBlockKnight2.class   , this.MODID+"Knight2Block");
+		GameRegistry.registerTileEntity(TileEntityBlockArcher.class    , this.MODID+"ArcherBlock");
+		GameRegistry.registerTileEntity(TileEntityBlockArcher2.class   , this.MODID+"Archer2Block");
+		GameRegistry.registerTileEntity(TileEntityBlockMerc.class      , this.MODID+"MercBlock");
+		GameRegistry.registerTileEntity(TileEntityBlockMercArcher.class, this.MODID+"MercArcherBlock");
+		GameRegistry.registerTileEntity(TileEntityBlockMage.class      , this.MODID+"MageBlock");
+		GameRegistry.registerTileEntity(TileEntityBlockHealer.class    , this.MODID+"HearlerBlock");
+		GameRegistry.registerTileEntity(TileEntityBlockEKnight.class   , this.MODID+"EnemyKnightBlock");
+		GameRegistry.registerTileEntity(TileEntityBlockEArcher.class   , this.MODID+"EnemyArcherBlock");
+		GameRegistry.registerTileEntity(TileEntityBlockEMage.class     , this.MODID+"EnemyMageBlock");
 		
 	}
 	
