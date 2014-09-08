@@ -86,16 +86,6 @@
 						"blocksSpawn":["minecraft:grass"]
 					}
 				}
-			},
-			"test": {
-				"disabled": true,
-				"dimentions": {
-					"0": {
-						"spawnRate":1,
-						"spawnHeight":1,
-						"blocksSpawn":["minecraft:grass"]
-					}
-				}
 			}
 		}
 	}
