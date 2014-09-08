@@ -171,9 +171,9 @@
 				]
 			]
 		},
-		"8x8x3": { "block": "CastleDefenders:BlockMerc" },
+		"8x8x3":   { "block": "CastleDefenders:BlockMerc" },
 		"26x9x17": { "block": "CastleDefenders:BlockMerc" },
-		"13x8x7": { "block": "CastleDefenders:BlockMerc" },
+		"13x8x7":  { "block": "CastleDefenders:BlockMerc" },
 		"21x9x17": { "block": "CastleDefenders:BlockMercArcher" },
 		"18x9x14": { "block": "CastleDefenders:BlockMercArcher" },
 		"18x9x10": { "block": "CastleDefenders:BlockMercArcher" }
