@@ -27,9 +27,9 @@
 		{ "block": "minecraft:carpet", "metadata": 14 },
 		{ "block": "minecraft:wooden_pressure_plate" },
 		{ "block": "minecraft:glass" },
-		{ "block": "GollumCoreLib:BlockSpawner", "extra": {"entity": "Villager"} },
+		{ "block": "GollumCoreLib:BlockProximitySpawn", "extra": {"entity": "Villager"} },
 		{ "block": "minecraft:redstone_wire" },
-		{ "block": "GollumCoreLib:BlockSpawner", "extra": {"entity": "Chicken"} },
+		{ "block": "GollumCoreLib:BlockProximitySpawn", "extra": {"entity": "Chicken"} },
 		{ "block": "minecraft:stained_hardened_clay", "metadata": 14 }
 		
 	],
