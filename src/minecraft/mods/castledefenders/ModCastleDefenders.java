@@ -268,7 +268,7 @@ public class ModCastleDefenders extends GollumMod {
 	 */
 	public void registerMob (Class entityClass, String name, int color) {
 		
-		new Mobactory().register(this, entityClass, name, 0x000000, color);;
+		new Mobactory().register(entityClass, name, 0x000000, color);;
 		
 		// Pop dans les biomes
 		EntityRegistry.addSpawn(entityClass, 10, 0, 0, EnumCreatureType.creature, new BiomeGenBase[] {
