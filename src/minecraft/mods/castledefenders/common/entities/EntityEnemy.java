@@ -2,7 +2,6 @@ package mods.castledefenders.common.entities;
 
 import java.util.List;
 
-import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.block.Block;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -15,10 +14,12 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
+import com.gollum.core.common.config.type.MobCapacitiesConfigType;
+
 public abstract class EntityEnemy extends EntityMob {
 	
 	protected ItemStack defaultHeldItem = null;
-	protected int blockSpawnId;
+	protected Block blockSpawn;
 	private int idTask = 0;
 	private int idTargetTask = 0;
 
@@ -31,10 +32,10 @@ public abstract class EntityEnemy extends EntityMob {
 		this.getNavigator().setBreakDoors(false); // Permet d'ouvrir les port
 		this.getNavigator().setAvoidsWater(true); // Evite l'eau
 		
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setAttribute(this.getMaxHealt ());
-		this.getEntityAttribute(SharedMonsterAttributes.followRange)  .setAttribute(this.getFollowRange ());
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage) .setAttribute(this.getAttackStrength ());
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(this.getMoveSpeed ());
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setBaseValue(this.getMaxHealt ());
+		this.getEntityAttribute(SharedMonsterAttributes.followRange)  .setBaseValue(this.getFollowRange ());
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage) .setBaseValue(this.getAttackStrength ());
 		
 		this.getNavigator().setBreakDoors(true);
 		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
@@ -94,10 +95,10 @@ public abstract class EntityEnemy extends EntityMob {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes ();
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed) .setAttribute(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)     .setAttribute(this.getMaxHealt ());
-		this.getEntityAttribute(SharedMonsterAttributes.followRange)   .setAttribute(this.getFollowRange ());
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage)  .setAttribute(this.getAttackStrength ());
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed) .setBaseValue(this.getMoveSpeed ());
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)     .setBaseValue(this.getMaxHealt ());
+		this.getEntityAttribute(SharedMonsterAttributes.followRange)   .setBaseValue(this.getFollowRange ());
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage)  .setBaseValue(this.getAttackStrength ());
 	}
 	
 	/**
@@ -126,9 +127,9 @@ public abstract class EntityEnemy extends EntityMob {
 		int y = MathHelper.floor_double(this.boundingBox.minY);
 		int z = MathHelper.floor_double(this.posZ);
 		
-		int idBlock = this.worldObj.getBlockId(x, y - 1, z);
-		int up1 = this.worldObj.getBlockId(x, y, z);
-		int up2 = this.worldObj.getBlockId(x, y + 1, z);
+		Block block = this.worldObj.getBlock(x, y - 1, z);
+		Block up1 = this.worldObj.getBlock(x, y, z);
+		Block up2 = this.worldObj.getBlock(x, y + 1, z);
 		
 
 		List entityListBlockArround = this.worldObj.getEntitiesWithinAABB(
@@ -147,9 +148,9 @@ public abstract class EntityEnemy extends EntityMob {
 		}
 		
 		return
-			idBlock == this.blockSpawnId &&
-			(up1 == 0 || !Block.blocksList[up1].isCollidable()) &&
-			(up2 == 0 || !Block.blocksList[up2].isCollidable()) &&
+			block == this.blockSpawn &&
+			(up1 == null || !up1.isCollidable()) &&
+			(up2 == null || !up2.isCollidable()) &&
 			!found;
 	}
 	

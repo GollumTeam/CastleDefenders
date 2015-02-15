@@ -8,6 +8,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -119,13 +120,13 @@ public class EntityAIDistanceAttack extends EntityAIBase
 				y = MathHelper.floor_double(this.attackTarget.posY);
 				z = MathHelper.floor_double(this.attackTarget.posZ + random.nextInt(5) - 2);
 				
-				for (int i = 0; i < 2 && this.worldObj.getBlockId(x, y, z) != 0; i++) {
+				for (int i = 0; i < 2 && this.worldObj.isAirBlock(x, y, z); i++) {
 					y++;
 				}
 				
-				if (this.worldObj.getBlockId(x, y, z) == 0) {
+				if (this.worldObj.isAirBlock(x, y, z)) {
 					
-					this.worldObj.setBlock(x, y, z, Block.fire.blockID, 0, 2);
+					this.worldObj.setBlock(x, y, z, Blocks.fire, 0, 2);
 					this.worldObj.playSoundEffect(x, y, z, "ambient.weather.thunder", 2.0F, 0.8F + random.nextFloat() * 0.2F);
 					this.worldObj.playSoundEffect(x, y, z, "random.explode", 2.0F, 0.6F + random.nextFloat() * 0.2F);
 					

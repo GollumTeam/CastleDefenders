@@ -3,7 +3,6 @@ package mods.castledefenders.common.entities;
 import java.util.List;
 
 import mods.castledefenders.ModCastleDefenders;
-import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -20,10 +19,12 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
+import com.gollum.core.common.config.type.MobCapacitiesConfigType;
+
 public abstract class EntityDefender extends EntityAnimal {
 	
 	protected ItemStack defaultHeldItem = null;
-	protected int blockSpawnId;
+	protected Block blockSpawn;
 	private int idTask = 0;
 	private int idTargetTask = 0;
 
@@ -36,11 +37,11 @@ public abstract class EntityDefender extends EntityAnimal {
 		this.getNavigator().setBreakDoors(true); // Permet d'ouvrir les port
 		this.getNavigator().setAvoidsWater(true); // Evite l'eau
 		
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setAttribute(this.getMaxHealt ());
-		this.getEntityAttribute(SharedMonsterAttributes.followRange)  .setAttribute(this.getFollowRange ());
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(this.getMoveSpeed ());
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setBaseValue(this.getMaxHealt ());
+		this.getEntityAttribute(SharedMonsterAttributes.followRange)  .setBaseValue(this.getFollowRange ());
 		
-		this.tasks.addTask(this.nextIdTask (), new EntityAITempt(this, 0.35F, ModCastleDefenders.itemMedallion.itemID, false));
+		this.tasks.addTask(this.nextIdTask (), new EntityAITempt(this, 0.35F, ModCastleDefenders.itemMedallion, false));
 		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMoveSpeed ()));
 	}
@@ -94,9 +95,9 @@ public abstract class EntityDefender extends EntityAnimal {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes ();
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed) .setAttribute(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)     .setAttribute(this.getMaxHealt ());
-		this.getEntityAttribute(SharedMonsterAttributes.followRange)   .setAttribute(this.getFollowRange ());
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed) .setBaseValue(this.getMoveSpeed ());
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)     .setBaseValue(this.getMaxHealt ());
+		this.getEntityAttribute(SharedMonsterAttributes.followRange)   .setBaseValue(this.getFollowRange ());
 	}
 	
 	/**
@@ -182,9 +183,9 @@ public abstract class EntityDefender extends EntityAnimal {
 		int y = MathHelper.floor_double(this.boundingBox.minY);
 		int z = MathHelper.floor_double(this.posZ);
 		
-		int idBlock = this.worldObj.getBlockId(x, y - 1, z);
-		int up1 = this.worldObj.getBlockId(x, y, z);
-		int up2 = this.worldObj.getBlockId(x, y + 1, z);
+		Block block = this.worldObj.getBlock(x, y - 1, z);
+		Block up1 = this.worldObj.getBlock(x, y, z);
+		Block up2 = this.worldObj.getBlock(x, y + 1, z);
 		
 		List entityListBlockArround = this.worldObj.getEntitiesWithinAABB(
 			this.getClass(), 
@@ -202,9 +203,9 @@ public abstract class EntityDefender extends EntityAnimal {
 		}
 		
 		return
-			idBlock == this.blockSpawnId &&
-			(up1 == 0 || !Block.blocksList[up1].isCollidable()) &&
-			(up2 == 0 || !Block.blocksList[up2].isCollidable()) &&
+			block == this.blockSpawn &&
+			(up1 == null || !up1.isCollidable()) &&
+			(up2 == null || !up2.isCollidable()) &&
 			!found;
 	}
 	

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mods.castledefenders.ModCastleDefenders;
-import mods.gollum.core.common.config.container.ItemStackConfigType;
-import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -34,13 +32,17 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+
+import com.gollum.core.common.config.type.ItemStackConfigType;
+import com.gollum.core.common.config.type.MobCapacitiesConfigType;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class EntityMercenary extends EntityTameable {
 	
 	protected ItemStack defaultHeldItem = null;
-	protected int blockSpawnId;
+	protected Block blockSpawn;
 	private int idTask = 0;
 	private int idTargetTask = 0;
 	
@@ -55,9 +57,9 @@ public abstract class EntityMercenary extends EntityTameable {
 		this.getNavigator().setBreakDoors(true); // Permet d'ouvrir les port
 		this.getNavigator().setAvoidsWater(false); // Evite l'eau
 		
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setAttribute(this.getMaxHealt ());
-		this.getEntityAttribute(SharedMonsterAttributes.followRange)  .setAttribute(this.getFollowRange ());
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(this.getMoveSpeed ());
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setBaseValue(this.getMaxHealt ());
+		this.getEntityAttribute(SharedMonsterAttributes.followRange)  .setBaseValue(this.getFollowRange ());
 		
 		float follow = Math.min((float)(this.getFollowRange()-1), 10F);
 		if (follow < 1.0F) {
@@ -137,7 +139,7 @@ public abstract class EntityMercenary extends EntityTameable {
 		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 		ItemStack stack = null;
 		if ((stack = this.hasBuyItemInHand(player)) != null) {
-			return ModCastleDefenders.i18n.trans ("message.okfor", stack.stackSize, Item.itemsList[stack.itemID].getStatName ());
+			return ModCastleDefenders.i18n.trans ("message.okfor", stack.stackSize, stack.getUnlocalizedName());
 		}
 		
 		return ModCastleDefenders.i18n.trans ("message.buymercenary");
@@ -154,7 +156,7 @@ public abstract class EntityMercenary extends EntityTameable {
 			
 			for (ItemStackConfigType config : this.getCost ()) {
 				ItemStack cStack = config.getItemStak();
-				if (cStack.itemID == item.itemID) {
+				if (cStack.getItem() == item.getItem()) {
 					return cStack;
 				}
 			}
@@ -168,17 +170,17 @@ public abstract class EntityMercenary extends EntityTameable {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes ();
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed) .setAttribute(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)     .setAttribute(this.getMaxHealt ());
-		this.getEntityAttribute(SharedMonsterAttributes.followRange)   .setAttribute(this.getFollowRange ());
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed) .setBaseValue(this.getMoveSpeed ());
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)     .setBaseValue(this.getMaxHealt ());
+		this.getEntityAttribute(SharedMonsterAttributes.followRange)   .setBaseValue(this.getFollowRange ());
 	}
 	
 	public void setTamed (boolean tamed) {
 		
 		super.setTamed(tamed);
 		
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setAttribute(this.getMaxHealt ());
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(this.getMoveSpeed ());
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setBaseValue(this.getMaxHealt ());
 	}
 	
 	/**
@@ -298,9 +300,9 @@ public abstract class EntityMercenary extends EntityTameable {
 		int y = MathHelper.floor_double(this.boundingBox.minY);
 		int z = MathHelper.floor_double(this.posZ);
 		
-		int idBlock = this.worldObj.getBlockId(x, y - 1, z);
-		int up1 = this.worldObj.getBlockId(x, y, z);
-		int up2 = this.worldObj.getBlockId(x, y + 1, z);
+		Block block = this.worldObj.getBlock(x, y - 1, z);
+		Block up1   = this.worldObj.getBlock(x, y, z);
+		Block up2   = this.worldObj.getBlock(x, y + 1, z);
 		
 		List entityListBlockArround = this.worldObj.getEntitiesWithinAABB(
 			this.getClass(), 
@@ -318,9 +320,9 @@ public abstract class EntityMercenary extends EntityTameable {
 		}
 		
 		return
-			idBlock == this.blockSpawnId &&
-			(up1 == 0 || !Block.blocksList[up1].isCollidable()) &&
-			(up2 == 0 || !Block.blocksList[up2].isCollidable()) &&
+			block  == this.blockSpawn &&
+			(up1 == null || !up1.isCollidable()) &&
+			(up2 == null || !up2.isCollidable()) &&
 			!found;
 	}
 	
@@ -332,14 +334,6 @@ public abstract class EntityMercenary extends EntityTameable {
 		return 0.4F;
 	}
 	
-	/**
-	 * Returns the item ID for the item the mob drops on death.
-	 */
-	@Override
-	protected int getDropItemId() { 
-		return -1;
-	}
-
 	/**
 	 * Called frequently so the entity can update its state every tick as
 	 * required. For example, zombies and skeletons use this to react to
@@ -428,31 +422,31 @@ public abstract class EntityMercenary extends EntityTameable {
 	
 	
 	private boolean buy (EntityPlayer player, Class itemClass, int nb) {
-		return this.buy(player, 0, itemClass, nb);
+		return this.buy(player, null, itemClass, nb);
 	}
-	private boolean buy (EntityPlayer player, int itemId, int nb) {
-		return this.buy(player, itemId, null, nb);
+	private boolean buy (EntityPlayer player, Item item, int nb) {
+		return this.buy(player, item, null, nb);
 	}
 	/**
 	 * Buy item
 	 */
-	private boolean buy (EntityPlayer player, int itemId, Class itemClass, int nb) {
+	private boolean buy (EntityPlayer player, Item item, Class itemClass, int nb) {
 		
-		ItemStack item = player.inventory.getCurrentItem();
+		ItemStack is = player.inventory.getCurrentItem();
 		
 		if (
-			item != null && 
-			item.stackSize >= nb && (
-				(itemClass != null && itemClass.isInstance (Item.itemsList[item.itemID])) ||
-				(itemId != 0 && item.itemID == itemId)
+			is != null && 
+			is.stackSize >= nb && (
+				(itemClass != null && itemClass.isInstance (is.getItem())) ||
+				(item != null && is.getItem() == item)
 			)
 		) {
 			
 			// Enleve l'item
 			if (!player.capabilities.isCreativeMode) {
-				item.stackSize -= nb;
+				is.stackSize -= nb;
 			}
-			if (item.stackSize <= 0) {
+			if (is.stackSize <= 0) {
 				player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack) null);
 			}
 			
@@ -471,18 +465,18 @@ public abstract class EntityMercenary extends EntityTameable {
 		
 		if (player !=  null) {
 			this.setTamed(true);
-			this.setOwner(player.username);
+			this.func_152115_b(player.getUniqueID().toString());
 			
-			if (!this.ownerList.contains (player.username)) {
-				this.ownerList.add (player.username);
+			if (!this.ownerList.contains (player.getCommandSenderName())) {
+				this.ownerList.add (player.getCommandSenderName());
 			}
 		} else {
 			this.setTamed(false);
-			this.setOwner("");
+			this.func_152115_b("");
 		}
 		
 		this.worldObj.setEntityState(this, (byte) 7);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(this.getMoveSpeed ());
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(this.getMoveSpeed ());
 	}
 	
 	/**
@@ -491,17 +485,17 @@ public abstract class EntityMercenary extends EntityTameable {
 	 */
 	public boolean interact(EntityPlayer player) {
 		
-		ItemStack item = player.inventory.getCurrentItem();
+		ItemStack is = player.inventory.getCurrentItem();
 
 		if (!this.worldObj.isRemote) {
 			if (!this.isTamed()) {
 				
-				boolean buy = this.ownerList.contains (player.username);
+				boolean buy = this.ownerList.contains (player.getUniqueID().toString());
 				
 				if (!buy) {
 					for (ItemStackConfigType stackConfig: this.getCost ()) {
 						ItemStack stack = stackConfig.getItemStak();
-						if (buy = this.buy (player, stack.itemID, stack.stackSize)) {
+						if (buy = this.buy (player, stack.getItem(), stack.stackSize)) {
 							break;
 						}
 					}
@@ -513,14 +507,14 @@ public abstract class EntityMercenary extends EntityTameable {
 					return true;
 				}
 				
-			} else if (this.getOwnerName().equals(player.username)) {
+			} else if (this.func_152113_b().equals(player.getUniqueID().toString())) {
 				
-				ModCastleDefenders.log.debug("Interract with owner: "+player.username);
+				ModCastleDefenders.log.debug("Interract with owner: "+player.getCommandSenderName());
 				
 				if (this.buy (player, ItemFood.class, 1)) {
 					
-					ItemFood food = (ItemFood) Item.itemsList[item.itemID];
-					this.heal(food.getHealAmount());
+					ItemFood food = (ItemFood) is.getItem();
+					this.heal(food.func_150905_g(is));
 					
 					this.worldObj.playSoundAtEntity (this, "random.eat", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
 					this.eating = 0;
@@ -563,6 +557,6 @@ public abstract class EntityMercenary extends EntityTameable {
 	}
 	
 	public boolean isOwner(EntityPlayer player) {
-		return this.getOwnerName().equals(player.username);
+		return this.func_152113_b().equals(player.getUniqueID().toString());
 	}
 }

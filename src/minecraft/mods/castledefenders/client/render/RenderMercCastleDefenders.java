@@ -35,7 +35,7 @@ public class RenderMercCastleDefenders extends RenderCastleDefenders {
 				this.renderLife(entityMercenary, x, y, z);
 			}
 		} else {
-			this.renderLivingLabel(entityMercenary, entityMercenary.getMessagePlayer(), x, y, z, 64);
+			this.func_147906_a(entityMercenary, entityMercenary.getMessagePlayer(), x, y, z, 64);
 		}
 
 		GL11.glPushMatrix();

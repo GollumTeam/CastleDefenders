@@ -2,17 +2,18 @@ package mods.castledefenders.common.entities;
 
 import mods.castledefenders.ModCastleDefenders;
 import mods.castledefenders.common.aientities.EntityAIDistanceAttack;
-import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.world.World;
+
+import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
 public class EntityMage extends EntityDefender {
 
 	public EntityMage(World world) {
 
 		super(world);
-		this.blockSpawnId = ModCastleDefenders.blockMage.blockID;
+		this.blockSpawn = ModCastleDefenders.blockMage;
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), EntityAIDistanceAttack.TYPE_FIRE));
 		

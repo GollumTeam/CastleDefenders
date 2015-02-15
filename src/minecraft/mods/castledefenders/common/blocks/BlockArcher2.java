@@ -11,15 +11,15 @@ public class BlockArcher2 extends BlockCastleDefenders {
 	 * Constructeur
 	 * @param id
 	 */
-	public BlockArcher2 (int id, String registerName) {
-		super(id, registerName, Material.rock);
+	public BlockArcher2 (String registerName) {
+		super(registerName, Material.rock);
 	}
 	
 	/**
 	 * Creation de l'entite
 	 */
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World world, int i) {
 		return new TileEntityBlockArcher2();
 	}
 }

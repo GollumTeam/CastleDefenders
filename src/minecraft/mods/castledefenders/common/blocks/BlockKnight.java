@@ -11,16 +11,16 @@ public class BlockKnight extends BlockCastleDefenders {
 	 * Constructeur
 	 * @param id
 	 */
-	public BlockKnight (int id, String registerName) {
-		super(id, registerName, Material.rock);
+	public BlockKnight (String registerName) {
+		super(registerName, Material.rock);
 	}
 	
 	/**
 	 * Creation de l'entite
 	 */
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World world, int i) {
 		return new TileEntityBlockKnight();
 	}
-
+	
 }

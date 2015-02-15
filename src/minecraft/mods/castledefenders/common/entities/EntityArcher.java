@@ -2,20 +2,21 @@ package mods.castledefenders.common.entities;
 
 import mods.castledefenders.ModCastleDefenders;
 import mods.castledefenders.common.aientities.EntityAIDistanceAttack;
-import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.IMob;
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
 public class EntityArcher extends EntityDefender {
 
 	public EntityArcher(World world) {
 
 		super(world);
-		this.blockSpawnId    = ModCastleDefenders.blockArcher.blockID;
-		this.defaultHeldItem = new ItemStack(Item.bow, 1);
+		this.blockSpawn    = ModCastleDefenders.blockArcher;
+		this.defaultHeldItem = new ItemStack(Items.bow, 1);
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), EntityAIDistanceAttack.TYPE_ARROW));
 		

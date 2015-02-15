@@ -3,13 +3,14 @@ package mods.castledefenders.common.entities;
 import java.util.List;
 
 import mods.castledefenders.ModCastleDefenders;
-import mods.gollum.core.common.config.container.ItemStackConfigType;
-import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+
+import com.gollum.core.common.config.type.ItemStackConfigType;
+import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
 public class EntityHealer extends EntityMerc {
 	
@@ -21,8 +22,8 @@ public class EntityHealer extends EntityMerc {
 	public EntityHealer(World world) {
 		
 		super(world);
-		this.blockSpawnId       = ModCastleDefenders.blockHealer.blockID;
-		this.defaultHeldItem    = new ItemStack(Item.book, 1);
+		this.blockSpawn         = ModCastleDefenders.blockHealer;
+		this.defaultHeldItem    = new ItemStack(Items.book, 1);
 		
 	}
 	

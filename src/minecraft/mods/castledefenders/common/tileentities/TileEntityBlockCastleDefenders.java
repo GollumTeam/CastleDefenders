@@ -74,7 +74,7 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity {
 					return;
 				}
 
-				int nbEntityArround = this.worldObj.getEntitiesWithinAABB(entity.getClass(), AxisAlignedBB.getAABBPool().getAABB((double)this.xCoord, (double)this.yCoord, (double)this.zCoord, (double)(this.xCoord + 1), (double)(this.yCoord + 1), (double)(this.zCoord + 1)).expand(12.0D, 4.0D, 12.0D)).size();
+				int nbEntityArround = this.worldObj.getEntitiesWithinAABB(entity.getClass(), AxisAlignedBB.getBoundingBox((double)this.xCoord, (double)this.yCoord, (double)this.zCoord, (double)(this.xCoord + 1), (double)(this.yCoord + 1), (double)(this.zCoord + 1)).expand(12.0D, 4.0D, 12.0D)).size();
 				
 				//Le nombre d'entity est supérieur à 6 autour du block
 				if (nbEntityArround >= this.maxSpawn) {

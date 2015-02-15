@@ -1,17 +1,18 @@
 package mods.castledefenders.common.entities;
 
 import mods.castledefenders.ModCastleDefenders;
-import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
 public class EntityKnight2 extends EntityKnight {
 
 	public EntityKnight2(World world) {
 		super(world);
-		this.blockSpawnId    = ModCastleDefenders.blockKnight2.blockID;
-		this.defaultHeldItem = new ItemStack(Item.swordDiamond, 1);
+		this.blockSpawn      = ModCastleDefenders.blockKnight2;
+		this.defaultHeldItem = new ItemStack(Items.diamond_sword, 1);
 	}
 	
 	/**

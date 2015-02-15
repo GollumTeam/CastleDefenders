@@ -1,9 +1,12 @@
 package mods.castledefenders.common.blocks;
 
 import mods.castledefenders.ModCastleDefenders;
-import mods.gollum.core.tools.helper.blocks.HBlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+
+import com.gollum.core.tools.helper.blocks.HBlockContainer;
 
 public abstract class BlockCastleDefenders extends HBlockContainer {
 	
@@ -11,8 +14,8 @@ public abstract class BlockCastleDefenders extends HBlockContainer {
 	 * Constructeur
 	 * @param id
 	 */
-	public BlockCastleDefenders (int id, String registerName, Material material) {
-		super(id, registerName, material);
+	public BlockCastleDefenders (String registerName, Material material) {
+		super(registerName, material);
 		this.setCreativeTab(ModCastleDefenders.tabCastleDefenders);
 	}
 	
@@ -21,8 +24,8 @@ public abstract class BlockCastleDefenders extends HBlockContainer {
 	 * inventory.setCurrentItem (along with isCreative)
 	 */
 	@Override
-	public int idPicked(World var1, int var2, int var3, int var4) {
-		return 0;
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
+		return null;
 	}
 	
 	/**

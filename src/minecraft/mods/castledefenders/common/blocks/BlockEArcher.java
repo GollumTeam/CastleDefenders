@@ -3,8 +3,9 @@ package mods.castledefenders.common.blocks;
 import java.util.Random;
 
 import mods.castledefenders.common.tileentities.TileEntityBlockEArcher;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
@@ -14,24 +15,20 @@ public class BlockEArcher extends BlockCastleDefenders {
 	 * Constructeur
 	 * @param id
 	 */
-	public BlockEArcher (int id, String registerName) {
-		super(id, registerName, Material.rock);
+	public BlockEArcher (String registerName) {
+		super(registerName, Material.rock);
 	}
 	
 	/**
 	 * Creation de l'entite
 	 */
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World world, int i) {
 		return new TileEntityBlockEArcher();
 	}
 	
-	/**
-	 * Returns the ID of the items to drop on destruction.
-	 */
-	@Override
-	public int idDropped(int par1, Random par2Random, int par3) {
-		return Block.cobblestone.blockID;
+	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
+		return Item.getItemFromBlock(Blocks.cobblestone);
 	}
 	
 	/**

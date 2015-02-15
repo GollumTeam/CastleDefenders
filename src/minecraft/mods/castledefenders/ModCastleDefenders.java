@@ -1,7 +1,5 @@
 package mods.castledefenders;
 
-import java.io.IOException;
-
 import mods.castledefenders.common.CommonProxyCastleDefenders;
 import mods.castledefenders.common.blocks.BlockArcher;
 import mods.castledefenders.common.blocks.BlockArcher2;
@@ -37,22 +35,23 @@ import mods.castledefenders.common.tileentities.TileEntityBlockKnight2;
 import mods.castledefenders.common.tileentities.TileEntityBlockMage;
 import mods.castledefenders.common.tileentities.TileEntityBlockMerc;
 import mods.castledefenders.common.tileentities.TileEntityBlockMercArcher;
-import mods.gollum.core.common.building.Building;
-import mods.gollum.core.common.building.BuildingParser;
-import mods.gollum.core.common.creativetab.GollumCreativeTabs;
-import mods.gollum.core.common.facory.Mobactory;
-import mods.gollum.core.common.i18n.I18n;
-import mods.gollum.core.common.log.Logger;
-import mods.gollum.core.common.mod.GollumMod;
-import mods.gollum.core.common.version.VersionChecker;
-import mods.gollum.core.common.worldgenerator.WorldGeneratorByBuilding;
-import mods.gollum.core.tools.helper.items.HItem;
-import mods.gollum.core.tools.registry.SoundRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
+
+import com.gollum.core.common.creativetab.GollumCreativeTabs;
+import com.gollum.core.common.facory.Mobactory;
+import com.gollum.core.common.i18n.I18n;
+import com.gollum.core.common.log.Logger;
+import com.gollum.core.common.mod.GollumMod;
+import com.gollum.core.common.version.VersionChecker;
+import com.gollum.core.tools.helper.items.HItem;
+import com.gollum.core.tools.registry.SoundRegistry;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -60,18 +59,16 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = ModCastleDefenders.MODID, name = ModCastleDefenders.MODNAME, version = ModCastleDefenders.VERSION, acceptedMinecraftVersions = ModCastleDefenders.MINECRAFT_VERSION, dependencies = ModCastleDefenders.DEPENDENCIES)
-@NetworkMod(clientSideRequired = true, serverSideRequired = true)
 public class ModCastleDefenders extends GollumMod {
 
 	public final static String MODID = "CastleDefenders";
 	public final static String MODNAME = "Castle Defenders";
 	public final static String VERSION = "3.0.0 [Build Smeagol]";
-	public final static String MINECRAFT_VERSION = "1.6.4";
+	public final static String MINECRAFT_VERSION = "1.7.2";
 	public final static String DEPENDENCIES = "required-after:GollumCoreLib";
 	
 	@Instance(ModCastleDefenders.MODID)
@@ -129,9 +126,6 @@ public class ModCastleDefenders extends GollumMod {
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		
-		// Charge la configuration
-		this.config = new ConfigCastleDefender().loadConfig();
-		
 		// Test la version du mod
 		new VersionChecker();
 		
@@ -184,17 +178,17 @@ public class ModCastleDefenders extends GollumMod {
 	public void initBlocks () {
 		
 		// Création des blocks
-		this.blockKnight     = new BlockKnight    (this.config.blockKnightID,     "BlockKnight"    ).setHardness(2.0F).setResistance(5.0F);
-		this.blockKnight2    = new BlockKnight2   (this.config.blockKnight2ID,    "BlockKnight2"   ).setHardness(2.0F).setResistance(5.0F);
-		this.blockArcher     = new BlockArcher    (this.config.blockArcherID,     "BlockArcher"    ).setHardness(2.0F).setResistance(5.0F);
-		this.blockArcher2    = new BlockArcher2   (this.config.blockArcher2ID,    "BlockArcher2"   ).setHardness(2.0F).setResistance(5.0F);
-		this.blockMerc       = new BlockMerc      (this.config.blockMercID,       "BlockMerc"      ).setHardness(2.0F).setResistance(5.0F);
-		this.blockMercArcher = new BlockMercArcher(this.config.blockMercArcherID, "BlockMercArcher").setHardness(2.0F).setResistance(5.0F);
-		this.blockMage       = new BlockMage      (this.config.blockMageID,       "BlockMage"      ).setHardness(2.0F).setResistance(5.0F);
-		this.blockHealer     = new BlockHealer    (this.config.blockHealerID,     "BlockHealer"    ).setHardness(2.0F).setResistance(5.0F);
-		this.blockEKnight    = new BlockEKnight   (this.config.blockEKnightID,    "BlockEKnight"   ).setHardness(2.0F).setResistance(5.0F);
-		this.blockEArcher    = new BlockEArcher   (this.config.blockEArcherID,    "BlockEArcher"   ).setHardness(2.0F).setResistance(5.0F);
-		this.blockEMage      = new BlockEMage     (this.config.blockEMageID,      "BlockEMage"     ).setHardness(2.0F).setResistance(5.0F);
+		this.blockKnight     = new BlockKnight    ("BlockKnight"    ).setHardness(2.0F).setResistance(5.0F);
+		this.blockKnight2    = new BlockKnight2   ("BlockKnight2"   ).setHardness(2.0F).setResistance(5.0F);
+		this.blockArcher     = new BlockArcher    ("BlockArcher"    ).setHardness(2.0F).setResistance(5.0F);
+		this.blockArcher2    = new BlockArcher2   ("BlockArcher2"   ).setHardness(2.0F).setResistance(5.0F);
+		this.blockMerc       = new BlockMerc      ("BlockMerc"      ).setHardness(2.0F).setResistance(5.0F);
+		this.blockMercArcher = new BlockMercArcher("BlockMercArcher").setHardness(2.0F).setResistance(5.0F);
+		this.blockMage       = new BlockMage      ("BlockMage"      ).setHardness(2.0F).setResistance(5.0F);
+		this.blockHealer     = new BlockHealer    ("BlockHealer"    ).setHardness(2.0F).setResistance(5.0F);
+		this.blockEKnight    = new BlockEKnight   ("BlockEKnight"   ).setHardness(2.0F).setResistance(5.0F);
+		this.blockEArcher    = new BlockEArcher   ("BlockEArcher"   ).setHardness(2.0F).setResistance(5.0F);
+		this.blockEMage      = new BlockEMage     ("BlockEMage"     ).setHardness(2.0F).setResistance(5.0F);
 		
 	}
 	
@@ -202,7 +196,7 @@ public class ModCastleDefenders extends GollumMod {
 	 * Initialisation des items
 	 */
 	public void initItems () {
-		this.itemMedallion = new HItem (this.config.medallionID, "Medallion").setCreativeTab(this.tabCastleDefenders);
+		this.itemMedallion = new HItem ("Medallion").setCreativeTab(this.tabCastleDefenders);
 	}
 	
 	/**
@@ -229,14 +223,14 @@ public class ModCastleDefenders extends GollumMod {
 	 */
 	private void initRecipes () {
 		
-		GameRegistry.addRecipe(new ItemStack(this.blockKnight ,    1), new Object[] { " X ", "XYX", " X ", 'X', Item.ingotIron, 'Y', Item.swordIron });
-		GameRegistry.addRecipe(new ItemStack(this.blockKnight2,    1), new Object[] { " X ", "XYX", " X ", 'X', Item.ingotIron, 'Y', Item.swordDiamond });
-		GameRegistry.addRecipe(new ItemStack(this.blockArcher ,    1), new Object[] { " X ", "XYX", " X ", 'X', Item.ingotIron, 'Y', Item.bow });
-		GameRegistry.addRecipe(new ItemStack(this.blockArcher2,    1), new Object[] { "ZXZ", "XYX", "ZXZ", 'X', Item.ingotIron, 'Y', Item.bow,          'Z', Item.diamond });
-		GameRegistry.addRecipe(new ItemStack(this.blockMerc,       1), new Object[] { "KXK", "XYX", "KXK", 'X', Block.planks,   'Y', Item.swordDiamond, 'K', Item.ingotGold });
-		GameRegistry.addRecipe(new ItemStack(this.blockMercArcher, 1), new Object[] { "KXK", "XYX", "KXK", 'X', Block.planks,   'Y', Item.bow,          'K', Item.ingotGold });
-		GameRegistry.addRecipe(new ItemStack(this.blockMage   ,    1), new Object[] { "YYY", "XXX", "XXX", 'X', Block.obsidian, 'Y', this.itemMedallion });
-		GameRegistry.addRecipe(new ItemStack(this.blockHealer ,    1), new Object[] { "XYX", "XYX", "XYX", 'X', Block.planks,   'Y', this.itemMedallion });
+		GameRegistry.addRecipe(new ItemStack(this.blockKnight ,    1), new Object[] { " X ", "XYX", " X ", 'X', Items.iron_ingot, 'Y', Items.iron_sword });
+		GameRegistry.addRecipe(new ItemStack(this.blockKnight2,    1), new Object[] { " X ", "XYX", " X ", 'X', Items.iron_ingot, 'Y', Items.diamond_sword });
+		GameRegistry.addRecipe(new ItemStack(this.blockArcher ,    1), new Object[] { " X ", "XYX", " X ", 'X', Items.iron_ingot, 'Y', Items.bow });
+		GameRegistry.addRecipe(new ItemStack(this.blockArcher2,    1), new Object[] { "ZXZ", "XYX", "ZXZ", 'X', Items.iron_ingot, 'Y', Items.bow,          'Z', Items.diamond });
+		GameRegistry.addRecipe(new ItemStack(this.blockMerc,       1), new Object[] { "KXK", "XYX", "KXK", 'X', Blocks.planks,   'Y', Items.diamond_sword, 'K', Items.gold_ingot });
+		GameRegistry.addRecipe(new ItemStack(this.blockMercArcher, 1), new Object[] { "KXK", "XYX", "KXK", 'X', Blocks.planks,   'Y', Items.bow,           'K', Items.gold_ingot });
+		GameRegistry.addRecipe(new ItemStack(this.blockMage   ,    1), new Object[] { "YYY", "XXX", "XXX", 'X', Blocks.obsidian, 'Y', this.itemMedallion });
+		GameRegistry.addRecipe(new ItemStack(this.blockHealer ,    1), new Object[] { "XYX", "XYX", "XYX", 'X', Blocks.planks,   'Y', this.itemMedallion });
 		
 	}
 	
