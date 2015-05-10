@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockAir;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -321,8 +322,8 @@ public abstract class EntityMercenary extends EntityTameable {
 		
 		return
 			block  == this.blockSpawn &&
-			(up1 == null || !up1.isCollidable()) &&
-			(up2 == null || !up2.isCollidable()) &&
+			(up1 == null || up1 instanceof BlockAir || !up1.isCollidable()) &&
+			(up2 == null || up1 instanceof BlockAir || !up2.isCollidable()) &&
 			!found;
 	}
 	

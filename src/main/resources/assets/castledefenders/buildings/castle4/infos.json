@@ -522,5 +522,9 @@
 			}
 			
 		]
-	]
+	],
+	
+	"buildings": {
+		"0x0x0": "castle4/underblock"
+	}
 }
