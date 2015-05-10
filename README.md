@@ -1,12 +1,12 @@
-CastleDefender
+MorePistons
+============
 
-This mod "Castle Defenders" is a full rewrite of the original mod for Minecraft 1.5.2.
+More Pistons Mod for Minecraft
 
-There are additions of content and new features:
+Install forge for compile source
 
-  - Added Healer
-  - Added 3 Buildings
-  - Improved buildings origins
-  - Using an engine using an image and a JSON file for buildings
-  - Life bar on mercenaries, Ability to idle.
-  - Advanced Configuration mod
+For Install :
+  
+ - ./gradlew setupDecompWorkspace
+ - ./gradlew eclipse
+ - ./gradlew build
