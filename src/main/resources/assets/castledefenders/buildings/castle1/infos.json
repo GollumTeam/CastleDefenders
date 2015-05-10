@@ -1,5 +1,5 @@
 {
-	"height":-1,
+	"height":-6,
 	
 	"color" : [
 		{ "block": "minecraft:stonebrick" },
@@ -14,10 +14,12 @@
 		{ "block": "minecraft:wooden_slab" },
 		{ "block": "minecraft:cobblestone_wall" },
 		{ "block": "minecraft:stonebrick", "metadata": 3 },
-		{ "block": "minecraft:torch" }
+		{ "block": "minecraft:torch" },
+        { "block": "minecraft:dirt" },
+        { "block": "minecraft:stone" }
 	],
 	"sets": {
-		"9x1x13": {
+		"10x6x14": {
 			"block": "minecraft:chest",
 			"orientation":"up",
 			
@@ -133,29 +135,29 @@
 				]
 			]
 		},
-		"8x1x13": { "block": "minecraft:chest"	  , "orientation":"up" }
+		"9x6x14": { "block": "minecraft:chest"	  , "orientation":"up" }
 	},
 	
 	"random": [
 		[
 			{
-				"12x1x10": { "block": "minecraft:tnt" },
-				"12x1x9": { "block": "minecraft:tnt" },
-				"12x2x10": { "block": "minecraft:tnt" }
+				"13x6x11": { "block": "minecraft:tnt" },
+				"13x6x10": { "block": "minecraft:tnt" },
+				"13x7x11": { "block": "minecraft:tnt" }
 			},
 			{
-				"12x1x10": { "block": "minecraft:iron_block" },
-				"12x1x9": { "block": "minecraft:iron_block" },
-				"12x2x10": { "block": "minecraft:iron_block" }
+				"13x6x11": { "block": "minecraft:iron_block" },
+				"13x6x10": { "block": "minecraft:iron_block" },
+				"13x7x11": { "block": "minecraft:iron_block" }
 			},
 			{
-				"12x1x10": { "block": "minecraft:gold_block" },
-				"12x2x10": { "block": "minecraft:gold_block" }
+				"13x6x11": { "block": "minecraft:gold_block" },
+				"13x7x11": { "block": "minecraft:gold_block" }
 			},
 			{
-				"12x1x10": { "block": "minecraft:lapis_block" },
-				"12x1x9": { "block": "minecraft:lapis_block" },
-				"12x2x10": { "block": "minecraft:lapis_block" }
+				"13x6x11": { "block": "minecraft:lapis_block" },
+				"13x6x10": { "block": "minecraft:lapis_block" },
+				"13x7x11": { "block": "minecraft:lapis_block" }
 			}
 		]
 	]
