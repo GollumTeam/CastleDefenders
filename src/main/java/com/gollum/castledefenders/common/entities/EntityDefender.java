@@ -206,7 +206,7 @@ public abstract class EntityDefender extends EntityAnimal {
 		return
 			block == this.blockSpawn &&
 			(up1 == null || up1 instanceof BlockAir || !up1.isCollidable()) &&
-			(up2 == null || up1 instanceof BlockAir || !up2.isCollidable()) &&
+			(up2 == null || up2 instanceof BlockAir || !up2.isCollidable()) &&
 			!found;
 	}
 	
