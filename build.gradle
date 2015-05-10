@@ -9,10 +9,6 @@ buildscript {
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
-        GollumCoreLib {
-		    name = "GollumCoreLib"
-		    url = "./GollumCoreLib"
-		}
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
@@ -27,8 +23,8 @@ minecraft {
 }
 
 version = "3.0.0"+minecraft.version
-group= "com.gollum.morepistons" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "MorePistons"
+group= "com.gollum.castledefenders" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "CastleDefenders"
 
 dependencies {
     // you may put jars on which you depend on in ./libs
@@ -43,8 +39,6 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-	
-	compile "com.gollum.core"
 	
 }
 

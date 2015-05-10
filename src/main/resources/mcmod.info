@@ -6,16 +6,23 @@
   "credits": "Vox Populi, Azurn, SmeagolWorms4",
   "logoFile": "logo_castledef.png",
   "version": "3.0.0",
-  "mcversion": "1.6.2",
+  "mcversion": "1.7.10",
   "url": "",
   "updateUrl": "",
-  "authors": [
-    "Vox Populi, Azurn, SmeagolWorms4"
-  ],
+  "authors": [ "Vox Populi", "Azurn", "SmeagolWorms4", "Redori" ],
   "screenshots": [
   ],
   "parent":"",
-  "dependencies": [
-  ]
+  "dependencies": [ "GollumCoreLib" ]
+},
+{
+  "modid": "GollumCoreLib",
+  "name": "Gollum Core Lib",
+  "description": "",
+  "version": "2.0.0",
+  "updateUrl": "",
+  "authors": ["SmeagolWorms4"],
+  "screenshots": [],
+  "dependencies": []
 }
 ]

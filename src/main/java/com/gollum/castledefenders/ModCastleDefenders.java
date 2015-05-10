@@ -43,6 +43,7 @@ import com.gollum.castledefenders.common.tileentities.TileEntityBlockKnight2;
 import com.gollum.castledefenders.common.tileentities.TileEntityBlockMage;
 import com.gollum.castledefenders.common.tileentities.TileEntityBlockMerc;
 import com.gollum.castledefenders.common.tileentities.TileEntityBlockMercArcher;
+import com.gollum.core.ModGollumCoreLib;
 import com.gollum.core.common.creativetab.GollumCreativeTabs;
 import com.gollum.core.common.facory.Mobactory;
 import com.gollum.core.common.i18n.I18n;
@@ -50,7 +51,6 @@ import com.gollum.core.common.log.Logger;
 import com.gollum.core.common.mod.GollumMod;
 import com.gollum.core.common.version.VersionChecker;
 import com.gollum.core.tools.helper.items.HItem;
-import com.gollum.core.tools.registry.SoundRegistry;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -62,14 +62,20 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = ModCastleDefenders.MODID, name = ModCastleDefenders.MODNAME, version = ModCastleDefenders.VERSION, acceptedMinecraftVersions = ModCastleDefenders.MINECRAFT_VERSION, dependencies = ModCastleDefenders.DEPENDENCIES)
+@Mod(
+	modid = ModCastleDefenders.MODID,
+	name = ModCastleDefenders.MODNAME,
+	version = ModCastleDefenders.VERSION,
+	acceptedMinecraftVersions = ModCastleDefenders.MINECRAFT_VERSION,
+	dependencies = ModCastleDefenders.DEPENDENCIES
+)
 public class ModCastleDefenders extends GollumMod {
 
 	public final static String MODID = "CastleDefenders";
 	public final static String MODNAME = "Castle Defenders";
 	public final static String VERSION = "3.0.0 [Build Smeagol]";
 	public final static String MINECRAFT_VERSION = "1.7.2";
-	public final static String DEPENDENCIES = "required-after:GollumCoreLib";
+	public final static String DEPENDENCIES = "required-after:"+ModGollumCoreLib.MODID;
 	
 	@Instance(ModCastleDefenders.MODID)
 	public static ModCastleDefenders instance;
@@ -129,9 +135,6 @@ public class ModCastleDefenders extends GollumMod {
 		// Test la version du mod
 		new VersionChecker();
 		
-		// Initialisation des sons
-		this.initSounds ();
-		
 		// Initialisation des blocks
 		this.initBlocks ();
 		
@@ -163,13 +166,6 @@ public class ModCastleDefenders extends GollumMod {
 	/** 3 **/
 	@Override
 	public void postInit(FMLPostInitializationEvent event) {
-	}
-	
-	/**
-	 * Initialisation des sons
-	 */
-	public void initSounds () {
-		SoundRegistry.register("monk");
 	}
 	
 	/**
