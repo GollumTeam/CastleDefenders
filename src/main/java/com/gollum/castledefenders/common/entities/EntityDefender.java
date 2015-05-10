@@ -18,7 +18,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-import com.gollum.castledefenders.ModCastleDefenders;
+import com.gollum.castledefenders.inits.ModItems;
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
 public abstract class EntityDefender extends EntityAnimal {
@@ -41,7 +41,7 @@ public abstract class EntityDefender extends EntityAnimal {
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setBaseValue(this.getMaxHealt ());
 		this.getEntityAttribute(SharedMonsterAttributes.followRange)  .setBaseValue(this.getFollowRange ());
 		
-		this.tasks.addTask(this.nextIdTask (), new EntityAITempt(this, 0.35F, ModCastleDefenders.itemMedallion, false));
+		this.tasks.addTask(this.nextIdTask (), new EntityAITempt(this, 0.35F, ModItems.itemMedallion, false));
 		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMoveSpeed ()));
 	}
