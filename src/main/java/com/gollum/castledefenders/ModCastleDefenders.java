@@ -5,14 +5,14 @@ import com.gollum.castledefenders.common.config.ConfigCastleDefender;
 import com.gollum.castledefenders.inits.ModBlocks;
 import com.gollum.castledefenders.inits.ModCreativeTab;
 import com.gollum.castledefenders.inits.ModItems;
+import com.gollum.castledefenders.inits.ModMobs;
+import com.gollum.castledefenders.inits.ModRecipes;
 import com.gollum.castledefenders.inits.ModTileEntities;
 import com.gollum.core.ModGollumCoreLib;
 import com.gollum.core.common.i18n.I18n;
 import com.gollum.core.common.log.Logger;
 import com.gollum.core.common.mod.GollumMod;
 import com.gollum.core.common.version.VersionChecker;
-import com.gollum.core.inits.ModMobs;
-import com.gollum.core.inits.ModRecipes;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -93,7 +93,7 @@ public class ModCastleDefenders extends GollumMod {
 		ModMobs.init ();
 		
 		// Set de l'icon du tab creative
-		ModCreativeTab.tabCastleDefenders.setIcon(ModBlocks.blockMercArcher);
+		ModCreativeTab.init();
 		
 	}
 	
