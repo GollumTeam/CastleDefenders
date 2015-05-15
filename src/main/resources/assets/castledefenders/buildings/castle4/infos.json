@@ -525,6 +525,6 @@
 	],
 	
 	"buildings": {
-		"0x0x0": "castle4/underblock"
+		"-5x-2x-5": "castle4/underblock"
 	}
 }

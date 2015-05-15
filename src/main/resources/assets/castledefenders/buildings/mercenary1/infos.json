@@ -1,5 +1,5 @@
 {
-	"height": -1,
+	"height": -4,
 	
 	"color" : [
 		{ "block": "minecraft:planks" },
@@ -10,29 +10,29 @@
 		{ "block": "minecraft:wooden_slab" },
 		{ "block": "CastleDefenders:BlockMercArcher" },
 		{ "block":  "minecraft:glass_pane" },
-		{ "block":  "minecraft:wooden_door", "orientation":"up" }
+        { "block": "minecraft:dirt" }
 	],
 	"sets": {
-		"5x1x5": { "block":  "minecraft:wooden_door", "metadata": 0, "orientation":"down" },
-		"5x2x5": { "block":  "minecraft:wooden_door", "metadata": 8, "orientation":"down" },
+		"5x4x5": { "block":  "minecraft:wooden_door", "metadata": 0, "orientation":"down" },
+		"5x5x5": { "block":  "minecraft:wooden_door", "metadata": 8, "orientation":"down" },
 		
-		"4x2x6": { "block": "minecraft:torch", "orientation":"down" },
-		"6x2x6": { "block": "minecraft:torch", "orientation":"down" },
+		"4x5x6": { "block": "minecraft:torch", "orientation":"down" },
+		"6x5x6": { "block": "minecraft:torch", "orientation":"down" },
 		
-		"1x1x8": { "block": "minecraft:bed", "metadata": 8, "orientation":"left" },
-		"2x1x8": { "block": "minecraft:bed", "metadata": 0, "orientation":"left" },
-		"1x1x6": { "block": "minecraft:bed", "metadata": 8, "orientation":"left" },
-		"2x1x6": { "block": "minecraft:bed", "metadata": 0, "orientation":"left" },
+		"1x4x8": { "block": "minecraft:bed", "metadata": 8, "orientation":"left" },
+		"2x4x8": { "block": "minecraft:bed", "metadata": 0, "orientation":"left" },
+		"1x4x6": { "block": "minecraft:bed", "metadata": 8, "orientation":"left" },
+		"2x4x6": { "block": "minecraft:bed", "metadata": 0, "orientation":"left" },
 		
-		"5x1x7": { "block": "minecraft:ladder", "orientation":"up" },
-		"5x2x7": { "block": "minecraft:ladder", "orientation":"up" },
-		"5x3x7": { "block": "minecraft:ladder", "orientation":"up" },
 		"5x4x7": { "block": "minecraft:ladder", "orientation":"up" },
-		"5x5x7": { "block": "minecraft:ladder", "orientation":"down" },
-		"5x6x7": { "block": "minecraft:ladder", "orientation":"down" },
-		"5x7x7": { "block": "minecraft:ladder", "orientation":"down" },
+		"5x5x7": { "block": "minecraft:ladder", "orientation":"up" },
+		"5x6x7": { "block": "minecraft:ladder", "orientation":"up" },
+		"5x7x7": { "block": "minecraft:ladder", "orientation":"up" },
+		"5x8x7": { "block": "minecraft:ladder", "orientation":"down" },
+		"5x9x7": { "block": "minecraft:ladder", "orientation":"down" },
+		"5x10x7": { "block": "minecraft:ladder", "orientation":"down" },
 		 
-		"7x1x9": {
+		"7x4x9": {
 			"block": "minecraft:chest",
 			"orientation":"up",
 			"contents": [
@@ -75,8 +75,8 @@
 				]
 			]
 		},
-		"8x1x9": { "block": "minecraft:chest"	   , "orientation":"up" },
-		"9x1x9": { "block": "minecraft:furnace", "orientation":"up" },
-		"1x3x9": { "block": "minecraft:web" }
+		"8x4x9": { "block": "minecraft:chest"	   , "orientation":"up" },
+		"9x4x9": { "block": "minecraft:furnace", "orientation":"up" },
+		"1x6x9": { "block": "minecraft:web" }
 	}
 }

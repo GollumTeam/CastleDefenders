@@ -1,5 +1,5 @@
 {
-	"height": -1,
+	"height": -3,
 	
 	"color" : [
 		{ "block": "minecraft:wool", "metadata":14 },
@@ -9,10 +9,11 @@
 		{ "block": "minecraft:torch", "orientation": "up"},
 		{ "block": "minecraft:fire" },
 		{ "block": "minecraft:cobblestone" },
-		{ "block": "minecraft:netherrack" }
+		{ "block": "minecraft:netherrack" },
+        { "block": "minecraft:dirt" }
 	],
 	"sets": {
-		"5x1x6": {
+		"5x3x6": {
 			"block": "minecraft:chest",
 			"orientation":"left",
 			"contents": [
