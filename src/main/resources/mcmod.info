@@ -1,6 +1,6 @@
 [
 {
-  "modid": "CastleDef",
+  "modid": "CastleDefenders",
   "name": "Castle Defender",
   "description": "The Castle Defender",
   "credits": "Vox Populi, Azurn, SmeagolWorms4",
@@ -14,15 +14,5 @@
   ],
   "parent":"",
   "dependencies": [ "GollumCoreLib" ]
-},
-{
-  "modid": "GollumCoreLib",
-  "name": "Gollum Core Lib",
-  "description": "",
-  "version": "2.0.0",
-  "updateUrl": "",
-  "authors": ["SmeagolWorms4"],
-  "screenshots": [],
-  "dependencies": []
 }
 ]
