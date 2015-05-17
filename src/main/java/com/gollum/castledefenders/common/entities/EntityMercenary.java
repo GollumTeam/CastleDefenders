@@ -31,6 +31,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 import com.gollum.castledefenders.ModCastleDefenders;
@@ -120,7 +121,7 @@ public abstract class EntityMercenary extends EntityTameable {
 	 * @return Zone de detection du mod
 	 */
 	protected double getFollowRange () { return this.getCapacities ().followRange; }
-//	protected double getFollowRange () { return 11.0; }
+	
 	/**
 	 * @return Vitesse de tir du mod
 	 */
@@ -140,7 +141,7 @@ public abstract class EntityMercenary extends EntityTameable {
 		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 		ItemStack stack = null;
 		if ((stack = this.hasBuyItemInHand(player)) != null) {
-			return ModCastleDefenders.i18n.trans ("message.okfor", stack.stackSize, stack.getUnlocalizedName());
+			return ModCastleDefenders.i18n.trans ("message.okfor", stack.stackSize, stack.getDisplayName());
 		}
 		
 		return ModCastleDefenders.i18n.trans ("message.buymercenary");
