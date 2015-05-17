@@ -1,7 +1,7 @@
 MorePistons
 ============
 
-More Pistons Mod for Minecraft
+Castle DEfenders Mod for Minecraft
 
 Install forge for compile source
 
