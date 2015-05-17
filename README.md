@@ -1,7 +1,7 @@
 CastleDefenders
 ============
 
-Castle DEfenders Mod for Minecraft
+Castle Defenders Mod for Minecraft
 
 Install forge for compile source
 
