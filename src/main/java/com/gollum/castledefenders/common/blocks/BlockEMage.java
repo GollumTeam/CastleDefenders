@@ -1,5 +1,7 @@
 package com.gollum.castledefenders.common.blocks;
 
+import java.util.Random;
+
 import com.gollum.castledefenders.common.tileentities.TileEntityBlockEMage;
 
 import net.minecraft.block.material.Material;
@@ -38,7 +40,7 @@ public class BlockEMage extends BlockCastleDefenders {
 	}
 	
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-		return null;
+	public int quantityDropped(Random random) {
+		return 0;
 	}
 }
