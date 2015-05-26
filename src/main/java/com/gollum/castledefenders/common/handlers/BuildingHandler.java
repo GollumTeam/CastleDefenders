@@ -21,28 +21,28 @@ public class BuildingHandler {
 	public void onBuildingGenerate (BuildingGenerateEvent event) {
 		
 		if (!event.world.isRemote) {
-
+			
 			if (event.building.modId.equals(ModCastleDefenders.MODID)) {
-
+				
 				Achievement target = null;
 				StatBase  counter = null;
-				if(event.building.name.equals("castle1"   )) { target = ModAchievements.achievementCastle1   ; counter = ModAchievements.achievementCastle1Counter   ; }
-				if(event.building.name.equals("castle2"   )) { target = ModAchievements.achievementCastle2   ; counter = ModAchievements.achievementCastle2Counter   ; }
-				if(event.building.name.equals("castle3"   )) { target = ModAchievements.achievementCastle3   ; counter = ModAchievements.achievementCastle3Counter   ; }
-				if(event.building.name.equals("castle4"   )) { target = ModAchievements.achievementCastle4   ; counter = ModAchievements.achievementCastle4Counter   ; }
-				if(event.building.name.equals("mercenary1")) { target = ModAchievements.achievementMercenary1; counter = ModAchievements.achievementMercenary1Counter; }
-				if(event.building.name.equals("mercenary2")) { target = ModAchievements.achievementMercenary2; counter = ModAchievements.achievementMercenary2Counter; }
-				if(event.building.name.equals("mercenary3")) { target = ModAchievements.achievementMercenary3; counter = ModAchievements.achievementMercenary3Counter; }
-				if(event.building.name.equals("mercenary4")) { target = ModAchievements.achievementMercenary4; counter = ModAchievements.achievementMercenary4Counter; }
+				if(event.building.name.equals("castle1"   )) { target = ModAchievements.achievementCastle1   ;/* counter = ModAchievements.achievementCastle1Counter   ;*/ }
+				if(event.building.name.equals("castle2"   )) { target = ModAchievements.achievementCastle2   ;/* counter = ModAchievements.achievementCastle2Counter   ;*/ }
+				if(event.building.name.equals("castle3"   )) { target = ModAchievements.achievementCastle3   ;/* counter = ModAchievements.achievementCastle3Counter   ;*/ }
+				if(event.building.name.equals("castle4"   )) { target = ModAchievements.achievementCastle4   ;/* counter = ModAchievements.achievementCastle4Counter   ;*/ }
+				if(event.building.name.equals("mercenary1")) { target = ModAchievements.achievementMercenary1;/* counter = ModAchievements.achievementMercenary1Counter;*/ }
+				if(event.building.name.equals("mercenary2")) { target = ModAchievements.achievementMercenary2;/* counter = ModAchievements.achievementMercenary2Counter;*/ }
+				if(event.building.name.equals("mercenary3")) { target = ModAchievements.achievementMercenary3;/* counter = ModAchievements.achievementMercenary3Counter;*/ }
+				if(event.building.name.equals("mercenary4")) { target = ModAchievements.achievementMercenary4;/* counter = ModAchievements.achievementMercenary4Counter;*/ }
 				
-				if (target != null && counter != null) {
+				if (target != null/* && counter != null*/) {
 					
 					for (Object entity : event.world.playerEntities) {
 						if (entity instanceof EntityPlayer) {
 							EntityPlayer player = (EntityPlayer)entity;
 							
 							player.addStat(target, 1);
-							player.addStat(counter, 1);
+//							player.addStat(counter, 1);
 						}
 					}
 				}

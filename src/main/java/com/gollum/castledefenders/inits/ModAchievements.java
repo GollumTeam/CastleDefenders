@@ -29,15 +29,15 @@ public class ModAchievements {
 	public static Achievement achievementMercenary3;
 	public static Achievement achievementMercenary4;
 	
-	public static StatBasic achievementCastle1Counter;
-	public static StatBasic achievementCastle2Counter;
-	public static StatBasic achievementCastle3Counter;
-	public static StatBasic achievementCastle4Counter;
-	
-	public static StatBasic achievementMercenary1Counter;
-	public static StatBasic achievementMercenary2Counter;
-	public static StatBasic achievementMercenary3Counter;
-	public static StatBasic achievementMercenary4Counter;
+//	public static StatBasic achievementCastle1Counter;
+//	public static StatBasic achievementCastle2Counter;
+//	public static StatBasic achievementCastle3Counter;
+//	public static StatBasic achievementCastle4Counter;
+//	
+//	public static StatBasic achievementMercenary1Counter;
+//	public static StatBasic achievementMercenary2Counter;
+//	public static StatBasic achievementMercenary3Counter;
+//	public static StatBasic achievementMercenary4Counter;
 	
 	public static void init() {
 		
@@ -67,25 +67,25 @@ public class ModAchievements {
 		
 		AchievementPage.registerAchievementPage(ModAchievements.pageAchievement);
 		
-		ModAchievements.achievementCastle1Counter = (StatBasic) new StatBasic("stat.castledefenders.foundCastleBuilding1Counter", new ChatComponentTranslation("stats.foundCastleBuilding1Counter", new Object[0]), StatBasic.simpleStatType).registerStat();
-		ModAchievements.achievementCastle2Counter = (StatBasic) new StatBasic("stat.castledefenders.foundCastleBuilding2Counter", new ChatComponentTranslation("stats.foundCastleBuilding2Counter", new Object[0]), StatBasic.simpleStatType).registerStat();
-		ModAchievements.achievementCastle3Counter = (StatBasic) new StatBasic("stat.castledefenders.foundCastleBuilding3Counter", new ChatComponentTranslation("stats.foundCastleBuilding3Counter", new Object[0]), StatBasic.simpleStatType).registerStat();
-		ModAchievements.achievementCastle4Counter = (StatBasic) new StatBasic("stat.castledefenders.foundCastleBuilding4Counter", new ChatComponentTranslation("stats.foundCastleBuilding4Counter", new Object[0]), StatBasic.simpleStatType).registerStat();
-		
-		ModAchievements.achievementMercenary1Counter = (StatBasic) new StatBasic("stat.castledefenders.foundMercenaryBuilding1Counter", new ChatComponentTranslation("stats.foundMercenaryBuilding1Counter", new Object[0]), StatBasic.simpleStatType).registerStat();
-		ModAchievements.achievementMercenary2Counter = (StatBasic) new StatBasic("stat.castledefenders.foundMercenaryBuilding2Counter", new ChatComponentTranslation("stats.foundMercenaryBuilding2Counter", new Object[0]), StatBasic.simpleStatType).registerStat();
-		ModAchievements.achievementMercenary3Counter = (StatBasic) new StatBasic("stat.castledefenders.foundMercenaryBuilding3Counter", new ChatComponentTranslation("stats.foundMercenaryBuilding3Counter", new Object[0]), StatBasic.simpleStatType).registerStat();
-		ModAchievements.achievementMercenary4Counter = (StatBasic) new StatBasic("stat.castledefenders.foundMercenaryBuilding4Counter", new ChatComponentTranslation("stats.foundMercenaryBuilding4Counter", new Object[0]), StatBasic.simpleStatType).registerStat();
+//		ModAchievements.achievementCastle1Counter = (StatBasic) new StatBasic("stat.castledefenders.foundCastleBuilding1Counter", new ChatComponentTranslation("stats.foundCastleBuilding1Counter", new Object[0]), StatBasic.simpleStatType).registerStat();
+//		ModAchievements.achievementCastle2Counter = (StatBasic) new StatBasic("stat.castledefenders.foundCastleBuilding2Counter", new ChatComponentTranslation("stats.foundCastleBuilding2Counter", new Object[0]), StatBasic.simpleStatType).registerStat();
+//		ModAchievements.achievementCastle3Counter = (StatBasic) new StatBasic("stat.castledefenders.foundCastleBuilding3Counter", new ChatComponentTranslation("stats.foundCastleBuilding3Counter", new Object[0]), StatBasic.simpleStatType).registerStat();
+//		ModAchievements.achievementCastle4Counter = (StatBasic) new StatBasic("stat.castledefenders.foundCastleBuilding4Counter", new ChatComponentTranslation("stats.foundCastleBuilding4Counter", new Object[0]), StatBasic.simpleStatType).registerStat();
+//		
+//		ModAchievements.achievementMercenary1Counter = (StatBasic) new StatBasic("stat.castledefenders.foundMercenaryBuilding1Counter", new ChatComponentTranslation("stats.foundMercenaryBuilding1Counter", new Object[0]), StatBasic.simpleStatType).registerStat();
+//		ModAchievements.achievementMercenary2Counter = (StatBasic) new StatBasic("stat.castledefenders.foundMercenaryBuilding2Counter", new ChatComponentTranslation("stats.foundMercenaryBuilding2Counter", new Object[0]), StatBasic.simpleStatType).registerStat();
+//		ModAchievements.achievementMercenary3Counter = (StatBasic) new StatBasic("stat.castledefenders.foundMercenaryBuilding3Counter", new ChatComponentTranslation("stats.foundMercenaryBuilding3Counter", new Object[0]), StatBasic.simpleStatType).registerStat();
+//		ModAchievements.achievementMercenary4Counter = (StatBasic) new StatBasic("stat.castledefenders.foundMercenaryBuilding4Counter", new ChatComponentTranslation("stats.foundMercenaryBuilding4Counter", new Object[0]), StatBasic.simpleStatType).registerStat();
 		
 		ModAchievements.statsAchievement = new StatsPage(ModCastleDefenders.MODNAME, 
-			ModAchievements.achievementCastle1Counter,
-			ModAchievements.achievementCastle2Counter,
-			ModAchievements.achievementCastle3Counter,
-			ModAchievements.achievementCastle4Counter, 
-			ModAchievements.achievementMercenary1Counter,
-			ModAchievements.achievementMercenary2Counter,
-			ModAchievements.achievementMercenary3Counter,
-			ModAchievements.achievementMercenary4Counter
+			ModAchievements.achievementCastle1,
+			ModAchievements.achievementCastle2,
+			ModAchievements.achievementCastle3,
+			ModAchievements.achievementCastle4, 
+			ModAchievements.achievementMercenary1,
+			ModAchievements.achievementMercenary2,
+			ModAchievements.achievementMercenary3,
+			ModAchievements.achievementMercenary4
 		);
 		
 		StatsPage.registerStatsPage(ModAchievements.statsAchievement);
