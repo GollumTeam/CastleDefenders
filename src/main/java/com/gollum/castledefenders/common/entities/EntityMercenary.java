@@ -266,13 +266,13 @@ public abstract class EntityMercenary extends EntityTameable {
 			i++;
 		} while (owner != null && !owner.equals(""));
 	}
-
+	
 	/**
 	 * Returns true if this entity can attack entities of the specified class.
 	 */
 	@Override
 	public boolean canAttackClass(Class var1) { 
-		return EntityGhast.class != var1 && EntityMercenary.class != var1;
+		return EntityGhast.class != var1 && !var1.isAssignableFrom(EntityMercenary.class);
 	}
 	
 	/**
@@ -469,8 +469,8 @@ public abstract class EntityMercenary extends EntityTameable {
 			this.setTamed(true);
 			this.func_152115_b(player.getUniqueID().toString());
 			
-			if (!this.ownerList.contains (player.getCommandSenderName())) {
-				this.ownerList.add (player.getCommandSenderName());
+			if (!this.ownerList.contains (player.getGameProfile().getName())) {
+				this.ownerList.add (player.getGameProfile().getName());
 			}
 		} else {
 			this.setTamed(false);
@@ -492,7 +492,7 @@ public abstract class EntityMercenary extends EntityTameable {
 		if (!this.worldObj.isRemote) {
 			if (!this.isTamed()) {
 				
-				boolean buy = this.ownerList.contains (player.getUniqueID().toString());
+				boolean buy = this.isAlraidyBuy(player);
 				
 				if (!buy) {
 					for (ItemStackConfigType stackConfig: this.getCost ()) {
@@ -551,7 +551,10 @@ public abstract class EntityMercenary extends EntityTameable {
 	public EntityAgeable createChild(EntityAgeable entityageable) {
 		return null;
 	}
-
+	
+	public boolean isAlraidyBuy (EntityPlayer player) {
+		return this.ownerList.contains(player.getGameProfile().getName());
+	}
 	
 	@SideOnly(Side.CLIENT)
 	public boolean isOwner() {
@@ -559,6 +562,6 @@ public abstract class EntityMercenary extends EntityTameable {
 	}
 	
 	public boolean isOwner(EntityPlayer player) {
-		return this.func_152113_b().equals(player.getUniqueID().toString());
+		return this.func_152113_b().equals(player.getGameProfile().getName());
 	}
 }
