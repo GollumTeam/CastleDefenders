@@ -42,6 +42,9 @@ public class ModAchievements {
 	public static Achievement achievementAllMercenaryHidden3;
 	public static Achievement achievementAllMercenary;
 	
+	public static Achievement achievementAllBuildingHidden;
+	public static Achievement achievementAllBuilding;
+	
 	///////////
 	// Stats //
 	///////////
@@ -86,6 +89,10 @@ public class ModAchievements {
 		ModAchievements.achievementAllMercenaryHidden3 = new Achievement("achievement.castledefenders.foundAllMercenaryBuildingHidden3", "foundAllMercenaryBuilding", 7, 4, ModItems.itemMedallion, ModAchievements.achievementMercenary3).registerStat();
 		ModAchievements.achievementAllMercenary        = new Achievement("achievement.castledefenders.foundAllMercenaryBuilding"       , "foundAllMercenaryBuilding", 7, 4, ModItems.itemMedallion, ModAchievements.achievementMercenary4).registerStat();
 		
+		ModAchievements.achievementAllBuildingHidden =  new Achievement("achievement.castledefenders.foundAllBuildingHidden", "foundAllBuilding", 10, 0, ModItems.itemMedallion, ModAchievements.achievementAllCastle   ).registerStat().setSpecial();
+		ModAchievements.achievementAllBuilding       =  new Achievement("achievement.castledefenders.foundAllBuilding"      , "foundAllBuilding", 10, 0, ModItems.itemMedallion, ModAchievements.achievementAllMercenary).registerStat().setSpecial();
+		
+		
 		ModAchievements.pageAchievement = new AchievementPage(ModCastleDefenders.MODNAME,
 				
 			ModAchievements.achievementCastleDefenders,
@@ -108,7 +115,10 @@ public class ModAchievements {
 			ModAchievements.achievementAllCastleHidden1,
 			ModAchievements.achievementAllCastleHidden2,
 			ModAchievements.achievementAllCastleHidden3,
-			ModAchievements.achievementAllCastle
+			ModAchievements.achievementAllCastle,
+			
+			ModAchievements.achievementAllBuildingHidden,		
+			ModAchievements.achievementAllBuilding
 		);
 		
 		AchievementPage.registerAchievementPage(ModAchievements.pageAchievement);

@@ -77,6 +77,14 @@ public class BuildingHandler {
 									player.addStat(ModAchievements.achievementAllMercenary       , 1);
 								}
 								
+								if (
+									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllCastle)    &&
+									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllMercenary) &&
+									!player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllBuilding)
+								) {
+									player.addStat(ModAchievements.achievementAllBuildingHidden, 1);
+									player.addStat(ModAchievements.achievementAllBuilding      , 1);
+								}
 							}
 						}
 					}
