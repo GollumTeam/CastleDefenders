@@ -27,6 +27,7 @@
 		"6x14x8": { "block": "minecraft:stone_button", "orientation":"right" },
 		"8x14x8": { "block": "minecraft:stone_button", "orientation":"left" },
 		
+		"13x13x10": { "block": "minecraft:chest", "orientation":"right" },
 		"13x13x11": {
 			"block": "minecraft:chest",
 			"orientation":"right",
@@ -64,9 +65,9 @@
 				
 			]
 		},
-		"13x13x9": { "block": "minecraft:chest", "orientation":"right" },
 		
-		"14x20x10": {
+		"14x20x10": { "block": "minecraft:chest", "orientation":"right" },
+		"14x20x11": {
 			"block": "minecraft:chest",
 			"orientation":"right",
 			"contents": [
@@ -103,8 +104,8 @@
 			]
 		
 		},
-		"14x20x10": { "block": "minecraft:chest", "orientation":"right" },
 		
+		"10x6x15": { "block": "minecraft:chest"	  , "orientation":"up" },
 		"11x6x15": {
 			"block": "minecraft:chest",
 			"orientation":"up",
@@ -223,8 +224,7 @@
 					{ "element": "minecraft:chainmail_leggings" }
 				]
 			]
-		},
-		"10x6x15": { "block": "minecraft:chest"	  , "orientation":"up" }
+		}
 	},
 	
 	"random": [

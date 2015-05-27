@@ -28,3 +28,38 @@ entity.Healer.name=Healer
 
 castledefenders.message.buymercenary=You can hire me with items
 castledefenders.message.okfor=It's ok for %d %s
+
+achievement.foundCastleDefenders=Find a building
+achievement.foundCastleBuilding1=The castle
+achievement.foundCastleBuilding2=The wizard's tower
+achievement.foundCastleBuilding3=The enemy tent
+achievement.foundCastleBuilding4=The ruin
+achievement.foundMercenaryBuilding1=The archer's house
+achievement.foundMercenaryBuilding2=The mercenary's tent
+achievement.foundMercenaryBuilding3=The mercenaries' village
+achievement.foundMercenaryBuilding4=The monastery
+achievement.foundAllCastleBuilding=All dungeons
+achievement.foundAllMercenaryBuilding=All mercenaries buildings
+achievement.foundAllBuilding=All buildings
+
+achievement.foundCastleDefenders.desc=Find a building
+achievement.foundCastleBuilding1.desc=Find a castle
+achievement.foundCastleBuilding2.desc=Find a dungeon 
+achievement.foundCastleBuilding3.desc=Find an enemy tent
+achievement.foundCastleBuilding4.desc=Find a ruin
+achievement.foundMercenaryBuilding1.desc=Find an archer's house
+achievement.foundMercenaryBuilding2.desc=Find a mercenary's tent
+achievement.foundMercenaryBuilding3.desc=Find a mercenaries' village
+achievement.foundMercenaryBuilding4.desc=Find a monastery
+achievement.foundAllCastleBuilding.desc=Find all the dungeons
+achievement.foundAllMercenaryBuilding.desc=Find all the mercenaries buildings
+achievement.foundAllBuilding.desc=Find all the buildings
+
+stats.foundCastleBuilding1Counter=Castles found
+stats.foundCastleBuilding2Counter=Dungeons found
+stats.foundCastleBuilding3Counter=Enemy tents found
+stats.foundCastleBuilding4Counter=Ruins found
+stats.foundMercenaryBuilding1Counter=Archer's houses found
+stats.foundMercenaryBuilding2Counter=Mercenary's tents found
+stats.foundMercenaryBuilding3Counter=Mercenaries' villages found
+stats.foundMercenaryBuilding4Counter=Monasteries found

@@ -58,10 +58,7 @@ public class BuildingHandler {
 									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementCastle4) &&
 									!player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllCastle)
 								) {
-									player.addStat(ModAchievements.achievementAllCastleHidden1, 1);
-									player.addStat(ModAchievements.achievementAllCastleHidden2, 1);
-									player.addStat(ModAchievements.achievementAllCastleHidden3, 1);
-									player.addStat(ModAchievements.achievementAllCastle       , 1);
+									player.addStat(ModAchievements.achievementAllCastle, 1);
 								}
 								
 								if (
@@ -71,10 +68,7 @@ public class BuildingHandler {
 									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementMercenary4) &&
 									!player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllMercenary)
 								) {
-									player.addStat(ModAchievements.achievementAllMercenaryHidden1, 1);
-									player.addStat(ModAchievements.achievementAllMercenaryHidden2, 1);
-									player.addStat(ModAchievements.achievementAllMercenaryHidden3, 1);
-									player.addStat(ModAchievements.achievementAllMercenary       , 1);
+									player.addStat(ModAchievements.achievementAllMercenary, 1);
 								}
 								
 								if (
@@ -82,8 +76,7 @@ public class BuildingHandler {
 									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllMercenary) &&
 									!player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllBuilding)
 								) {
-									player.addStat(ModAchievements.achievementAllBuildingHidden, 1);
-									player.addStat(ModAchievements.achievementAllBuilding      , 1);
+									player.addStat(ModAchievements.achievementAllBuilding, 1);
 								}
 							}
 						}
