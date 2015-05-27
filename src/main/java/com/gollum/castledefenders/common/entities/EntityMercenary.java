@@ -272,7 +272,7 @@ public abstract class EntityMercenary extends EntityTameable {
 	 */
 	@Override
 	public boolean canAttackClass(Class var1) { 
-		return EntityGhast.class != var1 && !var1.isAssignableFrom(EntityMercenary.class);
+		return EntityGhast.class != var1 && !EntityMercenary.class.isAssignableFrom(var1);
 	}
 	
 	/**
@@ -469,8 +469,8 @@ public abstract class EntityMercenary extends EntityTameable {
 			this.setTamed(true);
 			this.func_152115_b(player.getUniqueID().toString());
 			
-			if (!this.ownerList.contains (player.getGameProfile().getName())) {
-				this.ownerList.add (player.getGameProfile().getName());
+			if (!this.ownerList.contains (player.getUniqueID().toString())) {
+				this.ownerList.add (player.getUniqueID().toString());
 			}
 		} else {
 			this.setTamed(false);
@@ -553,7 +553,7 @@ public abstract class EntityMercenary extends EntityTameable {
 	}
 	
 	public boolean isAlraidyBuy (EntityPlayer player) {
-		return this.ownerList.contains(player.getGameProfile().getName());
+		return this.ownerList.contains(player.getUniqueID().toString());
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -562,6 +562,6 @@ public abstract class EntityMercenary extends EntityTameable {
 	}
 	
 	public boolean isOwner(EntityPlayer player) {
-		return this.func_152113_b().equals(player.getGameProfile().getName());
+		return this.func_152113_b().equals(player.getUniqueID().toString());
 	}
 }
