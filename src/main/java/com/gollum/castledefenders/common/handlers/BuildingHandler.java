@@ -2,6 +2,7 @@ package com.gollum.castledefenders.common.handlers;
 
 import static com.gollum.core.ModGollumCoreLib.log;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.stats.Achievement;
 import net.minecraft.stats.StatBase;
@@ -38,12 +39,45 @@ public class BuildingHandler {
 				if (target != null && counter != null) {
 					
 					for (Object entity : event.world.playerEntities) {
-						if (entity instanceof EntityPlayer) {
-							EntityPlayer player = (EntityPlayer)entity;
+						if (entity instanceof EntityPlayerMP) {
+							EntityPlayerMP player = (EntityPlayerMP)entity;
 							
-							player.addStat(ModAchievements.achievementCastleDefenders, 1);
-							player.addStat(target, 1);
+							// Add Stat
 							player.addStat(counter, 1);
+							
+							// Add Achievement
+							player.addStat(ModAchievements.achievementCastleDefenders, 1);
+							
+							if (!player.func_147099_x().hasAchievementUnlocked(target)) {
+								player.addStat(target, 1);
+								
+								if (
+									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementCastle1) &&
+									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementCastle2) &&
+									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementCastle3) &&
+									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementCastle4) &&
+									!player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllCastle)
+								) {
+									player.addStat(ModAchievements.achievementAllCastleHidden1, 1);
+									player.addStat(ModAchievements.achievementAllCastleHidden2, 1);
+									player.addStat(ModAchievements.achievementAllCastleHidden3, 1);
+									player.addStat(ModAchievements.achievementAllCastle       , 1);
+								}
+								
+								if (
+									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementMercenary1) &&
+									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementMercenary2) &&
+									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementMercenary3) &&
+									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementMercenary4) &&
+									!player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllMercenary)
+								) {
+									player.addStat(ModAchievements.achievementAllMercenaryHidden1, 1);
+									player.addStat(ModAchievements.achievementAllMercenaryHidden2, 1);
+									player.addStat(ModAchievements.achievementAllMercenaryHidden3, 1);
+									player.addStat(ModAchievements.achievementAllMercenary       , 1);
+								}
+								
+							}
 						}
 					}
 				}
