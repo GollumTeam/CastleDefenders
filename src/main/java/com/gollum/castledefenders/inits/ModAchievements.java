@@ -66,25 +66,25 @@ public class ModAchievements {
 		
 		ModAchievements.achievementCastleDefenders = new Achievement("achievement.castledefenders.foundCastleDefenders", "foundCastleDefenders", 1, 0, Blocks.cobblestone, null).registerStat().initIndependentStat();
 		
-		ModAchievements.achievementCastle1 = new Achievement("achievement.castledefenders.foundCastleBuilding1", "foundCastleBuilding1", 3, -7, ModBlocks.blockEArcher, ModAchievements.achievementCastleDefenders).registerStat();
+		ModAchievements.achievementCastle1 = new Achievement("achievement.castledefenders.foundCastleBuilding1", "foundCastleBuilding1", 4, -7, ModBlocks.blockEArcher, ModAchievements.achievementCastleDefenders).registerStat();
 		ModAchievements.achievementCastle2 = new Achievement("achievement.castledefenders.foundCastleBuilding2", "foundCastleBuilding2", 3, -5, ModBlocks.blockEKnight, ModAchievements.achievementCastleDefenders).registerStat();
 		ModAchievements.achievementCastle3 = new Achievement("achievement.castledefenders.foundCastleBuilding3", "foundCastleBuilding3", 3, -3, ModBlocks.blockEKnight, ModAchievements.achievementCastleDefenders).registerStat();
-		ModAchievements.achievementCastle4 = new Achievement("achievement.castledefenders.foundCastleBuilding4", "foundCastleBuilding4", 3, -1, ModBlocks.blockEMage  , ModAchievements.achievementCastleDefenders).registerStat();
+		ModAchievements.achievementCastle4 = new Achievement("achievement.castledefenders.foundCastleBuilding4", "foundCastleBuilding4", 4, -1, ModBlocks.blockEMage  , ModAchievements.achievementCastleDefenders).registerStat();
 		
-		ModAchievements.achievementMercenary1 = new Achievement("achievement.castledefenders.foundMercenaryBuilding1", "foundMercenaryBuilding1", 3, 1, ModBlocks.blockMerc  , ModAchievements.achievementCastleDefenders).registerStat();
-		ModAchievements.achievementMercenary2 = new Achievement("achievement.castledefenders.foundMercenaryBuilding2", "foundMercenaryBuilding2", 3, 3, ModBlocks.blockArcher, ModAchievements.achievementCastleDefenders).registerStat();
-		ModAchievements.achievementMercenary3 = new Achievement("achievement.castledefenders.foundMercenaryBuilding3", "foundMercenaryBuilding3", 3, 5, ModBlocks.blockMerc  , ModAchievements.achievementCastleDefenders).registerStat();
-		ModAchievements.achievementMercenary4 = new Achievement("achievement.castledefenders.foundMercenaryBuilding4", "foundMercenaryBuilding4", 3, 7, ModBlocks.blockHealer, ModAchievements.achievementCastleDefenders).registerStat();
+		ModAchievements.achievementMercenary1 = new Achievement("achievement.castledefenders.foundMercenaryBuilding1", "foundMercenaryBuilding1", 4, 1, ModBlocks.blockKnight , ModAchievements.achievementCastleDefenders).registerStat();
+		ModAchievements.achievementMercenary2 = new Achievement("achievement.castledefenders.foundMercenaryBuilding2", "foundMercenaryBuilding2", 3, 3, ModBlocks.blockArcher , ModAchievements.achievementCastleDefenders).registerStat();
+		ModAchievements.achievementMercenary3 = new Achievement("achievement.castledefenders.foundMercenaryBuilding3", "foundMercenaryBuilding3", 3, 5, ModBlocks.blockKnight2, ModAchievements.achievementCastleDefenders).registerStat();
+		ModAchievements.achievementMercenary4 = new Achievement("achievement.castledefenders.foundMercenaryBuilding4", "foundMercenaryBuilding4", 4, 7, ModBlocks.blockArcher2, ModAchievements.achievementCastleDefenders).registerStat();
 		
-		ModAchievements.achievementAllCastleHidden1 = new Achievement("achievement.castledefenders.foundAllCastleBuildingHidden1"   , "foundAllCastleBuilding"   , 5,-4, ModItems.itemMedallion, ModAchievements.achievementCastle1).registerStat();
-		ModAchievements.achievementAllCastleHidden2 = new Achievement("achievement.castledefenders.foundAllCastleBuildingHidden1"   , "foundAllCastleBuilding"   , 5,-4, ModItems.itemMedallion, ModAchievements.achievementCastle2).registerStat();
-		ModAchievements.achievementAllCastleHidden3 = new Achievement("achievement.castledefenders.foundAllCastleBuildingHidden1"   , "foundAllCastleBuilding"   , 5,-4, ModItems.itemMedallion, ModAchievements.achievementCastle3).registerStat();
-		ModAchievements.achievementAllCastle        = new Achievement("achievement.castledefenders.foundAllCastleBuildingHidden1"   , "foundAllCastleBuilding"   , 5,-4, ModItems.itemMedallion, ModAchievements.achievementCastle4).registerStat();
+		ModAchievements.achievementAllCastleHidden1 = new Achievement("achievement.castledefenders.foundAllCastleBuildingHidden1", "foundAllCastleBuilding", 7,-4, ModItems.itemMedallion, ModAchievements.achievementCastle1).registerStat();
+		ModAchievements.achievementAllCastleHidden2 = new Achievement("achievement.castledefenders.foundAllCastleBuildingHidden2", "foundAllCastleBuilding", 7,-4, ModItems.itemMedallion, ModAchievements.achievementCastle2).registerStat();
+		ModAchievements.achievementAllCastleHidden3 = new Achievement("achievement.castledefenders.foundAllCastleBuildingHidden3", "foundAllCastleBuilding", 7,-4, ModItems.itemMedallion, ModAchievements.achievementCastle3).registerStat();
+		ModAchievements.achievementAllCastle        = new Achievement("achievement.castledefenders.foundAllCastleBuilding"       , "foundAllCastleBuilding", 7,-4, ModItems.itemMedallion, ModAchievements.achievementCastle4).registerStat();
 		
-		ModAchievements.achievementAllMercenaryHidden1 = new Achievement("achievement.castledefenders.foundAllMercenaryBuildingHidden1", "foundAllMercenaryBuilding", 5, 4, ModItems.itemMedallion, ModAchievements.achievementMercenary1).registerStat();
-		ModAchievements.achievementAllMercenaryHidden2 = new Achievement("achievement.castledefenders.foundAllMercenaryBuildingHidden1", "foundAllMercenaryBuilding", 5, 4, ModItems.itemMedallion, ModAchievements.achievementMercenary2).registerStat();
-		ModAchievements.achievementAllMercenaryHidden3 = new Achievement("achievement.castledefenders.foundAllMercenaryBuildingHidden1", "foundAllMercenaryBuilding", 5, 4, ModItems.itemMedallion, ModAchievements.achievementMercenary3).registerStat();
-		ModAchievements.achievementAllMercenary        = new Achievement("achievement.castledefenders.foundAllMercenaryBuildingHidden1", "foundAllMercenaryBuilding", 5, 4, ModItems.itemMedallion, ModAchievements.achievementMercenary4).registerStat();
+		ModAchievements.achievementAllMercenaryHidden1 = new Achievement("achievement.castledefenders.foundAllMercenaryBuildingHidden1", "foundAllMercenaryBuilding", 7, 4, ModItems.itemMedallion, ModAchievements.achievementMercenary1).registerStat();
+		ModAchievements.achievementAllMercenaryHidden2 = new Achievement("achievement.castledefenders.foundAllMercenaryBuildingHidden2", "foundAllMercenaryBuilding", 7, 4, ModItems.itemMedallion, ModAchievements.achievementMercenary2).registerStat();
+		ModAchievements.achievementAllMercenaryHidden3 = new Achievement("achievement.castledefenders.foundAllMercenaryBuildingHidden3", "foundAllMercenaryBuilding", 7, 4, ModItems.itemMedallion, ModAchievements.achievementMercenary3).registerStat();
+		ModAchievements.achievementAllMercenary        = new Achievement("achievement.castledefenders.foundAllMercenaryBuilding"       , "foundAllMercenaryBuilding", 7, 4, ModItems.itemMedallion, ModAchievements.achievementMercenary4).registerStat();
 		
 		ModAchievements.pageAchievement = new AchievementPage(ModCastleDefenders.MODNAME,
 				
