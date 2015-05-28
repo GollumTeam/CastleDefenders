@@ -1,0 +1,72 @@
+{
+	"height": -3,
+	
+	"color" : [
+		{ "block": "minecraft:wool", "metadata":14 },
+		{ "block": "minecraft:grass" },
+		{ "block": "CastleDefenders:BlockEKnight" },
+		{ "block": "minecraft:fence" },
+		{ "block": "minecraft:torch", "orientation": "up"},
+		{ "block": "minecraft:fire" },
+		{ "block": "minecraft:cobblestone" },
+		{ "block": "minecraft:netherrack" },
+        { "block": "minecraft:dirt" }
+	],
+	"sets": {
+		"5x3x6": {
+			"block": "minecraft:chest",
+			"orientation":"left",
+			"contents": [
+				
+				[
+					{ "element": "CastleDefenders:Medallion", "min":1, "max":5 }
+				],
+				[
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:iron_sword", "min":1, "max":4 },
+					{ "element": "minecraft:gold_ingot", "min":1, "max":4 },
+					{ "element": "minecraft:compass" },
+					{ "element": "minecraft:gunpowder", "min":1, "max":7 },
+					{ "element": "minecraft:arrow", "min":20, "max":40 },
+					{ "element": "minecraft:bucket" },
+					{ "element": "minecraft:golden_apple", "min":1, "max":2 },
+					{ "element": "minecraft:redstone", "min":10, "max":20 },
+					{ "element": "minecraft:chainmail_helmet" },
+					{ "element": "minecraft:egg", "min":4, "max":20 },
+					{ "element": "minecraft:chainmail_boots" },
+					{ "element": "minecraft:skull" }
+				],
+				[
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:iron_sword", "min":1, "max":4 },
+					{ "element": "minecraft:gold_ingot", "min":1, "max":4 },
+					{ "element": "minecraft:compass" },
+					{ "element": "minecraft:gunpowder", "min":1, "max":7 },
+					{ "element": "minecraft:arrow", "min":20, "max":40 },
+					{ "element": "minecraft:bucket" },
+					{ "element": "minecraft:golden_apple", "min":1, "max":2 },
+					{ "element": "minecraft:redstone", "min":10, "max":20 },
+					{ "element": "minecraft:chainmail_helmet" },
+					{ "element": "minecraft:egg", "min":4, "max":20 },
+					{ "element": "minecraft:chainmail_boots" },
+					{ "element": "minecraft:skull" }
+				],
+				[
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:iron_sword", "min":1, "max":4 },
+					{ "element": "minecraft:gold_ingot", "min":1, "max":4 },
+					{ "element": "minecraft:compass" },
+					{ "element": "minecraft:gunpowder", "min":1, "max":7 },
+					{ "element": "minecraft:arrow", "min":20, "max":40 },
+					{ "element": "minecraft:bucket" },
+					{ "element": "minecraft:golden_apple", "min":1, "max":2 },
+					{ "element": "minecraft:redstone", "min":10, "max":20 },
+					{ "element": "minecraft:chainmail_helmet" },
+					{ "element": "minecraft:egg", "min":4, "max":20 },
+					{ "element": "minecraft:chainmail_boots" },
+					{ "element": "minecraft:skull" }
+				]
+			]
+		}
+	}
+}

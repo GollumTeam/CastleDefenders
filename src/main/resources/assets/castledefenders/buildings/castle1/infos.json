@@ -1,0 +1,164 @@
+{
+	"height":-6,
+	
+	"color" : [
+		{ "block": "minecraft:stonebrick" },
+		{ "block": "minecraft:cobblestone" },
+		{ "block": "minecraft:grass" },
+		{ "block": "CastleDefenders:BlockEKnight" },
+		{ "block": "CastleDefenders:BlockEArcher" },
+		{ "block": "minecraft:planks" },
+		{ "block": "minecraft:ladder", "orientation": "left" },
+		{ "block": "minecraft:torch", "orientation": "up"},
+		{ "block": "minecraft:carpet", "metadata": 14 },
+		{ "block": "minecraft:wooden_slab" },
+		{ "block": "minecraft:cobblestone_wall" },
+		{ "block": "minecraft:stonebrick", "metadata": 3 },
+		{ "block": "minecraft:torch" },
+        { "block": "minecraft:dirt" },
+        { "block": "minecraft:stone" }
+	],
+	"sets": {
+		"10x6x14": {
+			"block": "minecraft:chest",
+			"orientation":"up",
+			
+			"contents": [
+				
+				[
+					{ "element": "CastleDefenders:Medallion", "min":1, "max":5 }
+				],
+				
+				[
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:iron_sword", "min":1, "max":4 },
+					{ "element": "minecraft:gold_ingot", "min":1, "max":4 },
+					{ "element": "minecraft:compass" },
+					{ "element": "minecraft:gunpowder", "min":1, "max":7 },
+					{ "element": "minecraft:arrow", "min":20, "max":40 },
+					{ "element": "minecraft:bucket" },
+					{ "element": "minecraft:golden_apple", "min":1, "max":2 },
+					{ "element": "minecraft:redstone", "min":10, "max":20 },
+					{ "element": "minecraft:chainmail_helmet" },
+					{ "element": "minecraft:egg", "min":4, "max":20 },
+					{ "element": "minecraft:chainmail_boots" },
+					{ "element": "minecraft:skull" }
+				],
+				[
+					{ "element": "minecraft:arrow", "min":30, "max":40 },
+					{ "element": "minecraft:bread" },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:emerald" },
+					{ "element": "minecraft:mushroom_stew" },
+					{ "element": "minecraft:iron_axe" },
+					{ "element": "minecraft:mushroom_stew" },
+					{ "element": "minecraft:chainmail_leggings" }
+				],
+				
+				[
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:iron_sword", "min":1, "max":4 },
+					{ "element": "minecraft:gold_ingot", "min":1, "max":4 },
+					{ "element": "minecraft:compass" },
+					{ "element": "minecraft:gunpowder", "min":1, "max":7 },
+					{ "element": "minecraft:arrow", "min":20, "max":40 },
+					{ "element": "minecraft:bucket" },
+					{ "element": "minecraft:golden_apple", "min":1, "max":2 },
+					{ "element": "minecraft:redstone", "min":10, "max":20 },
+					{ "element": "minecraft:chainmail_helmet" },
+					{ "element": "minecraft:egg", "min":4, "max":20 },
+					{ "element": "minecraft:chainmail_boots" },
+					{ "element": "minecraft:skull" }
+				],
+				[
+					{ "element": "minecraft:arrow", "min":30, "max":40 },
+					{ "element": "minecraft:bread" },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:emerald" },
+					{ "element": "minecraft:mushroom_stew" },
+					{ "element": "minecraft:iron_axe" },
+					{ "element": "minecraft:mushroom_stew" },
+					{ "element": "minecraft:chainmail_leggings" }
+				],
+				
+				[
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:iron_sword", "min":1, "max":4 },
+					{ "element": "minecraft:gold_ingot", "min":1, "max":4 },
+					{ "element": "minecraft:compass" },
+					{ "element": "minecraft:gunpowder", "min":1, "max":7 },
+					{ "element": "minecraft:arrow", "min":20, "max":40 },
+					{ "element": "minecraft:bucket" },
+					{ "element": "minecraft:golden_apple", "min":1, "max":2 },
+					{ "element": "minecraft:redstone", "min":10, "max":20 },
+					{ "element": "minecraft:chainmail_helmet" },
+					{ "element": "minecraft:egg", "min":4, "max":20 },
+					{ "element": "minecraft:chainmail_boots" },
+					{ "element": "minecraft:skull" }
+				],
+				[
+					{ "element": "minecraft:arrow", "min":30, "max":40 },
+					{ "element": "minecraft:bread" },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:mushroom_stew" },
+					{ "element": "minecraft:diamond" },
+					{ "element": "minecraft:iron_axe" },
+					{ "element": "minecraft:mushroom_stew" },
+					{ "element": "minecraft:chainmail_leggings" }
+				],
+				
+				[
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:iron_sword", "min":1, "max":4 },
+					{ "element": "minecraft:gold_ingot", "min":1, "max":4 },
+					{ "element": "minecraft:compass" },
+					{ "element": "minecraft:gunpowder", "min":1, "max":7 },
+					{ "element": "minecraft:arrow", "min":20, "max":40 },
+					{ "element": "minecraft:bucket" },
+					{ "element": "minecraft:golden_apple", "min":1, "max":2 },
+					{ "element": "minecraft:redstone", "min":10, "max":20 },
+					{ "element": "minecraft:chainmail_helmet" },
+					{ "element": "minecraft:egg", "min":4, "max":20 },
+					{ "element": "minecraft:chainmail_boots" },
+					{ "element": "minecraft:skull" }
+				],
+				[
+					{ "element": "minecraft:arrow", "min":30, "max":40 },
+					{ "element": "minecraft:bread" },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:emerald" },
+					{ "element": "minecraft:mushroom_stew" },
+					{ "element": "minecraft:diamond" },
+					{ "element": "minecraft:iron_axe" },
+					{ "element": "minecraft:mushroom_stew" },
+					{ "element": "minecraft:chainmail_leggings" }
+				]
+			]
+		},
+		"9x6x14": { "block": "minecraft:chest"	  , "orientation":"up" }
+	},
+	
+	"random": [
+		[
+			{
+				"13x6x11": { "block": "minecraft:tnt" },
+				"13x6x10": { "block": "minecraft:tnt" },
+				"13x7x11": { "block": "minecraft:tnt" }
+			},
+			{
+				"13x6x11": { "block": "minecraft:iron_block" },
+				"13x6x10": { "block": "minecraft:iron_block" },
+				"13x7x11": { "block": "minecraft:iron_block" }
+			},
+			{
+				"13x6x11": { "block": "minecraft:gold_block" },
+				"13x7x11": { "block": "minecraft:gold_block" }
+			},
+			{
+				"13x6x11": { "block": "minecraft:lapis_block" },
+				"13x6x10": { "block": "minecraft:lapis_block" },
+				"13x7x11": { "block": "minecraft:lapis_block" }
+			}
+		]
+	]
+}

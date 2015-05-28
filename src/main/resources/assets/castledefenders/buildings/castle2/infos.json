@@ -1,0 +1,253 @@
+{
+	"height": -6,
+	
+	"color" : [
+		{ "block": "minecraft:stonebrick" },
+		{ "block": "minecraft:cobblestone" },
+		{ "block": "minecraft:grass" },
+		{ "block": "CastleDefenders:BlockEKnight" },
+		{ "block": "CastleDefenders:BlockEArcher" },
+		{ "block": "minecraft:planks" },
+		{ "block": "minecraft:ladder", "orientation": "left" },
+		{ "block": "minecraft:torch", "orientation": "up"},
+		{ "block": "minecraft:iron_bars"},
+		{ "block": "CastleDefenders:BlockEMage"},
+		{ "block": "minecraft:trapdoor", "orientation": "right"},
+		{ "block": "minecraft:torch", "orientation": "left"},
+		{ "block": "minecraft:torch", "orientation": "right"},
+		{ "block": "minecraft:stonebrick", "metadata": 3 },
+        { "block": "minecraft:dirt" },
+        { "block": "minecraft:stone" }
+	],
+	"sets": {
+		
+		
+		"7x13x9": { "block": "minecraft:iron_door", "metadata": 0, "orientation":"right" },
+		"7x14x9": { "block": "minecraft:iron_door", "metadata": 8, "orientation":"right" },
+		"6x14x8": { "block": "minecraft:stone_button", "orientation":"right" },
+		"8x14x8": { "block": "minecraft:stone_button", "orientation":"left" },
+		
+		"13x13x10": { "block": "minecraft:chest", "orientation":"right" },
+		"13x13x11": {
+			"block": "minecraft:chest",
+			"orientation":"right",
+			"contents": [
+				[
+					{ "element": "minecraft:potion" , "metadata": 1 },
+					{ "element": "minecraft:potion" , "metadata": 2 },
+					{ "element": "minecraft:potion" , "metadata": 3 },
+					{ "element": "minecraft:potion" , "metadata": 4 },
+					{ "element": "minecraft:potion" , "metadata": 5 },
+					{ "element": "minecraft:potion" , "metadata": 6 },
+					{ "element": "minecraft:potion" , "metadata": 7 }
+				],
+				[
+					{ "element": "minecraft:potion" , "metadata": 1 },
+					{ "element": "minecraft:potion" , "metadata": 2 },
+					{ "element": "minecraft:potion" , "metadata": 3 },
+					{ "element": "minecraft:potion" , "metadata": 4 },
+					{ "element": "minecraft:potion" , "metadata": 5 },
+					{ "element": "minecraft:potion" , "metadata": 6 },
+					{ "element": "minecraft:potion" , "metadata": 7 }
+				],
+				[
+					{ "element": "minecraft:potion" , "metadata": 1 },
+					{ "element": "minecraft:potion" , "metadata": 2 },
+					{ "element": "minecraft:potion" , "metadata": 3 },
+					{ "element": "minecraft:potion" , "metadata": 4 },
+					{ "element": "minecraft:potion" , "metadata": 5 },
+					{ "element": "minecraft:potion" , "metadata": 6 },
+					{ "element": "minecraft:potion" , "metadata": 7 }
+				],
+				[
+					{ "element": "CastleDefenders:Medallion", "min":1, "max":5 }
+				]
+				
+			]
+		},
+		
+		"14x20x10": { "block": "minecraft:chest", "orientation":"right" },
+		"14x20x11": {
+			"block": "minecraft:chest",
+			"orientation":"right",
+			"contents": [
+				[
+					{ "element": "minecraft:potion" , "metadata": 1 },
+					{ "element": "minecraft:potion" , "metadata": 2 },
+					{ "element": "minecraft:potion" , "metadata": 3 },
+					{ "element": "minecraft:potion" , "metadata": 4 },
+					{ "element": "minecraft:potion" , "metadata": 5 },
+					{ "element": "minecraft:potion" , "metadata": 6 },
+					{ "element": "minecraft:potion" , "metadata": 7 }
+				],
+				[
+					{ "element": "minecraft:potion" , "metadata": 1 },
+					{ "element": "minecraft:potion" , "metadata": 2 },
+					{ "element": "minecraft:potion" , "metadata": 3 },
+					{ "element": "minecraft:potion" , "metadata": 4 },
+					{ "element": "minecraft:potion" , "metadata": 5 },
+					{ "element": "minecraft:potion" , "metadata": 6 },
+					{ "element": "minecraft:potion" , "metadata": 7 }
+				],
+				[
+					{ "element": "minecraft:potion" , "metadata": 1 },
+					{ "element": "minecraft:potion" , "metadata": 2 },
+					{ "element": "minecraft:potion" , "metadata": 3 },
+					{ "element": "minecraft:potion" , "metadata": 4 },
+					{ "element": "minecraft:potion" , "metadata": 5 },
+					{ "element": "minecraft:potion" , "metadata": 6 },
+					{ "element": "minecraft:potion" , "metadata": 7 }
+				],
+				[
+					{ "element": "CastleDefenders:Medallion", "min":1, "max":5 }
+				]
+			]
+		
+		},
+		
+		"10x6x15": { "block": "minecraft:chest"	  , "orientation":"up" },
+		"11x6x15": {
+			"block": "minecraft:chest",
+			"orientation":"up",
+			
+			"contents": [
+				
+				[
+					{ "element": "CastleDefenders:Medallion", "min":1, "max":5 }
+				],
+				
+				[
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:iron_sword", "min":1, "max":4 },
+					{ "element": "minecraft:gold_ingot", "min":1, "max":4 },
+					{ "element": "minecraft:compass" },
+					{ "element": "minecraft:gunpowder", "min":1, "max":7 },
+					{ "element": "minecraft:arrow", "min":20, "max":40 },
+					{ "element": "minecraft:bucket" },
+					{ "element": "minecraft:golden_apple", "min":1, "max":2 },
+					{ "element": "minecraft:redstone", "min":10, "max":20 },
+					{ "element": "minecraft:chainmail_helmet" },
+					{ "element": "minecraft:egg", "min":4, "max":20 },
+					{ "element": "minecraft:chainmail_boots" },
+					{ "element": "minecraft:skull" }
+				],
+				[
+					{ "element": "minecraft:arrow", "min":30, "max":40 },
+					{ "element": "minecraft:bread" },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:emerald" },
+					{ "element": "minecraft:mushroom_stew" },
+					{ "element": "minecraft:diamond" },
+					{ "element": "minecraft:iron_axe" },
+					{ "element": "minecraft:mushroom_stew" },
+					{ "element": "minecraft:chainmail_leggings" }
+				],
+				
+				[
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:iron_sword", "min":1, "max":4 },
+					{ "element": "minecraft:gold_ingot", "min":1, "max":4 },
+					{ "element": "minecraft:compass" },
+					{ "element": "minecraft:gunpowder", "min":1, "max":7 },
+					{ "element": "minecraft:arrow", "min":20, "max":40 },
+					{ "element": "minecraft:bucket" },
+					{ "element": "minecraft:golden_apple", "min":1, "max":2 },
+					{ "element": "minecraft:redstone", "min":10, "max":20 },
+					{ "element": "minecraft:chainmail_helmet" },
+					{ "element": "minecraft:egg", "min":4, "max":20 },
+					{ "element": "minecraft:chainmail_boots" },
+					{ "element": "minecraft:skull" }
+				],
+				[
+					{ "element": "minecraft:arrow", "min":30, "max":40 },
+					{ "element": "minecraft:bread" },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:emerald" },
+					{ "element": "minecraft:mushroom_stew" },
+					{ "element": "minecraft:diamond" },
+					{ "element": "minecraft:iron_axe" },
+					{ "element": "minecraft:mushroom_stew" },
+					{ "element": "minecraft:chainmail_leggings" }
+				],
+				
+				[
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:iron_sword", "min":1, "max":4 },
+					{ "element": "minecraft:gold_ingot", "min":1, "max":4 },
+					{ "element": "minecraft:compass" },
+					{ "element": "minecraft:gunpowder", "min":1, "max":7 },
+					{ "element": "minecraft:arrow", "min":20, "max":40 },
+					{ "element": "minecraft:bucket" },
+					{ "element": "minecraft:golden_apple", "min":1, "max":2 },
+					{ "element": "minecraft:redstone", "min":10, "max":20 },
+					{ "element": "minecraft:chainmail_helmet" },
+					{ "element": "minecraft:egg", "min":4, "max":20 },
+					{ "element": "minecraft:chainmail_boots" },
+					{ "element": "minecraft:skull" }
+				],
+				[
+					{ "element": "minecraft:arrow", "min":30, "max":40 },
+					{ "element": "minecraft:bread" },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:emerald" },
+					{ "element": "minecraft:mushroom_stew" },
+					{ "element": "minecraft:diamond" },
+					{ "element": "minecraft:iron_axe" },
+					{ "element": "minecraft:mushroom_stew" },
+					{ "element": "minecraft:chainmail_leggings" }
+				],
+				
+				[
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:iron_sword", "min":1, "max":4 },
+					{ "element": "minecraft:gold_ingot", "min":1, "max":4 },
+					{ "element": "minecraft:compass" },
+					{ "element": "minecraft:gunpowder", "min":1, "max":7 },
+					{ "element": "minecraft:arrow", "min":20, "max":40 },
+					{ "element": "minecraft:bucket" },
+					{ "element": "minecraft:golden_apple", "min":1, "max":2 },
+					{ "element": "minecraft:redstone", "min":10, "max":20 },
+					{ "element": "minecraft:chainmail_helmet" },
+					{ "element": "minecraft:egg", "min":4, "max":20 },
+					{ "element": "minecraft:chainmail_boots" },
+					{ "element": "minecraft:skull" }
+				],
+				[
+					{ "element": "minecraft:arrow", "min":30, "max":40 },
+					{ "element": "minecraft:bread" },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:emerald" },
+					{ "element": "minecraft:mushroom_stew" },
+					{ "element": "minecraft:diamond" },
+					{ "element": "minecraft:iron_axe" },
+					{ "element": "minecraft:mushroom_stew" },
+					{ "element": "minecraft:chainmail_leggings" }
+				]
+			]
+		}
+	},
+	
+	"random": [
+		[
+			{
+				"14x6x12": { "block": "minecraft:tnt" },
+				"14x6x11": { "block": "minecraft:tnt" },
+				"14x7x12": { "block": "minecraft:tnt" }
+			},
+			{
+				"14x6x12": { "block": "minecraft:iron_block" },
+				"14x6x11": { "block": "minecraft:iron_block" },
+				"14x7x12": { "block": "minecraft:iron_block" }
+			},
+			{
+				"14x6x12": { "block": "minecraft:gold_block" },
+				"14x7x12": { "block": "minecraft:gold_block" }
+			},
+			{
+				"14x6x12": { "block": "minecraft:lapis_block" },
+				"14x6x11": { "block": "minecraft:lapis_block" },
+				"14x7x12": { "block": "minecraft:lapis_block" }
+			}
+		]
+	]
+}

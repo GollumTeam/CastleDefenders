@@ -1,0 +1,82 @@
+{
+	"height": -4,
+	
+	"color" : [
+		{ "block": "minecraft:planks" },
+		{ "block": "minecraft:grass" },
+		{ "block": "CastleDefenders:BlockMerc" },
+		{ "block": "minecraft:fence" },
+		{ "block": "minecraft:torch" },
+		{ "block": "minecraft:wooden_slab" },
+		{ "block": "CastleDefenders:BlockMercArcher" },
+		{ "block":  "minecraft:glass_pane" },
+        { "block": "minecraft:dirt" }
+	],
+	"sets": {
+		"5x4x5": { "block":  "minecraft:wooden_door", "metadata": 0, "orientation":"down" },
+		"5x5x5": { "block":  "minecraft:wooden_door", "metadata": 8, "orientation":"down" },
+		
+		"4x5x6": { "block": "minecraft:torch", "orientation":"down" },
+		"6x5x6": { "block": "minecraft:torch", "orientation":"down" },
+		
+		"1x4x8": { "block": "minecraft:bed", "metadata": 8, "orientation":"left" },
+		"2x4x8": { "block": "minecraft:bed", "metadata": 0, "orientation":"left" },
+		"1x4x6": { "block": "minecraft:bed", "metadata": 8, "orientation":"left" },
+		"2x4x6": { "block": "minecraft:bed", "metadata": 0, "orientation":"left" },
+		
+		"5x4x7": { "block": "minecraft:ladder", "orientation":"up" },
+		"5x5x7": { "block": "minecraft:ladder", "orientation":"up" },
+		"5x6x7": { "block": "minecraft:ladder", "orientation":"up" },
+		"5x7x7": { "block": "minecraft:ladder", "orientation":"up" },
+		"5x8x7": { "block": "minecraft:ladder", "orientation":"down" },
+		"5x9x7": { "block": "minecraft:ladder", "orientation":"down" },
+		"5x10x7": { "block": "minecraft:ladder", "orientation":"down" },
+		 
+		"7x4x9": {
+			"block": "minecraft:chest",
+			"orientation":"up",
+			"contents": [
+				
+				[
+					{ "element": "minecraft:arrow", "min":30, "max":40 },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:gold_nugget", "min":1, "max":2 },
+					{ "element": "minecraft:gold_nugget", "min":1, "max":2 },
+					{ "element": "minecraft:bread" },
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:bow" }
+				],
+				[
+					{ "element": "minecraft:arrow", "min":30, "max":40 },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:gold_nugget", "min":1, "max":2 },
+					{ "element": "minecraft:gold_nugget", "min":1, "max":2 },
+					{ "element": "minecraft:bread" },
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:bow" }
+				],
+				[
+					{ "element": "minecraft:arrow", "min":30, "max":40 },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:gold_nugget", "min":1, "max":2 },
+					{ "element": "minecraft:gold_nugget", "min":1, "max":2 },
+					{ "element": "minecraft:bread" },
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:bow" }
+				],
+				[
+					{ "element": "minecraft:arrow", "min":30, "max":40 },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:gold_nugget", "min":1, "max":2 },
+					{ "element": "minecraft:gold_nugget", "min":1, "max":2 },
+					{ "element": "minecraft:bread" },
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:bow" }
+				]
+			]
+		},
+		"8x4x9": { "block": "minecraft:chest"	   , "orientation":"up" },
+		"9x4x9": { "block": "minecraft:furnace", "orientation":"up" },
+		"1x6x9": { "block": "minecraft:web" }
+	}
+}

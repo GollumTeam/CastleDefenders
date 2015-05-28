@@ -1,0 +1,8 @@
+{
+	"height":0,
+	"color" : [
+		{ "block": "minecraft:stone" },
+        { "block": "minecraft:dirt" },
+        { "block": "minecraft:grass" }
+	]
+}
