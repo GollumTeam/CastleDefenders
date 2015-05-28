@@ -3,7 +3,6 @@ package mods.castledefenders.common.entities;
 import java.util.List;
 
 import mods.castledefenders.ModCastleDefenders;
-import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -19,6 +18,8 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+
+import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
 public abstract class EntityDefender extends EntityAnimal {
 	

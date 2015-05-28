@@ -1,8 +1,6 @@
 package mods.castledefenders.common.entities;
 
 import mods.castledefenders.ModCastleDefenders;
-import mods.gollum.core.common.config.container.ItemStackConfigType;
-import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIWander;
@@ -11,6 +9,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import com.gollum.core.common.config.type.ItemStackConfigType;
+import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
 public class EntityMerc extends EntityMercenary {
 	

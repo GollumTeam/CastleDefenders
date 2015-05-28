@@ -1,9 +1,10 @@
 package mods.castledefenders.common.blocks;
 
 import mods.castledefenders.ModCastleDefenders;
-import mods.gollum.core.tools.helper.blocks.HBlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
+
+import com.gollum.core.tools.helper.blocks.HBlockContainer;
 
 public abstract class BlockCastleDefenders extends HBlockContainer {
 	

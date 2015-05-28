@@ -1,10 +1,11 @@
 package mods.castledefenders.common.config;
 
-import mods.gollum.core.common.config.Config;
-import mods.gollum.core.common.config.ConfigProp;
-import mods.gollum.core.common.config.container.ItemStackConfigType;
-import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.item.Item;
+
+import com.gollum.core.common.config.Config;
+import com.gollum.core.common.config.ConfigProp;
+import com.gollum.core.common.config.type.ItemStackConfigType;
+import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
 public class ConfigCastleDefender extends Config<ConfigCastleDefender> {
 	

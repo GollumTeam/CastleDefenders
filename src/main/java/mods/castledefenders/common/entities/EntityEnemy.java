@@ -2,7 +2,6 @@ package mods.castledefenders.common.entities;
 
 import java.util.List;
 
-import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.block.Block;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -14,6 +13,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+
+import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
 public abstract class EntityEnemy extends EntityMob {
 	

@@ -1,7 +1,5 @@
 package mods.castledefenders;
 
-import java.io.IOException;
-
 import mods.castledefenders.common.CommonProxyCastleDefenders;
 import mods.castledefenders.common.blocks.BlockArcher;
 import mods.castledefenders.common.blocks.BlockArcher2;
@@ -37,22 +35,19 @@ import mods.castledefenders.common.tileentities.TileEntityBlockKnight2;
 import mods.castledefenders.common.tileentities.TileEntityBlockMage;
 import mods.castledefenders.common.tileentities.TileEntityBlockMerc;
 import mods.castledefenders.common.tileentities.TileEntityBlockMercArcher;
-import mods.gollum.core.common.building.Building;
-import mods.gollum.core.common.building.BuildingParser;
-import mods.gollum.core.common.creativetab.GollumCreativeTabs;
-import mods.gollum.core.common.facory.Mobactory;
-import mods.gollum.core.common.i18n.I18n;
-import mods.gollum.core.common.log.Logger;
-import mods.gollum.core.common.mod.GollumMod;
-import mods.gollum.core.common.version.VersionChecker;
-import mods.gollum.core.common.worldgenerator.WorldGeneratorByBuilding;
-import mods.gollum.core.tools.helper.items.HItem;
-import mods.gollum.core.tools.registry.SoundRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
+
+import com.gollum.core.common.creativetab.GollumCreativeTabs;
+import com.gollum.core.common.facory.Mobactory;
+import com.gollum.core.common.mod.GollumMod;
+import com.gollum.core.common.version.VersionChecker;
+import com.gollum.core.tools.helper.items.HItem;
+import com.gollum.core.tools.registry.SoundRegistry;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;

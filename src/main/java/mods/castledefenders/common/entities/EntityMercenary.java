@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mods.castledefenders.ModCastleDefenders;
-import mods.gollum.core.common.config.container.ItemStackConfigType;
-import mods.gollum.core.common.config.container.MobCapacitiesConfigType;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -34,6 +32,10 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+
+import com.gollum.core.common.config.type.ItemStackConfigType;
+import com.gollum.core.common.config.type.MobCapacitiesConfigType;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
