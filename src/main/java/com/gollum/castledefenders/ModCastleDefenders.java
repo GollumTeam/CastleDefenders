@@ -4,8 +4,6 @@ import net.minecraftforge.common.MinecraftForge;
 
 import com.gollum.castledefenders.common.CommonProxyCastleDefenders;
 import com.gollum.castledefenders.common.config.ConfigCastleDefender;
-import com.gollum.castledefenders.common.handlers.BuildingHandler;
-import com.gollum.castledefenders.inits.ModAchievements;
 import com.gollum.castledefenders.inits.ModBlocks;
 import com.gollum.castledefenders.inits.ModCreativeTab;
 import com.gollum.castledefenders.inits.ModItems;
@@ -98,11 +96,6 @@ public class ModCastleDefenders extends GollumMod {
 		
 		// Set de l'icon du tab creative
 		ModCreativeTab.init();
-		
-		// Init des achievements
-		ModAchievements.init();
-		
-		MinecraftForge.EVENT_BUS.register(new BuildingHandler());
 		
 	}
 	
