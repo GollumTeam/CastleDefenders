@@ -5,12 +5,13 @@ import net.minecraft.world.World;
 import com.gollum.castledefenders.ModCastleDefenders;
 import com.gollum.castledefenders.common.aientities.EntityAIDistanceAttack;
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
+import com.gollum.castledefenders.inits.ModBlocks;
 
 public class EntityEMage extends EntityEnemy {
 	
 	public EntityEMage(World world) {
 		super(world);
-		this.blockSpawnId = ModCastleDefenders.blockEMage.blockID;
+		this.blockSpawnId = ModBlocks.blockEMage.blockID;
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), EntityAIDistanceAttack.TYPE_FIRE));
 		

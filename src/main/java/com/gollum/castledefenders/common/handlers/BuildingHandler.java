@@ -12,9 +12,6 @@ import com.gollum.castledefenders.ModCastleDefenders;
 import com.gollum.castledefenders.inits.ModAchievements;
 import com.gollum.core.common.events.BuildingGenerateEvent;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-
-
 public class BuildingHandler {
 	
 	boolean mustBeSave = false;
@@ -43,43 +40,43 @@ public class BuildingHandler {
 						if (entity instanceof EntityPlayerMP) {
 							EntityPlayerMP player = (EntityPlayerMP)entity;
 							
-							// Add Stat
-							player.addStat(counter, 1);
-							
-							// Add Achievement
-							player.addStat(ModAchievements.achievementCastleDefenders, 1);
-							
-							if (!MinecraftServer.getServer().func_110455_j().hasAchievementUnlocked(target)) {
-								player.addStat(target, 1);
-								
-								if (
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementCastle1) &&
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementCastle2) &&
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementCastle3) &&
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementCastle4) &&
-									!player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllCastle)
-								) {
-									player.addStat(ModAchievements.achievementAllCastle, 1);
-								}
-								
-								if (
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementMercenary1) &&
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementMercenary2) &&
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementMercenary3) &&
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementMercenary4) &&
-									!player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllMercenary)
-								) {
-									player.addStat(ModAchievements.achievementAllMercenary, 1);
-								}
-								
-								if (
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllCastle)    &&
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllMercenary) &&
-									!player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllBuilding)
-								) {
-									player.addStat(ModAchievements.achievementAllBuilding, 1);
-								}
-							}
+//							// Add Stat
+//							player.addStat(counter, 1);
+//							
+//							// Add Achievement
+//							player.addStat(ModAchievements.achievementCastleDefenders, 1);
+//							
+//							if (!MinecraftServer.getServer().func_110455_j().hasAchievementUnlocked(target)) {
+//								player.addStat(target, 1);
+//								
+//								if (
+//									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementCastle1) &&
+//									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementCastle2) &&
+//									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementCastle3) &&
+//									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementCastle4) &&
+//									!player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllCastle)
+//								) {
+//									player.addStat(ModAchievements.achievementAllCastle, 1);
+//								}
+//								
+//								if (
+//									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementMercenary1) &&
+//									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementMercenary2) &&
+//									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementMercenary3) &&
+//									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementMercenary4) &&
+//									!player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllMercenary)
+//								) {
+//									player.addStat(ModAchievements.achievementAllMercenary, 1);
+//								}
+//								
+//								if (
+//									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllCastle)    &&
+//									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllMercenary) &&
+//									!player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllBuilding)
+//								) {
+//									player.addStat(ModAchievements.achievementAllBuilding, 1);
+//								}
+//							}
 						}
 					}
 				}

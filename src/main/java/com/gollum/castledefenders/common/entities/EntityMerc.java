@@ -9,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import com.gollum.castledefenders.inits.ModBlocks;
 import com.gollum.castledefenders.ModCastleDefenders;
 import com.gollum.core.common.config.type.ItemStackConfigType;
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
@@ -18,7 +19,7 @@ public class EntityMerc extends EntityMercenary {
 	public EntityMerc(World world) {
 		
 		super(world);
-		this.blockSpawnId    = ModCastleDefenders.blockMerc.blockID;
+		this.blockSpawnId    = ModBlocks.blockMerc.blockID;
 		this.defaultHeldItem = new ItemStack(Item.swordIron, 1);
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, this.getMaxSpeed(), true));

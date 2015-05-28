@@ -4,6 +4,7 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.world.World;
 
+import com.gollum.castledefenders.inits.ModBlocks;
 import com.gollum.castledefenders.ModCastleDefenders;
 import com.gollum.castledefenders.common.aientities.EntityAIDistanceAttack;
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
@@ -13,7 +14,7 @@ public class EntityMage extends EntityDefender {
 	public EntityMage(World world) {
 
 		super(world);
-		this.blockSpawnId = ModCastleDefenders.blockMage.blockID;
+		this.blockSpawnId = ModBlocks.blockMage.blockID;
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), EntityAIDistanceAttack.TYPE_FIRE));
 		

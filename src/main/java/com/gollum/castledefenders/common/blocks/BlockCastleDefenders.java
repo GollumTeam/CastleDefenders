@@ -4,6 +4,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
 
 import com.gollum.castledefenders.ModCastleDefenders;
+import com.gollum.castledefenders.inits.ModCreativeTab;
 import com.gollum.core.tools.helper.blocks.HBlockContainer;
 
 public abstract class BlockCastleDefenders extends HBlockContainer {
@@ -14,7 +15,7 @@ public abstract class BlockCastleDefenders extends HBlockContainer {
 	 */
 	public BlockCastleDefenders (int id, String registerName, Material material) {
 		super(id, registerName, material);
-		this.setCreativeTab(ModCastleDefenders.tabCastleDefenders);
+		this.setCreativeTab(ModCreativeTab.tabCastleDefenders);
 	}
 	
 	/**

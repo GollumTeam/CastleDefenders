@@ -9,6 +9,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
 import com.gollum.castledefenders.ModCastleDefenders;
+import com.gollum.castledefenders.inits.ModBlocks;
 import com.gollum.core.common.config.type.ItemStackConfigType;
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
@@ -22,7 +23,7 @@ public class EntityHealer extends EntityMerc {
 	public EntityHealer(World world) {
 		
 		super(world);
-		this.blockSpawnId       = ModCastleDefenders.blockHealer.blockID;
+		this.blockSpawnId       = ModBlocks.blockHealer.blockID;
 		this.defaultHeldItem    = new ItemStack(Item.book, 1);
 		
 	}

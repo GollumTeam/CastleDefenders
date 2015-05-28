@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import com.gollum.castledefenders.inits.ModBlocks;
 import com.gollum.castledefenders.ModCastleDefenders;
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
@@ -16,7 +17,7 @@ public class EntityKnight extends EntityDefender {
 	public EntityKnight(World world) {
 		
 		super(world);
-		this.blockSpawnId    = ModCastleDefenders.blockKnight.blockID;
+		this.blockSpawnId    = ModBlocks.blockKnight.blockID;
 		this.defaultHeldItem = new ItemStack(Item.swordIron, 1);
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, IMob.class, this.getMoveSpeed (), true));

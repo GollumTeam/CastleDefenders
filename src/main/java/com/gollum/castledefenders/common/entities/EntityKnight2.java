@@ -4,6 +4,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import com.gollum.castledefenders.inits.ModBlocks;
 import com.gollum.castledefenders.ModCastleDefenders;
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
@@ -11,7 +12,7 @@ public class EntityKnight2 extends EntityKnight {
 
 	public EntityKnight2(World world) {
 		super(world);
-		this.blockSpawnId    = ModCastleDefenders.blockKnight2.blockID;
+		this.blockSpawnId    = ModBlocks.blockKnight2.blockID;
 		this.defaultHeldItem = new ItemStack(Item.swordDiamond, 1);
 	}
 	
