@@ -264,13 +264,13 @@ public abstract class EntityMercenary extends EntityTameable {
 			i++;
 		} while (owner != null && !owner.equals(""));
 	}
-
+	
 	/**
 	 * Returns true if this entity can attack entities of the specified class.
 	 */
 	@Override
 	public boolean canAttackClass(Class var1) { 
-		return EntityGhast.class != var1 && EntityMercenary.class != var1;
+		return EntityGhast.class != var1 && !EntityMercenary.class.isAssignableFrom(var1);
 	}
 	
 	/**
@@ -339,7 +339,7 @@ public abstract class EntityMercenary extends EntityTameable {
 	 */
 	@Override
 	protected int getDropItemId() { 
-		return -1;
+		return 0;
 	}
 
 	/**

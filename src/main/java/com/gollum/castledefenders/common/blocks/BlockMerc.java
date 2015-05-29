@@ -35,6 +35,7 @@ public class BlockMerc extends BlockCastleDefenders {
 	 * needs with the given IconRegister. This is the only chance you get to
 	 * register icons.
 	 */
+	@Override
 	public void registerIcons(IconRegister register) {
 		this.sides  = this.helper.loadTexture(register, "_side"); 
 		super.registerIcons (register);

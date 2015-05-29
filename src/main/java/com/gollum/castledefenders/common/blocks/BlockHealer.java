@@ -1,5 +1,7 @@
 package com.gollum.castledefenders.common.blocks;
 
+import java.util.Random;
+
 import com.gollum.castledefenders.common.tileentities.TileEntityBlockHealer;
 
 import net.minecraft.block.material.Material;
@@ -22,6 +24,11 @@ public class BlockHealer extends BlockCastleDefenders {
 	@Override
 	public TileEntity createNewTileEntity(World world) {
 		return new TileEntityBlockHealer();
+	}
+	
+	@Override
+	public int idDropped(int metadata, Random random, int j) {
+		return 0;
 	}
 	
 }
