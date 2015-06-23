@@ -7,7 +7,7 @@
 	"version": "3.0.0",
 	"mcversion": "1.7.10",
 	"url": "http://www.smeagol-mods.com",
-	"authors": [ "SmeagolWorms4", "Redori", "Vox Populi", "Azurn"],
+	"authorList": [ "SmeagolWorms4", "Redori", "Vox Populi", "Azurn"],
 	"requiredMods": ["GollumCoreLib"]
 }
 ]
