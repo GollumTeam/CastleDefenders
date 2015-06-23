@@ -3,15 +3,11 @@
 	"modid": "CastleDefenders",
 	"name": "Castle Defender",
 	"description": "The Castle Defender",
-	"credits": "SmeagolWorms4, Redori, Vox Populi, Azurn",
 	"logoFile": "logo_castledef.png",
 	"version": "3.0.0",
 	"mcversion": "1.7.10",
-	"url": "",
-	"updateUrl": "",
+	"url": "http://www.smeagol-mods.com",
 	"authors": [ "SmeagolWorms4", "Redori", "Vox Populi", "Azurn"],
-	"screenshots": [],
-	"parent":"",
-	"dependencies": [ "GollumCoreLib" ]
+	"requiredMods": ["GollumCoreLib"]
 }
 ]
