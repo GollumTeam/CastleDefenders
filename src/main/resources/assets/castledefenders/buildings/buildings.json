@@ -25,7 +25,7 @@
 				}
 			},
 			"castle3": {
-				"enabled": false,
+				"enabled": true,
 				"dimentions": {
 					"0": {
 						"spawnRate":3,
