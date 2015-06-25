@@ -23,5 +23,5 @@ public class BlockKnight extends BlockCastleDefenders {
 	public TileEntity createNewTileEntity(World world) {
 		return new TileEntityBlockKnight();
 	}
-
+	
 }

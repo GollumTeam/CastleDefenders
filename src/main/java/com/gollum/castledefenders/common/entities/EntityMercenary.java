@@ -119,7 +119,7 @@ public abstract class EntityMercenary extends EntityTameable {
 	 * @return Zone de detection du mod
 	 */
 	protected double getFollowRange () { return this.getCapacities ().followRange; }
-//	protected double getFollowRange () { return 11.0; }
+	
 	/**
 	 * @return Vitesse de tir du mod
 	 */
@@ -473,10 +473,10 @@ public abstract class EntityMercenary extends EntityTameable {
 		
 		if (player !=  null) {
 			this.setTamed(true);
-			this.setOwner(player.username);
+			this.setOwner(player.getUniqueID().toString());
 			
-			if (!this.ownerList.contains (player.username)) {
-				this.ownerList.add (player.username);
+			if (!this.ownerList.contains (player.getUniqueID().toString())) {
+				this.ownerList.add (player.getUniqueID().toString());
 			}
 		} else {
 			this.setTamed(false);
@@ -498,7 +498,7 @@ public abstract class EntityMercenary extends EntityTameable {
 		if (!this.worldObj.isRemote) {
 			if (!this.isTamed()) {
 				
-				boolean buy = this.ownerList.contains (player.username);
+				boolean buy = this.isAlraidyBuy(player);
 				
 				if (!buy) {
 					for (ItemStackConfigType stackConfig: this.getCost ()) {
@@ -515,7 +515,7 @@ public abstract class EntityMercenary extends EntityTameable {
 					return true;
 				}
 				
-			} else if (this.getOwnerName().equals(player.username)) {
+			} else if (this.getOwnerName().equals(player.getUniqueID().toString())) {
 				
 				ModCastleDefenders.log.debug("Interract with owner: "+player.username);
 				
@@ -557,7 +557,10 @@ public abstract class EntityMercenary extends EntityTameable {
 	public EntityAgeable createChild(EntityAgeable entityageable) {
 		return null;
 	}
-
+	
+	public boolean isAlraidyBuy (EntityPlayer player) {
+		return this.ownerList.contains(player.getUniqueID().toString());
+	}
 	
 	@SideOnly(Side.CLIENT)
 	public boolean isOwner() {
@@ -565,6 +568,6 @@ public abstract class EntityMercenary extends EntityTameable {
 	}
 	
 	public boolean isOwner(EntityPlayer player) {
-		return this.getOwnerName().equals(player.username);
+		return this.getOwnerName().equals(player.getUniqueID().toString());
 	}
 }
