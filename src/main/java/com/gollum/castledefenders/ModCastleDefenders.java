@@ -23,6 +23,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkMod;
 
 @Mod(
 	modid = ModCastleDefenders.MODID,
@@ -31,6 +32,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 	acceptedMinecraftVersions = ModCastleDefenders.MINECRAFT_VERSION,
 	dependencies = ModCastleDefenders.DEPENDENCIES
 )
+@NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class ModCastleDefenders extends GollumMod {
 
 	public final static String MODID = "CastleDefenders";
@@ -82,9 +84,6 @@ public class ModCastleDefenders extends GollumMod {
 	@Override
 	public void init(FMLInitializationEvent event) {
 		
-		// Execution du renderer en fonction du serveur ou du client
-		proxy.registerRenderers();
-		
 		// Initialisation les TileEntities
 		ModTileEntities.init ();
 		
@@ -96,6 +95,9 @@ public class ModCastleDefenders extends GollumMod {
 		
 		// Set de l'icon du tab creative
 		ModCreativeTab.init();
+		
+		// Execution du renderer en fonction du serveur ou du client
+		proxy.registerRenderers();
 		
 	}
 	
