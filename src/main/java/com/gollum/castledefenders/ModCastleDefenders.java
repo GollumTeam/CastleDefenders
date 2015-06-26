@@ -84,9 +84,6 @@ public class ModCastleDefenders extends GollumMod {
 	@Override
 	public void init(FMLInitializationEvent event) {
 		
-		// Execution du renderer en fonction du serveur ou du client
-		proxy.registerRenderers();
-		
 		// Initialisation les TileEntities
 		ModTileEntities.init ();
 		
@@ -101,6 +98,9 @@ public class ModCastleDefenders extends GollumMod {
 		
 		// Init des achievements
 		ModAchievements.init();
+		
+		// Execution du renderer en fonction du serveur ou du client
+		proxy.registerRenderers();
 		
 		MinecraftForge.EVENT_BUS.register(new BuildingHandler());
 		
