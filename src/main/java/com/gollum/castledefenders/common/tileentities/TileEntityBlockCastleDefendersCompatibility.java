@@ -18,7 +18,14 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 
-public abstract class TileEntityBlockCastleDefendersCompatibility extends TileEntity {
+public class TileEntityBlockCastleDefendersCompatibility extends TileEntity {
+
+	/**
+	 * Constructeur
+	 */
+	public TileEntityBlockCastleDefendersCompatibility() {
+		super();
+	}
 	
 	public void updateEntity() {
 		
