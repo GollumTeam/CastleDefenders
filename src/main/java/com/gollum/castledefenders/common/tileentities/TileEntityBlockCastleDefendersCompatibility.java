@@ -29,16 +29,16 @@ public class TileEntityBlockCastleDefendersCompatibility extends TileEntity {
 	
 	public void updateEntity() {
 		
-		Block block = Block.blocksList[this.getWorldObj().getBlockId(this.xCoord, this.yCoord, this.zCoord)];
-
-		if (block instanceof BlockKnight    ) { this.getWorldObj().setBlockTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockKnight    ()); }
-		if (block instanceof BlockArcher    ) { this.getWorldObj().setBlockTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockArcher    ()); }
-		if (block instanceof BlockMage      ) { this.getWorldObj().setBlockTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockMage      ()); }
-		if (block instanceof BlockEKnight   ) { this.getWorldObj().setBlockTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockEKnight   ()); }
-		if (block instanceof BlockEArcher   ) { this.getWorldObj().setBlockTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockEArcher   ()); }
-		if (block instanceof BlockEMage     ) { this.getWorldObj().setBlockTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockEMage     ()); }
-		if (block instanceof BlockMerc      ) { this.getWorldObj().setBlockTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockMerc      ()); }
-		if (block instanceof BlockMercArcher) { this.getWorldObj().setBlockTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockMercArcher()); }
+		Block block = this.getWorldObj().getBlock(this.xCoord, this.yCoord, this.zCoord);
+		
+		if (block instanceof BlockKnight    ) { this.getWorldObj().setTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockKnight    ()); }
+		if (block instanceof BlockArcher    ) { this.getWorldObj().setTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockArcher    ()); }
+		if (block instanceof BlockMage      ) { this.getWorldObj().setTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockMage      ()); }
+		if (block instanceof BlockEKnight   ) { this.getWorldObj().setTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockEKnight   ()); }
+		if (block instanceof BlockEArcher   ) { this.getWorldObj().setTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockEArcher   ()); }
+		if (block instanceof BlockEMage     ) { this.getWorldObj().setTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockEMage     ()); }
+		if (block instanceof BlockMerc      ) { this.getWorldObj().setTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockMerc      ()); }
+		if (block instanceof BlockMercArcher) { this.getWorldObj().setTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockMercArcher()); }
 		
 		this.getWorldObj().markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 		
