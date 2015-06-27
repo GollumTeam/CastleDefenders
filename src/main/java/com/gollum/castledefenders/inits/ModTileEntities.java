@@ -3,6 +3,7 @@ package com.gollum.castledefenders.inits;
 import com.gollum.castledefenders.ModCastleDefenders;
 import com.gollum.castledefenders.common.tileentities.TileEntityBlockArcher;
 import com.gollum.castledefenders.common.tileentities.TileEntityBlockArcher2;
+import com.gollum.castledefenders.common.tileentities.TileEntityBlockCastleDefendersCompatibility;
 import com.gollum.castledefenders.common.tileentities.TileEntityBlockEArcher;
 import com.gollum.castledefenders.common.tileentities.TileEntityBlockEKnight;
 import com.gollum.castledefenders.common.tileentities.TileEntityBlockEMage;
@@ -32,5 +33,15 @@ public class ModTileEntities {
 		GameRegistry.registerTileEntity(TileEntityBlockEArcher.class   , ModCastleDefenders.MODID+":EnemyArcherBlock");
 		GameRegistry.registerTileEntity(TileEntityBlockEMage.class     , ModCastleDefenders.MODID+":EnemyMageBlock");
 		
+		if (ModCastleDefenders.config.compatibilityWithOldVersion) {
+			GameRegistry.registerTileEntity(TileEntityBlockCastleDefendersCompatibility.class, "Knight Block");
+			GameRegistry.registerTileEntity(TileEntityBlockCastleDefendersCompatibility.class, "BlockArcher");
+			GameRegistry.registerTileEntity(TileEntityBlockCastleDefendersCompatibility.class, "Merc Block");
+			GameRegistry.registerTileEntity(TileEntityBlockCastleDefendersCompatibility.class, "Enemy Knight Block");
+			GameRegistry.registerTileEntity(TileEntityBlockCastleDefendersCompatibility.class, "Enemy Archer Block");
+			GameRegistry.registerTileEntity(TileEntityBlockCastleDefendersCompatibility.class, "Mage Block");
+			GameRegistry.registerTileEntity(TileEntityBlockCastleDefendersCompatibility.class, "Enemy Mage Block");
+			GameRegistry.registerTileEntity(TileEntityBlockCastleDefendersCompatibility.class, "BlockArcherM");
+		}
 	}
 }
