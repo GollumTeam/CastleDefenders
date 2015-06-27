@@ -1,7 +1,5 @@
 package com.gollum.castledefenders.common.config;
 
-import net.minecraft.item.Item;
-
 import com.gollum.core.common.config.Config;
 import com.gollum.core.common.config.ConfigProp;
 import com.gollum.core.common.config.type.ItemStackConfigType;
