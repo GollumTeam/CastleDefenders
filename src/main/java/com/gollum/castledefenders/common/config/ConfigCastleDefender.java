@@ -9,6 +9,8 @@ import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
 public class ConfigCastleDefender extends Config {
 	
+	@ConfigProp(mcRestart = true) public boolean compatibilityWithOldVersion = false;
+	
 	// Config d'affichage
 	@ConfigProp(group = "Display") public boolean displayMercenaryMessage = true;
 	@ConfigProp(group = "Display") public boolean displayMercenaryLife = true;
