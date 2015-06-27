@@ -34,6 +34,8 @@ public abstract class TileEntityBlockCastleDefendersCompatibility extends TileEn
 		if (block instanceof BlockMercArcher) { this.getWorldObj().setBlockTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockMercArcher()); }
 		
 		this.getWorldObj().markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
+		
+		ModCastleDefenders.log.debug ("Replace old TileEntity");
 	}
 	
 }
