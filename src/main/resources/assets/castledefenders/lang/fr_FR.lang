@@ -26,6 +26,8 @@ entity.Merc.name=Mercenaire
 entity.MercArcher.name=Mercenaire Archer
 entity.Healer.name=Guérisseur
 
+castledefenders.config.compatibilityWithOldVersion=Compatibilité avec les anciennes versions du mode
+
 castledefenders.message.buymercenary=Des objets contre mes services
 castledefenders.message.okfor=Ça marche pour %d %s
 
