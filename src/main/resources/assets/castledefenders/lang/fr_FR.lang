@@ -26,5 +26,42 @@ entity.Merc.name=Mercenaire
 entity.MercArcher.name=Mercenaire Archer
 entity.Healer.name=Guérisseur
 
+castledefenders.config.compatibilityWithOldVersion=Compatibilité avec les anciennes versions du mode
+
 castledefenders.message.buymercenary=Des objets contre mes services
-castledefenders.message.okfor=Ça marche pour %s %s
+castledefenders.message.okfor=Ça marche pour %d %s
+
+achievement.foundCastleDefenders=Découverte de bâtiment
+achievement.foundCastleBuilding1=Le château 
+achievement.foundCastleBuilding2=La tour du mage 
+achievement.foundCastleBuilding3=La tente ennemie
+achievement.foundCastleBuilding4=La ruine
+achievement.foundMercenaryBuilding1=La maison de l'archer
+achievement.foundMercenaryBuilding2=La tente de mercenaire
+achievement.foundMercenaryBuilding3=Le village mercenaire
+achievement.foundMercenaryBuilding4=Le monastère
+achievement.foundAllCastleBuilding=Les donjons
+achievement.foundAllMercenaryBuilding=Les mercenaires 
+achievement.foundAllBuilding=Tous les bâtiments
+
+achievement.foundCastleDefenders.desc=Découvert de bâtiment
+achievement.foundCastleBuilding1.desc=Trouver un mini-château
+achievement.foundCastleBuilding2.desc=Trouver une Tour du mage 
+achievement.foundCastleBuilding3.desc=Trouver une tente ennemie
+achievement.foundCastleBuilding4.desc=Trouver une ruine
+achievement.foundMercenaryBuilding1.desc=Trouver une maison de l'archer
+achievement.foundMercenaryBuilding2.desc=Trouver une tente de mercenaire
+achievement.foundMercenaryBuilding3.desc=Trouver un village mercenaire
+achievement.foundMercenaryBuilding4.desc=Trouver un monastère
+achievement.foundAllCastleBuilding.desc=Trouver tous les donjons
+achievement.foundAllMercenaryBuilding.desc=Trouver tous les bâtiments mercenaires 
+achievement.foundAllBuilding.desc=Trouver tous les bâtiments
+
+stats.foundCastleBuilding1Counter=Mini-châteaux trouvés
+stats.foundCastleBuilding2Counter=Tour du mage trouvées
+stats.foundCastleBuilding3Counter=Tentes ennemies trouvées
+stats.foundCastleBuilding4Counter=Ruines trouvées
+stats.foundMercenaryBuilding1Counter=Maison de l'archer trouvées
+stats.foundMercenaryBuilding2Counter=Tente de mercenaire trouvées
+stats.foundMercenaryBuilding3Counter=Villages mercenaires trouvés
+stats.foundMercenaryBuilding4Counter=Monastères trouvés

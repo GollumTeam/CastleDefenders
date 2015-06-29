@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockAir;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -30,6 +31,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 import com.gollum.castledefenders.ModCastleDefenders;
@@ -119,7 +121,7 @@ public abstract class EntityMercenary extends EntityTameable {
 	 * @return Zone de detection du mod
 	 */
 	protected double getFollowRange () { return this.getCapacities ().followRange; }
-//	protected double getFollowRange () { return 11.0; }
+	
 	/**
 	 * @return Vitesse de tir du mod
 	 */
@@ -139,7 +141,7 @@ public abstract class EntityMercenary extends EntityTameable {
 		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 		ItemStack stack = null;
 		if ((stack = this.hasBuyItemInHand(player)) != null) {
-			return ModCastleDefenders.i18n.trans ("message.okfor", stack.stackSize, stack.getUnlocalizedName());
+			return ModCastleDefenders.i18n.trans ("message.okfor", stack.stackSize, stack.getDisplayName());
 		}
 		
 		return ModCastleDefenders.i18n.trans ("message.buymercenary");
@@ -264,13 +266,13 @@ public abstract class EntityMercenary extends EntityTameable {
 			i++;
 		} while (owner != null && !owner.equals(""));
 	}
-
+	
 	/**
 	 * Returns true if this entity can attack entities of the specified class.
 	 */
 	@Override
 	public boolean canAttackClass(Class var1) { 
-		return EntityGhast.class != var1 && EntityMercenary.class != var1;
+		return EntityGhast.class != var1 && !EntityMercenary.class.isAssignableFrom(var1);
 	}
 	
 	/**
@@ -321,8 +323,8 @@ public abstract class EntityMercenary extends EntityTameable {
 		
 		return
 			block  == this.blockSpawn &&
-			(up1 == null || !up1.isCollidable()) &&
-			(up2 == null || !up2.isCollidable()) &&
+			(up1 == null || up1 instanceof BlockAir || !up1.isCollidable()) &&
+			(up2 == null || up2 instanceof BlockAir || !up2.isCollidable()) &&
 			!found;
 	}
 	
@@ -467,8 +469,8 @@ public abstract class EntityMercenary extends EntityTameable {
 			this.setTamed(true);
 			this.func_152115_b(player.getUniqueID().toString());
 			
-			if (!this.ownerList.contains (player.getCommandSenderName())) {
-				this.ownerList.add (player.getCommandSenderName());
+			if (!this.ownerList.contains (player.getUniqueID().toString())) {
+				this.ownerList.add (player.getUniqueID().toString());
 			}
 		} else {
 			this.setTamed(false);
@@ -490,7 +492,7 @@ public abstract class EntityMercenary extends EntityTameable {
 		if (!this.worldObj.isRemote) {
 			if (!this.isTamed()) {
 				
-				boolean buy = this.ownerList.contains (player.getUniqueID().toString());
+				boolean buy = this.isAlraidyBuy(player);
 				
 				if (!buy) {
 					for (ItemStackConfigType stackConfig: this.getCost ()) {
@@ -549,7 +551,10 @@ public abstract class EntityMercenary extends EntityTameable {
 	public EntityAgeable createChild(EntityAgeable entityageable) {
 		return null;
 	}
-
+	
+	public boolean isAlraidyBuy (EntityPlayer player) {
+		return this.ownerList.contains(player.getUniqueID().toString());
+	}
 	
 	@SideOnly(Side.CLIENT)
 	public boolean isOwner() {

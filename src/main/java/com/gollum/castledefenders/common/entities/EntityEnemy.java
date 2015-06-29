@@ -3,6 +3,7 @@ package com.gollum.castledefenders.common.entities;
 import java.util.List;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockAir;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
@@ -149,8 +150,8 @@ public abstract class EntityEnemy extends EntityMob {
 		
 		return
 			block == this.blockSpawn &&
-			(up1 == null || !up1.isCollidable()) &&
-			(up2 == null || !up2.isCollidable()) &&
+			(up1 == null || up1 instanceof BlockAir || !up1.isCollidable()) &&
+			(up2 == null || up2 instanceof BlockAir || !up2.isCollidable()) &&
 			!found;
 	}
 	

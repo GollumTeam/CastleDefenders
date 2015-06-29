@@ -8,6 +8,7 @@ import net.minecraft.world.World;
 
 import com.gollum.castledefenders.ModCastleDefenders;
 import com.gollum.castledefenders.common.aientities.EntityAIDistanceAttack;
+import com.gollum.castledefenders.inits.ModBlocks;
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
 public class EntityArcher extends EntityDefender {
@@ -15,7 +16,7 @@ public class EntityArcher extends EntityDefender {
 	public EntityArcher(World world) {
 
 		super(world);
-		this.blockSpawn    = ModCastleDefenders.blockArcher;
+		this.blockSpawn    = ModBlocks.blockArcher;
 		this.defaultHeldItem = new ItemStack(Items.bow, 1);
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), EntityAIDistanceAttack.TYPE_ARROW));

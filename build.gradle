@@ -9,10 +9,6 @@ buildscript {
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
-        GollumCoreLib {
-		    name = "GollumCoreLib"
-		    url = "./GollumCoreLib"
-		}
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
@@ -22,13 +18,30 @@ buildscript {
 apply plugin: 'forge'
 
 minecraft {
-    version = "1.7.10-10.13.3.1395-1710ls"
+    version = "1.7.2-10.12.2.1147"
     runDir = "eclipse"
 }
 
-version = "3.0.0"+minecraft.version
-group= "com.gollum.morepistons" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "MorePistons"
+version = "3.0.0-"+minecraft.version
+group= "com.gollum.castledefenders" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "CastleDefenders"
+
+task unmappedjar (type: Copy, dependsOn: 'jar') {
+    from 'build/libs/'+archivesBaseName+'-'+version+'.jar'
+    into 'build/libs/'
+    rename { String fileName ->
+        fileName.replace(".jar", "-unmapped.jar")
+    }
+}
+build.dependsOn unmappedjar
+genSrgs.shouldRunAfter unmappedjar
+
+task submodule(type: GradleBuild) {
+    buildFile = 'GollumCoreLib/build.gradle'
+    tasks = ['build']
+}
+classes.dependsOn submodule
+classes.shouldRunAfter submodule
 
 dependencies {
     // you may put jars on which you depend on in ./libs
@@ -43,9 +56,9 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-	
-	compile "com.gollum.core"
-	
+    
+    compile files('GollumCoreLib/build/libs/GollumCoreLib-2.0.0-'+minecraft.version+'-unmapped.jar')
+
 }
 
 processResources

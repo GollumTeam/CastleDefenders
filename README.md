@@ -1,12 +1,15 @@
-MorePistons
+CastleDefenders
 ============
 
-More Pistons Mod for Minecraft
+Castle Defenders Mod for Minecraft
 
 Install forge for compile source
 
 For Install :
-  
- - ./gradlew setupDecompWorkspace
- - ./gradlew eclipse
- - ./gradlew build
+
+<pre>
+git submodule update --init
+./gradlew setupDecompWorkspace
+./gradlew build
+./gradlew eclipse
+<pre>

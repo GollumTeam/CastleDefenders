@@ -3,6 +3,7 @@ package com.gollum.castledefenders.common.entities;
 import java.util.List;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockAir;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -18,7 +19,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-import com.gollum.castledefenders.ModCastleDefenders;
+import com.gollum.castledefenders.inits.ModItems;
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
 public abstract class EntityDefender extends EntityAnimal {
@@ -41,7 +42,7 @@ public abstract class EntityDefender extends EntityAnimal {
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setBaseValue(this.getMaxHealt ());
 		this.getEntityAttribute(SharedMonsterAttributes.followRange)  .setBaseValue(this.getFollowRange ());
 		
-		this.tasks.addTask(this.nextIdTask (), new EntityAITempt(this, 0.35F, ModCastleDefenders.itemMedallion, false));
+		this.tasks.addTask(this.nextIdTask (), new EntityAITempt(this, 0.35F, ModItems.itemMedallion, false));
 		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMoveSpeed ()));
 	}
@@ -204,8 +205,8 @@ public abstract class EntityDefender extends EntityAnimal {
 		
 		return
 			block == this.blockSpawn &&
-			(up1 == null || !up1.isCollidable()) &&
-			(up2 == null || !up2.isCollidable()) &&
+			(up1 == null || up1 instanceof BlockAir || !up1.isCollidable()) &&
+			(up2 == null || up2 instanceof BlockAir || !up2.isCollidable()) &&
 			!found;
 	}
 	

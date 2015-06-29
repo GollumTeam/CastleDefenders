@@ -1,5 +1,7 @@
 package com.gollum.castledefenders.common.blocks;
 
+import java.util.Random;
+
 import com.gollum.castledefenders.common.tileentities.TileEntityBlockEKnight;
 
 import net.minecraft.block.material.Material;
@@ -53,14 +55,6 @@ public class BlockEKnight extends BlockCastleDefenders {
 	}
 	
 	/**
-	 * Returns the ID of the items to drop on destruction.
-	 */
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-		return null;
-	}
-	
-	/**
 	 * Drops the block items with a specified chance of dropping the specified
 	 * items
 	 */
@@ -69,5 +63,10 @@ public class BlockEKnight extends BlockCastleDefenders {
 		super.dropBlockAsItemWithChance(var1, var2, var3, var4, var5, var6, var7);
 		int var8 = 15 + var1.rand.nextInt(15) + var1.rand.nextInt(15);
 		this.dropXpOnBlockBreak(var1, var2, var3, var4, var8);
+	}
+	
+	@Override
+	public int quantityDropped(Random random) {
+		return 0;
 	}
 }
