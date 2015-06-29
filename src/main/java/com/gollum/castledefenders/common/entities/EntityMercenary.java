@@ -467,14 +467,14 @@ public abstract class EntityMercenary extends EntityTameable {
 		
 		if (player !=  null) {
 			this.setTamed(true);
-			this.func_152115_b(player.getUniqueID().toString());
+			this.setOwner(player.getUniqueID().toString());
 			
 			if (!this.ownerList.contains (player.getUniqueID().toString())) {
 				this.ownerList.add (player.getUniqueID().toString());
 			}
 		} else {
 			this.setTamed(false);
-			this.func_152115_b("");
+			this.setOwner("");
 		}
 		
 		this.worldObj.setEntityState(this, (byte) 7);
@@ -509,7 +509,7 @@ public abstract class EntityMercenary extends EntityTameable {
 					return true;
 				}
 				
-			} else if (this.func_152113_b().equals(player.getUniqueID().toString())) {
+			} else if (this.getOwnerName().equals(player.getUniqueID().toString())) {
 				
 				ModCastleDefenders.log.debug("Interract with owner: "+player.getCommandSenderName());
 				
@@ -562,6 +562,6 @@ public abstract class EntityMercenary extends EntityTameable {
 	}
 	
 	public boolean isOwner(EntityPlayer player) {
-		return this.func_152113_b().equals(player.getUniqueID().toString());
+		return this.getOwnerName().equals(player.getUniqueID().toString());
 	}
 }
