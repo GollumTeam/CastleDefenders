@@ -37,7 +37,7 @@ public class ModCastleDefenders extends GollumMod {
 
 	public final static String MODID = "CastleDefenders";
 	public final static String MODNAME = "Castle Defenders";
-	public final static String VERSION = "3.0.0 [Build Smeagol]";
+	public final static String VERSION = "3.0.0DEV [Build Smeagol]";
 	public final static String MINECRAFT_VERSION = "1.7.10";
 	public final static String DEPENDENCIES = "required-after:"+ModGollumCoreLib.MODID;
 	
