@@ -5,3 +5,5 @@
 /eclipse/*
 /.project
 *.classpath
+*.launch
+/run/
