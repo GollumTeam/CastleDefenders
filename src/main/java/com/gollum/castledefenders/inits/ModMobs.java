@@ -16,7 +16,7 @@ import com.gollum.castledefenders.common.entities.EntityMerc;
 import com.gollum.castledefenders.common.entities.EntityMercArcher;
 import com.gollum.core.common.facory.Mobactory;
 
-import cpw.mods.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 
 public class ModMobs {
@@ -49,7 +49,7 @@ public class ModMobs {
 		new Mobactory().register(entityClass, name, 0xFFFFFF, color);;
 		
 		// Pop dans les biomes
-		EntityRegistry.addSpawn(entityClass, 10, 0, 0, EnumCreatureType.creature, new BiomeGenBase[] {
+		EntityRegistry.addSpawn(entityClass, 10, 0, 0, EnumCreatureType.CREATURE, new BiomeGenBase[] {
 			BiomeGenBase.desert, BiomeGenBase.desertHills,
 			BiomeGenBase.extremeHills,
 			BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest,

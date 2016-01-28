@@ -18,13 +18,13 @@ import com.gollum.core.common.log.Logger;
 import com.gollum.core.common.mod.GollumMod;
 import com.gollum.core.common.version.VersionChecker;
 
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(
 	modid = ModCastleDefenders.MODID,
@@ -37,8 +37,8 @@ public class ModCastleDefenders extends GollumMod {
 
 	public final static String MODID = "CastleDefenders";
 	public final static String MODNAME = "Castle Defenders";
-	public final static String VERSION = "3.0.0DEV [Build Smeagol]";
-	public final static String MINECRAFT_VERSION = "1.7.10";
+	public final static String VERSION = "3.1.0DEV [Build Smeagol]";
+	public final static String MINECRAFT_VERSION = "1.8.8";
 	public final static String DEPENDENCIES = "required-after:"+ModGollumCoreLib.MODID;
 	
 	@Instance(ModCastleDefenders.MODID)

@@ -1,7 +1,10 @@
 package com.gollum.castledefenders.client.render;
 
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.util.ResourceLocation;
@@ -13,8 +16,8 @@ import com.gollum.castledefenders.common.entities.EntityMercenary;
 
 public class RenderMercCastleDefenders extends RenderCastleDefenders {
 	
-	public RenderMercCastleDefenders(String name) {
-		super(name);
+	public RenderMercCastleDefenders(RenderManager renderManager, String name) {
+		super(renderManager, name);
 	}
 
 	@Override
@@ -27,7 +30,7 @@ public class RenderMercCastleDefenders extends RenderCastleDefenders {
 		return this.getResource(name);
 	}
 
-	public void doRender(Entity entity, double x, double y, double z, float par8, float par9) {
+	public void doRender(EntityLiving entity, double x, double y, double z, float par8, float par9) {
 		super.doRender(entity, x, y, z, par8, par9);
 		
 		EntityMercenary entityMercenary = (EntityMercenary) entity;
@@ -36,7 +39,7 @@ public class RenderMercCastleDefenders extends RenderCastleDefenders {
 				this.renderLife(entityMercenary, x, y, z);
 			}
 		} else {
-			this.func_147906_a(entityMercenary, entityMercenary.getMessagePlayer(), x, y, z, 64);
+			this.renderLivingLabel(entityMercenary, entityMercenary.getMessagePlayer(), x, y, z, 64);
 		}
 
 		GL11.glPushMatrix();
@@ -58,41 +61,44 @@ public class RenderMercCastleDefenders extends RenderCastleDefenders {
 			EntityMercenary entityMerc = (EntityMercenary)entityLivingBase;
 			
 			float zoom = 0.01666667F * 1.6F;
-			Tessellator tessellator = Tessellator.instance;
-			double top = -ModCastleDefenders.config.mercenaryLifeTop;
-			double height = ModCastleDefenders.config.mercenaryLifeHeight;
-			double width = ModCastleDefenders.config.mercenaryLifeWidth;
+			Tessellator tessellator = Tessellator.getInstance();
+			WorldRenderer render = tessellator.getWorldRenderer();
 			
-			GL11.glDisable(GL11.GL_TEXTURE_2D);
-			GL11.glPushMatrix();
-			GL11.glTranslatef((float)x + 0.0F, (float)y + 0.1F, (float)z);
-			GL11.glNormal3f(0.0F, 1.0F, 0.0F);
-			GL11.glRotatef(-this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F); // La rotation pour suivre la caméra
-			GL11.glScalef(-zoom, -zoom, zoom);
-			GL11.glDisable(GL11.GL_LIGHTING);
-			
-			
-			tessellator.startDrawingQuads();
-			float Health = entityMerc.getHealth();
-			float MaxHealth = entityMerc.getMaxHealth();
-			float ratio = Health / MaxHealth;
-			double sizeUse = width * ratio;
-			
-			// Red
-			tessellator.setColorRGBA_F(0.7F, 0.0F, 0.0F, 1.0F);
-			tessellator.addVertex(-width/2 + sizeUse, -height + top, 0.0D);
-			tessellator.addVertex(-width/2 + sizeUse, top          , 0.0D);
-			tessellator.addVertex(width/2           , top          , 0.0D);
-			tessellator.addVertex(width/2           , -height + top, 0.0D);
-			
-			// Green
-			tessellator.setColorRGBA_F(0.0F, 0.7F, 0.0F, 1.0F);
-			tessellator.addVertex(-width/2         , -height + top, 0.0D);
-			tessellator.addVertex(-width/2         , top          , 0.0D);
-			tessellator.addVertex(sizeUse - width/2, top          , 0.0D);
-			tessellator.addVertex(sizeUse - width/2, -height + top, 0.0D);
-			
-			tessellator.draw();
+			// TODO
+//			double top = -ModCastleDefenders.config.mercenaryLifeTop;
+//			double height = ModCastleDefenders.config.mercenaryLifeHeight;
+//			double width = ModCastleDefenders.config.mercenaryLifeWidth;
+//			
+//			GL11.glDisable(GL11.GL_TEXTURE_2D);
+//			GL11.glPushMatrix();
+//			GL11.glTranslatef((float)x + 0.0F, (float)y + 0.1F, (float)z);
+//			GL11.glNormal3f(0.0F, 1.0F, 0.0F);
+//			GL11.glRotatef(-this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F); // La rotation pour suivre la caméra
+//			GL11.glScalef(-zoom, -zoom, zoom);
+//			GL11.glDisable(GL11.GL_LIGHTING);
+//			
+//			
+//			render.startDrawingQuads();
+//			float Health = entityMerc.getHealth();
+//			float MaxHealth = entityMerc.getMaxHealth();
+//			float ratio = Health / MaxHealth;
+//			double sizeUse = width * ratio;
+//			
+//			// Red
+//			tessellator.setColorRGBA_F(0.7F, 0.0F, 0.0F, 1.0F);
+//			tessellator.addVertex(-width/2 + sizeUse, -height + top, 0.0D);
+//			tessellator.addVertex(-width/2 + sizeUse, top          , 0.0D);
+//			tessellator.addVertex(width/2           , top          , 0.0D);
+//			tessellator.addVertex(width/2           , -height + top, 0.0D);
+//			
+//			// Green
+//			tessellator.setColorRGBA_F(0.0F, 0.7F, 0.0F, 1.0F);
+//			tessellator.addVertex(-width/2         , -height + top, 0.0D);
+//			tessellator.addVertex(-width/2         , top          , 0.0D);
+//			tessellator.addVertex(sizeUse - width/2, top          , 0.0D);
+//			tessellator.addVertex(sizeUse - width/2, -height + top, 0.0D);
+//			
+//			tessellator.draw();
 			
 			GL11.glEnable(GL11.GL_TEXTURE_2D);
 			GL11.glEnable(GL11.GL_LIGHTING);

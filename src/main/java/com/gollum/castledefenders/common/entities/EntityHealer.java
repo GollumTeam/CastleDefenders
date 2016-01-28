@@ -56,7 +56,7 @@ public class EntityHealer extends EntityMerc {
 	private void healEntitiesNearby() {
 		
 		List<EntityPlayer> entitiesNearby = this.worldObj.getEntitiesWithinAABB (
-			EntityPlayer.class, AxisAlignedBB.getBoundingBox(
+			EntityPlayer.class, AxisAlignedBB.fromBounds (
 				this.posX - this.getFollowRange(), this.posY - this.getFollowRange(), this.posZ - this.getFollowRange(), 
 				this.posX + this.getFollowRange(), this.posY + this.getFollowRange(), this.posZ + this.getFollowRange()
 			)

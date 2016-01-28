@@ -6,7 +6,9 @@ import com.gollum.castledefenders.ModCastleDefenders;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderCastleDefenders extends RenderBiped {
@@ -18,8 +20,8 @@ public class RenderCastleDefenders extends RenderBiped {
 	
 	protected String name;
 	
-	public RenderCastleDefenders (String name) {
-		super(new ModelBiped(), 0.5F);
+	public RenderCastleDefenders (RenderManager renderManager, String name) {
+		super(renderManager, new ModelBiped(), 0.5F);
 		this.name = name;
 	}
 	
@@ -38,7 +40,7 @@ public class RenderCastleDefenders extends RenderBiped {
 	}
 	
 	@Override
-	protected ResourceLocation getEntityTexture(Entity par1Entity) {
+	protected ResourceLocation getEntityTexture(EntityLiving par1Entity) {
 		return getResource(name);
 	}
 

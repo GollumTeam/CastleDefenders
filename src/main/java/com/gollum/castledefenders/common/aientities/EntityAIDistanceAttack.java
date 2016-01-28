@@ -10,6 +10,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -70,7 +71,7 @@ public class EntityAIDistanceAttack extends EntityAIBase
 	 */
 	public void updateTask() {
 		
-		double distance = this.entityHost.getDistanceSq(this.attackTarget.posX, this.attackTarget.boundingBox.minY, this.attackTarget.posZ);
+		double distance = this.entityHost.getDistanceSq(this.attackTarget.posX, this.attackTarget.getEntityBoundingBox().minY, this.attackTarget.posZ);
 		boolean canSeeEntity = this.entityHost.getEntitySenses().canSee(this.attackTarget);
 		
 		if (canSeeEntity) {
@@ -120,14 +121,15 @@ public class EntityAIDistanceAttack extends EntityAIBase
 				x = MathHelper.floor_double(this.attackTarget.posX) + random.nextInt(5) - 2;
 				y = MathHelper.floor_double(this.attackTarget.posY);
 				z = MathHelper.floor_double(this.attackTarget.posZ + random.nextInt(5) - 2);
+				BlockPos pos = new BlockPos(x, y, z);
 				
-				for (int i = 0; i < 2 && !this.worldObj.isAirBlock(x, y, z); i++) {
+				for (int i = 0; i < 2 && !this.worldObj.isAirBlock(pos); i++) {
 					y++;
 				}
 				
-				if (this.worldObj.isAirBlock(x, y, z)) {
+				if (this.worldObj.isAirBlock(pos)) {
 					
-					this.worldObj.setBlock(x, y, z, Blocks.fire, 0, 3);
+					this.worldObj.setBlockState(pos, Blocks.fire.getDefaultState(), 3);
 					this.worldObj.playSoundEffect(x, y, z, "ambient.weather.thunder", 2.0F, 0.8F + random.nextFloat() * 0.2F);
 					this.worldObj.playSoundEffect(x, y, z, "random.explode", 2.0F, 0.6F + random.nextFloat() * 0.2F);
 					

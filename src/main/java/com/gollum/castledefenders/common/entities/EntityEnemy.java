@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
@@ -11,7 +12,9 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -30,20 +33,19 @@ public abstract class EntityEnemy extends EntityMob {
 		
 		this.setSize(1.1F, 1.8F);
 		
-		this.getNavigator().setBreakDoors(false); // Permet d'ouvrir les port
-		this.getNavigator().setAvoidsWater(true); // Evite l'eau
+		((PathNavigateGround)this.getNavigator()).setBreakDoors(true); // Permet d'ouvrir les port
+		((PathNavigateGround)this.getNavigator()).setAvoidsWater(true); // Evite l'eau
 		
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(this.getMoveSpeed ());
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setBaseValue(this.getMaxHealt ());
 		this.getEntityAttribute(SharedMonsterAttributes.followRange)  .setBaseValue(this.getFollowRange ());
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage) .setBaseValue(this.getAttackStrength ());
 		
-		this.getNavigator().setBreakDoors(true);
 		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMoveSpeed()));
-		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityDefender.class, 0, true));
-		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityMercenary.class,  0, true));
+		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityPlayer.class   , 0, true, false, null));
+		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityDefender.class , 0, true, false, null));
+		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityMercenary.class, 0, true, false, null));
 
 	}
 
@@ -103,14 +105,6 @@ public abstract class EntityEnemy extends EntityMob {
 	}
 	
 	/**
-	 * Returns true if the newer Entity AI code should be run
-	 */
-	@Override
-	public boolean isAIEnabled() {
-		return true;
-	}
-	
-	/**
 	 * Returns the item ID for the item the mob drops on death.
 	 */
 	protected int getDropItemId() {
@@ -125,17 +119,19 @@ public abstract class EntityEnemy extends EntityMob {
 	public boolean getCanSpawnHere() {
 		
 		int x = MathHelper.floor_double(this.posX);
-		int y = MathHelper.floor_double(this.boundingBox.minY);
+		int y = MathHelper.floor_double(this.getEntityBoundingBox().minY);
 		int z = MathHelper.floor_double(this.posZ);
 		
-		Block block = this.worldObj.getBlock(x, y - 1, z);
-		Block up1 = this.worldObj.getBlock(x, y, z);
-		Block up2 = this.worldObj.getBlock(x, y + 1, z);
+		BlockPos pos = new BlockPos(x, y, z);
+		
+		IBlockState stateBlock = this.worldObj.getBlockState(pos.down());
+		IBlockState stateUp1 = this.worldObj.getBlockState(pos);
+		IBlockState stateUp2 = this.worldObj.getBlockState(pos.up());
 		
 
 		List entityListBlockArround = this.worldObj.getEntitiesWithinAABB(
 			this.getClass(), 
-			AxisAlignedBB.getBoundingBox(
+			AxisAlignedBB.fromBounds(
 				this.posX,        this.posY,        this.posZ,
 				this.posX + 1.0D, this.posY + 1.0D, this.posZ + 1.0D
 			).expand(2.0D, 2.0D, 2.0D)
@@ -149,10 +145,11 @@ public abstract class EntityEnemy extends EntityMob {
 		}
 		
 		return
-			block == this.blockSpawn &&
-			(up1 == null || up1 instanceof BlockAir || !up1.isCollidable()) &&
-			(up2 == null || up2 instanceof BlockAir || !up2.isCollidable()) &&
-			!found;
+			stateBlock.getBlock() == this.blockSpawn &&
+			(stateUp1 == null || stateUp1.getBlock() instanceof BlockAir || !stateUp1.getBlock().isCollidable()) &&
+			(stateUp2 == null || stateUp2.getBlock() instanceof BlockAir || !stateUp2.getBlock().isCollidable()) &&
+			!found
+		;
 	}
 	
 	/**

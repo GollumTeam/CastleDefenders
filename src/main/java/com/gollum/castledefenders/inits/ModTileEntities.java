@@ -14,7 +14,7 @@ import com.gollum.castledefenders.common.tileentities.TileEntityBlockMage;
 import com.gollum.castledefenders.common.tileentities.TileEntityBlockMerc;
 import com.gollum.castledefenders.common.tileentities.TileEntityBlockMercArcher;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 
 public class ModTileEntities {

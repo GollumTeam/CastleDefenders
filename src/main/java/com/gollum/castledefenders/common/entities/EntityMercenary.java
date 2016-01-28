@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -27,8 +28,10 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathEntity;
+import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
@@ -38,8 +41,8 @@ import com.gollum.castledefenders.ModCastleDefenders;
 import com.gollum.core.common.config.type.ItemStackConfigType;
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class EntityMercenary extends EntityTameable {
 	
@@ -56,8 +59,8 @@ public abstract class EntityMercenary extends EntityTameable {
 		
 		this.setSize(1.1F, 1.8F);
 		
-		this.getNavigator().setBreakDoors(true); // Permet d'ouvrir les port
-		this.getNavigator().setAvoidsWater(false); // Evite l'eau
+		((PathNavigateGround)this.getNavigator()).setBreakDoors(true); // Permet d'ouvrir les port
+		((PathNavigateGround)this.getNavigator()).setAvoidsWater(false); // Evite l'eau
 		
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(this.getMoveSpeed ());
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setBaseValue(this.getMaxHealt ());
@@ -76,9 +79,9 @@ public abstract class EntityMercenary extends EntityTameable {
 		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIOwnerHurtByTarget(this));
 		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIHurtByTarget(this, true));
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAITargetNonTamed(this, IMob.class, 200, false));
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget(this, IMob.class, 0, true));
-		
+//		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAITargetNonTamed(this, IMob.class, 200, false));
+//		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget(this, IMob.class, 0, true, null));
+		// TODO
 	}
 	
 	/**
@@ -186,14 +189,6 @@ public abstract class EntityMercenary extends EntityTameable {
 	}
 	
 	/**
-	 * Returns true if the newer Entity AI code should be run
-	 */
-	@Override
-	public boolean isAIEnabled() { 
-		return true;
-	}
-	
-	/**
 	 * main AI tick function, replaces updateEntityActionState
 	 */
 	@Override
@@ -296,19 +291,22 @@ public abstract class EntityMercenary extends EntityTameable {
 	 * entity.
 	 */
 	@Override
-	public boolean getCanSpawnHere() { 
+	public boolean getCanSpawnHere() {
 		
 		int x = MathHelper.floor_double(this.posX);
-		int y = MathHelper.floor_double(this.boundingBox.minY);
+		int y = MathHelper.floor_double(this.getEntityBoundingBox().minY);
 		int z = MathHelper.floor_double(this.posZ);
 		
-		Block block = this.worldObj.getBlock(x, y - 1, z);
-		Block up1   = this.worldObj.getBlock(x, y, z);
-		Block up2   = this.worldObj.getBlock(x, y + 1, z);
+		BlockPos pos = new BlockPos(x, y, z);
 		
+		IBlockState stateBlock = this.worldObj.getBlockState(pos.down());
+		IBlockState stateUp1 = this.worldObj.getBlockState(pos);
+		IBlockState stateUp2 = this.worldObj.getBlockState(pos.up());
+		
+
 		List entityListBlockArround = this.worldObj.getEntitiesWithinAABB(
 			this.getClass(), 
-			AxisAlignedBB.getBoundingBox(
+			AxisAlignedBB.fromBounds(
 				this.posX,        this.posY,        this.posZ,
 				this.posX + 1.0D, this.posY + 1.0D, this.posZ + 1.0D
 			).expand(2.0D, 2.0D, 2.0D)
@@ -322,10 +320,11 @@ public abstract class EntityMercenary extends EntityTameable {
 		}
 		
 		return
-			block  == this.blockSpawn &&
-			(up1 == null || up1 instanceof BlockAir || !up1.isCollidable()) &&
-			(up2 == null || up2 instanceof BlockAir || !up2.isCollidable()) &&
-			!found;
+			stateBlock.getBlock() == this.blockSpawn &&
+			(stateUp1 == null || stateUp1.getBlock() instanceof BlockAir || !stateUp1.getBlock().isCollidable()) &&
+			(stateUp2 == null || stateUp2.getBlock() instanceof BlockAir || !stateUp2.getBlock().isCollidable()) &&
+			!found
+		;
 	}
 	
 	/**
@@ -368,21 +367,22 @@ public abstract class EntityMercenary extends EntityTameable {
 	}
 	
 	/**
-	 * Basic mob attack. Default to touch of death in EntityCreature. Overridden
-	 * by each mob to define their attack.
-	 */
-	@Override
-	protected void attackEntity(Entity entity, float var2) {
-		if (
-				this.attackTime <= 0 && var2 < 2.0F && 
-				entity.boundingBox.maxY > this.boundingBox.minY &&
-				entity.boundingBox.minY < this.boundingBox.maxY
-			) {
-			
-			this.attackTime = 10;
-			this.attackEntityAsMob(entity);
-		}
-	}
+//	 * Basic mob attack. Default to touch of death in EntityCreature. Overridden
+//	 * by each mob to define their attack.
+//	 */
+//	TODO
+//	@Override
+//	protected void attackEntity(Entity entity, float var2) {
+//		if (
+//				this.attackTime <= 0 && var2 < 2.0F && 
+//				entity.boundingBox.maxY > this.boundingBox.minY &&
+//				entity.boundingBox.minY < this.boundingBox.maxY
+//			) {
+//			
+//			this.attackTime = 10;
+//			this.attackEntityAsMob(entity);
+//		}
+//	}
 	
 	/**
 	 * Called when the entity is attacked.
@@ -390,21 +390,22 @@ public abstract class EntityMercenary extends EntityTameable {
 	@Override
 	public boolean attackEntityFrom(DamageSource damageSource, float strength) {
 		
-		if (super.attackEntityFrom(damageSource, strength)) {
-			Entity entity = damageSource.getEntity();
-
-			if (this.riddenByEntity != entity && this.ridingEntity != entity) {
-				if (entity != this) {
-					this.entityToAttack = entity;
-				}
-
-				return true;
-			} else {
-				return true;
-			}
-		} else {
+		// TODO
+//		if (super.attackEntityFrom(damageSource, strength)) {
+//			Entity entity = damageSource.getEntity();
+//
+//			if (this.riddenByEntity != entity && this.ridingEntity != entity) {
+//				if (entity != this) {
+//					this.entityToAttack = entity;
+//				}
+//
+//				return true;
+//			} else {
+//				return true;
+//			}
+//		} else {
 			return false;
-		}
+//		}
 	}
 	
 	@Override
@@ -460,25 +461,26 @@ public abstract class EntityMercenary extends EntityTameable {
 	}
 	
 	private void linkOwner (EntityPlayer player) {
-		
-		this.setPathToEntity((PathEntity) null);
-		this.setAttackTarget((EntityLivingBase) null);
-		this.isJumping = false;
-		
-		if (player !=  null) {
-			this.setTamed(true);
-			this.func_152115_b(player.getUniqueID().toString());
-			
-			if (!this.ownerList.contains (player.getUniqueID().toString())) {
-				this.ownerList.add (player.getUniqueID().toString());
-			}
-		} else {
-			this.setTamed(false);
-			this.func_152115_b("");
-		}
-		
-		this.worldObj.setEntityState(this, (byte) 7);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(this.getMoveSpeed ());
+		// TODO
+//		
+//		this.setPathToEntity((PathEntity) null);
+//		this.setAttackTarget((EntityLivingBase) null);
+//		this.isJumping = false;
+//		
+//		if (player !=  null) {
+//			this.setTamed(true);
+//			this.func_152115_b(player.getUniqueID().toString());
+//			
+//			if (!this.ownerList.contains (player.getUniqueID().toString())) {
+//				this.ownerList.add (player.getUniqueID().toString());
+//			}
+//		} else {
+//			this.setTamed(false);
+//			this.func_152115_b("");
+//		}
+//		
+//		this.worldObj.setEntityState(this, (byte) 7);
+//		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(this.getMoveSpeed ());
 	}
 	
 	/**
@@ -487,49 +489,52 @@ public abstract class EntityMercenary extends EntityTameable {
 	 */
 	public boolean interact(EntityPlayer player) {
 		
-		ItemStack is = player.inventory.getCurrentItem();
-
-		if (!this.worldObj.isRemote) {
-			if (!this.isTamed()) {
-				
-				boolean buy = this.isAlraidyBuy(player);
-				
-				if (!buy) {
-					for (ItemStackConfigType stackConfig: this.getCost ()) {
-						ItemStack stack = stackConfig.getItemStak();
-						if (buy = this.buy (player, stack.getItem(), stack.stackSize)) {
-							break;
-						}
-					}
-				}
-				
-				if (buy) {
-					
-					this.linkOwner(player);
-					return true;
-				}
-				
-			} else if (this.func_152113_b().equals(player.getUniqueID().toString())) {
-				
-				ModCastleDefenders.log.debug("Interract with owner: "+player.getCommandSenderName());
-				
-				if (this.buy (player, ItemFood.class, 1)) {
-					
-					ItemFood food = (ItemFood) is.getItem();
-					this.heal(food.func_150905_g(is));
-					
-					this.worldObj.playSoundAtEntity (this, "random.eat", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
-					this.eating = 0;
-					
-					return true;
-				} else {
-
-					this.linkOwner(null);
-					
-					return true;
-				}
-			}
-		}
+		
+		// TODO
+		
+//		ItemStack is = player.inventory.getCurrentItem();
+//
+//		if (!this.worldObj.isRemote) {
+//			if (!this.isTamed()) {
+//				
+//				boolean buy = this.isAlraidyBuy(player);
+//				
+//				if (!buy) {
+//					for (ItemStackConfigType stackConfig: this.getCost ()) {
+//						ItemStack stack = stackConfig.getItemStak();
+//						if (buy = this.buy (player, stack.getItem(), stack.stackSize)) {
+//							break;
+//						}
+//					}
+//				}
+//				
+//				if (buy) {
+//					
+//					this.linkOwner(player);
+//					return true;
+//				}
+//				
+//			} else if (this.func_152113_b().equals(player.getUniqueID().toString())) {
+//				
+//				ModCastleDefenders.log.debug("Interract with owner: "+player.getCommandSenderName());
+//				
+//				if (this.buy (player, ItemFood.class, 1)) {
+//					
+//					ItemFood food = (ItemFood) is.getItem();
+//					this.heal(food.func_150905_g(is));
+//					
+//					this.worldObj.playSoundAtEntity (this, "random.eat", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
+//					this.eating = 0;
+//					
+//					return true;
+//				} else {
+//
+//					this.linkOwner(null);
+//					
+//					return true;
+//				}
+//			}
+//		}
 
 		return false;
 	}
@@ -562,6 +567,7 @@ public abstract class EntityMercenary extends EntityTameable {
 	}
 	
 	public boolean isOwner(EntityPlayer player) {
-		return this.func_152113_b().equals(player.getUniqueID().toString());
+		return false; // TODO
+//		return this.func_152113_b().equals(player.getUniqueID().toString());
 	}
 }

@@ -11,7 +11,7 @@ import com.gollum.castledefenders.ModCastleDefenders;
 import com.gollum.castledefenders.inits.ModAchievements;
 import com.gollum.core.common.events.BuildingGenerateEvent;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 
 public class BuildingHandler {
@@ -48,33 +48,33 @@ public class BuildingHandler {
 							// Add Achievement
 							player.addStat(ModAchievements.achievementCastleDefenders, 1);
 							
-							if (!player.func_147099_x().hasAchievementUnlocked(target)) {
+							if (!player.getStatFile().hasAchievementUnlocked(target)) {
 								player.addStat(target, 1);
 								
 								if (
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementCastle1) &&
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementCastle2) &&
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementCastle3) &&
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementCastle4) &&
-									!player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllCastle)
+									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementCastle1) &&
+									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementCastle2) &&
+									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementCastle3) &&
+									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementCastle4) &&
+									!player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementAllCastle)
 								) {
 									player.addStat(ModAchievements.achievementAllCastle, 1);
 								}
 								
 								if (
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementMercenary1) &&
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementMercenary2) &&
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementMercenary3) &&
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementMercenary4) &&
-									!player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllMercenary)
+									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementMercenary1) &&
+									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementMercenary2) &&
+									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementMercenary3) &&
+									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementMercenary4) &&
+									!player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementAllMercenary)
 								) {
 									player.addStat(ModAchievements.achievementAllMercenary, 1);
 								}
 								
 								if (
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllCastle)    &&
-									player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllMercenary) &&
-									!player.func_147099_x().hasAchievementUnlocked(ModAchievements.achievementAllBuilding)
+									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementAllCastle)    &&
+									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementAllMercenary) &&
+									!player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementAllBuilding)
 								) {
 									player.addStat(ModAchievements.achievementAllBuilding, 1);
 								}

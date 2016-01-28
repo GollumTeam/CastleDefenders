@@ -11,14 +11,16 @@ import com.gollum.castledefenders.common.blocks.BlockMerc;
 import com.gollum.castledefenders.common.blocks.BlockMercArcher;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ITickable;
 
-public class TileEntityBlockCastleDefendersCompatibility extends TileEntity {
+public class TileEntityBlockCastleDefendersCompatibility extends TileEntity implements ITickable {
 
 	/**
 	 * Constructeur
@@ -27,22 +29,27 @@ public class TileEntityBlockCastleDefendersCompatibility extends TileEntity {
 		super();
 	}
 	
-	public void updateEntity() {
+	@Override
+	public void update() {
 		
-		Block block = this.getWorldObj().getBlock(this.xCoord, this.yCoord, this.zCoord);
+		IBlockState state = this.getWorld().getBlockState(this.pos);
 		
-		if (block instanceof BlockKnight    ) { this.getWorldObj().setTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockKnight    ()); }
-		if (block instanceof BlockArcher    ) { this.getWorldObj().setTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockArcher    ()); }
-		if (block instanceof BlockMage      ) { this.getWorldObj().setTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockMage      ()); }
-		if (block instanceof BlockEKnight   ) { this.getWorldObj().setTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockEKnight   ()); }
-		if (block instanceof BlockEArcher   ) { this.getWorldObj().setTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockEArcher   ()); }
-		if (block instanceof BlockEMage     ) { this.getWorldObj().setTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockEMage     ()); }
-		if (block instanceof BlockMerc      ) { this.getWorldObj().setTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockMerc      ()); }
-		if (block instanceof BlockMercArcher) { this.getWorldObj().setTileEntity(this.xCoord, this.yCoord, this.zCoord, new TileEntityBlockMercArcher()); }
+		if (state != null) {
+			Block block = state.getBlock();
+			
+			if (block instanceof BlockKnight    ) { this.getWorld().setTileEntity(this.pos, new TileEntityBlockKnight    ()); }
+			if (block instanceof BlockArcher    ) { this.getWorld().setTileEntity(this.pos, new TileEntityBlockArcher    ()); }
+			if (block instanceof BlockMage      ) { this.getWorld().setTileEntity(this.pos, new TileEntityBlockMage      ()); }
+			if (block instanceof BlockEKnight   ) { this.getWorld().setTileEntity(this.pos, new TileEntityBlockEKnight   ()); }
+			if (block instanceof BlockEArcher   ) { this.getWorld().setTileEntity(this.pos, new TileEntityBlockEArcher   ()); }
+			if (block instanceof BlockEMage     ) { this.getWorld().setTileEntity(this.pos, new TileEntityBlockEMage     ()); }
+			if (block instanceof BlockMerc      ) { this.getWorld().setTileEntity(this.pos, new TileEntityBlockMerc      ()); }
+			if (block instanceof BlockMercArcher) { this.getWorld().setTileEntity(this.pos, new TileEntityBlockMercArcher()); }
 		
-		this.getWorldObj().markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
+			this.getWorld().markBlockForUpdate(this.pos);
 		
-		ModCastleDefenders.log.debug ("Replace old TileEntity");
+			ModCastleDefenders.log.debug ("Replace old TileEntity");
+		}
 	}
 	
 }

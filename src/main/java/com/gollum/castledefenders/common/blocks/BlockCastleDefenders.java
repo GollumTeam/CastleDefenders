@@ -1,7 +1,9 @@
 package com.gollum.castledefenders.common.blocks;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
@@ -24,7 +26,7 @@ public abstract class BlockCastleDefenders extends HBlockContainer {
 	 * inventory.setCurrentItem (along with isCreative)
 	 */
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player) {
 		return null;
 	}
 	

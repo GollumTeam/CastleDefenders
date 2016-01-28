@@ -8,8 +8,9 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ITickable;
 
-public abstract class TileEntityBlockCastleDefenders extends TileEntity {
+public abstract class TileEntityBlockCastleDefenders extends TileEntity implements ITickable {
 
 	// Les données de l'entité
 	public int delay = 20;
@@ -39,20 +40,15 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity {
 	}
 	
 	public boolean anyPlayerInRange() {
-		return this.worldObj.getClosestPlayer((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D, (double) this.zCoord + 0.5D, 16.0D) != null;
+		return this.worldObj.getClosestPlayer((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D, 16.0D) != null;
 	}
 
 	private void updateDelay() {
 		this.delay = this.minSpawnDelay + this.worldObj.rand.nextInt(this.maxSpawnDelay - this.minSpawnDelay);
 	}
 	
-	/**
-	 * Allows the entity to update its state. Overridden in most subclasses,
-	 * e.g. the mob spawner uses this to count ticks and creates a new spawn
-	 * inside its implementation.
-	 */
-	public void updateEntity() {
-		
+	@Override
+	public void update() {
 		
 		if (this.anyPlayerInRange()) {
 			
@@ -75,7 +71,7 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity {
 					return;
 				}
 
-				int nbEntityArround = this.worldObj.getEntitiesWithinAABB(entity.getClass(), AxisAlignedBB.getBoundingBox((double)this.xCoord, (double)this.yCoord, (double)this.zCoord, (double)(this.xCoord + 1), (double)(this.yCoord + 1), (double)(this.zCoord + 1)).expand(12.0D, 4.0D, 12.0D)).size();
+				int nbEntityArround = this.worldObj.getEntitiesWithinAABB(entity.getClass(), AxisAlignedBB.fromBounds((double)this.pos.getX(), (double)this.pos.getY(), (double)this.pos.getZ(), (double)(this.pos.getX() + 1), (double)(this.pos.getY() + 1), (double)(this.pos.getZ() + 1)).expand(12.0D, 4.0D, 12.0D)).size();
 				
 				//Le nombre d'entity est supérieur à 6 autour du block
 				if (nbEntityArround >= this.maxSpawn) {
@@ -83,16 +79,16 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity {
 					return;
 				}
 				
-				double x = (double)this.xCoord + 0.5D;
-				double y = (double)(this.yCoord + 1);
-				double z = (double)this.zCoord + 0.5D;
+				double x = (double)this.pos.getX() + 0.5D;
+				double y = (double)(this.pos.getY() + 1);
+				double z = (double)this.pos.getZ() + 0.5D;
 				EntityLiving entityLiving = entity instanceof EntityLiving ? (EntityLiving)entity : null;
 				entity.setLocationAndAngles(x, y, z, this.worldObj.rand.nextFloat() * 360.0F, this.worldObj.rand.nextFloat() * 360.0F);
 				
 				if (entityLiving == null || entityLiving.getCanSpawnHere()) {
 					
 					this.worldObj.spawnEntityInWorld(entity);
-					this.worldObj.playSoundEffect (this.xCoord, this.yCoord, this.zCoord, "dig.stone", 0.5F, this.worldObj.rand.nextFloat() * 0.25F + 0.6F);
+					this.worldObj.playSoundEffect (this.pos.getX(), this.pos.getY(), this.pos.getZ(), "dig.stone", 0.5F, this.worldObj.rand.nextFloat() * 0.25F + 0.6F);
 					
 					if (entityLiving != null) {
 						entityLiving.spawnExplosionParticle();

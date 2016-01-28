@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -13,8 +14,10 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.item.ItemStack;
+import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -35,8 +38,8 @@ public abstract class EntityDefender extends EntityAnimal {
 		
 		this.setSize(1.1F, 1.8F);
 		
-		this.getNavigator().setBreakDoors(true); // Permet d'ouvrir les port
-		this.getNavigator().setAvoidsWater(true); // Evite l'eau
+		((PathNavigateGround)this.getNavigator()).setBreakDoors(true); // Permet d'ouvrir les port
+		((PathNavigateGround)this.getNavigator()).setAvoidsWater(true); // Evite l'eau
 		
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(this.getMoveSpeed ());
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth)    .setBaseValue(this.getMaxHealt ());
@@ -102,52 +105,46 @@ public abstract class EntityDefender extends EntityAnimal {
 	}
 	
 	/**
-	 * Returns true if the newer Entity AI code should be run
-	 */
-	@Override
-	public boolean isAIEnabled() {
-		return true;
-	}
-	
-	/**
 	 * Basic mob attack. Default to touch of death in EntityCreature. Overridden
 	 * by each mob to define their attack.
 	 */
-	@Override
-	protected void attackEntity(Entity entity, float var2) {
-		if (
-				this.attackTime <= 0 && var2 < 2.0F && 
-				entity.boundingBox.maxY > this.boundingBox.minY &&
-				entity.boundingBox.minY < this.boundingBox.maxY
-			) {
-			
-			this.attackTime = 10;
-			this.attackEntityAsMob(entity);
-		}
-	}
+// TODO
+//	@Override
+//	protected void attackEntity(Entity entity, float var2) {
+//		if (
+//				this.attackTime <= 0 && var2 < 2.0F && 
+//				entity.getEntityBoundingBox().maxY > this.getEntityBoundingBox().minY &&
+//				entity.getEntityBoundingBox().minY < this.getEntityBoundingBox().maxY
+//			) {
+//			
+//			this.attackTime = 10;
+//			this.attackEntityAsMob(entity);
+//		}
+//	}
 	
-	/**
-	 * Called when the entity is attacked.
-	 */
-	@Override
-	public boolean attackEntityFrom(DamageSource damageSource, float strength) {
-		
-		if (super.attackEntityFrom(damageSource, strength)) {
-			Entity entity = damageSource.getEntity();
-
-			if (this.riddenByEntity != entity && this.ridingEntity != entity) {
-				if (entity != this) {
-					this.entityToAttack = entity;
-				}
-
-				return true;
-			} else {
-				return true;
-			}
-		} else {
-			return false;
-		}
-	}
+	// TODO
+//	/**
+//	 * Called when the entity is attacked.
+//	 */
+//	@Override
+//	public boolean attackEntityFrom(DamageSource damageSource, float strength) {
+//		
+//		if (super.attackEntityFrom(damageSource, strength)) {
+//			Entity entity = damageSource.getEntity();
+//
+//			if (this.riddenByEntity != entity && this.ridingEntity != entity) {
+//				if (entity != this) {
+//					this.entityToAttack = entity;
+//				}
+//
+//				return true;
+//			} else {
+//				return true;
+//			}
+//		} else {
+//			return false;
+//		}
+//	}
 
 	/**
 	 * Returns true if this entity can attack entities of the specified class.
@@ -179,18 +176,21 @@ public abstract class EntityDefender extends EntityAnimal {
 	 */
 	@Override
 	public boolean getCanSpawnHere() {
-	
+		
 		int x = MathHelper.floor_double(this.posX);
-		int y = MathHelper.floor_double(this.boundingBox.minY);
+		int y = MathHelper.floor_double(this.getEntityBoundingBox().minY);
 		int z = MathHelper.floor_double(this.posZ);
 		
-		Block block = this.worldObj.getBlock(x, y - 1, z);
-		Block up1 = this.worldObj.getBlock(x, y, z);
-		Block up2 = this.worldObj.getBlock(x, y + 1, z);
+		BlockPos pos = new BlockPos(x, y, z);
 		
+		IBlockState stateBlock = this.worldObj.getBlockState(pos.down());
+		IBlockState stateUp1 = this.worldObj.getBlockState(pos);
+		IBlockState stateUp2 = this.worldObj.getBlockState(pos.up());
+		
+
 		List entityListBlockArround = this.worldObj.getEntitiesWithinAABB(
 			this.getClass(), 
-			AxisAlignedBB.getBoundingBox(
+			AxisAlignedBB.fromBounds(
 				this.posX,        this.posY,        this.posZ,
 				this.posX + 1.0D, this.posY + 1.0D, this.posZ + 1.0D
 			).expand(2.0D, 2.0D, 2.0D)
@@ -204,10 +204,11 @@ public abstract class EntityDefender extends EntityAnimal {
 		}
 		
 		return
-			block == this.blockSpawn &&
-			(up1 == null || up1 instanceof BlockAir || !up1.isCollidable()) &&
-			(up2 == null || up2 instanceof BlockAir || !up2.isCollidable()) &&
-			!found;
+			stateBlock.getBlock() == this.blockSpawn &&
+			(stateUp1 == null || stateUp1.getBlock() instanceof BlockAir || !stateUp1.getBlock().isCollidable()) &&
+			(stateUp2 == null || stateUp2.getBlock() instanceof BlockAir || !stateUp2.getBlock().isCollidable()) &&
+			!found
+		;
 	}
 	
 	/**

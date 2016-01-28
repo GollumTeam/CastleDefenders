@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 
 import com.gollum.core.common.tileentities.TileEntityBlockProximitySpawn;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModRecipes {
 	
