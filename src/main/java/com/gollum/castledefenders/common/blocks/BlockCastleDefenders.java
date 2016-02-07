@@ -29,12 +29,13 @@ public abstract class BlockCastleDefenders extends HBlockContainer {
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player) {
 		return null;
 	}
+
+	@Override
+	public int getRenderType() {
+		return 3;
+	}
 	
-	/**
-	 * Is this block (a) opaque and (b) a full 1m cube? This determines whether
-	 * or not to render the shared face of two adjacent blocks and also whether
-	 * the player can attach torches, redstone wire, etc to this block.
-	 */
+	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}

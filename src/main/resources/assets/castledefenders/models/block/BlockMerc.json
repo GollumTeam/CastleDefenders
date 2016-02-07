@@ -1,0 +1,7 @@
+{
+    "parent": "castledefenders:block/BlockMercBase",
+    "textures": {
+        "side": "castledefenders:blocks/blockmerc_side",
+        "platform": "castledefenders:blocks/blockmerc"
+    }
+}
