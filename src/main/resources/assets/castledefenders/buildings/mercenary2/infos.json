@@ -6,7 +6,7 @@
 		{ "block": "minecraft:grass" },
 		{ "block": "CastleDefenders:BlockMerc" },
 		{ "block": "minecraft:fence" },
-		{ "block": "minecraft:torch", "orientation": "up"},
+		{ "block": "minecraft:torch", "states": { "facing": "north" } },
 		{ "block": "minecraft:fire" },
 		{ "block": "minecraft:cobblestone" },
 		{ "block": "minecraft:netherrack" },

@@ -8,29 +8,29 @@
 		{ "block": "CastleDefenders:BlockEKnight" },
 		{ "block": "CastleDefenders:BlockEArcher" },
 		{ "block": "minecraft:planks" },
-		{ "block": "minecraft:ladder", "orientation": "left" },
-		{ "block": "minecraft:torch", "orientation": "up"},
+		{ "block": "minecraft:ladder", "states": { "facing": "west" } },
+		{ "block": "minecraft:torch", "states": { "facing": "north" } },
 		{ "block": "minecraft:iron_bars"},
 		{ "block": "CastleDefenders:BlockEMage"},
-		{ "block": "minecraft:trapdoor", "orientation": "right"},
-		{ "block": "minecraft:torch", "orientation": "left"},
-		{ "block": "minecraft:torch", "orientation": "right"},
-		{ "block": "minecraft:stonebrick", "metadata": 3 },
+		{ "block": "minecraft:trapdoor", "states": { "facing": "east" } },
+		{ "block": "minecraft:torch", "states": { "facing": "west" } },
+		{ "block": "minecraft:torch", "states": { "facing": "east" } },
+		{ "block": "minecraft:stonebrick", "states": { "variant": "chiseled_stonebrick" } },
         { "block": "minecraft:dirt" },
         { "block": "minecraft:stone" }
 	],
 	"sets": {
 		
 		
-		"7x13x9": { "block": "minecraft:iron_door", "metadata": 0, "orientation":"right" },
-		"7x14x9": { "block": "minecraft:iron_door", "metadata": 8, "orientation":"right" },
-		"6x14x8": { "block": "minecraft:stone_button", "orientation":"right" },
-		"8x14x8": { "block": "minecraft:stone_button", "orientation":"left" },
+		"7x13x9": { "block": "minecraft:iron_door", "states": { "facing": "east" } },
+		"7x14x9": { "block": "minecraft:iron_door", "states": { "facing": "east", "half": "upper"} },
+		"6x14x8": { "block": "minecraft:stone_button", "states": { "facing": "east" } },
+		"8x14x8": { "block": "minecraft:stone_button", "states": { "facing": "west" } },
 		
-		"13x13x10": { "block": "minecraft:chest", "orientation":"right" },
+		"13x13x10": { "block": "minecraft:chest", "states": { "facing": "east" } },
 		"13x13x11": {
 			"block": "minecraft:chest",
-			"orientation":"right",
+			"states": { "facing": "east" },
 			"contents": [
 				[
 					{ "element": "minecraft:potion" , "metadata": 1 },
@@ -66,10 +66,10 @@
 			]
 		},
 		
-		"14x20x10": { "block": "minecraft:chest", "orientation":"right" },
+		"14x20x10": { "block": "minecraft:chest", "states": { "facing": "east" } },
 		"14x20x11": {
 			"block": "minecraft:chest",
-			"orientation":"right",
+			"states": { "facing": "east" },
 			"contents": [
 				[
 					{ "element": "minecraft:potion" , "metadata": 1 },
@@ -105,11 +105,10 @@
 		
 		},
 		
-		"10x6x15": { "block": "minecraft:chest"	  , "orientation":"up" },
+		"10x6x15": { "block": "minecraft:chest"	  , "states": { "facing": "north" } },
 		"11x6x15": {
 			"block": "minecraft:chest",
-			"orientation":"up",
-			
+			"states": { "facing": "noth" },
 			"contents": [
 				
 				[

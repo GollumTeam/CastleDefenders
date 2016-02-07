@@ -2,11 +2,11 @@
 	"height": -3,
 	
 	"color" : [
-		{ "block": "minecraft:wool", "metadata":14 },
+		{ "block": "minecraft:wool", "states": { "color": "red" } },
 		{ "block": "minecraft:grass" },
 		{ "block": "CastleDefenders:BlockEKnight" },
 		{ "block": "minecraft:fence" },
-		{ "block": "minecraft:torch", "orientation": "up"},
+		{ "block": "minecraft:torch", "states": { "facing": "north" } },
 		{ "block": "minecraft:fire" },
 		{ "block": "minecraft:cobblestone" },
 		{ "block": "minecraft:netherrack" },
