@@ -1,16 +1,21 @@
 package com.gollum.castledefenders.common.entities;
 
-import net.minecraft.entity.ai.EntityAIAttackOnCollide;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.monster.IMob;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-
 import com.gollum.castledefenders.ModCastleDefenders;
 import com.gollum.castledefenders.inits.ModBlocks;
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
+import com.google.common.base.Predicate;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.ai.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.monster.EntityGhast;
+import net.minecraft.entity.monster.EntityGolem;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public class EntityKnight extends EntityDefender {
 	
@@ -20,12 +25,18 @@ public class EntityKnight extends EntityDefender {
 		this.blockSpawn      = ModBlocks.blockKnight;
 		this.defaultHeldItem = new ItemStack(Items.iron_sword, 1);
 		
-		// TODO
-//		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, IMob.class, this.getMoveSpeed (), true));
-//		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityCreeper.class, this.getMoveSpeed (), true));
-//		
-//		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget(this, IMob.class         , 0, false, true));
-//		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget(this, EntityCreeper.class, 0, false, true));
+		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, this.getMoveSpeed (), true));
+		
+		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget (this, EntityLiving.class, 0, false, true, new Predicate<Entity>() {
+			public boolean apply(Entity entity) {
+				return 
+					entity instanceof EntityMob ||
+					entity instanceof EntitySlime ||
+					entity instanceof EntityGolem ||
+					entity instanceof EntityGhast
+				;
+			}
+		}));
 	}
 	
 	/**

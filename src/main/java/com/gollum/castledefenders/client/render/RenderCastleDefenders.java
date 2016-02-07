@@ -4,6 +4,7 @@ import java.util.Hashtable;
 
 import com.gollum.castledefenders.ModCastleDefenders;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -20,8 +21,8 @@ public class RenderCastleDefenders extends RenderBiped {
 	
 	protected String name;
 	
-	public RenderCastleDefenders (RenderManager renderManager, String name) {
-		super(renderManager, new ModelBiped(), 0.5F);
+	public RenderCastleDefenders (String name) {
+		super(Minecraft.getMinecraft().getRenderManager(), new ModelBiped(), 0.5F);
 		this.name = name;
 	}
 	

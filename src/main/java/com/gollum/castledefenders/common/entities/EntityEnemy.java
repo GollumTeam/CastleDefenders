@@ -5,11 +5,16 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.monster.EntityGhast;
+import net.minecraft.entity.monster.EntityGolem;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNavigateGround;
@@ -19,6 +24,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
+import com.google.common.base.Predicate;
 
 public abstract class EntityEnemy extends EntityMob {
 	
@@ -43,10 +49,15 @@ public abstract class EntityEnemy extends EntityMob {
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMoveSpeed()));
-		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityPlayer.class   , 0, true, false, null));
-		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityDefender.class , 0, true, false, null));
-		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityMercenary.class, 0, true, false, null));
-
+		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityLivingBase.class   , 0, true, false, new Predicate<Entity>() {
+			public boolean apply(Entity entity) {
+				return 
+					entity instanceof EntityPlayer ||
+					entity instanceof EntityDefender ||
+					entity instanceof EntityMercenary
+				;
+			}
+		}));
 	}
 
 	/**

@@ -19,15 +19,11 @@ public class EntityEArcher extends EntityEnemy {
 		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), EntityAIDistanceAttack.TYPE_ARROW));
 	}
 	
-	/**
-     * Determines if an entity can be despawned, used on idle far away entities
-     */
+	@Override
 	protected boolean canDespawn() {
 		return false;
 	}
 	
-	/**
-	 * @return les capacitées du mod
-	 */
+	@Override
 	protected MobCapacitiesConfigType getCapacities () { return ModCastleDefenders.config.eArcherCapacities; }
 }

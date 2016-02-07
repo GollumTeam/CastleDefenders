@@ -16,8 +16,8 @@ import com.gollum.castledefenders.common.entities.EntityMercenary;
 
 public class RenderMercCastleDefenders extends RenderCastleDefenders {
 	
-	public RenderMercCastleDefenders(RenderManager renderManager, String name) {
-		super(renderManager, name);
+	public RenderMercCastleDefenders(String name) {
+		super(name);
 	}
 
 	@Override

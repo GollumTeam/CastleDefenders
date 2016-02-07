@@ -19,8 +19,7 @@ public class EntityEKnight extends EntityEnemy {
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityPlayer.class, this.getMoveSpeed(), true));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityDefender.class, this.getMoveSpeed(), true));
-		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityMerc.class, this.getMoveSpeed(), true));
-		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityMercArcher.class, this.getMoveSpeed(), true));
+		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityMercenary.class, this.getMoveSpeed(), true));
 	}
 	
 	/**

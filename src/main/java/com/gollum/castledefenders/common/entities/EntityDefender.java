@@ -7,11 +7,13 @@ import net.minecraft.block.BlockAir;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.EntityGhast;
+import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNavigateGround;
@@ -105,46 +107,24 @@ public abstract class EntityDefender extends EntityAnimal {
 	}
 	
 	/**
-	 * Basic mob attack. Default to touch of death in EntityCreature. Overridden
-	 * by each mob to define their attack.
+	 * Called when the entity is attacked.
 	 */
-// TODO
-//	@Override
-//	protected void attackEntity(Entity entity, float var2) {
-//		if (
-//				this.attackTime <= 0 && var2 < 2.0F && 
-//				entity.getEntityBoundingBox().maxY > this.getEntityBoundingBox().minY &&
-//				entity.getEntityBoundingBox().minY < this.getEntityBoundingBox().maxY
-//			) {
-//			
-//			this.attackTime = 10;
-//			this.attackEntityAsMob(entity);
-//		}
-//	}
-	
-	// TODO
-//	/**
-//	 * Called when the entity is attacked.
-//	 */
-//	@Override
-//	public boolean attackEntityFrom(DamageSource damageSource, float strength) {
-//		
-//		if (super.attackEntityFrom(damageSource, strength)) {
-//			Entity entity = damageSource.getEntity();
-//
-//			if (this.riddenByEntity != entity && this.ridingEntity != entity) {
-//				if (entity != this) {
-//					this.entityToAttack = entity;
-//				}
-//
-//				return true;
-//			} else {
-//				return true;
-//			}
-//		} else {
-//			return false;
-//		}
-//	}
+	@Override
+	public boolean attackEntityFrom(DamageSource damageSource, float strength) {
+		
+		if (super.attackEntityFrom(damageSource, strength)) {
+			
+			Entity entity = damageSource.getEntity();
+			
+			if (this.riddenByEntity != entity && this.ridingEntity != entity) {
+				if (entity != this && entity instanceof EntityLivingBase) {
+					this.setAttackTarget((EntityLivingBase)entity);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
 	/**
 	 * Returns true if this entity can attack entities of the specified class.
