@@ -13,6 +13,7 @@ import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityGolem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.entity.monster.IMob;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -30,10 +31,7 @@ public class EntityArcher extends EntityDefender {
 		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget (this, EntityLiving.class, 0, true, false, new Predicate<Entity>() {
 			public boolean apply(Entity entity) {
 				return
-					entity instanceof EntityMob ||
-					entity instanceof EntitySlime ||
-					entity instanceof EntityGolem ||
-					entity instanceof EntityGhast
+					entity instanceof IMob
 				;
 			}
 		}));

@@ -13,8 +13,7 @@ public class EntityEMage extends EntityEnemy {
 		super(world);
 		this.blockSpawn = ModBlocks.blockEMage;
 		
-		// TODO
-//		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), EntityAIDistanceAttack.TYPE_FIRE));
+		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), EntityAIDistanceAttack.TYPE_FIRE));
 		
 	}
 	
