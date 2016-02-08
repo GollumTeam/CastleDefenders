@@ -1,18 +1,19 @@
 package com.gollum.castledefenders.client.render;
 
+import org.lwjgl.opengl.GL11;
+
+import com.gollum.castledefenders.ModCastleDefenders;
+import com.gollum.castledefenders.common.entities.EntityMercenary;
+
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
-import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.util.ResourceLocation;
-
-import org.lwjgl.opengl.GL11;
-
-import com.gollum.castledefenders.ModCastleDefenders;
-import com.gollum.castledefenders.common.entities.EntityMercenary;
 
 public class RenderMercCastleDefenders extends RenderCastleDefenders {
 	
@@ -52,58 +53,58 @@ public class RenderMercCastleDefenders extends RenderCastleDefenders {
 	/**
      * Draws the debug or playername text above a living
      */
-	protected void renderLife(EntityLivingBase entityLivingBase, double x, double y, double z) {
+	protected void renderLife(EntityLivingBase entity, double x, double y, double z) {
 		
 		boolean display = ModCastleDefenders.proxy.getDisplayHealth();
 		
 		if (display && ModCastleDefenders.config.displayMercenaryLife) {
 			
-			EntityMercenary entityMerc = (EntityMercenary)entityLivingBase;
-			
-			float zoom = 0.01666667F * 1.6F;
-			Tessellator tessellator = Tessellator.getInstance();
-			WorldRenderer render = tessellator.getWorldRenderer();
-			
-			// TODO
-//			double top = -ModCastleDefenders.config.mercenaryLifeTop;
-//			double height = ModCastleDefenders.config.mercenaryLifeHeight;
-//			double width = ModCastleDefenders.config.mercenaryLifeWidth;
-//			
-//			GL11.glDisable(GL11.GL_TEXTURE_2D);
-//			GL11.glPushMatrix();
-//			GL11.glTranslatef((float)x + 0.0F, (float)y + 0.1F, (float)z);
-//			GL11.glNormal3f(0.0F, 1.0F, 0.0F);
-//			GL11.glRotatef(-this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F); // La rotation pour suivre la caméra
-//			GL11.glScalef(-zoom, -zoom, zoom);
-//			GL11.glDisable(GL11.GL_LIGHTING);
-//			
-//			
-//			render.startDrawingQuads();
-//			float Health = entityMerc.getHealth();
-//			float MaxHealth = entityMerc.getMaxHealth();
-//			float ratio = Health / MaxHealth;
-//			double sizeUse = width * ratio;
-//			
-//			// Red
-//			tessellator.setColorRGBA_F(0.7F, 0.0F, 0.0F, 1.0F);
-//			tessellator.addVertex(-width/2 + sizeUse, -height + top, 0.0D);
-//			tessellator.addVertex(-width/2 + sizeUse, top          , 0.0D);
-//			tessellator.addVertex(width/2           , top          , 0.0D);
-//			tessellator.addVertex(width/2           , -height + top, 0.0D);
-//			
-//			// Green
-//			tessellator.setColorRGBA_F(0.0F, 0.7F, 0.0F, 1.0F);
-//			tessellator.addVertex(-width/2         , -height + top, 0.0D);
-//			tessellator.addVertex(-width/2         , top          , 0.0D);
-//			tessellator.addVertex(sizeUse - width/2, top          , 0.0D);
-//			tessellator.addVertex(sizeUse - width/2, -height + top, 0.0D);
-//			
-//			tessellator.draw();
-			
-			GL11.glEnable(GL11.GL_TEXTURE_2D);
-			GL11.glEnable(GL11.GL_LIGHTING);
-			GL11.glPopMatrix();
+			double distance = entity.getDistanceSqToEntity(this.renderManager.livingPlayer);
+
+			if (distance <= (double)(64 * 64)) {
+
+				EntityMercenary entityMerc = (EntityMercenary)entity;
+				float zoom = 0.016666668F * 1.6F;
+				Tessellator tessellator = Tessellator.getInstance();
+				WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+				double top = -ModCastleDefenders.config.mercenaryLifeTop/10;
+				double height = ModCastleDefenders.config.mercenaryLifeHeight;
+				double width = ModCastleDefenders.config.mercenaryLifeWidth;
+				
+				GlStateManager.disableTexture2D();
+				GlStateManager.pushMatrix();
+				GlStateManager.translate((float)x + 0.0F, (float)y + entity.height + 0.5F, (float)z);
+				GL11.glNormal3f(0.0F, 1.0F, 0.0F);
+				GlStateManager.rotate(-this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
+				GlStateManager.rotate(this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
+				GlStateManager.scale(-zoom, -zoom, zoom);
+				GlStateManager.disableLighting();
+				
+				worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181706_f);
+				float Health = entityMerc.getHealth();
+				float MaxHealth = entityMerc.getMaxHealth();
+				float ratio = Health / MaxHealth;
+				double sizeUse = width * ratio;
+				
+				// Red
+				worldrenderer.func_181662_b(-width/2 + sizeUse, -height + top, 0.0D).func_181666_a(0.7F, 0.0F, 0.0F, 1.0F).func_181675_d();
+				worldrenderer.func_181662_b(-width/2 + sizeUse, top          , 0.0D).func_181666_a(0.7F, 0.0F, 0.0F, 1.0F).func_181675_d();
+				worldrenderer.func_181662_b(width/2           , top          , 0.0D).func_181666_a(0.7F, 0.0F, 0.0F, 1.0F).func_181675_d();
+				worldrenderer.func_181662_b(width/2           , -height + top, 0.0D).func_181666_a(0.7F, 0.0F, 0.0F, 1.0F).func_181675_d();
+
+				// Green
+				worldrenderer.func_181662_b(-width/2         , -height + top, 0.0D).func_181666_a(0.0F, 0.7F, 0.0F, 1.0F).func_181675_d();
+				worldrenderer.func_181662_b(-width/2         , top          , 0.0D).func_181666_a(0.0F, 0.7F, 0.0F, 1.0F).func_181675_d();
+				worldrenderer.func_181662_b(sizeUse - width/2, top          , 0.0D).func_181666_a(0.0F, 0.7F, 0.0F, 1.0F).func_181675_d();
+				worldrenderer.func_181662_b(sizeUse - width/2, -height + top, 0.0D).func_181666_a(0.0F, 0.7F, 0.0F, 1.0F).func_181675_d();
+				
+				tessellator.draw();
+				
+				GlStateManager.enableTexture2D();
+				GlStateManager.enableLighting();
+				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+				GlStateManager.popMatrix();
+			}
 		}
-			
 	}
 }
