@@ -4,28 +4,28 @@
 	"color" : [
 		{ "block": "minecraft:dirt" },
 		{ "block": "minecraft:mycelium" },
-		{ "block": "minecraft:double_stone_slab", "metadata": 5 },
-		{ "block": "minecraft:ladder", "orientation": "right" },
+		{ "block": "minecraft:double_stone_slab", "states": { "variant": "stone_brick" } },
+		{ "block": "minecraft:ladder", "states": { "facing": "east" } },
 		{ "block": "minecraft:planks" },
 		{ "block": "minecraft:fence" },
 		{ "block": "minecraft:grass" },
 		{ "block": "minecraft:stained_hardened_clay" },
-		{ "block": "minecraft:log", "metadata": 1 },
+		{ "block": "minecraft:log", "states": { "variant": "spruce" } },
 		{ "block": "minecraft:water" },
-		{ "block": "minecraft:planks", "metadata":2 },
+		{ "block": "minecraft:planks", "states": { "variant": "birch" } },
 		{ "block": "minecraft:glass_pane" },
-		{ "block": "minecraft:oak_stairs", "orientation": "down" },
-		{ "block": "minecraft:oak_stairs", "orientation": "up" },
-		{ "block": "minecraft:oak_stairs", "orientation": "right" },
-		{ "block": "minecraft:oak_stairs", "orientation": "left"},
+		{ "block": "minecraft:oak_stairs", "states": { "facing": "north" } },
+		{ "block": "minecraft:oak_stairs", "states": { "facing": "south" } },
+		{ "block": "minecraft:oak_stairs", "states": { "facing": "west" } },
+		{ "block": "minecraft:oak_stairs", "states": { "facing": "east" } },
 		{ "block": "minecraft:torch" },
 		{ "block": "minecraft:hay_block" },
-		{ "block": "minecraft:stone_brick_stairs", "orientation": "right" },
-		{ "block": "minecraft:carpet", "metadata": 1 },
+		{ "block": "minecraft:stone_brick_stairs", "states": { "facing": "west" } },
+		{ "block": "minecraft:carpet", "states": { "color": "orange" } },
 		{ "block": "minecraft:carpet" },
-		{ "block": "minecraft:torch", "orientation":"up" },
-		{ "block": "minecraft:torch", "orientation":"down" },
-		{ "block": "minecraft:torch", "orientation":"right" },
+		{ "block": "minecraft:torch", "states": { "facing": "north" } },
+		{ "block": "minecraft:torch", "states": { "facing": "south" } },
+		{ "block": "minecraft:torch", "states": { "facing": "east" } },
 		{ "block": "minecraft:red_mushroom" },
 		{ "block": "minecraft:brown_mushroom" },
 		{ "block": "minecraft:farmland" },
@@ -33,30 +33,30 @@
         { "block": "minecraft:stone" }
 	],
 	"sets": {
-		"22x14x15": { "block":  "minecraft:wooden_door", "metadata": 0, "orientation":"left" },
-		"22x15x15": { "block":  "minecraft:wooden_door", "metadata": 8, "orientation":"left" },
-		"25x14x21": { "block":  "minecraft:wooden_door", "metadata": 0, "orientation":"up" },
-		"25x15x21": { "block":  "minecraft:wooden_door", "metadata": 8, "orientation":"up" },
-		"25x14x14": { "block":  "minecraft:wooden_door", "metadata": 0, "orientation":"up" },
-		"25x15x14": { "block":  "minecraft:wooden_door", "metadata": 8, "orientation":"up" },
-		"7x13x12": { "block":  "minecraft:wooden_door", "metadata": 0, "orientation":"up" },
-		"7x14x12": { "block":  "minecraft:wooden_door", "metadata": 8, "orientation":"up" },
+		"22x14x15": { "block":  "minecraft:wooden_door", "states": { "facing": "west" } },
+		"22x15x15": { "block":  "minecraft:wooden_door", "states": { "facing": "west", "half": "upper" } },
+		"25x14x21": { "block":  "minecraft:wooden_door", "states": { "facing": "north" } },
+		"25x15x21": { "block":  "minecraft:wooden_door", "states": { "facing": "north", "half": "upper" } },
+		"25x14x14": { "block":  "minecraft:wooden_door", "states": { "facing": "north" } },
+		"25x15x14": { "block":  "minecraft:wooden_door", "states": { "facing": "north", "half": "upper" } },
+		"7x13x12" : { "block":  "minecraft:wooden_door", "states": { "facing": "north" } },
+		"7x14x12" : { "block":  "minecraft:wooden_door", "states": { "facing": "north", "half": "upper" } },
 		
-		"17x17x7": { "block": "minecraft:bed", "metadata": 8, "orientation":"right" },
-		"16x17x7": { "block": "minecraft:bed", "metadata": 0, "orientation":"right" },
-		"28x18x10": { "block": "minecraft:bed", "metadata": 8, "orientation":"down" },
-		"28x18x11": { "block": "minecraft:bed", "metadata": 0, "orientation":"down" },
-		"24x14x10": { "block": "minecraft:bed", "metadata": 8, "orientation":"down" },
-		"24x14x11": { "block": "minecraft:bed", "metadata": 0, "orientation":"down" },
+		"17x17x7" : { "block": "minecraft:bed", "states": { "facing": "west", "part": "head" } },
+		"16x17x7" : { "block": "minecraft:bed", "states": { "facing": "west" } },
+		"28x18x10": { "block": "minecraft:bed", "states": { "facing": "north", "part": "head" } },
+		"28x18x11": { "block": "minecraft:bed", "states": { "facing": "north" } },
+		"24x14x10": { "block": "minecraft:bed", "states": { "facing": "north", "part": "head" } },
+		"24x14x11": { "block": "minecraft:bed", "states": { "facing": "north" } },
 		
-		"9x13x16": { "block": "minecraft:stone_brick_stairs", "orientation": "up", "metadata": 4 },
-		"10x13x16": { "block": "minecraft:stone_brick_stairs", "orientation": "up", "metadata": 4 },
-		"11x13x17": { "block": "minecraft:stone_brick_stairs", "orientation": "left", "metadata": 4 },
-		"11x13x18": { "block": "minecraft:stone_brick_stairs", "orientation": "left", "metadata": 4 },
-		"9x13x19": { "block": "minecraft:stone_brick_stairs", "orientation": "down", "metadata": 4 },
-		"10x13x19": { "block": "minecraft:stone_brick_stairs", "orientation": "down", "metadata": 4 },
-		"8x13x18": { "block": "minecraft:stone_brick_stairs", "orientation": "right", "metadata": 4 },
-		"8x13x17": { "block": "minecraft:stone_brick_stairs", "orientation": "right", "metadata": 4 },
+		"9x13x16" : { "block": "minecraft:stone_brick_stairs", "states": { "facing": "south", "half": "top" } },
+		"10x13x16": { "block": "minecraft:stone_brick_stairs", "states": { "facing": "south", "half": "top" } },
+		"11x13x17": { "block": "minecraft:stone_brick_stairs", "states": { "facing": "east" , "half": "top" } },
+		"11x13x18": { "block": "minecraft:stone_brick_stairs", "states": { "facing": "east" , "half": "top" } },
+		"9x13x19" : { "block": "minecraft:stone_brick_stairs", "states": { "facing": "north", "half": "top" } },
+		"10x13x19": { "block": "minecraft:stone_brick_stairs", "states": { "facing": "north", "half": "top" } },
+		"8x13x18" : { "block": "minecraft:stone_brick_stairs", "states": { "facing": "west" , "half": "top" } },
+		"8x13x17" : { "block": "minecraft:stone_brick_stairs", "states": { "facing": "west" , "half": "top" } },
 		
 		"17x13x19": { "block": "minecraft:sapling" },
 		
@@ -65,7 +65,7 @@
 		 
 		"25x5x14": {
 			"block": "minecraft:chest",
-			"orientation":"left",
+			"states": { "facing": "west" },
 			"contents": [
 				
 				[
@@ -106,11 +106,11 @@
 				]
 			]
 		},
-		"25x5x13": { "block": "minecraft:chest"	  , "orientation":"left" },
+		"25x5x13": { "block": "minecraft:chest", "states": { "facing": "west" } },
 		 
 		"8x5x7": {
 			"block": "minecraft:chest",
-			"orientation":"left",
+			"states": { "facing": "west" },
 			"contents": [
 				
 				[
@@ -151,11 +151,11 @@
 				]
 			]
 		},
-		"8x5x6": { "block": "minecraft:chest"	  , "orientation":"left" },
+		"8x5x6": { "block": "minecraft:chest", "states": { "facing": "west" } },
 		 
 		"12x5x23": {
 			"block": "minecraft:chest",
-			"orientation":"left",
+			"states": { "facing": "west" },
 			"contents": [
 				
 				[
@@ -172,9 +172,9 @@
 				]
 			]
 		},
-		"11x12x6":   { "block": "CastleDefenders:BlockMerc" },
+		"11x12x6" : { "block": "CastleDefenders:BlockMerc" },
 		"29x13x20": { "block": "CastleDefenders:BlockMerc" },
-		"16x12x10":  { "block": "CastleDefenders:BlockMerc" },
+		"16x12x10": { "block": "CastleDefenders:BlockMerc" },
 		"24x13x20": { "block": "CastleDefenders:BlockMercArcher" },
 		"21x13x17": { "block": "CastleDefenders:BlockMercArcher" },
 		"21x13x13": { "block": "CastleDefenders:BlockMercArcher" }
