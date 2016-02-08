@@ -47,6 +47,7 @@
 		"24x5x6": { "block": "minecraft:stone_brick_stairs", "states": { "facing": "west" } },
 		"24x5x5": { "block": "minecraft:stone_brick_stairs", "states": { "facing": "west" } },
 		"24x5x4": { "block": "minecraft:stone_brick_stairs", "states": { "facing": "west" } },
+		"25x5x3": { "block": "minecraft:stone_brick_stairs", "states": { "facing": "west" } },
 		"25x6x6": { "block": "minecraft:quartz_stairs", "states": { "facing": "west" , "half": "top" } },
 		"25x6x7": { "block": "minecraft:quartz_stairs", "states": { "facing": "north", "half": "top" } },
 		"25x6x5": { "block": "minecraft:quartz_stairs", "states": { "facing": "south", "half": "top" } },
