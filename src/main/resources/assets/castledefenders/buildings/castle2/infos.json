@@ -5,13 +5,13 @@
 		{ "block": "minecraft:stonebrick" },
 		{ "block": "minecraft:cobblestone" },
 		{ "block": "minecraft:grass" },
-		{ "block": "castledefenders:blockeknight" },
-		{ "block": "castledefenders:blockearcher" },
+		{ "block": "castledefenders:eknight" },
+		{ "block": "castledefenders:earcher" },
 		{ "block": "minecraft:planks" },
 		{ "block": "minecraft:ladder", "states": { "facing": "west" } },
 		{ "block": "minecraft:torch", "states": { "facing": "north" } },
 		{ "block": "minecraft:iron_bars"},
-		{ "block": "castledefenders:blockemage"},
+		{ "block": "castledefenders:emage"},
 		{ "block": "minecraft:trapdoor", "states": { "facing": "east" } },
 		{ "block": "minecraft:torch", "states": { "facing": "west" } },
 		{ "block": "minecraft:torch", "states": { "facing": "east" } },
@@ -33,31 +33,31 @@
 			"states": { "facing": "east" },
 			"contents": [
 				[
-					{ "element": "minecraft:potion" , "metadata": 1 },
-					{ "element": "minecraft:potion" , "metadata": 2 },
-					{ "element": "minecraft:potion" , "metadata": 3 },
-					{ "element": "minecraft:potion" , "metadata": 4 },
-					{ "element": "minecraft:potion" , "metadata": 5 },
-					{ "element": "minecraft:potion" , "metadata": 6 },
-					{ "element": "minecraft:potion" , "metadata": 7 }
+					{ "element": "minecraft:potion", "type": "long_night_vision" },
+					{ "element": "minecraft:potion", "type": "long_invisibility" },
+					{ "element": "minecraft:potion", "type": "long_leaping" },
+					{ "element": "minecraft:potion", "type": "long_fire_resistance" },
+					{ "element": "minecraft:potion", "type": "long_swiftness" },
+					{ "element": "minecraft:potion", "type": "strong_swiftness" },
+					{ "element": "minecraft:potion", "type": "slowness" }
 				],
 				[
-					{ "element": "minecraft:potion" , "metadata": 1 },
-					{ "element": "minecraft:potion" , "metadata": 2 },
-					{ "element": "minecraft:potion" , "metadata": 3 },
-					{ "element": "minecraft:potion" , "metadata": 4 },
-					{ "element": "minecraft:potion" , "metadata": 5 },
-					{ "element": "minecraft:potion" , "metadata": 6 },
-					{ "element": "minecraft:potion" , "metadata": 7 }
+					{ "element": "minecraft:potion", "type": "long_night_vision" },
+					{ "element": "minecraft:potion", "type": "long_invisibility" },
+					{ "element": "minecraft:potion", "type": "long_leaping" },
+					{ "element": "minecraft:potion", "type": "long_fire_resistance" },
+					{ "element": "minecraft:potion", "type": "long_swiftness" },
+					{ "element": "minecraft:potion", "type": "strong_swiftness" },
+					{ "element": "minecraft:potion", "type": "slowness" }
 				],
 				[
-					{ "element": "minecraft:potion" , "metadata": 1 },
-					{ "element": "minecraft:potion" , "metadata": 2 },
-					{ "element": "minecraft:potion" , "metadata": 3 },
-					{ "element": "minecraft:potion" , "metadata": 4 },
-					{ "element": "minecraft:potion" , "metadata": 5 },
-					{ "element": "minecraft:potion" , "metadata": 6 },
-					{ "element": "minecraft:potion" , "metadata": 7 }
+					{ "element": "minecraft:potion", "type": "long_night_vision" },
+					{ "element": "minecraft:potion", "type": "long_invisibility" },
+					{ "element": "minecraft:potion", "type": "long_leaping" },
+					{ "element": "minecraft:potion", "type": "long_fire_resistance" },
+					{ "element": "minecraft:potion", "type": "long_swiftness" },
+					{ "element": "minecraft:potion", "type": "strong_swiftness" },
+					{ "element": "minecraft:potion", "type": "slowness" }
 				],
 				[
 					{ "element": "castledefenders:medallion", "min":1, "max":5 }
@@ -72,31 +72,31 @@
 			"states": { "facing": "east" },
 			"contents": [
 				[
-					{ "element": "minecraft:potion" , "metadata": 1 },
-					{ "element": "minecraft:potion" , "metadata": 2 },
-					{ "element": "minecraft:potion" , "metadata": 3 },
-					{ "element": "minecraft:potion" , "metadata": 4 },
-					{ "element": "minecraft:potion" , "metadata": 5 },
-					{ "element": "minecraft:potion" , "metadata": 6 },
-					{ "element": "minecraft:potion" , "metadata": 7 }
+					{ "element": "minecraft:potion", "type": "long_night_vision" },
+					{ "element": "minecraft:potion", "type": "long_invisibility" },
+					{ "element": "minecraft:potion", "type": "long_leaping" },
+					{ "element": "minecraft:potion", "type": "long_fire_resistance" },
+					{ "element": "minecraft:potion", "type": "long_swiftness" },
+					{ "element": "minecraft:potion", "type": "strong_swiftness" },
+					{ "element": "minecraft:potion", "type": "slowness" }
 				],
 				[
-					{ "element": "minecraft:potion" , "metadata": 1 },
-					{ "element": "minecraft:potion" , "metadata": 2 },
-					{ "element": "minecraft:potion" , "metadata": 3 },
-					{ "element": "minecraft:potion" , "metadata": 4 },
-					{ "element": "minecraft:potion" , "metadata": 5 },
-					{ "element": "minecraft:potion" , "metadata": 6 },
-					{ "element": "minecraft:potion" , "metadata": 7 }
+					{ "element": "minecraft:potion", "type": "long_night_vision" },
+					{ "element": "minecraft:potion", "type": "long_invisibility" },
+					{ "element": "minecraft:potion", "type": "long_leaping" },
+					{ "element": "minecraft:potion", "type": "long_fire_resistance" },
+					{ "element": "minecraft:potion", "type": "long_swiftness" },
+					{ "element": "minecraft:potion", "type": "strong_swiftness" },
+					{ "element": "minecraft:potion", "type": "slowness" }
 				],
 				[
-					{ "element": "minecraft:potion" , "metadata": 1 },
-					{ "element": "minecraft:potion" , "metadata": 2 },
-					{ "element": "minecraft:potion" , "metadata": 3 },
-					{ "element": "minecraft:potion" , "metadata": 4 },
-					{ "element": "minecraft:potion" , "metadata": 5 },
-					{ "element": "minecraft:potion" , "metadata": 6 },
-					{ "element": "minecraft:potion" , "metadata": 7 }
+					{ "element": "minecraft:potion", "type": "long_night_vision" },
+					{ "element": "minecraft:potion", "type": "long_invisibility" },
+					{ "element": "minecraft:potion", "type": "long_leaping" },
+					{ "element": "minecraft:potion", "type": "long_fire_resistance" },
+					{ "element": "minecraft:potion", "type": "long_swiftness" },
+					{ "element": "minecraft:potion", "type": "strong_swiftness" },
+					{ "element": "minecraft:potion", "type": "slowness" }
 				],
 				[
 					{ "element": "castledefenders:medallion", "min":1, "max":5 }

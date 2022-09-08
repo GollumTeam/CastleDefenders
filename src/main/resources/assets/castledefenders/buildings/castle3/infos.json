@@ -4,7 +4,7 @@
 	"color" : [
 		{ "block": "minecraft:wool", "states": { "color": "red" } },
 		{ "block": "minecraft:grass" },
-		{ "block": "castledefenders:blockeknight" },
+		{ "block": "castledefenders:eknight" },
 		{ "block": "minecraft:fence" },
 		{ "block": "minecraft:torch", "states": { "facing": "north" } },
 		{ "block": "minecraft:fire" },

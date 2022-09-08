@@ -27,7 +27,7 @@
 		{ "block": "minecraft:grass" },
 		{ "block": "minecraft:tallgrass", "states": { "type": "tall_grass" } },
 		{ "block": "minecraft:carpet", "states": { "color": "red" } },
-		{ "block": "castledefenders:blockeknight" }
+		{ "block": "castledefenders:eknight" }
 		
 	],
 	"sets": {
@@ -52,7 +52,7 @@
 		"11x8x14": { "block":  "minecraft:iron_door", "states": { "facing": "west" } },
 		"11x9x14": { "block":  "minecraft:iron_door", "states": { "facing": "west", "half": "upper" } },
 		
-		"15x2x13": { "block": "castledefenders:blockemage" },
+		"15x2x13": { "block": "castledefenders:emage" },
 		
 		"18x2x24": { "block": "minecraft:stone_pressure_plate" },
 		

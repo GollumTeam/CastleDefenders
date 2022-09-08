@@ -27,9 +27,9 @@
 		{ "block": "minecraft:carpet", "states": { "color": "red" } },
 		{ "block": "minecraft:wooden_pressure_plate" },
 		{ "block": "minecraft:glass" },
-		{ "block": "GollumCoreLib:BlockProximitySpawn", "extra": {"entity": "Villager"} },
+		{ "block": "gollumcorelib:proximityspawn", "extra": {"entity": "Villager"} },
 		{ "block": "minecraft:redstone_wire" },
-		{ "block": "GollumCoreLib:BlockProximitySpawn", "extra": {"entity": "Chicken"} },
+		{ "block": "gollumcorelib:proximityspawn", "extra": {"entity": "Chicken"} },
 		{ "block": "minecraft:stained_hardened_clay", "states": { "color": "red" } }
 		
 	],
@@ -52,20 +52,20 @@
 		"25x6x7": { "block": "minecraft:quartz_stairs", "states": { "facing": "north", "half": "top" } },
 		"25x6x5": { "block": "minecraft:quartz_stairs", "states": { "facing": "south", "half": "top" } },
 		
-		"8x5x13":  { "block": "minecraft:bed", "states": { "facing": "west" , "part": "head" } },
-		"7x5x13":  { "block": "minecraft:bed", "states": { "facing": "west"  } },
-		"8x7x13":  { "block": "minecraft:bed", "states": { "facing": "west" , "part": "head" } },
-		"7x7x13":  { "block": "minecraft:bed", "states": { "facing": "west"  } },
-		"4x5x15":  { "block": "minecraft:bed", "states": { "facing": "east" , "part": "head" } },
-		"5x5x15":  { "block": "minecraft:bed", "states": { "facing": "east"  } },
-		"4x5x18":  { "block": "minecraft:bed", "states": { "facing": "east" , "part": "head" } },
-		"5x5x18":  { "block": "minecraft:bed", "states": { "facing": "east"  } },
-		"9x5x24":  { "block": "minecraft:bed", "states": { "facing": "east" , "part": "head" } },
-		"10x5x24": { "block": "minecraft:bed", "states": { "facing": "east"  } },
-		"9x7x24":  { "block": "minecraft:bed", "states": { "facing": "east" , "part": "head" } },
-		"10x7x24": { "block": "minecraft:bed", "states": { "facing": "east"  } },
-		"6x5x23":  { "block": "minecraft:bed", "states": { "facing": "south", "part": "head" } },
-		"6x5x22":  { "block": "minecraft:bed", "states": { "facing": "south" } },
+		"8x5x13":  { "block": "minecraft:bed", "states": { "facing": "west" , "part": "foot" } },
+		"7x5x13":  { "block": "minecraft:bed", "states": { "facing": "west" , "part": "head" } },
+		"8x7x13":  { "block": "minecraft:bed", "states": { "facing": "west" , "part": "foot" } },
+		"7x7x13":  { "block": "minecraft:bed", "states": { "facing": "west" , "part": "head" } },
+		"4x5x15":  { "block": "minecraft:bed", "states": { "facing": "east" , "part": "foot" } },
+		"5x5x15":  { "block": "minecraft:bed", "states": { "facing": "east" , "part": "head" } },
+		"4x5x18":  { "block": "minecraft:bed", "states": { "facing": "east" , "part": "foot" } },
+		"5x5x18":  { "block": "minecraft:bed", "states": { "facing": "east" , "part": "head" } },
+		"9x5x24":  { "block": "minecraft:bed", "states": { "facing": "east" , "part": "foot" } },
+		"10x5x24": { "block": "minecraft:bed", "states": { "facing": "east" , "part": "head" } },
+		"9x7x24":  { "block": "minecraft:bed", "states": { "facing": "east" , "part": "foot" } },
+		"10x7x24": { "block": "minecraft:bed", "states": { "facing": "east" , "part": "head" } },
+		"6x5x23":  { "block": "minecraft:bed", "states": { "facing": "south", "part": "foot" } },
+		"6x5x22":  { "block": "minecraft:bed", "states": { "facing": "south", "part": "head" } },
 		"8x5x23":  { "block": "minecraft:ladder", "states": { "facing": "north" } },
 		"8x6x23":  { "block": "minecraft:ladder", "states": { "facing": "north" } },
 		"8x7x23":  { "block": "minecraft:ladder", "states": { "facing": "north" } },
@@ -93,10 +93,10 @@
 		"23x9x19":  { "block":  "minecraft:wooden_door", "states": { "facing": "south", "hinge": "right" } },
 		"23x10x19": { "block":  "minecraft:wooden_door", "states": { "facing": "south", "hinge": "right", "half": "upper" } },
 		
-		"9x15x18":  { "block": "minecraft:bed", "states": { "facing": "west", "part": "head" } },
-		"8x15x18":  { "block": "minecraft:bed", "states": { "facing": "west" } },
-		"12x15x14": { "block": "minecraft:bed", "states": { "facing": "north", "part": "head" } },
-		"12x15x15": { "block": "minecraft:bed", "states": { "facing": "north" } },
+		"9x15x18":  { "block": "minecraft:bed", "states": { "facing": "west", "part": "foot" } },
+		"8x15x18":  { "block": "minecraft:bed", "states": { "facing": "west", "part": "head" } },
+		"12x15x14": { "block": "minecraft:bed", "states": { "facing": "north", "part": "foot" } },
+		"12x15x15": { "block": "minecraft:bed", "states": { "facing": "north", "part": "head" } },
 		"14x5x24":  { "block": "minecraft:sticky_piston", "states": { "facing": "east" } },
 		"14x6x24":  { "block": "minecraft:sticky_piston", "states": { "facing": "east" } },
 		"12x6x22":  { "block": "minecraft:stone_button" , "states": { "facing": "east" } },
@@ -127,14 +127,14 @@
 		"3x11x5": { "block": "minecraft:crafting_table" },
 		"2x11x4": { "block": "minecraft:furnace" },
 		
-		"26x5x6": { "block": "castledefenders:blockhealer" },
-		"9x4x21": { "block": "castledefenders:blockhealer" },
-		"10x4x16": { "block": "castledefenders:blockhealer" },
-		"9x10x24": { "block": "castledefenders:blockhealer" },
-		"5x10x10": { "block": "castledefenders:blockarcher2" },
-		"9x10x11": { "block": "castledefenders:blockarcher2" },
-		"25x12x18": { "block": "castledefenders:blockarcher2" },
-		"6x14x16": { "block": "castledefenders:blockknight2" },
+		"26x5x6": { "block": "castledefenders:healer" },
+		"9x4x21": { "block": "castledefenders:healer" },
+		"10x4x16": { "block": "castledefenders:healer" },
+		"9x10x24": { "block": "castledefenders:healer" },
+		"5x10x10": { "block": "castledefenders:archer2" },
+		"9x10x11": { "block": "castledefenders:archer2" },
+		"25x12x18": { "block": "castledefenders:archer2" },
+		"6x14x16": { "block": "castledefenders:knight2" },
 		"25x14x22": { "block": "minecraft:enchanting_table" },
 		
 		"4x6x2": {
@@ -213,14 +213,13 @@
 			"contents": [
 						
 				[
-					
-					{ "element": "minecraft:potion", "metadata":1 },
-					{ "element": "minecraft:potion", "metadata":2 },
-					{ "element": "minecraft:potion", "metadata":3 },
-					{ "element": "minecraft:potion", "metadata":5 },
-					{ "element": "minecraft:potion", "metadata":6 },
-					{ "element": "minecraft:potion", "metadata":9 },
-					{ "element": "minecraft:potion", "metadata":12 }
+					{ "element": "minecraft:potion", "type": "long_night_vision" },
+					{ "element": "minecraft:potion", "type": "long_invisibility" },
+					{ "element": "minecraft:potion", "type": "long_leaping" },
+					{ "element": "minecraft:potion", "type": "long_fire_resistance" },
+					{ "element": "minecraft:potion", "type": "long_swiftness" },
+					{ "element": "minecraft:potion", "type": "long_weakness" },
+					{ "element": "minecraft:potion", "type": "long_strength" }
 				]
 			]
 		},
@@ -229,8 +228,7 @@
 			"block": "minecraft:chest",
 			"states": { "facing": "east" },
 			"contents": [
-						
-				[{ "element": "minecraft:potion", "metadata":5, "min":1, "max":3 }],
+				[{ "element": "minecraft:potion", "type":"strong_regeneration", "min":1, "max":3 }],
 				[{ "element": "minecraft:gold_ingot", "min":4, "max":7 }]
 			]
 		}

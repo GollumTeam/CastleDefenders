@@ -23,14 +23,6 @@ public abstract class BlockCastleDefenders extends HBlockContainer {
 		this.setCreativeTab(ModCreativeTab.tabCastleDefenders);
 	}
 	
-	/**
-	 * only called by clickMiddleMouseButton , and passed to
-	 * inventory.setCurrentItem (along with isCreative)
-	 */
-	@Override
-    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
-		return null;
-	}
 
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
