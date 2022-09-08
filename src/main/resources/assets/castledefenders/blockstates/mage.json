@@ -1,0 +1,6 @@
+{
+   "variants": {
+       "inventory": { "model": "castledefenders:mage" },
+       "normal": { "model": "castledefenders:mage" }
+   }
+}

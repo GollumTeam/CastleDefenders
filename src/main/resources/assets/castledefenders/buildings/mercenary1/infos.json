@@ -1,0 +1,82 @@
+{
+	"height": -4,
+	
+	"color" : [
+		{ "block": "minecraft:planks" },
+		{ "block": "minecraft:grass" },
+		{ "block": "castledefenders:blockmerc" },
+		{ "block": "minecraft:fence" },
+		{ "block": "minecraft:torch" },
+		{ "block": "minecraft:wooden_slab" },
+		{ "block": "castledefenders:blockmercarcher" },
+		{ "block": "minecraft:glass_pane" },
+        { "block": "minecraft:dirt" }
+	],
+	"sets": {
+		"5x4x5": { "block":  "minecraft:wooden_door", "states": { "facing": "south" } },
+		"5x5x5": { "block":  "minecraft:wooden_door", "states": { "facing": "south", "half": "upper" } },
+		
+		"4x5x6": { "block": "minecraft:torch", "states": { "facing": "south" } },
+		"6x5x6": { "block": "minecraft:torch", "states": { "facing": "south" } },
+		
+		"1x4x8": { "block": "minecraft:bed", "states": { "facing": "east", "part": "head" } },
+		"2x4x8": { "block": "minecraft:bed", "states": { "facing": "east" } },
+		"1x4x6": { "block": "minecraft:bed", "states": { "facing": "east", "part": "head" } },
+		"2x4x6": { "block": "minecraft:bed", "states": { "facing": "east" } },
+		
+		"5x4x7": { "block": "minecraft:ladder", "states": { "facing": "north" } },
+		"5x5x7": { "block": "minecraft:ladder", "states": { "facing": "north" } },
+		"5x6x7": { "block": "minecraft:ladder", "states": { "facing": "north" } },
+		"5x7x7": { "block": "minecraft:ladder", "states": { "facing": "north" } },
+		"5x8x7": { "block": "minecraft:ladder", "states": { "facing": "south" } },
+		"5x9x7": { "block": "minecraft:ladder", "states": { "facing": "south" } },
+		"5x10x7": { "block": "minecraft:ladder", "states": { "facing": "south" } },
+		 
+		"7x4x9": {
+			"block": "minecraft:chest",
+			"states": { "facing": "north" },
+			"contents": [
+				
+				[
+					{ "element": "minecraft:arrow", "min":30, "max":40 },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:gold_nugget", "min":1, "max":2 },
+					{ "element": "minecraft:gold_nugget", "min":1, "max":2 },
+					{ "element": "minecraft:bread" },
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:bow" }
+				],
+				[
+					{ "element": "minecraft:arrow", "min":30, "max":40 },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:gold_nugget", "min":1, "max":2 },
+					{ "element": "minecraft:gold_nugget", "min":1, "max":2 },
+					{ "element": "minecraft:bread" },
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:bow" }
+				],
+				[
+					{ "element": "minecraft:arrow", "min":30, "max":40 },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:gold_nugget", "min":1, "max":2 },
+					{ "element": "minecraft:gold_nugget", "min":1, "max":2 },
+					{ "element": "minecraft:bread" },
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:bow" }
+				],
+				[
+					{ "element": "minecraft:arrow", "min":30, "max":40 },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:gold_nugget", "min":1, "max":2 },
+					{ "element": "minecraft:gold_nugget", "min":1, "max":2 },
+					{ "element": "minecraft:bread" },
+					{ "element": "minecraft:carrot", "min":1, "max":10 },
+					{ "element": "minecraft:bow" }
+				]
+			]
+		},
+		"8x4x9": { "block": "minecraft:chest"  , "states": { "facing": "north" } },
+		"9x4x9": { "block": "minecraft:furnace", "states": { "facing": "north" } },
+		"1x6x9": { "block": "minecraft:web" }
+	}
+}

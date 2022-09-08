@@ -1,0 +1,67 @@
+itemGroup.CastleDefender=Castle Defender
+
+item.medallion.name=Médallion
+
+tile.knight.name=Générateur de Chevalier
+tile.knight2.name=Générateur de Chevalier - Niveau 2
+tile.archer.name=Générateur d'Archer
+tile.archer2.name=Générateur d'Archer - Level 2
+tile.merc.name=Générateur de Mercenaire
+tile.mercarcher.name=Générateur de Mercenaire Archer Spawner
+tile.mage.name=Générateur de Mage
+tile.healer.name=Générateur de Guérisseur
+tile.eknight.name=Générateur de Chevalier Ennemi
+tile.earcher.name=Générateur d'Archer Ennemi
+tile.emage.name=Générateur de Mage Ennemi
+
+entity.knight.name=Chevalier
+entity.knight2.name=Chevalier - Niveau 2
+entity.archer.name=Archer
+entity.archer2.name=Archer - Niveau 2
+entity.mage.name=Mage
+entity.enemyknight.name=Chevalier Ennemi
+entity.enemyarcher.name=Archer Ennemi
+entity.enemymage.name=Mage Ennemi
+entity.merc.name=Mercenaire
+entity.mercarcher.name=Mercenaire Archer
+entity.healer.name=Guérisseur
+
+castledefenders.config.compatibilityWithOldVersion=Compatibilité avec les anciennes versions du mode
+
+castledefenders.message.buymercenary=Des objets contre mes services
+castledefenders.message.okfor=Ça marche pour %d %s
+
+achievement.foundCastleDefenders=Découverte de bâtiment
+achievement.foundCastleBuilding1=Le château 
+achievement.foundCastleBuilding2=La tour du mage 
+achievement.foundCastleBuilding3=La tente ennemie
+achievement.foundCastleBuilding4=La ruine
+achievement.foundMercenaryBuilding1=La maison de l'archer
+achievement.foundMercenaryBuilding2=La tente de mercenaire
+achievement.foundMercenaryBuilding3=Le village mercenaire
+achievement.foundMercenaryBuilding4=Le monastère
+achievement.foundAllCastleBuilding=Les donjons
+achievement.foundAllMercenaryBuilding=Les mercenaires 
+achievement.foundAllBuilding=Tous les bâtiments
+
+achievement.foundCastleDefenders.desc=Découvert de bâtiment
+achievement.foundCastleBuilding1.desc=Trouver un mini-château
+achievement.foundCastleBuilding2.desc=Trouver une Tour du mage 
+achievement.foundCastleBuilding3.desc=Trouver une tente ennemie
+achievement.foundCastleBuilding4.desc=Trouver une ruine
+achievement.foundMercenaryBuilding1.desc=Trouver une maison de l'archer
+achievement.foundMercenaryBuilding2.desc=Trouver une tente de mercenaire
+achievement.foundMercenaryBuilding3.desc=Trouver un village mercenaire
+achievement.foundMercenaryBuilding4.desc=Trouver un monastère
+achievement.foundAllCastleBuilding.desc=Trouver tous les donjons
+achievement.foundAllMercenaryBuilding.desc=Trouver tous les bâtiments mercenaires 
+achievement.foundAllBuilding.desc=Trouver tous les bâtiments
+
+stats.foundCastleBuilding1Counter=Mini-châteaux trouvés
+stats.foundCastleBuilding2Counter=Tour du mage trouvées
+stats.foundCastleBuilding3Counter=Tentes ennemies trouvées
+stats.foundCastleBuilding4Counter=Ruines trouvées
+stats.foundMercenaryBuilding1Counter=Maison de l'archer trouvées
+stats.foundMercenaryBuilding2Counter=Tente de mercenaire trouvées
+stats.foundMercenaryBuilding3Counter=Villages mercenaires trouvés
+stats.foundMercenaryBuilding4Counter=Monastères trouvés

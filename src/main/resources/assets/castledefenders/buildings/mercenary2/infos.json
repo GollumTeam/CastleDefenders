@@ -1,0 +1,15 @@
+{
+	"height": -3,
+	
+	"color" : [
+		{ "block": "minecraft:wool" },
+		{ "block": "minecraft:grass" },
+		{ "block": "castledefenders:blockmerc" },
+		{ "block": "minecraft:fence" },
+		{ "block": "minecraft:torch", "states": { "facing": "north" } },
+		{ "block": "minecraft:fire" },
+		{ "block": "minecraft:cobblestone" },
+		{ "block": "minecraft:netherrack" },
+		{ "block": "minecraft:dirt" }
+	]
+}

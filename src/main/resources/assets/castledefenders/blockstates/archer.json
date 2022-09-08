@@ -1,0 +1,6 @@
+{
+   "variants": {
+       "inventory": { "model": "castledefenders:archer" },
+       "normal": { "model": "castledefenders:archer" }
+   }
+}

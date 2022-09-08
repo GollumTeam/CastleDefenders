@@ -1,0 +1,6 @@
+{
+   "variants": {
+       "inventory": { "model": "castledefenders:earcher" },
+       "normal": { "model": "castledefenders:earcher" }
+   }
+}

@@ -1,0 +1,6 @@
+{
+   "variants": {
+       "inventory": { "model": "castledefenders:emage" },
+       "normal": { "model": "castledefenders:emage" }
+   }
+}

@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "down": "castledefenders:blocks/merc",
+        "up": "castledefenders:blocks/merc",
+        "north": "castledefenders:blocks/merc_side",
+        "east": "castledefenders:blocks/merc_side",
+        "south": "castledefenders:blocks/merc_side",
+        "west": "castledefenders:blocks/merc_side",
+        "particle": "castledefenders:blocks/merc_side"
+    }
+}

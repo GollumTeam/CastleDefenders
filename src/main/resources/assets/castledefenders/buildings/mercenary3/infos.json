@@ -1,0 +1,183 @@
+{
+	"height": -13,
+	
+	"color" : [
+		{ "block": "minecraft:dirt" },
+		{ "block": "minecraft:mycelium" },
+		{ "block": "minecraft:double_stone_slab", "states": { "variant": "stone_brick" } },
+		{ "block": "minecraft:ladder", "states": { "facing": "east" } },
+		{ "block": "minecraft:planks" },
+		{ "block": "minecraft:fence" },
+		{ "block": "minecraft:grass" },
+		{ "block": "minecraft:stained_hardened_clay" },
+		{ "block": "minecraft:log", "states": { "variant": "spruce" } },
+		{ "block": "minecraft:water" },
+		{ "block": "minecraft:planks", "states": { "variant": "birch" } },
+		{ "block": "minecraft:glass_pane" },
+		{ "block": "minecraft:oak_stairs", "states": { "facing": "north" } },
+		{ "block": "minecraft:oak_stairs", "states": { "facing": "south" } },
+		{ "block": "minecraft:oak_stairs", "states": { "facing": "west" } },
+		{ "block": "minecraft:oak_stairs", "states": { "facing": "east" } },
+		{ "block": "minecraft:torch" },
+		{ "block": "minecraft:hay_block" },
+		{ "block": "minecraft:stone_brick_stairs", "states": { "facing": "west" } },
+		{ "block": "minecraft:carpet", "states": { "color": "orange" } },
+		{ "block": "minecraft:carpet" },
+		{ "block": "minecraft:torch", "states": { "facing": "north" } },
+		{ "block": "minecraft:torch", "states": { "facing": "south" } },
+		{ "block": "minecraft:torch", "states": { "facing": "east" } },
+		{ "block": "minecraft:red_mushroom" },
+		{ "block": "minecraft:brown_mushroom" },
+		{ "block": "minecraft:farmland" },
+		{ "block": "minecraft:wheat" },
+        { "block": "minecraft:stone" }
+	],
+	"sets": {
+		"22x14x15": { "block":  "minecraft:wooden_door", "states": { "facing": "west" } },
+		"22x15x15": { "block":  "minecraft:wooden_door", "states": { "facing": "west", "half": "upper" } },
+		"25x14x21": { "block":  "minecraft:wooden_door", "states": { "facing": "north" } },
+		"25x15x21": { "block":  "minecraft:wooden_door", "states": { "facing": "north", "half": "upper" } },
+		"25x14x14": { "block":  "minecraft:wooden_door", "states": { "facing": "north" } },
+		"25x15x14": { "block":  "minecraft:wooden_door", "states": { "facing": "north", "half": "upper" } },
+		"7x13x12" : { "block":  "minecraft:wooden_door", "states": { "facing": "north" } },
+		"7x14x12" : { "block":  "minecraft:wooden_door", "states": { "facing": "north", "half": "upper" } },
+		
+		"17x17x7" : { "block": "minecraft:bed", "states": { "facing": "west", "part": "head" } },
+		"16x17x7" : { "block": "minecraft:bed", "states": { "facing": "west" } },
+		"28x18x10": { "block": "minecraft:bed", "states": { "facing": "north", "part": "head" } },
+		"28x18x11": { "block": "minecraft:bed", "states": { "facing": "north" } },
+		"24x14x10": { "block": "minecraft:bed", "states": { "facing": "north", "part": "head" } },
+		"24x14x11": { "block": "minecraft:bed", "states": { "facing": "north" } },
+		
+		"9x13x16" : { "block": "minecraft:stone_brick_stairs", "states": { "facing": "south", "half": "top" } },
+		"10x13x16": { "block": "minecraft:stone_brick_stairs", "states": { "facing": "south", "half": "top" } },
+		"11x13x17": { "block": "minecraft:stone_brick_stairs", "states": { "facing": "east" , "half": "top" } },
+		"11x13x18": { "block": "minecraft:stone_brick_stairs", "states": { "facing": "east" , "half": "top" } },
+		"9x13x19" : { "block": "minecraft:stone_brick_stairs", "states": { "facing": "north", "half": "top" } },
+		"10x13x19": { "block": "minecraft:stone_brick_stairs", "states": { "facing": "north", "half": "top" } },
+		"8x13x18" : { "block": "minecraft:stone_brick_stairs", "states": { "facing": "west" , "half": "top" } },
+		"8x13x17" : { "block": "minecraft:stone_brick_stairs", "states": { "facing": "west" , "half": "top" } },
+		
+		"17x13x19": { "block": "minecraft:sapling" },
+		
+		"5x13x8": { "block": "minecraft:lava" },
+		"5x13x7": { "block": "minecraft:lava" },
+		 
+		"25x5x14": {
+			"block": "minecraft:chest",
+			"states": { "facing": "west" },
+			"contents": [
+				
+				[
+					{ "element": "minecraft:brown_mushroom", "min":5, "max":10 },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:wheat_seeds", "min":2, "max":5 },
+					{ "element": "minecraft:wheat", "min":2, "max":5 },
+					{ "element": "minecraft:carrot" },
+					{ "element": "minecraft:iron_hoe" },
+					{ "element": "minecraft:bow" }
+				],
+				[
+					{ "element": "minecraft:brown_mushroom", "min":5, "max":10 },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:wheat_seeds", "min":2, "max":5 },
+					{ "element": "minecraft:wheat", "min":2, "max":5 },
+					{ "element": "minecraft:bread" },
+					{ "element": "minecraft:iron_shovel" },
+					{ "element": "minecraft:bow" }
+				],
+				[
+					{ "element": "minecraft:red_mushroom", "min":5, "max":10 },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:wheat_seeds", "min":2, "max":5 },
+					{ "element": "minecraft:wheat", "min":2, "max":5 },
+					{ "element": "minecraft:apple" },
+					{ "element": "minecraft:iron_pickaxe" },
+					{ "element": "minecraft:bow" }
+				],
+				[
+					{ "element": "minecraft:red_mushroom", "min":5, "max":10 },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:wheat_seeds", "min":2, "max":5 },
+					{ "element": "minecraft:wheat", "min":2, "max":5 },
+					{ "element": "minecraft:apple" },
+					{ "element": "minecraft:iron_axe" },
+					{ "element": "minecraft:bow" }
+				]
+			]
+		},
+		"25x5x13": { "block": "minecraft:chest", "states": { "facing": "west" } },
+		 
+		"8x5x7": {
+			"block": "minecraft:chest",
+			"states": { "facing": "west" },
+			"contents": [
+				
+				[
+					{ "element": "minecraft:brown_mushroom", "min":5, "max":10 },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:wheat_seeds", "min":2, "max":5 },
+					{ "element": "minecraft:wheat", "min":2, "max":5 },
+					{ "element": "minecraft:carrot" },
+					{ "element": "minecraft:iron_pickaxe" },
+					{ "element": "minecraft:bow" }
+				], 
+				[
+					{ "element": "minecraft:brown_mushroom", "min":5, "max":10 },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:wheat_seeds", "min":2, "max":5 },
+					{ "element": "minecraft:wheat", "min":2, "max":5 },
+					{ "element": "minecraft:bread" },
+					{ "element": "minecraft:iron_shovel" },
+					{ "element": "minecraft:bow" }
+				],
+				[
+					{ "element": "minecraft:red_mushroom", "min":5, "max":10 },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:wheat_seeds", "min":2, "max":5 },
+					{ "element": "minecraft:wheat", "min":2, "max":5 },
+					{ "element": "minecraft:apple" },
+					{ "element": "minecraft:iron_pickaxe" },
+					{ "element": "minecraft:bow" }
+				],
+				[
+					{ "element": "minecraft:red_mushroom", "min":5, "max":10 },
+					{ "element": "minecraft:iron_sword" },
+					{ "element": "minecraft:wheat_seeds", "min":2, "max":5 },
+					{ "element": "minecraft:wheat", "min":2, "max":5 },
+					{ "element": "minecraft:apple" },
+					{ "element": "minecraft:iron_axe" },
+					{ "element": "minecraft:bow" }
+				]
+			]
+		},
+		"8x5x6": { "block": "minecraft:chest", "states": { "facing": "west" } },
+		 
+		"12x5x23": {
+			"block": "minecraft:chest",
+			"states": { "facing": "west" },
+			"contents": [
+				
+				[
+					{ "element": "minecraft:emerald" },
+					{ "element": "minecraft:diamond" }
+				],
+				[
+					{ "element": "minecraft:gold_ingot", "min":4, "max":7 },
+					{ "element": "minecraft:golden_sword" }
+				],
+				[
+					
+					{ "element": "minecraft:gold_nugget", "min":2, "max":4 }
+				]
+			]
+		},
+		"11x12x6" : { "block": "castledefenders:blockmerc" },
+		"29x13x20": { "block": "castledefenders:blockmerc" },
+		"16x12x10": { "block": "castledefenders:blockmerc" },
+		"24x13x20": { "block": "castledefenders:blockmercarcher" },
+		"21x13x17": { "block": "castledefenders:blockmercarcher" },
+		"21x13x13": { "block": "castledefenders:blockmercarcher" }
+		
+	}
+}

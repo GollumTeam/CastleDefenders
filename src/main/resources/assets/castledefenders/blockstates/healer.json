@@ -1,0 +1,6 @@
+{
+   "variants": {
+       "inventory": { "model": "castledefenders:healer" },
+       "normal": { "model": "castledefenders:healer" }
+   }
+}
