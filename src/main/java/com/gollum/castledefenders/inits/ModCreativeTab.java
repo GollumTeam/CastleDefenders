@@ -4,10 +4,12 @@ import com.gollum.core.common.creativetab.GollumCreativeTabs;
 
 public class ModCreativeTab {
 	
-	public static GollumCreativeTabs tabCastleDefenders = new GollumCreativeTabs("CastleDefender");
+	public static GollumCreativeTabs CASTLE_DEFENDERS = new GollumCreativeTabs("CastleDefender");
 	
 	public static void init() {
-		ModCreativeTab.tabCastleDefenders.setIcon(ModBlocks.blockMercArcher);
+		ModCreativeTab.CASTLE_DEFENDERS.setIcon(ModBlocks.MERC_ARCHER);
+		
+//		CraftingHelper
 	}
 
 }

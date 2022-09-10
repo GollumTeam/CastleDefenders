@@ -33,7 +33,7 @@ public class RenderCastleDefenders extends RenderBiped {
 		if (cacheResource.containsKey(name)) {
 			texture = cacheResource.get(name);
 		} else {
-			texture = new ResourceLocation(ModCastleDefenders.MODID.toLowerCase()+":models/"+name+".png");
+			texture = new ResourceLocation(ModCastleDefenders.MODID.toLowerCase()+":textures/models/"+name+".png");
 			cacheResource.put(name, texture);
 		}
 		
@@ -42,7 +42,7 @@ public class RenderCastleDefenders extends RenderBiped {
 	
 	@Override
 	protected ResourceLocation getEntityTexture(EntityLiving par1Entity) {
-		return getResource(name);
+		return this.getResource(this.name);
 	}
 
 }

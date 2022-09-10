@@ -19,7 +19,7 @@
 			"contents": [
 				
 				[
-					{ "element": "castledefenders:medallion", "min":1, "max":5 }
+					{ "element": "castledefenders:medallion", "min":15, "max":35 }
 				],
 				[
 					{ "element": "minecraft:carrot", "min":1, "max":10 },

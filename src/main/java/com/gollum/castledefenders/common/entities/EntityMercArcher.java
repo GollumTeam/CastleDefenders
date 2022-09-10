@@ -19,7 +19,7 @@ public class EntityMercArcher extends EntityMercenary {
 	public EntityMercArcher(World world) {
 		
 		super(world);
-		this.blockSpawn      = ModBlocks.blockMercArcher;
+		this.blockSpawn      = ModBlocks.MERC_ARCHER;
 		this.defaultHeldItem = new ItemStack(Items.BOW, 1);
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), EntityAIDistanceAttack.TYPE_ARROW));

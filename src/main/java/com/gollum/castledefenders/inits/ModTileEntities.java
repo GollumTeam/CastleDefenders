@@ -13,22 +13,23 @@ import com.gollum.castledefenders.common.tileentities.TileEntityBlockMage;
 import com.gollum.castledefenders.common.tileentities.TileEntityBlockMerc;
 import com.gollum.castledefenders.common.tileentities.TileEntityBlockMercArcher;
 
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 
 public class ModTileEntities {
 	
 	public static void init() {
-		GameRegistry.registerTileEntity(TileEntityBlockKnight.class    , ModCastleDefenders.MODID+":knightblock");
-		GameRegistry.registerTileEntity(TileEntityBlockKnight2.class   , ModCastleDefenders.MODID+":knight2block");
-		GameRegistry.registerTileEntity(TileEntityBlockArcher.class    , ModCastleDefenders.MODID+":archerblock");
-		GameRegistry.registerTileEntity(TileEntityBlockArcher2.class   , ModCastleDefenders.MODID+":archer2block");
-		GameRegistry.registerTileEntity(TileEntityBlockMerc.class      , ModCastleDefenders.MODID+":mercblock");
-		GameRegistry.registerTileEntity(TileEntityBlockMercArcher.class, ModCastleDefenders.MODID+":mercarcherblock");
-		GameRegistry.registerTileEntity(TileEntityBlockMage.class      , ModCastleDefenders.MODID+":mageblock");
-		GameRegistry.registerTileEntity(TileEntityBlockHealer.class    , ModCastleDefenders.MODID+":hearlerblock");
-		GameRegistry.registerTileEntity(TileEntityBlockEKnight.class   , ModCastleDefenders.MODID+":enemyknightblock");
-		GameRegistry.registerTileEntity(TileEntityBlockEArcher.class   , ModCastleDefenders.MODID+":enemyarcherblock");
-		GameRegistry.registerTileEntity(TileEntityBlockEMage.class     , ModCastleDefenders.MODID+":enemymageblock");
+		GameRegistry.registerTileEntity(TileEntityBlockKnight.class    , new ResourceLocation(ModCastleDefenders.MODID+":knightblock"));
+		GameRegistry.registerTileEntity(TileEntityBlockKnight2.class   , new ResourceLocation(ModCastleDefenders.MODID+":knight2block"));
+		GameRegistry.registerTileEntity(TileEntityBlockArcher.class    , new ResourceLocation(ModCastleDefenders.MODID+":archerblock"));
+		GameRegistry.registerTileEntity(TileEntityBlockArcher2.class   , new ResourceLocation(ModCastleDefenders.MODID+":archer2block"));
+		GameRegistry.registerTileEntity(TileEntityBlockMerc.class      , new ResourceLocation(ModCastleDefenders.MODID+":mercblock"));
+		GameRegistry.registerTileEntity(TileEntityBlockMercArcher.class, new ResourceLocation(ModCastleDefenders.MODID+":mercarcherblock"));
+		GameRegistry.registerTileEntity(TileEntityBlockMage.class      , new ResourceLocation(ModCastleDefenders.MODID+":mageblock"));
+		GameRegistry.registerTileEntity(TileEntityBlockHealer.class    , new ResourceLocation(ModCastleDefenders.MODID+":hearlerblock"));
+		GameRegistry.registerTileEntity(TileEntityBlockEKnight.class   , new ResourceLocation(ModCastleDefenders.MODID+":enemyknightblock"));
+		GameRegistry.registerTileEntity(TileEntityBlockEArcher.class   , new ResourceLocation(ModCastleDefenders.MODID+":enemyarcherblock"));
+		GameRegistry.registerTileEntity(TileEntityBlockEMage.class     , new ResourceLocation(ModCastleDefenders.MODID+":enemymageblock"));
 	}
 }

@@ -1,0 +1,26 @@
+{
+  "type" : "forge:ore_shaped",
+  "pattern" : [ "WZW", "XYX", "WZW" ],
+  "key" : {
+    "X" : {
+      "item" : "minecraft:iron_ingot",
+      "data" : 0
+    },
+    "Y" : {
+      "item" : "minecraft:bow",
+      "data" : 0
+    },
+    "Z" : {
+      "item" : "castledefenders:medallion",
+      "data" : 0
+    },
+    "W" : {
+      "item" : "minecraft:diamond",
+      "data" : 0
+    }
+  },
+  "result" : {
+    "item" : "castledefenders:archer2",
+    "data" : 0
+  }
+}

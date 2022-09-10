@@ -18,7 +18,7 @@ public class EntityMerc extends EntityMercenary {
 	public EntityMerc(World world) {
 		
 		super(world);
-		this.blockSpawn      = ModBlocks.blockMerc;
+		this.blockSpawn      = ModBlocks.MERC;
 		this.defaultHeldItem = new ItemStack(Items.IRON_SWORD, 1);
 		
 //		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, this.getMaxSpeed(), true));

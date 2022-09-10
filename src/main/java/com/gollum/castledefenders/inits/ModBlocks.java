@@ -17,32 +17,32 @@ import net.minecraft.block.Block;
 
 public class ModBlocks {
 	
-	public static Block blockKnight;
-	public static Block blockKnight2;
-	public static Block blockArcher;
-	public static Block blockArcher2;
-	public static Block blockMerc;
-	public static Block blockMercArcher;
-	public static Block blockMage;
-	public static Block blockHealer;
-	public static Block blockEKnight;
-	public static Block blockEArcher;
-	public static Block blockEMage;
+	public static Block KNIGHT;
+	public static Block KNIGHT2;
+	public static Block ARCHER;
+	public static Block ARCHER2;
+	public static Block MERC;
+	public static Block MERC_ARCHER;
+	public static Block MAGE;
+	public static Block HEALER;
+	public static Block EKNIGHT;
+	public static Block EARCHER;
+	public static Block EMAGE;
 	
 	public static void init() {
 		
 		// Création des blocks
-		ModBlocks.blockKnight     = new BlockKnight    ("knight"    ).setHardness(2.0F).setResistance(5.0F);
-		ModBlocks.blockKnight2    = new BlockKnight2   ("knight2"   ).setHardness(2.0F).setResistance(5.0F);
-		ModBlocks.blockArcher     = new BlockArcher    ("archer"    ).setHardness(2.0F).setResistance(5.0F);
-		ModBlocks.blockArcher2    = new BlockArcher2   ("archer2"   ).setHardness(2.0F).setResistance(5.0F);
-		ModBlocks.blockMerc       = new BlockMerc      ("merc"      ).setHardness(2.0F).setResistance(5.0F);
-		ModBlocks.blockMercArcher = new BlockMercArcher("mercarcher").setHardness(2.0F).setResistance(5.0F);
-		ModBlocks.blockMage       = new BlockMage      ("mage"      ).setHardness(2.0F).setResistance(5.0F);
-		ModBlocks.blockHealer     = new BlockHealer    ("healer"    ).setHardness(2.0F).setResistance(5.0F);
-		ModBlocks.blockEKnight    = new BlockEKnight   ("eknight"   ).setHardness(2.0F).setResistance(5.0F);
-		ModBlocks.blockEArcher    = new BlockEArcher   ("earcher"   ).setHardness(2.0F).setResistance(5.0F);
-		ModBlocks.blockEMage      = new BlockEMage     ("emage"     ).setHardness(2.0F).setResistance(5.0F);
+		ModBlocks.KNIGHT     = new BlockKnight    ("knight"    ).setHardness(2.0F).setResistance(5.0F);
+		ModBlocks.KNIGHT2    = new BlockKnight2   ("knight2"   ).setHardness(2.0F).setResistance(5.0F);
+		ModBlocks.ARCHER     = new BlockArcher    ("archer"    ).setHardness(2.0F).setResistance(5.0F);
+		ModBlocks.ARCHER2    = new BlockArcher2   ("archer2"   ).setHardness(2.0F).setResistance(5.0F);
+		ModBlocks.MERC       = new BlockMerc      ("merc"      ).setHardness(2.0F).setResistance(5.0F);
+		ModBlocks.MERC_ARCHER = new BlockMercArcher("mercarcher").setHardness(2.0F).setResistance(5.0F);
+		ModBlocks.MAGE       = new BlockMage      ("mage"      ).setHardness(2.0F).setResistance(5.0F);
+		ModBlocks.HEALER     = new BlockHealer    ("healer"    ).setHardness(2.0F).setResistance(5.0F);
+		ModBlocks.EKNIGHT    = new BlockEKnight   ("eknight"   ).setHardness(2.0F).setResistance(5.0F);
+		ModBlocks.EARCHER    = new BlockEArcher   ("earcher"   ).setHardness(2.0F).setResistance(5.0F);
+		ModBlocks.EMAGE      = new BlockEMage     ("emage"     ).setHardness(2.0F).setResistance(5.0F);
 		
 	}
 

@@ -1,6 +1,7 @@
 package com.gollum.castledefenders.common.entities;
 
 import net.minecraft.init.Items;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
@@ -12,8 +13,8 @@ public class EntityKnight2 extends EntityKnight {
 
 	public EntityKnight2(World world) {
 		super(world);
-		this.blockSpawn      = ModBlocks.blockKnight2;
-		this.defaultHeldItem = new ItemStack(Items.DIAMOND_SWORD, 1);
+		this.blockSpawn      = ModBlocks.KNIGHT2;
+		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.DIAMOND_SWORD, 1));
 	}
 	
 	/**

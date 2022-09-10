@@ -15,10 +15,12 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -29,7 +31,6 @@ import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
 public abstract class EntityDefender extends EntityAnimal {
 	
-	protected ItemStack defaultHeldItem = null;
 	protected Block blockSpawn;
 	private int idTask = 0;
 	private int idTargetTask = 0;
@@ -41,13 +42,13 @@ public abstract class EntityDefender extends EntityAnimal {
 		this.setSize(1.1F, 1.8F);
 		
 		((PathNavigateGround)this.getNavigator()).setBreakDoors(true); // Permet d'ouvrir les port
-//		((PathNavigateGround)this.getNavigator()).setAvoidsWater(true); // Evite l'eau
+		((PathNavigateGround)this.getNavigator()).setCanSwim(true); // Peux nager l'eau
 		
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(this.getMoveSpeed ());
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH)    .setBaseValue(this.getMaxHealt ());
 		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE)  .setBaseValue(this.getFollowRange ());
 		
-		this.tasks.addTask(this.nextIdTask (), new EntityAITempt(this, 0.35F, ModItems.itemMedallion, false));
+		this.tasks.addTask(this.nextIdTask (), new EntityAITempt(this, 0.35F, ModItems.MEDALLION, false));
 		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMoveSpeed ()));
 	}
@@ -114,14 +115,14 @@ public abstract class EntityDefender extends EntityAnimal {
 		
 		if (super.attackEntityFrom(damageSource, strength)) {
 			
-//			Entity entity = damageSource.getEntity();
-//			
-//			if (this.riddenByEntity != entity && this.ridingEntity != entity) {
-//				if (entity != this && entity instanceof EntityLivingBase) {
-//					this.setAttackTarget((EntityLivingBase)entity);
-//					return true;
-//				}
-//			}
+			Entity entity = damageSource.getImmediateSource();
+			
+			if (this.isPassenger(entity) && this.getRidingEntity().equals(entity)) {
+				if (entity != this && entity instanceof EntityLivingBase) {
+					this.setAttackTarget((EntityLivingBase)entity);
+					return true;
+				}
+			}
 		}
 		return false;
 	}
@@ -138,13 +139,13 @@ public abstract class EntityDefender extends EntityAnimal {
 	public boolean attackEntityAsMob(Entity entity) {
 		double strength = this.getAttackStrength();
 
-//		if (this.isPotionActive(Potion.damageBoost)) {
-//			strength += 3 << this.getActivePotionEffect(Potion.damageBoost).getAmplifier();
-//		}
-//
-//		if (this.isPotionActive(Potion.weakness)) {
-//			strength -= 2 << this.getActivePotionEffect(Potion.weakness).getAmplifier();
-//		}
+		if (this.isPotionActive(MobEffects.STRENGTH)) {
+			strength += 3 << this.getActivePotionEffect(MobEffects.STRENGTH).getAmplifier();
+		}
+
+		if (this.isPotionActive(MobEffects.WEAKNESS)) {
+			strength -= 2 << this.getActivePotionEffect(MobEffects.WEAKNESS).getAmplifier();
+		}
 
 		return entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float)strength);
 	}
@@ -190,19 +191,6 @@ public abstract class EntityDefender extends EntityAnimal {
 			!found
 		;
 	}
-	
-	/**
-	 * Returns the item that this EntityLiving is holding, if any.
-	 */
-//	@Override
-//	public ItemStack getHeldItem() {
-//		
-//		if (this.defaultHeldItem == null) {
-//			return super.getHeldItem ();
-//		}
-//		
-//		return this.defaultHeldItem;
-//	}
 	
 	@Override
 	public EntityAgeable createChild(EntityAgeable entityageable) {

@@ -26,7 +26,7 @@
 			"contents": [
 				
 				[
-					{ "element": "castledefenders:medallion", "min":1, "max":5 }
+					{ "element": "castledefenders:medallion", "min":10, "max":20 }
 				],
 				
 				[

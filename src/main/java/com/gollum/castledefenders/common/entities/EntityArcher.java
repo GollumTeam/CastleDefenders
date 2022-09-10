@@ -15,6 +15,7 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
@@ -23,8 +24,8 @@ public class EntityArcher extends EntityDefender {
 	public EntityArcher(World world) {
 
 		super(world);
-		this.blockSpawn    = ModBlocks.blockArcher;
-		this.defaultHeldItem = new ItemStack(Items.BOW, 1);
+		this.blockSpawn    = ModBlocks.ARCHER;
+		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.BOW, 1));
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), EntityAIDistanceAttack.TYPE_ARROW));
 		

@@ -4,6 +4,12 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
 import net.minecraft.world.biome.Biome;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.gollum.castledefenders.ModCastleDefenders;
+import com.gollum.castledefenders.common.config.ConfigCastleDefender;
 import com.gollum.castledefenders.common.entities.EntityArcher;
 import com.gollum.castledefenders.common.entities.EntityArcher2;
 import com.gollum.castledefenders.common.entities.EntityEArcher;
@@ -16,25 +22,27 @@ import com.gollum.castledefenders.common.entities.EntityMage;
 import com.gollum.castledefenders.common.entities.EntityMerc;
 import com.gollum.castledefenders.common.entities.EntityMercArcher;
 import com.gollum.core.common.factory.MobFactory;
+import com.gollum.core.tools.registered.RegisteredObjects;
 
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import scala.actors.threadpool.Arrays;
 
 
 public class ModMobs {
 	
 	public static void init() {
 		
-		registerMob(EntityKnight.class    , "Knight"     , 0x000000);
-		registerMob(EntityKnight2.class   , "Knight2"    , 0x00FFFC);
-		registerMob(EntityArcher.class    , "Archer"     , 0x500000);
-		registerMob(EntityArcher2.class   , "Archer2"    , 0x00FF88);
-		registerMob(EntityMage.class      , "Mage"       , 0xE10000);
-		registerMob(EntityEKnight.class   , "EnemyKnight", 0xFF00AA);
-		registerMob(EntityEArcher.class   , "EnemyArcher", 0xE1AA00);
-		registerMob(EntityEMage.class     , "EnemyMage"  , 0xE12AFF);
-		registerMob(EntityMerc.class      , "Merc"       , 0x875600);
-		registerMob(EntityMercArcher.class, "MercArcher" , 0xBF95FF);
-		registerMob(EntityHealer.class    , "Healer"     , 0xFF84B4);
+		registerMob(EntityKnight.class    , "knight"     , 0x000000, ModCastleDefenders.config.knightBiomes    );
+		registerMob(EntityKnight2.class   , "knight2"    , 0x00FFFC, ModCastleDefenders.config.knight2Biomes   );
+		registerMob(EntityArcher.class    , "archer"     , 0x500000, ModCastleDefenders.config.eKnightBiomes   );
+		registerMob(EntityArcher2.class   , "archer2"    , 0x00FF88, ModCastleDefenders.config.archerBiomes    );
+		registerMob(EntityMage.class      , "mage"       , 0xE10000, ModCastleDefenders.config.archer2Biomes   );
+		registerMob(EntityEKnight.class   , "enemyknight", 0xFF00AA, ModCastleDefenders.config.eArcherBiomes   );
+		registerMob(EntityEArcher.class   , "enemyarcher", 0xE1AA00, ModCastleDefenders.config.mageBiomes      );
+		registerMob(EntityEMage.class     , "enemymage"  , 0xE12AFF, ModCastleDefenders.config.eMageBiomes     );
+		registerMob(EntityMerc.class      , "merc"       , 0x875600, ModCastleDefenders.config.mercBiomes      );
+		registerMob(EntityMercArcher.class, "mercarcher" , 0xBF95FF, ModCastleDefenders.config.mercArcherBiomes);
+		registerMob(EntityHealer.class    , "healer"     , 0xFF84B4, ModCastleDefenders.config.healerBiomes    );
 		
 	}
 
@@ -45,41 +53,20 @@ public class ModMobs {
 	 * @param id
 	 * @param spawn
 	 */
-	protected static void registerMob (Class entityClass, String name, int color) {
+	protected static void registerMob (Class entityClass, String name, int color, String[] biomes) {
 		
 		new MobFactory().register(entityClass, name, 0xFFFFFF, color);;
-		
+
+		List<String> list = Arrays.asList(biomes);
+
 		// Pop dans les biomes
-		EntityRegistry.addSpawn(entityClass, 10, 0, 0, EnumCreatureType.CREATURE, new Biome[] {
-			Biomes.DESERT,
-			Biomes.DESERT_HILLS,
-			Biomes.EXTREME_HILLS,
-			Biomes.EXTREME_HILLS_EDGE,
-			Biomes.FOREST,
-			Biomes.FOREST_HILLS,
-			Biomes.FROZEN_OCEAN,
-			Biomes.FROZEN_RIVER,
-			Biomes.HELL,
-			Biomes.ICE_MOUNTAINS,
-			Biomes.ICE_PLAINS,
-			Biomes.JUNGLE,
-			Biomes.JUNGLE_HILLS,
-			Biomes.MUSHROOM_ISLAND,
-			Biomes.MUSHROOM_ISLAND_SHORE,
-			Biomes.OCEAN,
-			Biomes.PLAINS,
-			Biomes.RIVER,
-			Biomes.SKY,
-			Biomes.BIRCH_FOREST,
-			Biomes.BIRCH_FOREST_HILLS,
-			Biomes.SWAMPLAND,
-			Biomes.TAIGA,
-			Biomes.TAIGA_HILLS,
-			Biomes.COLD_BEACH,
-			Biomes.COLD_TAIGA,
-			Biomes.SAVANNA,
-			Biomes.SAVANNA_PLATEAU,
-		});
+		EntityRegistry.addSpawn(entityClass, 10, 0, 0, EnumCreatureType.CREATURE, list
+			.stream()
+			.map(b -> RegisteredObjects.instance().getBiome(b))
+			.filter(b -> b != null)
+			.collect(Collectors.toList())
+			.toArray(new Biome[list.size()])
+		);
 		
 	}
 }

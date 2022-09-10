@@ -25,7 +25,7 @@ public class EntityHealer extends EntityMerc {
 	public EntityHealer(World world) {
 		
 		super(world);
-		this.blockSpawn         = ModBlocks.blockHealer;
+		this.blockSpawn         = ModBlocks.HEALER;
 		this.defaultHeldItem    = new ItemStack(Items.BOOK, 1);
 		
 	}

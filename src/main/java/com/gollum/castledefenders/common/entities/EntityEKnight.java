@@ -3,6 +3,7 @@ package com.gollum.castledefenders.common.entities;
 //import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
@@ -14,8 +15,8 @@ public class EntityEKnight extends EntityEnemy {
 	
 	public EntityEKnight(World world) {
 		super(world);
-		this.blockSpawn      = ModBlocks.blockEKnight;
-		this.defaultHeldItem = new ItemStack(Items.IRON_SWORD, 1);
+		this.blockSpawn      = ModBlocks.EKNIGHT;
+		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD, 1));
 		
 //		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityPlayer.class, this.getMoveSpeed(), true));
 //		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, EntityDefender.class, this.getMoveSpeed(), true));

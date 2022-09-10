@@ -7,9 +7,9 @@ import net.minecraft.item.Item;
 
 public class ModItems {
 	
-	public static Item itemMedallion;
+	public static Item MEDALLION;
 	
 	public static void init() {
-		ModItems.itemMedallion = new HItem ("medallion").setCreativeTab(ModCreativeTab.tabCastleDefenders);
+		ModItems.MEDALLION = new HItem ("medallion").setCreativeTab(ModCreativeTab.CASTLE_DEFENDERS);
 	}
 }

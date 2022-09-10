@@ -10,7 +10,7 @@ public class EntityArcher2 extends EntityArcher {
 
 	public EntityArcher2(World world) {
 		super(world);
-		this.blockSpawn = ModBlocks.blockArcher2;
+		this.blockSpawn = ModBlocks.ARCHER2;
 	}
 	
 	/**

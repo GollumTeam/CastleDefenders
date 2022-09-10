@@ -6,6 +6,8 @@ import com.gollum.core.tools.registered.RegisteredObjects;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
@@ -59,63 +61,63 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity implemen
 	@Override
 	public void update() {
 		
-//		if (this.anyPlayerInRange()) {
-//			
-//			if (!this.world.isRemote) {
-//				
-//				// Lance un timeout
-//				if (this.delay == -1) {
-//					this.updateDelay();
-//				}
-//				if (this.delay > 0) {
-//					--this.delay;
-//					return;
-//				}
-//				
-//				Entity entity = EntityList.createEntityByIDFromName(new ResourceLocation(this.mobID), this.world);
-//				
-//				// L'entity n'existe pas
-//				if (entity == null) {
-//					ModCastleDefenders.logger.warning("This mob "+this.mobID+" isn't  register");
-//					return;
-//				}
-//
-//				int nbEntityArround = this.world.getEntitiesWithinAABB(entity.getClass(), new AxisAlignedBB((double)this.pos.getX(), (double)this.pos.getY(), (double)this.pos.getZ(), (double)(this.pos.getX() + 1), (double)(this.pos.getY() + 1), (double)(this.pos.getZ() + 1)).expand(12.0D, 4.0D, 12.0D)).size();
-//				
-//				//Le nombre d'entity est supérieur à 6 autour du block
-//				if (nbEntityArround >= this.maxSpawn) {
-//					this.updateDelay();
-//					return;
-//				}
-//				
-//				double x = (double)this.pos.getX() + 0.5D;
-//				double y = (double)(this.pos.getY() + 1);
-//				double z = (double)this.pos.getZ() + 0.5D;
-//				EntityLiving entityLiving = entity instanceof EntityLiving ? (EntityLiving)entity : null;
-//				entity.setLocationAndAngles(x, y, z, this.world.rand.nextFloat() * 360.0F, this.world.rand.nextFloat() * 360.0F);
-//				
-//				if (entityLiving == null || entityLiving.getCanSpawnHere()) {
-//					
-//					this.world.spawnEntity(entity);
-//					this.world.playSound(
-//						this.pos.getX(),
-//						this.pos.getY(),
-//						this.pos.getZ(),
-//						RegisteredObjects.instance().getSoundEvent("dig.stone"),
-//						SoundCategory.BLOCKS,
-//						0.5F,
-//						this.world.rand.nextFloat() * 0.25F + 0.6F,
-//						false
-//					);
-//					
-//					if (entityLiving != null) {
-//						entityLiving.spawnExplosionParticle();
-//					}
-//					
-//					this.updateDelay();
-//				}
-//			}
-//		}
+		if (this.anyPlayerInRange()) {
+			
+			if (!this.world.isRemote) {
+				
+				// Lance un timeout
+				if (this.delay == -1) {
+					this.updateDelay();
+				}
+				if (this.delay > 0) {
+					--this.delay;
+					return;
+				}
+				
+				Entity entity = EntityList.createEntityByIDFromName(new ResourceLocation(this.mobID), this.world);
+				
+				// L'entity n'existe pas
+				if (entity == null) {
+					ModCastleDefenders.logger.warning("This mob "+this.mobID+" isn't  register");
+					return;
+				}
+
+				int nbEntityArround = this.world.getEntitiesWithinAABB(entity.getClass(), new AxisAlignedBB((double)this.pos.getX(), (double)this.pos.getY(), (double)this.pos.getZ(), (double)(this.pos.getX() + 1), (double)(this.pos.getY() + 1), (double)(this.pos.getZ() + 1)).expand(12.0D, 4.0D, 12.0D)).size();
+				
+				//Le nombre d'entity est supérieur à 6 autour du block
+				if (nbEntityArround >= this.maxSpawn) {
+					this.updateDelay();
+					return;
+				}
+				
+				double x = (double)this.pos.getX() + 0.5D;
+				double y = (double)(this.pos.getY() + 1);
+				double z = (double)this.pos.getZ() + 0.5D;
+				EntityLiving entityLiving = entity instanceof EntityLiving ? (EntityLiving)entity : null;
+				entity.setLocationAndAngles(x, y, z, this.world.rand.nextFloat() * 360.0F, this.world.rand.nextFloat() * 360.0F);
+				
+				if (entityLiving == null || entityLiving.getCanSpawnHere()) {
+					
+					this.world.spawnEntity(entity);
+					this.world.playSound(
+						(EntityPlayer)null,
+						this.pos.getX()+0.5f,                      // x           
+						this.pos.getY()+0.5f,                      // y           
+						this.pos.getZ()+0.5f,                      // z           
+						SoundEvents.BLOCK_STONE_PLACE,             // sound       
+						SoundCategory.BLOCKS,                      // category    
+						0.5F,                                      // volume             
+						this.world.rand.nextFloat() * 0.25F + 0.6F // pitch
+					);
+					
+					if (entityLiving != null) {
+						entityLiving.spawnExplosionParticle();
+					}
+					
+					this.updateDelay();
+				}
+			}
+		}
 	}
 	
 	/**

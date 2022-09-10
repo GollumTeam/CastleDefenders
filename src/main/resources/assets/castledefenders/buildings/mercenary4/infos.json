@@ -158,6 +158,9 @@
 					{ "element": "minecraft:cookie" },
 					{ "element": "minecraft:chicken" },
 					{ "element": "minecraft:melon", "min":1, "max":3 }
+				],
+				[
+					{ "element": "castledefenders:medallion", "min":1, "max":9 }
 				]
 			]
 		},
@@ -183,6 +186,9 @@
 					{ "element": "minecraft:cookie" },
 					{ "element": "minecraft:chicken" },
 					{ "element": "minecraft:melon", "min":1, "max":3 }
+				],
+				[
+					{ "element": "castledefenders:medallion", "min":1, "max":9 }
 				]
 			]
 		},
@@ -203,6 +209,9 @@
 					{ "element": "minecraft:writable_book" },
 					{ "element": "minecraft:book" },
 					{ "element": "minecraft:paper", "min":1, "max":3 }
+				],
+				[
+					{ "element": "castledefenders:medallion", "min":1, "max":9 }
 				]
 			]
 		},
@@ -220,6 +229,9 @@
 					{ "element": "minecraft:potion", "type": "long_swiftness" },
 					{ "element": "minecraft:potion", "type": "long_weakness" },
 					{ "element": "minecraft:potion", "type": "long_strength" }
+				],
+				[
+					{ "element": "castledefenders:medallion", "min":1, "max":9 }
 				]
 			]
 		},
@@ -229,7 +241,8 @@
 			"states": { "facing": "east" },
 			"contents": [
 				[{ "element": "minecraft:potion", "type":"strong_regeneration", "min":1, "max":3 }],
-				[{ "element": "minecraft:gold_ingot", "min":4, "max":7 }]
+				[{ "element": "minecraft:gold_ingot", "min":4, "max":7 }],
+				[{ "element": "castledefenders:medallion", "min":1, "max":9 }]
 			]
 		}
 		

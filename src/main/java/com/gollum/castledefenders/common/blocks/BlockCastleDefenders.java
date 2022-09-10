@@ -20,7 +20,7 @@ public abstract class BlockCastleDefenders extends HBlockContainer {
 	 */
 	public BlockCastleDefenders (String registerName, Material material) {
 		super(registerName, material);
-		this.setCreativeTab(ModCreativeTab.tabCastleDefenders);
+		this.setCreativeTab(ModCreativeTab.CASTLE_DEFENDERS);
 	}
 	
 

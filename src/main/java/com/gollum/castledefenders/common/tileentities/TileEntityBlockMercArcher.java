@@ -8,7 +8,7 @@ public class TileEntityBlockMercArcher extends TileEntityBlockCastleDefenders {
 	 * Constructeur
 	 */
 	public TileEntityBlockMercArcher() {
-		super("MercArcher");
+		super(ModCastleDefenders.MODID+":mercarcher");
 		this.maxSpawn = ModCastleDefenders.config.maxSpawnMercArcher;
 	}
 }

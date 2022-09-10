@@ -17,7 +17,7 @@ public class EntityMage extends EntityDefender {
 	public EntityMage(World world) {
 
 		super(world);
-		this.blockSpawn = ModBlocks.blockMage;
+		this.blockSpawn = ModBlocks.MAGE;
 		
 		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), EntityAIDistanceAttack.TYPE_FIRE));
 		

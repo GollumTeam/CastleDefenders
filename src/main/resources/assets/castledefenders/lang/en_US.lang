@@ -26,6 +26,9 @@ entity.merc.name=Mercenary
 entity.mercarcher.name=Mercenary Archer
 entity.healer.name=Healer
 
+
+castledefenders.confi=""
+
 castledefenders.message.buymercenary=You can hire me with items
 castledefenders.message.okfor=It's ok for %d %s
 

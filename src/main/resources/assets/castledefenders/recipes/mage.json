@@ -1,0 +1,22 @@
+{
+  "type" : "forge:ore_shaped",
+  "pattern" : [ "ZZZ", "YYY", "XXX" ],
+  "key" : {
+    "X" : {
+      "item" : "minecraft:diamond",
+      "data" : 0
+    },
+    "Y" : {
+      "item" : "minecraft:obsidian",
+      "data" : 0
+    },
+    "Z" : {
+      "item" : "castledefenders:medallion",
+      "data" : 0
+    }
+  },
+  "result" : {
+    "item" : "castledefenders:mage",
+    "data" : 0
+  }
+}

@@ -72,6 +72,9 @@
 					{ "element": "minecraft:bread" },
 					{ "element": "minecraft:carrot", "min":1, "max":10 },
 					{ "element": "minecraft:bow" }
+				],
+				[
+					{ "element": "castledefenders:medallion", "min":4, "max":9 }
 				]
 			]
 		},

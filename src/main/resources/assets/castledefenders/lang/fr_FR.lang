@@ -1,6 +1,6 @@
 itemGroup.CastleDefender=Castle Defender
 
-item.medallion.name=Médallion
+item.medallion.name=Médaillon
 
 tile.knight.name=Générateur de Chevalier
 tile.knight2.name=Générateur de Chevalier - Niveau 2
@@ -27,6 +27,7 @@ entity.mercarcher.name=Mercenaire Archer
 entity.healer.name=Guérisseur
 
 castledefenders.config.compatibilityWithOldVersion=Compatibilité avec les anciennes versions du mode
+castledefenders.confi=""
 
 castledefenders.message.buymercenary=Des objets contre mes services
 castledefenders.message.okfor=Ça marche pour %d %s

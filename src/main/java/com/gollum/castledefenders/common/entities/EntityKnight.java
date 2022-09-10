@@ -7,13 +7,11 @@ import com.google.common.base.Predicate;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.ai.EntityAIAttackMelee;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.monster.EntityGhast;
-import net.minecraft.entity.monster.EntityGolem;
-import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
@@ -22,10 +20,10 @@ public class EntityKnight extends EntityDefender {
 	public EntityKnight(World world) {
 		
 		super(world);
-		this.blockSpawn      = ModBlocks.blockKnight;
-		this.defaultHeldItem = new ItemStack(Items.IRON_SWORD, 1);
+		this.blockSpawn      = ModBlocks.KNIGHT;
+		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD, 1));
 		
-//		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackOnCollide(this, this.getMoveSpeed (), true));
+		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackMelee(this, this.getMoveSpeed (), true));
 		
 		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget (this, EntityLiving.class, 0, false, true, new Predicate<Entity>() {
 			public boolean apply(Entity entity) {

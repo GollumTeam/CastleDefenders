@@ -1,14 +1,14 @@
 {
 	"castle": {
-		"globalSpawnRate":5,
+		"globalSpawnRate":6,
 		"buildings": {
 			"castle1": {
 				"enabled": true,
 				"dimentions": {
 					"0": {
 						"spawnRate":6,
-						"spawnMin":64,
-						"spawnMax":78,
+						"spawnMin":60,
+						"spawnMax":83,
 						"blocksSpawn":["minecraft:grass"]
 					}
 				}
@@ -18,8 +18,8 @@
 				"dimentions": {
 					"0": {
 						"spawnRate":6,
-						"spawnMin":64,
-						"spawnMax":78,
+						"spawnMin":60,
+						"spawnMax":83,
 						"blocksSpawn":["minecraft:grass"]
 					}
 				}
@@ -29,8 +29,8 @@
 				"dimentions": {
 					"0": {
 						"spawnRate":3,
-						"spawnMin":64,
-						"spawnMax":78,
+						"spawnMin":60,
+						"spawnMax":83,
 						"blocksSpawn":["minecraft:grass"]
 					}
 				}
@@ -40,8 +40,8 @@
 				"dimentions": {
 					"0": {
 						"spawnRate":2,
-						"spawnMin":64,
-						"spawnMax":78,
+						"spawnMin":50,
+						"spawnMax":83,
 						"blocksSpawn":["minecraft:grass"]
 					}
 				}
@@ -49,15 +49,15 @@
 		}
 	},
 	"mercenary": {
-		"globalSpawnRate":5,
+		"globalSpawnRate":6,
 		"buildings": {
 			"mercenary1": {
 				"enabled": true,
 				"dimentions": {
 					"0": {
 						"spawnRate":6,
-						"spawnMin":64,
-						"spawnMax":78,
+						"spawnMin":50,
+						"spawnMax":83,
 						"blocksSpawn":["minecraft:grass"]
 					}
 				}
@@ -67,8 +67,8 @@
 				"dimentions": {
 					"0": {
 						"spawnRate":6,
-						"spawnMin":64,
-						"spawnMax":78,
+						"spawnMin":50,
+						"spawnMax":83,
 						"blocksSpawn":["minecraft:grass"]
 					}
 				}
@@ -77,9 +77,9 @@
 				"enabled": true,
 				"dimentions": {
 					"0": {
-						"spawnRate":1,
-						"spawnMin":64,
-						"spawnMax":78,
+						"spawnRate":2,
+						"spawnMin":50,
+						"spawnMax":83,
 						"blocksSpawn":["minecraft:grass"]
 					}
 				}
@@ -88,9 +88,9 @@
 				"enabled": true,
 				"dimentions": {
 					"0": {
-						"spawnRate":1,
-						"spawnMin":64,
-						"spawnMax":78,
+						"spawnRate":2,
+						"spawnMin":50,
+						"spawnMax":83,
 						"blocksSpawn":["minecraft:grass"]
 					}
 				}

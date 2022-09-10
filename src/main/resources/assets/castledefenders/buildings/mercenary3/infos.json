@@ -103,6 +103,9 @@
 					{ "element": "minecraft:apple" },
 					{ "element": "minecraft:iron_axe" },
 					{ "element": "minecraft:bow" }
+				],
+				[
+					{ "element": "castledefenders:medallion", "min":1, "max":9 }
 				]
 			]
 		},
@@ -148,6 +151,9 @@
 					{ "element": "minecraft:apple" },
 					{ "element": "minecraft:iron_axe" },
 					{ "element": "minecraft:bow" }
+				],
+				[
+					{ "element": "castledefenders:medallion", "min":1, "max":9 }
 				]
 			]
 		},
@@ -169,6 +175,9 @@
 				[
 					
 					{ "element": "minecraft:gold_nugget", "min":2, "max":4 }
+				],
+				[
+					{ "element": "castledefenders:medallion", "min":1, "max":9 }
 				]
 			]
 		},

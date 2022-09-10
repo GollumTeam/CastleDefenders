@@ -28,7 +28,6 @@ import com.google.common.base.Predicate;
 
 public abstract class EntityEnemy extends EntityMob {
 	
-	protected ItemStack defaultHeldItem = null;
 	protected Block blockSpawn;
 	private int idTask = 0;
 	private int idTargetTask = 0;

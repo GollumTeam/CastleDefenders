@@ -9,9 +9,12 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -111,16 +114,17 @@ public class EntityAIDistanceAttack extends EntityAIBase
 			case TYPE_ARROW:
 				
 //				EntityArrow eArrow = new EntityArrow(this.world, this.entityHost, this.attackTarget, 1.6F, 12.0F);
-				this.world.playSound(
-					this.entityHost.posX,
-					this.entityHost.posY,
-					this.entityHost.posZ,
-					RegisteredObjects.instance().getSoundEvent("random.bow"),
-					SoundCategory.HOSTILE,
-					1.0F,
-					1.0F / (this.entityHost.getRNG().nextFloat() * 0.4F + 0.8F),
-					false
-				);
+//				this.world.playSound(
+//					(EntityPlayer)null,
+//					this.entityHost.posX,
+//					this.entityHost.posY,
+//					this.entityHost.posZ,
+//					SoundEvents.ENTITY_ARROW_SHOOT,
+//					RegisteredObjects.instance().getSoundEvent("random.bow"),
+//					SoundCategory.HOSTILE,
+//					1.0F,
+//					1.0F / (this.entityHost.getRNG().nextFloat() * 0.4F + 0.8F)
+//				);
 //				this.world.spawnEntity(eArrow);
 				
 				break;

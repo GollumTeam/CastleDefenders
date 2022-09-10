@@ -10,7 +10,6 @@ import com.gollum.castledefenders.inits.ModBlocks;
 import com.gollum.castledefenders.inits.ModCreativeTab;
 import com.gollum.castledefenders.inits.ModItems;
 import com.gollum.castledefenders.inits.ModMobs;
-import com.gollum.castledefenders.inits.ModRecipes;
 import com.gollum.castledefenders.inits.ModTileEntities;
 import com.gollum.core.ModGollumCoreLib;
 import com.gollum.core.common.i18n.I18n;
@@ -87,11 +86,8 @@ public class ModCastleDefenders extends GollumMod {
 		// Initialisation les TileEntities
 		ModTileEntities.init ();
 		
-//		// Ajout des recettes
-//		ModRecipes.init ();
-		
 //		// Initialisation des Mobs
-//		ModMobs.init ();
+		ModMobs.init ();
 		
 		// Set de l'icon du tab creative
 		ModCreativeTab.init();

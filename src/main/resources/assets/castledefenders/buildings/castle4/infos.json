@@ -244,7 +244,7 @@
 							{ "element": "minecraft:golden_boots" }
 						],
 						[
-							{ "element": "castledefenders:medallion", "min":4, "max":9 }
+							{ "element": "castledefenders:medallion", "min":15, "max":30 }
 						]
 					]
 				},
@@ -280,7 +280,7 @@
 							{ "element": "minecraft:golden_boots" }
 						],
 						[
-							{ "element": "castledefenders:medallion", "min":4, "max":9 }
+							{ "element": "castledefenders:medallion", "min":15, "max":30 }
 						]
 					]
 				}
@@ -320,7 +320,7 @@
 							{ "element": "minecraft:golden_boots" }
 						],
 						[
-							{ "element": "castledefenders:medallion", "min":4, "max":9 }
+							{ "element": "castledefenders:medallion", "min":15, "max":30 }
 						]
 					]
 				},
@@ -356,7 +356,7 @@
 							{ "element": "minecraft:golden_boots" }
 						],
 						[
-							{ "element": "castledefenders:medallion", "min":4, "max":9 }
+							{ "element": "castledefenders:medallion", "min":15, "max":30 }
 						]
 					]
 				}
@@ -396,7 +396,7 @@
 							{ "element": "minecraft:golden_boots" }
 						],
 						[
-							{ "element": "castledefenders:medallion", "min":4, "max":9 }
+							{ "element": "castledefenders:medallion", "min":15, "max":30 }
 						]
 					]
 				},
@@ -432,7 +432,7 @@
 							{ "element": "minecraft:golden_boots" }
 						],
 						[
-							{ "element": "castledefenders:medallion", "min":4, "max":9 }
+							{ "element": "castledefenders:medallion", "min":15, "max":30 }
 						]
 					]
 				}

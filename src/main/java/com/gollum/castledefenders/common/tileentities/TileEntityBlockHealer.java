@@ -8,7 +8,7 @@ public class TileEntityBlockHealer extends TileEntityBlockCastleDefenders {
 	 * Constructeur
 	 */
 	public TileEntityBlockHealer() {
-		super("Healer");
+		super(ModCastleDefenders.MODID+":healer");
 		this.maxSpawn = ModCastleDefenders.config.maxSpawnHealer;
 	}
 }
