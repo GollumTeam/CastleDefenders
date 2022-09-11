@@ -2,6 +2,7 @@ package com.gollum.castledefenders.common.entities;
 
 import com.gollum.castledefenders.ModCastleDefenders;
 import com.gollum.castledefenders.common.aientities.EntityAIDistanceAttack;
+import com.gollum.castledefenders.common.aientities.EntityAIDistanceAttack.PROJECTILE_TYPE;
 import com.gollum.castledefenders.inits.ModBlocks;
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 import com.google.common.base.Predicate;
@@ -27,7 +28,7 @@ public class EntityArcher extends EntityDefender {
 		this.blockSpawn    = ModBlocks.ARCHER;
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.BOW, 1));
 		
-		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), EntityAIDistanceAttack.TYPE_ARROW));
+		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), PROJECTILE_TYPE.ARROW));
 		
 		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget (this, EntityLiving.class, 0, true, false, new Predicate<Entity>() {
 			public boolean apply(Entity entity) {

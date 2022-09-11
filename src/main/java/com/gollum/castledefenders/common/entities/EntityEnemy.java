@@ -26,7 +26,7 @@ import net.minecraft.world.World;
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 import com.google.common.base.Predicate;
 
-public abstract class EntityEnemy extends EntityMob {
+public abstract class EntityEnemy extends EntityMob implements ICastleEntity {
 	
 	protected Block blockSpawn;
 	private int idTask = 0;
@@ -78,23 +78,23 @@ public abstract class EntityEnemy extends EntityMob {
 	/**
 	 * @return Vitesse du mod
 	 */
-	protected double getMoveSpeed () { return this.getCapacities ().moveSpeed; }
+	public double getMoveSpeed () { return this.getCapacities ().moveSpeed; }
 	/**
 	 * @return Point de vie du mod
 	 */
-	protected double getMaxHealt () { return this.getCapacities ().maxHealt; }
+	public double getMaxHealt () { return this.getCapacities ().maxHealt; }
 	/**
 	 * @return Point de vie du mod
 	 */
-	protected double getAttackStrength () { return this.getCapacities ().attackStrength; }
+	public double getAttackStrength () { return this.getCapacities ().attackStrength; }
 	/**
 	 * @return Zone de detection du mod
 	 */
-	protected double getFollowRange () { return this.getCapacities ().followRange; }
+	public double getFollowRange () { return this.getCapacities ().followRange; }
 	/**
 	 * @return Vitesse de tir du mod
 	 */
-	protected double getTimeRange() { return this.getCapacities ().timeRange; }
+	public double getTimeRange() { return this.getCapacities ().timeRange; }
 	
 	/**
 	 * @return les capacitées du mod

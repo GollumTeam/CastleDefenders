@@ -7,6 +7,7 @@ import net.minecraft.world.World;
 
 import com.gollum.castledefenders.ModCastleDefenders;
 import com.gollum.castledefenders.common.aientities.EntityAIDistanceAttack;
+import com.gollum.castledefenders.common.aientities.EntityAIDistanceAttack.PROJECTILE_TYPE;
 import com.gollum.castledefenders.inits.ModBlocks;
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
@@ -17,7 +18,7 @@ public class EntityEArcher extends EntityEnemy {
 		this.blockSpawn      = ModBlocks.EARCHER;
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.BOW, 1));
 		
-		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), EntityAIDistanceAttack.TYPE_ARROW));
+		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), PROJECTILE_TYPE.ARROW));
 	}
 	
 	@Override

@@ -10,6 +10,7 @@ import net.minecraft.world.World;
 
 import com.gollum.castledefenders.ModCastleDefenders;
 import com.gollum.castledefenders.common.aientities.EntityAIDistanceAttack;
+import com.gollum.castledefenders.common.aientities.EntityAIDistanceAttack.PROJECTILE_TYPE;
 import com.gollum.castledefenders.inits.ModBlocks;
 import com.gollum.core.common.config.type.ItemStackConfigType;
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
@@ -22,7 +23,7 @@ public class EntityMercArcher extends EntityMercenary {
 		this.blockSpawn      = ModBlocks.MERC_ARCHER;
 		this.defaultHeldItem = new ItemStack(Items.BOW, 1);
 		
-		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), EntityAIDistanceAttack.TYPE_ARROW));
+		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), PROJECTILE_TYPE.ARROW));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMaxSpeed()));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(this.nextIdTask (), new EntityAILookIdle(this));

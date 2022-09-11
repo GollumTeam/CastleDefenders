@@ -47,7 +47,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class EntityMercenary extends EntityTameable {
+public abstract class EntityMercenary extends EntityTameable implements ICastleEntity {
 	
 	protected ItemStack defaultHeldItem = null;
 	protected Block blockSpawn;
@@ -132,24 +132,24 @@ public abstract class EntityMercenary extends EntityTameable {
 	/**
 	 * @return Vitesse du mod
 	 */
-	protected double getMoveSpeed () { return this.isTamed() ? this.getMaxSpeed() : this.getMinSpeed (); }
+	public double getMoveSpeed () { return this.isTamed() ? this.getMaxSpeed() : this.getMinSpeed (); }
 	/**
 	 * @return Point de vie du mod
 	 */
-	protected double getMaxHealt () { return this.getCapacities ().maxHealt; }
+	public double getMaxHealt () { return this.getCapacities ().maxHealt; }
 	/**
 	 * @return Point de vie du mod
 	 */
-	protected double getAttackStrength () { return this.getCapacities ().attackStrength; }
+	public double getAttackStrength () { return this.getCapacities ().attackStrength; }
 	/**
 	 * @return Zone de detection du mod
 	 */
-	protected double getFollowRange () { return this.getCapacities ().followRange; }
+	public double getFollowRange () { return this.getCapacities ().followRange; }
 	
 	/**
 	 * @return Vitesse de tir du mod
 	 */
-	protected double getTimeRange() { return this.getCapacities ().timeRange; }
+	public double getTimeRange() { return this.getCapacities ().timeRange; }
 	
 	/**
 	 * @return les capacitées du mod
@@ -373,15 +373,10 @@ public abstract class EntityMercenary extends EntityTameable {
 		if (this.eating >= 0) {
 			
 			if (this.eating % 4 == 0) {
-				this.world.playSound(
-					this.posX,
-					this.posY,
-					this.posZ,
+				this.playSound(
 					RegisteredObjects.instance().getSoundEvent("random.eat"),
-					SoundCategory.NEUTRAL,
 					0.5F,
-					this.world.rand.nextFloat() * 0.1F + 0.9F,
-					false
+					this.world.rand.nextFloat() * 0.1F + 0.9F
 				);
 			}
 			this.eating++;
@@ -526,15 +521,10 @@ public abstract class EntityMercenary extends EntityTameable {
 					ItemFood food = (ItemFood) is.getItem();
 					this.heal(food.getHealAmount(is));
 					
-					this.world.playSound(
-						this.posX,
-						this.posY,
-						this.posZ,
+					this.playSound(
 						RegisteredObjects.instance().getSoundEvent("random.eat"),
-						SoundCategory.NEUTRAL,
 						0.5F,
-						this.world.rand.nextFloat() * 0.1F + 0.9F,
-						false
+						this.world.rand.nextFloat() * 0.1F + 0.9F
 					);
 					this.eating = 0;
 					

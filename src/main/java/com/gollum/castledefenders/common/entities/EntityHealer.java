@@ -71,15 +71,10 @@ public class EntityHealer extends EntityMerc {
 					
 					if (this.couldDownMusic > maxCouldDownMusic) {
 						this.couldDownMusic = 0;
-						this.world.playSound(
-							this.posX, 
-							this.posY, 
-							this.posZ, 
+						this.playSound(
 							RegisteredObjects.instance().getSoundEvent(ModCastleDefenders.MODID.toLowerCase()+":monk"),
-							SoundCategory.NEUTRAL,
 							0.5F,
-							this.world.rand.nextFloat() * 0.1F + 0.2F,
-							false
+							this.world.rand.nextFloat() * 0.1F + 0.2F
 						);
 					}
 					

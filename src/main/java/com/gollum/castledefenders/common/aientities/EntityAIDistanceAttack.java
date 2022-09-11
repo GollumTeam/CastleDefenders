@@ -3,6 +3,8 @@ package com.gollum.castledefenders.common.aientities;
 import java.util.Random;
 
 import com.gollum.castledefenders.ModCastleDefenders;
+import com.gollum.castledefenders.common.entities.EntityFireBall;
+import com.gollum.castledefenders.common.entities.ICastleEntity;
 import com.gollum.core.tools.registered.RegisteredObjects;
 
 import net.minecraft.block.Block;
@@ -11,6 +13,11 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.entity.projectile.EntityFireball;
+import net.minecraft.entity.projectile.EntityLargeFireball;
+import net.minecraft.entity.projectile.EntitySmallFireball;
+import net.minecraft.entity.projectile.EntitySpectralArrow;
+import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
@@ -21,8 +28,10 @@ import net.minecraft.world.World;
 
 public class EntityAIDistanceAttack extends EntityAIBase
 {
-	public static final int TYPE_ARROW = 0;
-	public static final int TYPE_FIRE = 1;
+	public enum PROJECTILE_TYPE {
+		ARROW,
+		FIRE
+	}
 	
 	World world;
 	EntityLiving entityHost;
@@ -32,15 +41,15 @@ public class EntityAIDistanceAttack extends EntityAIBase
 	double entityMoveSpeed = 0.0D;
 	double maxRangedAttackTime = 10;
 	int nbTarget = 0;
-	int rangedAttackID;
+	PROJECTILE_TYPE projectileType;
 
-	public EntityAIDistanceAttack(EntityLiving entityLiving, double entityMoveSpeed, double rangedAttackDistance, double rangedAttackTime, int rangedAttackID) {
+	public EntityAIDistanceAttack(EntityLiving entityLiving, double entityMoveSpeed, double rangedAttackDistance, double rangedAttackTime, PROJECTILE_TYPE projectileType) {
 		this.entityHost = entityLiving;
 		this.world = entityLiving.world;
 		this.entityMoveSpeed = entityMoveSpeed;
 		this.rangedAttackDistance = rangedAttackDistance;
 		this.maxRangedAttackTime = rangedAttackTime;
-		this.rangedAttackID = rangedAttackID;
+		this.projectileType = projectileType;
 		this.setMutexBits(3);
 	}
 
@@ -108,51 +117,36 @@ public class EntityAIDistanceAttack extends EntityAIBase
 		int z;
 		Random random = new Random();
 		
-		switch (this.rangedAttackID) {
+		switch (this.projectileType) {
 			
 			default:
-			case TYPE_ARROW:
+			case ARROW:
+				EntityArrow eArrow = new EntityTippedArrow(this.world, this.entityHost);
+				if (this.entityHost instanceof ICastleEntity) {
+					eArrow.setDamage(((ICastleEntity)this.entityHost).getAttackStrength());	
+				}
 				
-//				EntityArrow eArrow = new EntityArrow(this.world, this.entityHost, this.attackTarget, 1.6F, 12.0F);
-//				this.world.playSound(
-//					(EntityPlayer)null,
-//					this.entityHost.posX,
-//					this.entityHost.posY,
-//					this.entityHost.posZ,
-//					SoundEvents.ENTITY_ARROW_SHOOT,
-//					RegisteredObjects.instance().getSoundEvent("random.bow"),
-//					SoundCategory.HOSTILE,
-//					1.0F,
-//					1.0F / (this.entityHost.getRNG().nextFloat() * 0.4F + 0.8F)
-//				);
-//				this.world.spawnEntity(eArrow);
+				double d0 = this.attackTarget.posX - this.entityHost.posX;
+		        double d1 = this.attackTarget.getEntityBoundingBox().minY + (double)(this.attackTarget.height / 3.0F) - eArrow.posY;
+		        double d2 = this.attackTarget.posZ - this.entityHost.posZ;
+		        double d3 = (double)MathHelper.sqrt(d0 * d0 + d2 * d2);
+		        eArrow.shoot(d0, d1 + d3 * 0.20000000298023224D, d2, 1.6F, (float)(14 - this.world.getDifficulty().getDifficultyId() * 4));
+				this.entityHost.playSound(SoundEvents.ENTITY_SKELETON_SHOOT, 1.0f, 1.0F / (this.world.rand.nextFloat() * 0.4F + 0.8F));
+				this.world.spawnEntity(eArrow);
 				
 				break;
 				
-			case TYPE_FIRE:
+			case FIRE:
 				
 				ModCastleDefenders.logger.debug ("Attack Fire");
 				
-				x = MathHelper.floor(this.attackTarget.posX) + random.nextInt(5) - 2;
-				y = MathHelper.floor(this.attackTarget.posY);
-				z = MathHelper.floor(this.attackTarget.posZ + random.nextInt(5) - 2);
-				BlockPos pos = new BlockPos(x, y, z);
-				
-				for (int i = 0; i < 2 && !this.world.isAirBlock(pos); i++) {
-					y++;
+				EntityFireBall eFireball = new EntityFireBall(this.world, this.entityHost, this.attackTarget);
+				if (this.entityHost instanceof ICastleEntity) {
+					eFireball.damage = (float)((ICastleEntity)this.entityHost).getAttackStrength();	
 				}
+				this.entityHost.playSound(SoundEvents.ENTITY_LIGHTNING_THUNDER, 0.8f, 0.8F + random.nextFloat() * 0.2F);
+				this.world.spawnEntity(eFireball);
 				
-				if (this.world.isAirBlock(pos)) {
-					
-					this.world.setBlockState(pos, Blocks.FIRE.getDefaultState(), 3);
-					this.world.playSound(x, y, z, RegisteredObjects.instance().getSoundEvent("ambient.weather.thunder"), SoundCategory.WEATHER, 2.0F, 0.8F + random.nextFloat() * 0.2F, false);
-					this.world.playSound(x, y, z, RegisteredObjects.instance().getSoundEvent("random.explode"), SoundCategory.HOSTILE, 2.0F, 0.6F + random.nextFloat() * 0.2F, false);
-					
-					if (random.nextInt(3) == 0) {
-						this.entityHost.attackEntityAsMob(this.attackTarget);
-					}
-					
-				}
 				
 				break;
 		}

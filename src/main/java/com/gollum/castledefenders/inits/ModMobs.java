@@ -37,12 +37,12 @@ public class ModMobs {
 		registerMob(EntityArcher.class    , "archer"     , 0x500000, ModCastleDefenders.config.eKnightBiomes   );
 		registerMob(EntityArcher2.class   , "archer2"    , 0x00FF88, ModCastleDefenders.config.archerBiomes    );
 		registerMob(EntityMage.class      , "mage"       , 0xE10000, ModCastleDefenders.config.archer2Biomes   );
-		registerMob(EntityEKnight.class   , "enemyknight", 0xFF00AA, ModCastleDefenders.config.eArcherBiomes   );
-		registerMob(EntityEArcher.class   , "enemyarcher", 0xE1AA00, ModCastleDefenders.config.mageBiomes      );
-		registerMob(EntityEMage.class     , "enemymage"  , 0xE12AFF, ModCastleDefenders.config.eMageBiomes     );
-		registerMob(EntityMerc.class      , "merc"       , 0x875600, ModCastleDefenders.config.mercBiomes      );
-		registerMob(EntityMercArcher.class, "mercarcher" , 0xBF95FF, ModCastleDefenders.config.mercArcherBiomes);
-		registerMob(EntityHealer.class    , "healer"     , 0xFF84B4, ModCastleDefenders.config.healerBiomes    );
+//		registerMob(EntityEKnight.class   , "enemyknight", 0xFF00AA, ModCastleDefenders.config.eArcherBiomes   );
+//		registerMob(EntityEArcher.class   , "enemyarcher", 0xE1AA00, ModCastleDefenders.config.mageBiomes      );
+//		registerMob(EntityEMage.class     , "enemymage"  , 0xE12AFF, ModCastleDefenders.config.eMageBiomes     );
+//		registerMob(EntityMerc.class      , "merc"       , 0x875600, ModCastleDefenders.config.mercBiomes      );
+//		registerMob(EntityMercArcher.class, "mercarcher" , 0xBF95FF, ModCastleDefenders.config.mercArcherBiomes);
+//		registerMob(EntityHealer.class    , "healer"     , 0xFF84B4, ModCastleDefenders.config.healerBiomes    );
 		
 	}
 

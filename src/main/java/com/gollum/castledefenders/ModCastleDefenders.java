@@ -1,13 +1,11 @@
 package com.gollum.castledefenders;
 
-import net.minecraftforge.common.MinecraftForge;
-
 import com.gollum.castledefenders.common.CommonProxyCastleDefenders;
 import com.gollum.castledefenders.common.config.ConfigCastleDefender;
 import com.gollum.castledefenders.common.handlers.BuildingHandler;
-import com.gollum.castledefenders.inits.ModAchievements;
 import com.gollum.castledefenders.inits.ModBlocks;
 import com.gollum.castledefenders.inits.ModCreativeTab;
+import com.gollum.castledefenders.inits.ModEntities;
 import com.gollum.castledefenders.inits.ModItems;
 import com.gollum.castledefenders.inits.ModMobs;
 import com.gollum.castledefenders.inits.ModTileEntities;
@@ -17,6 +15,7 @@ import com.gollum.core.common.log.Logger;
 import com.gollum.core.common.mod.GollumMod;
 import com.gollum.core.common.version.VersionChecker;
 
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -77,6 +76,9 @@ public class ModCastleDefenders extends GollumMod {
 		
 		//Initialisation des items
 		ModItems.init ();
+		
+		//Initialisation des entities
+		ModEntities.init ();
 	}
 	
 	/** 2 **/
@@ -106,4 +108,5 @@ public class ModCastleDefenders extends GollumMod {
 	@Override
 	public void postInit(FMLPostInitializationEvent event) {
 	}
+	
 }
