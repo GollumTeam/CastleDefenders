@@ -5,6 +5,7 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
@@ -21,13 +22,16 @@ public class EntityMercArcher extends EntityMercenary {
 		
 		super(world);
 		this.blockSpawn      = ModBlocks.MERC_ARCHER;
-		this.defaultHeldItem = new ItemStack(Items.BOW, 1);
-		
+		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.BOW, 1));
+	}
+	
+    protected void initEntityAI() {
+		super.initEntityAI();
 		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), PROJECTILE_TYPE.ARROW));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMaxSpeed()));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(this.nextIdTask (), new EntityAILookIdle(this));
-	}
+    }
 	
 	/**
 	 * @return les capacitées du mod

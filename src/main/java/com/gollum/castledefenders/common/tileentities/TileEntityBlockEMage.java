@@ -8,7 +8,6 @@ public class TileEntityBlockEMage extends TileEntityBlockCastleDefenders {
 	 * Constructeur
 	 */
 	public TileEntityBlockEMage() {
-		super(ModCastleDefenders.MODID+":emage");
-		this.maxSpawn = ModCastleDefenders.config.maxSpawnEMage;
+		super(ModCastleDefenders.MODID+":enemymage", ModCastleDefenders.config.maxSpawnEMage);
 	}
 }

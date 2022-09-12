@@ -7,14 +7,18 @@ import net.minecraft.block.BlockAir;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNavigateGround;
@@ -28,6 +32,7 @@ import net.minecraft.world.World;
 
 import com.gollum.castledefenders.inits.ModItems;
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
+import com.google.common.base.Predicate;
 
 public abstract class EntityDefender extends EntityAnimal implements ICastleEntity {
 	
@@ -42,16 +47,30 @@ public abstract class EntityDefender extends EntityAnimal implements ICastleEnti
 		this.setSize(1.1F, 1.8F);
 		
 		((PathNavigateGround)this.getNavigator()).setBreakDoors(true); // Permet d'ouvrir les port
+		((PathNavigateGround)this.getNavigator()).setEnterDoors(true); // Permet d'ouvrir les port
 		((PathNavigateGround)this.getNavigator()).setCanSwim(true); // Peux nager l'eau
-		
-		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH)    .setBaseValue(this.getMaxHealt ());
-		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE)  .setBaseValue(this.getFollowRange ());
-		
+
+		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(this.getMoveSpeed());
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH)    .setBaseValue(this.getMaxHealt());
+		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE)  .setBaseValue(this.getFollowRange());
+	}
+	
+    protected void initEntityAI() {
 		this.tasks.addTask(this.nextIdTask (), new EntityAITempt(this, 0.35F, ModItems.MEDALLION, false));
 		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMoveSpeed ()));
-	}
+
+        this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIHurtByTarget(this, false, new Class[] {
+    		EntityPlayer.class
+        }));
+		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget<EntityLiving> (this, EntityLiving.class, 0, true, false, new Predicate<Entity>() {
+			public boolean apply(Entity entity) {
+				return
+					entity instanceof IMob
+				;
+			}
+		}));
+    }
 	
 	/**
 	 * Next Id Task

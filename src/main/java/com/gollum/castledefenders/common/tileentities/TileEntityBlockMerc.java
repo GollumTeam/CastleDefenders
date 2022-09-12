@@ -8,7 +8,6 @@ public class TileEntityBlockMerc extends TileEntityBlockCastleDefenders {
 	 * Constructeur
 	 */
 	public TileEntityBlockMerc() {
-		super(ModCastleDefenders.MODID+":merc");
-		this.maxSpawn = ModCastleDefenders.config.maxSpawnMerc;
+		super(ModCastleDefenders.MODID+":merc", ModCastleDefenders.config.maxSpawnMerc);
 	}
 }

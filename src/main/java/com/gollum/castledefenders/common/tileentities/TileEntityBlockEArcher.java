@@ -8,7 +8,6 @@ public class TileEntityBlockEArcher extends TileEntityBlockCastleDefenders {
 	 * Constructeur
 	 */
 	public TileEntityBlockEArcher() {
-		super(ModCastleDefenders.MODID+":earcher");
-		this.maxSpawn = ModCastleDefenders.config.maxSpawnEArcher;
+		super(ModCastleDefenders.MODID+":enemyarcher", ModCastleDefenders.config.maxSpawnEArcher);
 	}
 }

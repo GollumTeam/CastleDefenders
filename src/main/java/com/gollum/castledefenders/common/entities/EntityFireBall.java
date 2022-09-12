@@ -46,7 +46,6 @@ public class EntityFireBall extends Entity {
 			target.posY,
 			target.posZ
 		);
-		logger.debug("Target:", target);
 	}
 	
 	public EntityFireBall(World worldIn, EntityLivingBase shooter, double x, double y, double z) {
@@ -84,7 +83,6 @@ public class EntityFireBall extends Entity {
 
         	if (!this.world.isRemote) {
             	if (this.distanceRunning() > 20) {
-    	    		logger.debug("Fireball max running: ", this.distanceRunning());
     	            this.setDead();
     	            return;
     	    	}
@@ -123,7 +121,6 @@ public class EntityFireBall extends Entity {
         }
         else
         {
-        	logger.debug("Mark dead");
             this.setDead();
         }
     }
@@ -135,7 +132,6 @@ public class EntityFireBall extends Entity {
     protected void onImpact(RayTraceResult result) {
     	if (!this.world.isRemote) {
     		
-	    	logger.debug("Fireball on impact");
 	        this.setDead();
 	        
 	        if (result.entityHit != null)

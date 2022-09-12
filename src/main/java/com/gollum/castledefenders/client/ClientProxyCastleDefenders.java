@@ -29,9 +29,9 @@ public class ClientProxyCastleDefenders extends CommonProxyCastleDefenders {
 		RenderingRegistry.registerEntityRenderingHandler(EntityArcher.class    , new RenderCastleDefenders("archer"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityArcher2.class   , new RenderCastleDefenders("archer2"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityMage.class      , new RenderCastleDefenders("mage"));
-		RenderingRegistry.registerEntityRenderingHandler(EntityEKnight.class   , new RenderCastleDefenders("eknight"));
-		RenderingRegistry.registerEntityRenderingHandler(EntityEArcher.class   , new RenderCastleDefenders("earcher"));
-		RenderingRegistry.registerEntityRenderingHandler(EntityEMage.class     , new RenderCastleDefenders("emage"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityEKnight.class   , new RenderCastleDefenders("enemyknight"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityEArcher.class   , new RenderCastleDefenders("enemyarcher"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityEMage.class     , new RenderCastleDefenders("enemymage"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityMerc.class      , new RenderMercCastleDefenders("merc"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityMercArcher.class, new RenderMercCastleDefenders("mercarcher"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityHealer.class    , new RenderMercCastleDefenders("healer"));

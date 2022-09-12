@@ -1,7 +1,9 @@
 package com.gollum.castledefenders.common.tileentities;
 
-import com.gollum.castledefenders.ModCastleDefenders;
-import com.gollum.core.tools.registered.RegisteredObjects;
+import static com.gollum.castledefenders.ModCastleDefenders.logger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
@@ -21,7 +23,8 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity implemen
 	public int delay = 20;
 	protected int minSpawnDelay = 200;
 	protected int maxSpawnDelay = 800;
-	protected int maxSpawn = 0;
+	private int maxSpawn = 0;
+	private List<Integer> entitiesSpawned = new ArrayList<Integer>();
 	
 	// Le mob
 	private String mobID;
@@ -31,9 +34,10 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity implemen
 	 * 
 	 * @param MobId
 	 */
-	public TileEntityBlockCastleDefenders(String mobID) {
+	public TileEntityBlockCastleDefenders(String mobID, int maxSpawn) {
 		super();
 		this.mobID = mobID;
+		this.maxSpawn = maxSpawn;
 	}
 
 	/**
@@ -65,6 +69,20 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity implemen
 			
 			if (!this.world.isRemote) {
 				
+				List<Integer> entitiesSpawnedCopy = new ArrayList<>(this.entitiesSpawned);
+				for (Integer entityId: entitiesSpawnedCopy) {
+					Entity entity = this.world.getEntityByID(entityId);
+					if (entity != null) {
+						if (entity.isDead) {
+							this.entitiesSpawned.remove(entityId);
+							logger.debug("Entity is dead: ", entityId);
+						}
+					} else {
+						this.entitiesSpawned.remove(entityId);
+						logger.debug("Entity not found: ", entityId);
+					}
+				}
+				
 				// Lance un timeout
 				if (this.delay == -1) {
 					this.updateDelay();
@@ -73,15 +91,20 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity implemen
 					--this.delay;
 					return;
 				}
+				if (this.entitiesSpawned.size() >= this.maxSpawn) {
+					this.updateDelay();
+					return;
+				}
+
 				
 				Entity entity = EntityList.createEntityByIDFromName(new ResourceLocation(this.mobID), this.world);
 				
 				// L'entity n'existe pas
 				if (entity == null) {
-					ModCastleDefenders.logger.warning("This mob "+this.mobID+" isn't  register");
+					logger.warning("This mob "+this.mobID+" isn't  register");
 					return;
 				}
-
+				
 				int nbEntityArround = this.world.getEntitiesWithinAABB(entity.getClass(), new AxisAlignedBB((double)this.pos.getX(), (double)this.pos.getY(), (double)this.pos.getZ(), (double)(this.pos.getX() + 1), (double)(this.pos.getY() + 1), (double)(this.pos.getZ() + 1)).expand(12.0D, 4.0D, 12.0D)).size();
 				
 				//Le nombre d'entity est supérieur à 6 autour du block
@@ -96,7 +119,9 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity implemen
 				EntityLiving entityLiving = entity instanceof EntityLiving ? (EntityLiving)entity : null;
 				entity.setLocationAndAngles(x, y, z, this.world.rand.nextFloat() * 360.0F, this.world.rand.nextFloat() * 360.0F);
 				
-				if (entityLiving == null || entityLiving.getCanSpawnHere()) {
+				if (entityLiving != null && entityLiving.getCanSpawnHere()) {
+					
+					this.entitiesSpawned.add(entity.getEntityId());
 					
 					this.world.spawnEntity(entity);
 					this.world.playSound(
@@ -124,19 +149,32 @@ public abstract class TileEntityBlockCastleDefenders extends TileEntity implemen
 	 * Reads a tile entity from NBT.
 	 */
 	@Override
-	public void readFromNBT(NBTTagCompound var1) {
-		super.readFromNBT(var1);
-		this.delay = var1.getShort("Delay");
+	public void readFromNBT(NBTTagCompound nbt) {
+		super.readFromNBT(nbt);
+		this.delay = nbt.getShort("delay");
+		int[] entitiesId = nbt.getIntArray("entitiesSpawned");
+		for (Integer id: entitiesId) {
+			if (!this.entitiesSpawned.contains(id)) {
+				this.entitiesSpawned.add(id);
+			}
+		}
 	}
 
 	/**
 	 * Writes a tile entity to NBT.
 	 */
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound var1) {
-		super.writeToNBT(var1);
-		var1.setShort("Delay", (short) this.delay);
-		return var1;
+	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
+		super.writeToNBT(nbt);
+		nbt.setShort("delay", (short) this.delay);
+		int size = this.entitiesSpawned.size();
+		int[] entitiesId = new int[size];
+		for (int i = 0; i < size; i++) {
+			entitiesId[0] = entitiesSpawned.get(i);
+		}
+		nbt.setIntArray("entitiesSpawned", entitiesId);
+		
+		return nbt;
 	}
 
 }

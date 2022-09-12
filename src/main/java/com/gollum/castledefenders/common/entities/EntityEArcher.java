@@ -17,9 +17,12 @@ public class EntityEArcher extends EntityEnemy {
 		super(world);
 		this.blockSpawn      = ModBlocks.EARCHER;
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.BOW, 1));
-		
-		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), PROJECTILE_TYPE.ARROW));
 	}
+	
+    protected void initEntityAI() {
+    	super.initEntityAI();
+		this.tasks.addTask(this.nextIdTask (), new EntityAIDistanceAttack (this, this.getMoveSpeed (), this.getFollowRange (), this.getTimeRange (), PROJECTILE_TYPE.ARROW));
+    }
 	
 	@Override
 	protected boolean canDespawn() {

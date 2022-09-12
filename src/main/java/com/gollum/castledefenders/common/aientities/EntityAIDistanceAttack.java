@@ -144,7 +144,7 @@ public class EntityAIDistanceAttack extends EntityAIBase
 				if (this.entityHost instanceof ICastleEntity) {
 					eFireball.damage = (float)((ICastleEntity)this.entityHost).getAttackStrength();	
 				}
-				this.entityHost.playSound(SoundEvents.ENTITY_LIGHTNING_THUNDER, 0.8f, 0.8F + random.nextFloat() * 0.2F);
+				this.entityHost.playSound(SoundEvents.ENTITY_LIGHTNING_THUNDER, 0.6f, 0.8F + random.nextFloat() * 0.2F);
 				this.world.spawnEntity(eFireball);
 				
 				

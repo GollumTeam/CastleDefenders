@@ -1,12 +1,13 @@
 package com.gollum.castledefenders.common.entities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import com.gollum.castledefenders.ModCastleDefenders;
 import com.gollum.core.common.config.type.ItemStackConfigType;
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
-import com.gollum.core.tools.registered.RegisteredObjects;
 import com.google.common.base.Predicate;
 
 import net.minecraft.block.Block;
@@ -24,22 +25,29 @@ import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
+import net.minecraft.entity.ai.EntityAISit;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITargetNonTamed;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityGolem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemSplashPotion;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNavigateGround;
-import net.minecraft.potion.Potion;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -48,14 +56,15 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class EntityMercenary extends EntityTameable implements ICastleEntity {
-	
-	protected ItemStack defaultHeldItem = null;
+
+    private static final DataParameter<String> OWNERLIST = EntityDataManager.<String>createKey(EntityTameable.class, DataSerializers.STRING);
+    
 	protected Block blockSpawn;
 	private int idTask = 0;
 	private int idTargetTask = 0;
-	
-	private ArrayList<String> ownerList = new ArrayList<String>();
+
 	private int eating = -1;
+	private int autoHeal = 0;
 	
 	public EntityMercenary(World world) {
 		super(world);
@@ -63,17 +72,27 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 		this.setSize(1.1F, 1.8F);
 		
 		((PathNavigateGround)this.getNavigator()).setBreakDoors(true); // Permet d'ouvrir les port
-//		((PathNavigateGround)this.getNavigator()).setAvoidsWater(false); // Evite l'eau
-		
-		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH)    .setBaseValue(this.getMaxHealt ());
-		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE)  .setBaseValue(this.getFollowRange ());
-		
+		((PathNavigateGround)this.getNavigator()).setEnterDoors(true); // Permet d'ouvrir les port
+		((PathNavigateGround)this.getNavigator()).setCanSwim(true); // Peux nager l'eau
+
+		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(this.getMoveSpeed());
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH)    .setBaseValue(this.getMaxHealt());
+		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE)  .setBaseValue(this.getFollowRange());
+	}
+
+
+	@Override
+	protected void entityInit() { 
+        super.entityInit();
+        this.dataManager.register(EntityMercenary.OWNERLIST, "");
+    }
+    
+    protected void initEntityAI() {
 		float follow = Math.min((float)(this.getFollowRange()-1), 10F);
 		if (follow < 1.0F) {
 			follow = 1.0F;
 		}
-		
+        this.aiSit = new EntityAISit(this);
 		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
 		this.tasks.addTask(this.nextIdTask (), this.aiSit);
 		this.tasks.addTask(this.nextIdTask (), new EntityAILeapAtTarget(this, 0.4F));
@@ -82,7 +101,7 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIOwnerHurtByTarget(this));
 		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIHurtByTarget(this, true));
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAITargetNonTamed(this, EntityLiving.class, false, new Predicate<Entity>() {
+		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAITargetNonTamed<EntityLiving>(this, EntityLiving.class, false, new Predicate<Entity>() {
 			public boolean apply(Entity entity) {
 				return 
 					entity instanceof EntityMob ||
@@ -93,17 +112,14 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 			}
 		}));
 		
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget (this, EntityLiving.class, 0, true, false, new Predicate<Entity>() {
+		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget<EntityLiving> (this, EntityLiving.class, 0, true, false, new Predicate<Entity>() {
 			public boolean apply(Entity entity) {
 				return
-					entity instanceof EntityMob ||
-					entity instanceof EntitySlime ||
-					entity instanceof EntityGolem ||
-					entity instanceof EntityGhast
+					entity instanceof IMob
 				;
 			}
 		}));
-	}
+    }
 	
 	/**
 	 * Next Id Task
@@ -160,12 +176,53 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 	 */
 	protected abstract ItemStackConfigType[] getCost ();
 
+
+    public void onUpdate() {
+    	super.onUpdate();
+        if (!this.world.isRemote) {
+        	if (this.autoHeal % 50 == 0) {
+        		this.heal(0.5F);
+        		this.autoHeal = 0;
+        	}
+    		this.autoHeal++;
+        }
+    }
+	
+	private void setOwnerListString(String ownerList) {
+		this.dataManager.set(EntityMercenary.OWNERLIST, ownerList);
+	}
+
+	private String getOwnerListString() {
+		return this.dataManager.get(EntityMercenary.OWNERLIST);
+	}
+	
+    private ArrayList<String> getOwnerList() {
+    	String strOwnerList = this.getOwnerListString();
+    	ArrayList<String> list = new ArrayList<String>();
+        Collections.addAll(list, strOwnerList.split(","));
+    	return list;
+    }
+    
+    private void addInOwnerList(String ownerId) {
+    	 List<String> list = getOwnerList();
+    	 list.add(ownerId);
+    	 this.setOwnerListString(String.join(",", list));
+    }
+	
 	@SideOnly(Side.CLIENT)
 	public String getMessagePlayer () {
 		EntityPlayer player = Minecraft.getMinecraft().player;
-		ItemStack stack = null;
-		if ((stack = this.hasBuyItemInHand(player)) != null) {
-			return ModCastleDefenders.i18n.trans ("message.okfor", stack.getCount(), stack.getDisplayName());
+
+		if (player !=  null) {
+			if (player.getUniqueID() != null && this.getOwnerList().contains(player.getUniqueID().toString())) {
+				return ModCastleDefenders.i18n.trans ("message.wait_here");
+			}
+			
+			
+			ItemStack stack = null;
+			if ((stack = this.hasBuyItemInHand(player)) != null) {
+				return ModCastleDefenders.i18n.trans ("message.okfor", stack.getCount(), stack.getDisplayName());
+			}
 		}
 		
 		return ModCastleDefenders.i18n.trans ("message.buymercenary");
@@ -196,26 +253,26 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes ();
-		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED) .setBaseValue(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH)     .setBaseValue(this.getMaxHealt ());
-		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE)   .setBaseValue(this.getFollowRange ());
+		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED) .setBaseValue(this.getMoveSpeed());
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH)     .setBaseValue(this.getMaxHealt());
+		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE)   .setBaseValue(this.getFollowRange());
 	}
 	
 	public void setTamed (boolean tamed) {
 		
 		super.setTamed(tamed);
-		
-		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(this.getMoveSpeed ());
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH)    .setBaseValue(this.getMaxHealt ());
+
+		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(this.getMoveSpeed());
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH)    .setBaseValue(this.getMaxHealt());
 	}
 	
 	/**
 	 * main AI tick function, replaces updateEntityActionState
 	 */
-//	@Override
-//	protected void updateAITick() {
-//		this.dataWatcher.updateObject(18, new Integer ((int) this.getHealth()));
-//	}
+	@Override
+	protected void updateAITasks() {
+		super.updateAITasks();
+	}
 	
 	/**
 	 * Play the taming effect, will either be hearts or smoke depending on
@@ -223,12 +280,6 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 	 */
 	@Override
 	protected void playTameEffect(boolean var1) { 
-	}
-	
-	@Override
-	protected void entityInit() { 
-		super.entityInit();
-//		this.dataWatcher.addObject(18, new Integer((int) this.getHealth()));
 	}
 	
 	/**
@@ -241,53 +292,10 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 	}
 	
 	/**
-	 * (abstract) Protected helper method to write subclass entity data to NBT.
-	 */
-	@Override
-	public void writeEntityToNBT(NBTTagCompound nbt) { 
-		super.writeEntityToNBT(nbt);
-		
-		int i = 0;
-		for (String owner : this.ownerList) {
-			nbt.setString("owner"+i, owner);
-			ModCastleDefenders.logger.debug ("Write owner"+ i +" : "+ owner);
-			i++;
-		}
-		
-	}
-	
-	/**
-	 * (abstract) Protected helper method to read subclass entity data from NBT.
-	 */
-	@Override
-	public void readEntityFromNBT(NBTTagCompound nbt) { 
-		super.readEntityFromNBT(nbt);
-		
-		int i = 0;
-		this.ownerList.clear();
-		String owner = null;
-		
-		do {
-			owner = null;
-			try {
-				owner = nbt.getString("owner"+i);
-				
-			} catch (Exception e) {
-				owner = null;
-			}
-			if (owner != null && !owner.equals("") && !this.ownerList.contains(owner)) {
-				ModCastleDefenders.logger.debug("Read NBT merc owner: "+owner);
-				this.ownerList.add(owner);
-			}
-			i++;
-		} while (owner != null && !owner.equals(""));
-	}
-	
-	/**
 	 * Returns true if this entity can attack entities of the specified class.
 	 */
 	@Override
-	public boolean canAttackClass(Class var1) { 
+	public boolean canAttackClass(Class<? extends EntityLivingBase> var1) { 
 		return EntityGhast.class != var1 && !EntityMercenary.class.isAssignableFrom(var1);
 	}
 	
@@ -304,7 +312,7 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 	 */
 	@Override
 	public int getMaxSpawnedInChunk () { 
-		return 8;
+		return 6;
 	}
 	
 	/**
@@ -325,7 +333,7 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 		IBlockState stateUp2 = this.world.getBlockState(pos.up());
 		
 
-		List entityListBlockArround = this.world.getEntitiesWithinAABB(
+		List<? extends EntityMercenary> entityListBlockArround = this.world.getEntitiesWithinAABB(
 			this.getClass(), 
 			new AxisAlignedBB(
 				this.posX,        this.posY,        this.posZ,
@@ -365,16 +373,11 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		
-		if (this.world.isRemote) {
-			EntityPlayer player = Minecraft.getMinecraft().player;
-//			ModCastleDefenders.log.debug("this.inOwnered : "+this.inOwnered);
-		}
-		
 		if (this.eating >= 0) {
 			
 			if (this.eating % 4 == 0) {
 				this.playSound(
-					RegisteredObjects.instance().getSoundEvent("random.eat"),
+					SoundEvents.ENTITY_PLAYER_BURP,
 					0.5F,
 					this.world.rand.nextFloat() * 0.1F + 0.9F
 				);
@@ -398,14 +401,15 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 	public boolean attackEntityFrom(DamageSource damageSource, float strength) {
 		if (super.attackEntityFrom(damageSource, strength)) {
 			
-//			Entity entity = damageSource.getEntity();
-//			
-//			if (this.riddenByEntity != entity && this.ridingEntity != entity) {
-//				if (entity != this && entity instanceof EntityLivingBase) {
-//					this.setAttackTarget((EntityLivingBase)entity);
-//					return true;
-//				}
-//			}
+			Entity entity = damageSource.getImmediateSource();
+			
+			
+			if (this.isPassenger(entity) && this.getRidingEntity().equals(entity)) {
+				if (entity != this && entity instanceof EntityLivingBase) {
+					this.setAttackTarget((EntityLivingBase)entity);
+					return true;
+				}
+			}
 		}
 		return false;
 	}
@@ -414,19 +418,19 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 	public boolean attackEntityAsMob(Entity entity) {
 		double strength = this.getAttackStrength();
 
-//		if (this.isPotionActive(Potion.damageBoost)) {
-//			strength += 3 << this.getActivePotionEffect(Potion.damageBoost).getAmplifier();
-//		}
-//
-//		if (this.isPotionActive(Potion.weakness)) {
-//			strength -= 2 << this.getActivePotionEffect(Potion.weakness).getAmplifier();
-//		}
+		if (this.isPotionActive(MobEffects.STRENGTH)) {
+			strength += 3 << this.getActivePotionEffect(MobEffects.STRENGTH).getAmplifier();
+		}
+
+		if (this.isPotionActive(MobEffects.WEAKNESS)) {
+			strength -= 2 << this.getActivePotionEffect(MobEffects.WEAKNESS).getAmplifier();
+		}
 
 		return entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float)strength);
 	}
 	
 	
-	private boolean buy (EntityPlayer player, Class itemClass, int nb) {
+	private boolean buy (EntityPlayer player, Class<ItemFood> itemClass, int nb) {
 		return this.buy(player, null, itemClass, nb);
 	}
 	private boolean buy (EntityPlayer player, Item item, int nb) {
@@ -435,7 +439,7 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 	/**
 	 * Buy item
 	 */
-	private boolean buy (EntityPlayer player, Item item, Class itemClass, int nb) {
+	private boolean buy (EntityPlayer player, Item item, Class<ItemFood> itemClass, int nb) {
 		
 		ItemStack is = player.inventory.getCurrentItem();
 		
@@ -470,14 +474,14 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 		
 		if (player !=  null) {
 			this.setTamed(true);
-//			this.setOwnerId(player.getUniqueID().toString());
+			this.setOwnerId(player.getUniqueID());
 			
-			if (!this.ownerList.contains (player.getUniqueID().toString())) {
-				this.ownerList.add (player.getUniqueID().toString());
+			if (!this.getOwnerList().contains(player.getUniqueID().toString())) {
+				this.addInOwnerList(player.getUniqueID().toString());
 			}
 		} else {
 			this.setTamed(false);
-//			this.setOwnerId("");
+			this.setOwnerId(null);
 		}
 		
 		this.world.setEntityState(this, (byte) 7);
@@ -488,11 +492,17 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 	 * Called when a player interacts with a mob. e.g. gets milk from a cow,
 	 * gets into the saddle on a pig.
 	 */
-	public boolean interact(EntityPlayer player) {
+	@Override
+    public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		
 		ItemStack is = player.inventory.getCurrentItem();
 
-		if (!this.world.isRemote) {
+
+		if (is != null && is.getItem() instanceof ItemSplashPotion) {
+			return false;
+		}
+		
+		if (!this.world.isRemote && hand == EnumHand.MAIN_HAND) {
 			if (!this.isTamed()) {
 				
 				boolean buy = this.isAlraidyBuy(player);
@@ -512,9 +522,7 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 					return true;
 				}
 				
-			} else if (this.getOwnerId().equals(player.getUniqueID().toString())) {
-				
-//				ModCastleDefenders.logger.debug("Interract with owner: "+player.getCommandSenderName());
+			} else if (this.isOwner(player)) {
 				
 				if (this.buy (player, ItemFood.class, 1)) {
 					
@@ -522,7 +530,7 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 					this.heal(food.getHealAmount(is));
 					
 					this.playSound(
-						RegisteredObjects.instance().getSoundEvent("random.eat"),
+						SoundEvents.ENTITY_PLAYER_BURP,
 						0.5F,
 						this.world.rand.nextFloat() * 0.1F + 0.9F
 					);
@@ -541,26 +549,13 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 		return false;
 	}
 	
-	/**
-	 * Returns the item that this EntityLiving is holding, if any.
-	 */
-//	@Override
-//	public ItemStack getHeldItem() {
-//		
-//		if (this.defaultHeldItem == null) {
-//			return super.getHeldItem ();
-//		}
-//		
-//		return this.defaultHeldItem;
-//	}
-	
 	@Override
 	public EntityAgeable createChild(EntityAgeable entityageable) {
 		return null;
 	}
 	
 	public boolean isAlraidyBuy (EntityPlayer player) {
-		return this.ownerList.contains(player.getUniqueID().toString());
+		return this.getOwnerList().contains(player.getUniqueID().toString());
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -568,7 +563,28 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 		return this.isOwner(Minecraft.getMinecraft().player);
 	}
 	
-	public boolean isOwner(EntityPlayer player) {
-		return this.getOwnerId().equals(player.getUniqueID().toString());
+	@Override
+	public boolean isOwner(EntityLivingBase player) {
+		return this.getOwnerId() != null && this.getOwnerId().equals(player.getUniqueID());
+	}
+
+
+	
+	/**
+	 * (abstract) Protected helper method to write subclass entity data to NBT.
+	 */
+	@Override
+	public void writeEntityToNBT(NBTTagCompound nbt) { 
+		super.writeEntityToNBT(nbt);
+		nbt.setString("ownerList", this.getOwnerListString());
+	}
+	
+	/**
+	 * (abstract) Protected helper method to read subclass entity data from NBT.
+	 */
+	@Override
+	public void readEntityFromNBT(NBTTagCompound nbt) { 
+		super.readEntityFromNBT(nbt);
+		this.setOwnerListString(nbt.getString("ownerList"));
 	}
 }

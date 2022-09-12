@@ -8,7 +8,6 @@ public class TileEntityBlockKnight extends TileEntityBlockCastleDefenders {
 	 * Constructeur
 	 */
 	public TileEntityBlockKnight() {
-		super(ModCastleDefenders.MODID+":knight");
-		this.maxSpawn = ModCastleDefenders.config.maxSpawnKnight;
+		super(ModCastleDefenders.MODID+":knight", ModCastleDefenders.config.maxSpawnKnight);
 	}
 }

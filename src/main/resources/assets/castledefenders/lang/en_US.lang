@@ -31,6 +31,7 @@ castledefenders.confi=""
 
 castledefenders.message.buymercenary=You can hire me with items
 castledefenders.message.okfor=It's ok for %d %s
+castledefenders.message.wait_here=I'm waiting for you here
 
 achievement.foundCastleDefenders=Find a building
 achievement.foundCastleBuilding1=The castle

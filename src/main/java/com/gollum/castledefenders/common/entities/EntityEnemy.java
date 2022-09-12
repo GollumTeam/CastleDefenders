@@ -13,6 +13,7 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityGolem;
+import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,27 +38,32 @@ public abstract class EntityEnemy extends EntityMob implements ICastleEntity {
 		super(world);
 		
 		this.setSize(1.1F, 1.8F);
-		
+
 		((PathNavigateGround)this.getNavigator()).setBreakDoors(true); // Permet d'ouvrir les port
-//		((PathNavigateGround)this.getNavigator()).setAvoidsWater(true); // Evite l'eau
-		
+		((PathNavigateGround)this.getNavigator()).setEnterDoors(true); // Permet d'ouvrir les port
+		((PathNavigateGround)this.getNavigator()).setCanSwim(true); // Peux nager l'eau
+
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(this.getMoveSpeed ());
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH)    .setBaseValue(this.getMaxHealt ());
 		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE)  .setBaseValue(this.getFollowRange ());
 		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE) .setBaseValue(this.getAttackStrength ());
-		
+	}
+	
+    protected void initEntityAI() {
 		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMoveSpeed()));
-		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget(this, EntityLivingBase.class   , 0, true, false, new Predicate<Entity>() {
+		
+		this.targetTasks.addTask(this.nextIdTask (), new EntityAINearestAttackableTarget<EntityLivingBase>(this, EntityLivingBase.class, 0, true, false, new Predicate<Entity>() {
 			public boolean apply(Entity entity) {
 				return 
 					entity instanceof EntityPlayer ||
 					entity instanceof EntityDefender ||
-					entity instanceof EntityMercenary
+					entity instanceof EntityMercenary ||
+					entity instanceof EntityIronGolem
 				;
 			}
 		}));
-	}
+    }
 
 	/**
 	 * Next Id Task
@@ -139,7 +145,7 @@ public abstract class EntityEnemy extends EntityMob implements ICastleEntity {
 		IBlockState stateUp2 = this.world.getBlockState(pos.up());
 		
 
-		List entityListBlockArround = this.world.getEntitiesWithinAABB(
+		List<? extends EntityEnemy> entityListBlockArround = this.world.getEntitiesWithinAABB(
 			this.getClass(), 
 			new AxisAlignedBB(
 				this.posX,        this.posY,        this.posZ,
@@ -161,18 +167,5 @@ public abstract class EntityEnemy extends EntityMob implements ICastleEntity {
 			!found
 		;
 	}
-	
-	/**
-	 * Returns the item that this EntityLiving is holding, if any.
-	 */
-//	@Override
-//	public ItemStack getHeldItem() {
-//		
-//		if (this.defaultHeldItem == null) {
-//			return super.getHeldItem ();
-//		}
-//		
-//		return this.defaultHeldItem;
-//	}
 	
 }

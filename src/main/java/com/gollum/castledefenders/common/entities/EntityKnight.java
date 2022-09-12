@@ -18,21 +18,15 @@ import net.minecraft.world.World;
 public class EntityKnight extends EntityDefender {
 	
 	public EntityKnight(World world) {
-		
 		super(world);
-		this.blockSpawn      = ModBlocks.KNIGHT;
+		this.blockSpawn = ModBlocks.KNIGHT;
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD, 1));
-		
-		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackMelee(this, this.getMoveSpeed (), true));
-		
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget (this, EntityLiving.class, 0, false, true, new Predicate<Entity>() {
-			public boolean apply(Entity entity) {
-				return 
-					entity instanceof IMob
-				;
-			}
-		}));
 	}
+	
+    protected void initEntityAI() {
+    	super.initEntityAI();
+		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackMelee(this, this.getMoveSpeed (), true));
+    }
 	
 	/**
 	 * @return les capacitées du mod

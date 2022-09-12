@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -26,7 +27,7 @@ public class EntityHealer extends EntityMerc {
 		
 		super(world);
 		this.blockSpawn         = ModBlocks.HEALER;
-		this.defaultHeldItem    = new ItemStack(Items.BOOK, 1);
+		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.BOOK, 1));
 		
 	}
 	
