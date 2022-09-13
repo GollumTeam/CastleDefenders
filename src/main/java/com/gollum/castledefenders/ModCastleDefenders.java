@@ -8,6 +8,7 @@ import com.gollum.castledefenders.inits.ModCreativeTab;
 import com.gollum.castledefenders.inits.ModEntities;
 import com.gollum.castledefenders.inits.ModItems;
 import com.gollum.castledefenders.inits.ModMobs;
+import com.gollum.castledefenders.inits.ModSounds;
 import com.gollum.castledefenders.inits.ModTileEntities;
 import com.gollum.core.ModGollumCoreLib;
 import com.gollum.core.common.i18n.I18n;
@@ -79,6 +80,9 @@ public class ModCastleDefenders extends GollumMod {
 		
 		//Initialisation des entities
 		ModEntities.init ();
+		
+		//Initialisation des sounds
+		ModSounds.init ();
 	}
 	
 	/** 2 **/

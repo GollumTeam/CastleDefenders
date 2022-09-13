@@ -26,9 +26,6 @@ entity.merc.name=Mercenary
 entity.mercarcher.name=Mercenary Archer
 entity.healer.name=Healer
 
-
-castledefenders.confi=""
-
 castledefenders.message.buymercenary=You can hire me with items
 castledefenders.message.okfor=It's ok for %d %s
 castledefenders.message.wait_here=I'm waiting for you here
@@ -48,7 +45,7 @@ achievement.foundAllBuilding=All buildings
 
 achievement.foundCastleDefenders.desc=Find a building
 achievement.foundCastleBuilding1.desc=Find a castle
-achievement.foundCastleBuilding2.desc=Find a dungeon 
+achievement.foundCastleBuilding2.desc=Find a dungeon
 achievement.foundCastleBuilding3.desc=Find an enemy tent
 achievement.foundCastleBuilding4.desc=Find a ruin
 achievement.foundMercenaryBuilding1.desc=Find an archer's house
@@ -67,3 +64,83 @@ stats.foundMercenaryBuilding1Counter=Archer's houses found
 stats.foundMercenaryBuilding2Counter=Mercenary's tents found
 stats.foundMercenaryBuilding3Counter=Mercenaries' villages found
 stats.foundMercenaryBuilding4Counter=Monasteries found
+
+castledefenders.config.Display=Display
+castledefenders.config.displayMercenaryMessage=Display message on mercenary
+castledefenders.config.displayMercenaryLife=Display life on mercenary
+castledefenders.config.mercenaryLifeTop=Life top position
+castledefenders.config.mercenaryLifeHeight=Life height
+castledefenders.config.mercenaryLifeWidth=Life width
+
+
+castledefenders.config.Spawn count=Spawn count on block
+castledefenders.config.maxSpawnKnight=Max spawn Knight
+castledefenders.config.maxSpawnKnight2=Max spawn Knight level 2
+castledefenders.config.maxSpawnEKnight=Max spawn Enemy Knight
+castledefenders.config.maxSpawnArcher=Max spawn Archer
+castledefenders.config.maxSpawnArcher2=Max spawn Archer level 2
+castledefenders.config.maxSpawnEArcher=Max spawn Enemy Archer
+castledefenders.config.maxSpawnMage=Max spawn Mage
+castledefenders.config.maxSpawnEMage=Max spawn Enemy Mage
+castledefenders.config.maxSpawnMerc=Max spawn Mecenary
+castledefenders.config.maxSpawnMercArcher=Max spawn Archer Mercenary
+castledefenders.config.maxSpawnHealer=Max spawn Healer
+
+castledefenders.config.Entity capacities=Entity capacitie
+castledefenders.config.knightCapacities=Knight Capacities
+castledefenders.config.knight2Capacities=Knight level 2 Capacities
+castledefenders.config.eKnightCapacities=Enemy Knight Capacities
+castledefenders.config.archerCapacities=Archer Capacities
+castledefenders.config.archer2Capacities=Archer level 2 Capacities
+castledefenders.config.eArcherCapacities=Enemy Archer Capacities
+castledefenders.config.mageCapacities=Mage Capacities
+castledefenders.config.eMageCapacities=Enemy Mage Capacities
+castledefenders.config.mercCapacities=Mercenary Capacities
+castledefenders.config.mercArcherCapacities=Mercenary Archer Capacities
+castledefenders.config.healerCapacities=Healer Capacities
+castledefenders.config.moveSpeed=Move speed
+castledefenders.config.maxHealt=Max life
+castledefenders.config.attackStrength=Attack strength
+castledefenders.config.followRange=Follow range
+castledefenders.config.timeRange=Attack time range 
+
+castledefenders.config.Entity spawn biome=Spawn on the biomes
+castledefenders.config.knightBiomes=Knight biomes list
+castledefenders.config.knightSpawnMin=Knight spawn minimal
+castledefenders.config.knightSpawnMax=Knight spawn maximal
+castledefenders.config.knight2Biomes=Knight level 2 biomes list
+castledefenders.config.knight2SpawnMin=Knight level 2 spawn minimal
+castledefenders.config.knight2SpawnMax=Knight level 2 spawn maximal
+castledefenders.config.eKnightBiomes=Enemy Knight biomes list
+castledefenders.config.eKnightSpawnMin=Enemy Knight spawn minimal
+castledefenders.config.eKnightSpawnMax=Enemy Knight spawn maximal
+castledefenders.config.archerBiomes=Archer biomes list
+castledefenders.config.archerSpawnMin=Archer spawn minimal
+castledefenders.config.archerSpawnMax=Archer spawn maximal
+castledefenders.config.archer2Biomes=Archer level 2 Knight biomes list
+castledefenders.config.archer2SpawnMin=Archer level 2 spawn minimal
+castledefenders.config.archer2SpawnMax=Archer level 2 spawn maximal
+castledefenders.config.eArcherBiomes=Enemy Archer Knight biomes list
+castledefenders.config.eArcherSpawnMin=Enemy Archer spawn minimal
+castledefenders.config.eArcherSpawnMax=Enemy Archer spawn maximal
+castledefenders.config.mageBiomes=Mage Knight biomes list
+castledefenders.config.mageSpawnMin=Mage spawn minimal
+castledefenders.config.mageSpawnMax=Mage spawn maximal
+castledefenders.config.eMageBiomes=Enemy Mage Knight biomes list
+castledefenders.config.eMageSpawnMin=Enemy Mage spawn minimal
+castledefenders.config.eMageSpawnMax=Enemy Mage spawn maximal
+castledefenders.config.mercBiomes=Merc Knight biomes list
+castledefenders.config.mercSpawnMin=Mercenary spawn minimal
+castledefenders.config.mercSpawnMax=Mercenary spawn maximal
+castledefenders.config.mercArcherBiomes=Mercenary Archer Knight biomes list
+castledefenders.config.mercArcherSpawnMin=Mercenary Archer spawn minimal
+castledefenders.config.mercArcherSpawnMax=Mercenary Archer spawn maximal
+castledefenders.config.healerBiomes=Healer Knight biomes list
+castledefenders.config.healerSpawnMin=Healer spawn minimal
+castledefenders.config.healerSpawnMax=Healer spawn maximal
+
+castledefenders.config.Mercenary=Mercenary
+castledefenders.config.mercenaryCost=Mercenary cost
+castledefenders.config.mercArcherCost=Mercenary Archer cost
+castledefenders.config.healerCost=Healer cost
+castledefenders.config.healPointByTimeRange=Life point recovered for healer

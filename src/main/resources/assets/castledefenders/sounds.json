@@ -1,9 +1,10 @@
 {
-  "monk": {
-    "category": "neutral",
-    "sounds": [
-      "monk"
+  "monk" : {
+    "category" : "neutral",
+    "sounds" : [
+	  {
+	    "name" : "castledefenders:monk"
+	  }
     ]
   }
 }
-

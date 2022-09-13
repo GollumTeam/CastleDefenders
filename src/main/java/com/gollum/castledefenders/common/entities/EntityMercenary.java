@@ -101,24 +101,6 @@ public abstract class EntityMercenary extends EntityTameable implements ICastleE
 		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIOwnerHurtByTarget(this));
 		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAIHurtByTarget(this, true));
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAITargetNonTamed<EntityLiving>(this, EntityLiving.class, false, new Predicate<Entity>() {
-			public boolean apply(Entity entity) {
-				return 
-					entity instanceof EntityMob ||
-					entity instanceof EntitySlime ||
-					entity instanceof EntityGolem ||
-					entity instanceof EntityGhast
-				;
-			}
-		}));
-		
-		this.targetTasks.addTask(this.nextIdTargetTask (), new EntityAINearestAttackableTarget<EntityLiving> (this, EntityLiving.class, 0, true, false, new Predicate<Entity>() {
-			public boolean apply(Entity entity) {
-				return
-					entity instanceof IMob
-				;
-			}
-		}));
     }
 	
 	/**
