@@ -1,0 +1,20 @@
+{
+    "display" : {
+        "icon" : {
+            "item" : "castledefenders:earcher"
+        },
+        "title" : {
+            "translate" : "castledefenders.advancements.caslte1.title"
+        },
+        "description" : {
+            "translate" : "castledefenders.advancements.caslte1.description"
+        }
+    },
+    "parent" : "castledefenders:root",
+    "criteria": {
+        "castledefenders_all" : {
+      		"trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [ [ "castledefenders_all" ] ]
+}

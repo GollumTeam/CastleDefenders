@@ -1,0 +1,22 @@
+{
+    "display" : {
+        "icon" : {
+            "item" : "castledefenders:mercarcher"
+        },
+        "title" : {
+            "translate" : "castledefenders.advancements.root.title"
+        },
+        "description" : {
+            "translate" : "castledefenders.advancements.root.description"
+        },
+		"background": "castledefenders:textures/advancements/background.png",
+        "show_toast": false,
+        "announce_to_chat": false
+    },
+    "criteria": {
+        "castledefenders_root" : {
+      		"trigger": "minecraft:impossible"
+        }
+    },
+    "requirements" : [ [ "castledefenders_root" ] ]
+}

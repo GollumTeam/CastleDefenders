@@ -1,5 +1,11 @@
 package com.gollum.castledefenders.common.entities;
 
+import com.gollum.castledefenders.ModCastleDefenders;
+import com.gollum.castledefenders.inits.ModBlocks;
+import com.gollum.core.common.config.type.ItemStackConfigType;
+import com.gollum.core.common.config.type.MobCapacitiesConfigType;
+import com.google.common.base.Predicate;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIAttackMelee;
@@ -18,12 +24,6 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-
-import com.gollum.castledefenders.ModCastleDefenders;
-import com.gollum.castledefenders.inits.ModBlocks;
-import com.gollum.core.common.config.type.ItemStackConfigType;
-import com.gollum.core.common.config.type.MobCapacitiesConfigType;
-import com.google.common.base.Predicate;
 
 public class EntityMerc extends EntityMercenary {
 	

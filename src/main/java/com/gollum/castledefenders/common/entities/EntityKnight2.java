@@ -1,13 +1,13 @@
 package com.gollum.castledefenders.common.entities;
 
+import com.gollum.castledefenders.ModCastleDefenders;
+import com.gollum.castledefenders.inits.ModBlocks;
+import com.gollum.core.common.config.type.MobCapacitiesConfigType;
+
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-
-import com.gollum.castledefenders.ModCastleDefenders;
-import com.gollum.castledefenders.inits.ModBlocks;
-import com.gollum.core.common.config.type.MobCapacitiesConfigType;
 
 public class EntityKnight2 extends EntityKnight {
 

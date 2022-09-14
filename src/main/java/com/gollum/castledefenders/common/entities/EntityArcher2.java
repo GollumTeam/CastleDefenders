@@ -1,10 +1,10 @@
 package com.gollum.castledefenders.common.entities;
 
-import net.minecraft.world.World;
-
 import com.gollum.castledefenders.ModCastleDefenders;
 import com.gollum.castledefenders.inits.ModBlocks;
 import com.gollum.core.common.config.type.MobCapacitiesConfigType;
+
+import net.minecraft.world.World;
 
 public class EntityArcher2 extends EntityArcher {
 

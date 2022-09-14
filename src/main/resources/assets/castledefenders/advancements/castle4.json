@@ -1,0 +1,20 @@
+{
+    "display" : {
+        "icon" : {
+            "item" : "castledefenders:emage"
+        },
+        "title" : {
+            "translate" : "castledefenders.advancements.castle4.title"
+        },
+        "description" : {
+            "translate" : "castledefenders.advancements.castle4.description"
+        }
+    },
+    "parent" : "castledefenders:root",
+    "criteria": {
+        "castledefenders_castle4" : {
+      		"trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [ [ "castledefenders_castle4" ] ]
+}

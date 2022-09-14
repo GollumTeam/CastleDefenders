@@ -3,6 +3,7 @@ package com.gollum.castledefenders;
 import com.gollum.castledefenders.common.CommonProxyCastleDefenders;
 import com.gollum.castledefenders.common.config.ConfigCastleDefender;
 import com.gollum.castledefenders.common.handlers.BuildingHandler;
+import com.gollum.castledefenders.inits.ModAdvancement;
 import com.gollum.castledefenders.inits.ModBlocks;
 import com.gollum.castledefenders.inits.ModCreativeTab;
 import com.gollum.castledefenders.inits.ModEntities;
@@ -99,7 +100,7 @@ public class ModCastleDefenders extends GollumMod {
 		ModCreativeTab.init();
 		
 //		// Init des achievements
-//		ModAchievements.init();
+		ModAdvancement.init();
 		
 		// Execution du renderer en fonction du serveur ou du client
 		proxy.registerRenderers();

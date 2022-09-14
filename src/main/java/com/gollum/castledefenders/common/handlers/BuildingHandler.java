@@ -1,15 +1,14 @@
 package com.gollum.castledefenders.common.handlers;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.server.MinecraftServer;
-//import net.minecraft.stats.Achievement;
-import net.minecraft.stats.StatBase;
-
 import com.gollum.castledefenders.ModCastleDefenders;
-import com.gollum.castledefenders.inits.ModAchievements;
+import com.gollum.castledefenders.inits.ModAdvancement;
 import com.gollum.core.common.events.BuildingGenerateEvent;
 
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementProgress;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.stats.StatBase;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 
@@ -24,65 +23,96 @@ public class BuildingHandler {
 			
 			if (event.building.modId.equals(ModCastleDefenders.MODID)) {
 				
-//				Achievement target = null;
+				Advancement target = null;
 				StatBase  counter = null;
-//				if(event.building.name.equals("castle1"   )) { target = ModAchievements.achievementCastle1   ; counter = ModAchievements.achievementCastle1Counter   ; }
-//				if(event.building.name.equals("castle2"   )) { target = ModAchievements.achievementCastle2   ; counter = ModAchievements.achievementCastle2Counter   ; }
-//				if(event.building.name.equals("castle3"   )) { target = ModAchievements.achievementCastle3   ; counter = ModAchievements.achievementCastle3Counter   ; }
-//				if(event.building.name.equals("castle4"   )) { target = ModAchievements.achievementCastle4   ; counter = ModAchievements.achievementCastle4Counter   ; }
-//				if(event.building.name.equals("mercenary1")) { target = ModAchievements.achievementMercenary1; counter = ModAchievements.achievementMercenary1Counter; }
-//				if(event.building.name.equals("mercenary2")) { target = ModAchievements.achievementMercenary2; counter = ModAchievements.achievementMercenary2Counter; }
-//				if(event.building.name.equals("mercenary3")) { target = ModAchievements.achievementMercenary3; counter = ModAchievements.achievementMercenary3Counter; }
-//				if(event.building.name.equals("mercenary4")) { target = ModAchievements.achievementMercenary4; counter = ModAchievements.achievementMercenary4Counter; }
+				if(event.building.name.equals("castle1"   )) { target = this.getAdvancement(event, "castle1"   ); counter = ModAdvancement.STAT_COUNTER_CASTLE1   ; }
+				if(event.building.name.equals("castle2"   )) { target = this.getAdvancement(event, "castle2"   ); counter = ModAdvancement.STAT_COUNTER_CASTLE2   ; }
+				if(event.building.name.equals("castle3"   )) { target = this.getAdvancement(event, "castle3"   ); counter = ModAdvancement.STAT_COUNTER_CASTLE3   ; }
+				if(event.building.name.equals("castle4"   )) { target = this.getAdvancement(event, "castle4"   ); counter = ModAdvancement.STAT_COUNTER_CASTLE4   ; }
+				if(event.building.name.equals("mercenary1")) { target = this.getAdvancement(event, "mercenary1"); counter = ModAdvancement.STAT_COUNTER_MERCENARY1; }
+				if(event.building.name.equals("mercenary2")) { target = this.getAdvancement(event, "mercenary2"); counter = ModAdvancement.STAT_COUNTER_MERCENARY2; }
+				if(event.building.name.equals("mercenary3")) { target = this.getAdvancement(event, "mercenary3"); counter = ModAdvancement.STAT_COUNTER_MERCENARY3; }
+				if(event.building.name.equals("mercenary4")) { target = this.getAdvancement(event, "mercenary4"); counter = ModAdvancement.STAT_COUNTER_MERCENARY4; }
 				
-//				if (target != null && counter != null) {
-//					
-//					for (Object entity : event.world.playerEntities) {
-//						if (entity instanceof EntityPlayerMP) {
-//							EntityPlayerMP player = (EntityPlayerMP)entity;
-//							
-//							// Add Stat
-//							player.addStat(counter, 1);
-//							
-//							// Add Achievement
-//							player.addStat(ModAchievements.achievementCastleDefenders, 1);
-//							
-//							if (!player.getStatFile().hasAchievementUnlocked(target)) {
-//								player.addStat(target, 1);
-//								
-//								if (
-//									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementCastle1) &&
-//									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementCastle2) &&
-//									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementCastle3) &&
-//									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementCastle4) &&
-//									!player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementAllCastle)
-//								) {
-//									player.addStat(ModAchievements.achievementAllCastle, 1);
-//								}
-//								
-//								if (
-//									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementMercenary1) &&
-//									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementMercenary2) &&
-//									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementMercenary3) &&
-//									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementMercenary4) &&
-//									!player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementAllMercenary)
-//								) {
-//									player.addStat(ModAchievements.achievementAllMercenary, 1);
-//								}
-//								
-//								if (
-//									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementAllCastle)    &&
-//									player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementAllMercenary) &&
-//									!player.getStatFile().hasAchievementUnlocked(ModAchievements.achievementAllBuilding)
-//								) {
-//									player.addStat(ModAchievements.achievementAllBuilding, 1);
-//								}
-//							}
-//						}
-//					}
-//				}
+
+				Advancement root = this.getAdvancement(event, "root");
+				Advancement all = this.getAdvancement(event, "all");
+				Advancement allCastles = this.getAdvancement(event, "all_castles");
+				Advancement allMercenaries = this.getAdvancement(event, "all_mercenaries");
+				
+
+				if (counter != null && root != null && target != null) {
+				
+					for (Object entity : event.world.playerEntities) {
+						
+					
+						if (entity instanceof EntityPlayerMP) {
+							EntityPlayerMP player = (EntityPlayerMP)entity;
+
+							// Add Stat
+							player.addStat(counter, 1);
+
+							this.grant(player, root);
+							this.grant(player, target);
+
+							if (allCastles != null) {
+								if (
+									this.isDone(player, event, "castle1") &&
+									this.isDone(player, event, "castle2") &&
+									this.isDone(player, event, "castle3") &&
+									this.isDone(player, event, "castle4")
+								) {
+									this.grant(player, allCastles);
+								}
+							}
+							if (allMercenaries != null) {
+								if (
+									this.isDone(player, event, "mercenary1") &&
+									this.isDone(player, event, "mercenary2") &&
+									this.isDone(player, event, "mercenary3") &&
+									this.isDone(player, event, "mercenary4")
+								) {
+									this.grant(player, allMercenaries);
+								}
+							}
+							if (
+								this.isDone(player, event, "all_castles") &&
+								this.isDone(player, event, "all_mercenaries") &&
+								all != null
+							) {
+								this.grant(player, all);
+							}
+						}
+					}
+				}
 			}
 			
+		}
+	}
+
+	private Advancement getAdvancement(BuildingGenerateEvent event, String name) {
+		return event.world.getMinecraftServer().getAdvancementManager().getAdvancement(new ResourceLocation(ModCastleDefenders.MODID, name));
+	}
+
+	private boolean isDone(EntityPlayerMP player, BuildingGenerateEvent event, String name) {
+		Advancement advancement = this.getAdvancement(event, name);
+		if (advancement != null) {
+			return this.isDone(player, advancement);
+		}
+		return false;
+	}
+
+	private boolean isDone(EntityPlayerMP player, Advancement advancement) {
+		return player.getAdvancements().getProgress(advancement).isDone();
+	}
+	
+	private void grant(EntityPlayerMP player, Advancement advancement) {
+		AdvancementProgress progress = player.getAdvancements().getProgress(advancement);
+		if (!progress.isDone()) {
+			for (String s : progress.getRemaningCriteria())
+            {
+				player.getAdvancements().grantCriterion(advancement, s);
+            }
 		}
 	}
 	

@@ -1,0 +1,20 @@
+{
+    "display" : {
+        "icon" : {
+            "item" : "castledefenders:emage"
+        },
+        "title" : {
+            "translate" : "castledefenders.advancements.all_castles.title"
+        },
+        "description" : {
+            "translate" : "castledefenders.advancements.all_castles.description"
+        }
+    },
+    "parent" : "castledefenders:castle2",
+    "criteria": {
+        "castledefenders_all_castles" : {
+      		"trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [ [ "castledefenders_all_castles" ] ]
+}
