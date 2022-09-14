@@ -19,10 +19,10 @@
 		"4x5x6": { "block": "minecraft:torch", "states": { "facing": "south" } },
 		"6x5x6": { "block": "minecraft:torch", "states": { "facing": "south" } },
 		
-		"1x4x8": { "block": "minecraft:bed", "states": { "facing": "north", "part": "head" } },
-		"2x4x8": { "block": "minecraft:bed", "states": { "facing": "north" } },
-		"1x4x6": { "block": "minecraft:bed", "states": { "facing": "north", "part": "head" } },
-		"2x4x6": { "block": "minecraft:bed", "states": { "facing": "north" } },
+		"1x4x8": { "block": "minecraft:bed", "states": { "facing": "east", "part": "head" } },
+		"2x4x8": { "block": "minecraft:bed", "states": { "facing": "east" } },
+		"1x4x6": { "block": "minecraft:bed", "states": { "facing": "east", "part": "head" } },
+		"2x4x6": { "block": "minecraft:bed", "states": { "facing": "east" } },
 		
 		"5x4x7": { "block": "minecraft:ladder", "states": { "facing": "north" } },
 		"5x5x7": { "block": "minecraft:ladder", "states": { "facing": "north" } },
