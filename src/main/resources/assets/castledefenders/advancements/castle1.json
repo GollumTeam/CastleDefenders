@@ -4,10 +4,10 @@
             "item" : "castledefenders:earcher"
         },
         "title" : {
-            "translate" : "castledefenders.advancements.caslte1.title"
+            "translate" : "castledefenders.advancements.castle1.title"
         },
         "description" : {
-            "translate" : "castledefenders.advancements.caslte1.description"
+            "translate" : "castledefenders.advancements.castle1.description"
         }
     },
     "parent" : "castledefenders:root",
