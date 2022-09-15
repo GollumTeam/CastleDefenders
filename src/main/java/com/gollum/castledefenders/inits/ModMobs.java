@@ -7,6 +7,7 @@ import net.minecraft.init.Biomes;
 import net.minecraft.world.biome.Biome;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,7 +27,6 @@ import com.gollum.core.common.factory.MobFactory;
 import com.gollum.core.tools.registered.RegisteredObjects;
 
 import net.minecraftforge.fml.common.registry.EntityRegistry;
-import scala.actors.threadpool.Arrays;
 
 
 public class ModMobs {

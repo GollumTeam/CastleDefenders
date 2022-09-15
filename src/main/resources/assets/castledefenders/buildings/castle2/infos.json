@@ -60,7 +60,7 @@
 					{ "element": "minecraft:potion", "type": "slowness" }
 				],
 				[
-					{ "element": "castledefenders:medallion", "min":10, "max":20 }
+					{ "element": "castledefenders:medallion", "min":5, "max":15 }
 				]
 				
 			]
@@ -99,7 +99,7 @@
 					{ "element": "minecraft:potion", "type": "slowness" }
 				],
 				[
-					{ "element": "castledefenders:medallion", "min":1, "max":5 }
+					{ "element": "castledefenders:medallion", "min":5, "max":10 }
 				]
 			]
 		
@@ -112,7 +112,7 @@
 			"contents": [
 				
 				[
-					{ "element": "castledefenders:medallion", "min":1, "max":5 }
+					{ "element": "castledefenders:medallion", "min":5, "max":10 }
 				],
 				
 				[

@@ -15,7 +15,7 @@ apply plugin: 'maven-publish'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
-def modversion = "4.X.X"
+def modversion = "4.X.XDEV"
 def mcversion = "1.12.2"
 version = modversion+"-"+mcversion
 group= "com.gollum.castledefenders" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -82,7 +82,7 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
-    compile files('GollumCoreLib/build/libs/GollumCoreLib-3.X.X-'+mcversion+'-unobfuscate.jar')
+    compile files('GollumCoreLib/build/libs/GollumCoreLib-3.X.XDEV-'+mcversion+'-unobfuscate.jar')
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..

@@ -7,7 +7,7 @@
 				"dimentions": {
 					"0": {
 						"spawnRate":6,
-						"spawnMin":60,
+						"spawnMin":55,
 						"spawnMax":83,
 						"blocksSpawn":["minecraft:grass"]
 					}
@@ -18,7 +18,7 @@
 				"dimentions": {
 					"0": {
 						"spawnRate":6,
-						"spawnMin":60,
+						"spawnMin":55,
 						"spawnMax":83,
 						"blocksSpawn":["minecraft:grass"]
 					}
@@ -29,7 +29,7 @@
 				"dimentions": {
 					"0": {
 						"spawnRate":3,
-						"spawnMin":60,
+						"spawnMin":55,
 						"spawnMax":83,
 						"blocksSpawn":["minecraft:grass"]
 					}
@@ -40,7 +40,7 @@
 				"dimentions": {
 					"0": {
 						"spawnRate":2,
-						"spawnMin":50,
+						"spawnMin":55,
 						"spawnMax":83,
 						"blocksSpawn":["minecraft:grass"]
 					}
@@ -56,7 +56,7 @@
 				"dimentions": {
 					"0": {
 						"spawnRate":6,
-						"spawnMin":50,
+						"spawnMin":55,
 						"spawnMax":83,
 						"blocksSpawn":["minecraft:grass"]
 					}
@@ -67,7 +67,7 @@
 				"dimentions": {
 					"0": {
 						"spawnRate":6,
-						"spawnMin":50,
+						"spawnMin":55,
 						"spawnMax":83,
 						"blocksSpawn":["minecraft:grass"]
 					}
@@ -78,7 +78,7 @@
 				"dimentions": {
 					"0": {
 						"spawnRate":2,
-						"spawnMin":50,
+						"spawnMin":55,
 						"spawnMax":83,
 						"blocksSpawn":["minecraft:grass"]
 					}
@@ -89,7 +89,7 @@
 				"dimentions": {
 					"0": {
 						"spawnRate":2,
-						"spawnMin":50,
+						"spawnMin":55,
 						"spawnMax":83,
 						"blocksSpawn":["minecraft:grass"]
 					}
