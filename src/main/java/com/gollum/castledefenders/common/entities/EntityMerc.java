@@ -13,6 +13,7 @@ import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAITargetNonTamed;
 import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityGolem;
@@ -35,6 +36,7 @@ public class EntityMerc extends EntityMercenary {
 	
     protected void initEntityAI() {
     	super.initEntityAI();
+		this.tasks.addTask(this.nextIdTask (), new EntityAIWanderAvoidWater(this, 1.D));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIAttackMelee(this, this.getMaxSpeed(), true));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMaxSpeed()));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));

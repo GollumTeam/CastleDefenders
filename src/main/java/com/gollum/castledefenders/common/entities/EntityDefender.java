@@ -19,6 +19,7 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -54,6 +55,7 @@ public abstract class EntityDefender extends EntityAnimal implements ICastleEnti
 	
     protected void initEntityAI() {
 		this.tasks.addTask(this.nextIdTask (), new EntityAITempt(this, 0.35F, ModItems.MEDALLION, false));
+		this.tasks.addTask(this.nextIdTask (), new EntityAIWanderAvoidWater(this, 1.D));
 		this.tasks.addTask(this.nextIdTask (), new EntityAISwimming(this));
 		this.tasks.addTask(this.nextIdTask (), new EntityAIWander(this, this.getMoveSpeed ()));
 
