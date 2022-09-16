@@ -9,6 +9,7 @@ import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.stats.StatBase;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 
@@ -43,45 +44,64 @@ public class BuildingHandler {
 
 				if (counter != null && root != null && target != null) {
 				
-					for (Object entity : event.world.playerEntities) {
-						
+					EntityPlayerMP player = null;
+					double diff = 0;
 					
+					for (Object entity : event.world.playerEntities) {
 						if (entity instanceof EntityPlayerMP) {
-							EntityPlayerMP player = (EntityPlayerMP)entity;
-
-							// Add Stat
-							player.addStat(counter, 1);
-
-							this.grant(player, root);
-							this.grant(player, target);
-
-							if (allCastles != null) {
-								if (
-									this.isDone(player, event, "castle1") &&
-									this.isDone(player, event, "castle2") &&
-									this.isDone(player, event, "castle3") &&
-									this.isDone(player, event, "castle4")
-								) {
-									this.grant(player, allCastles);
-								}
+							
+							EntityPlayerMP player2 = (EntityPlayerMP)entity;
+							double diff2 = new Vec3d(
+								event.position.getX(),
+								event.position.getY(),
+								event.position.getZ()
+							).distanceTo(new Vec3d(
+								player2.posX,
+								player2.posY,
+								player2.posZ
+							));
+							
+							if (player == null || diff2 < diff) {
+								diff = diff2;
+								player = player2;	
 							}
-							if (allMercenaries != null) {
-								if (
-									this.isDone(player, event, "mercenary1") &&
-									this.isDone(player, event, "mercenary2") &&
-									this.isDone(player, event, "mercenary3") &&
-									this.isDone(player, event, "mercenary4")
-								) {
-									this.grant(player, allMercenaries);
-								}
-							}
+						}
+					}
+					
+					if (player != null) {
+
+						// Add Stat
+						player.addStat(counter, 1);
+
+						this.grant(player, root);
+						this.grant(player, target);
+
+						if (allCastles != null) {
 							if (
-								this.isDone(player, event, "all_castles") &&
-								this.isDone(player, event, "all_mercenaries") &&
-								all != null
+								this.isDone(player, event, "castle1") &&
+								this.isDone(player, event, "castle2") &&
+								this.isDone(player, event, "castle3") &&
+								this.isDone(player, event, "castle4")
 							) {
-								this.grant(player, all);
+								this.grant(player, allCastles);
 							}
+						}
+						if (allMercenaries != null) {
+							if (
+								this.isDone(player, event, "mercenary1") &&
+								this.isDone(player, event, "mercenary2") &&
+								this.isDone(player, event, "mercenary3") &&
+								this.isDone(player, event, "mercenary4")
+							) {
+								this.grant(player, allMercenaries);
+							}
+						}
+						if (
+							this.isDone(player, event, "all_castles") &&
+							this.isDone(player, event, "all_mercenaries") &&
+							all != null
+						) {
+							this.grant(player, all);
 						}
 					}
 				}
