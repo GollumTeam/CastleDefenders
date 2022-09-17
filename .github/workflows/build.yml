@@ -5,7 +5,7 @@ on:
 
 env:
   GOLLUM_CORE_LIB_VERSION: 3.X.X-1.12.2DEV
-  FILE_MOD_JAVA: src/main/java/com/gollum/core/ModGollumCoreLib.java
+  FILE_MOD_JAVA: src/main/java/com/gollum/castledefenders/ModCastleDefenders.java
   
 jobs:
   build:
