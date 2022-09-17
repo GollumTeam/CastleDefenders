@@ -3,6 +3,10 @@ name: Build
 on:
   push:
 
+env:
+  GOLLUM_CORE_LIB_VERSION: 3.X.X-1.12.2DEV
+  FILE_MOD_JAVA: src/main/java/com/gollum/core/ModGollumCoreLib.java
+  
 jobs:
   build:
 
@@ -18,7 +22,18 @@ jobs:
           distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '8'
           cache: gradle
-
+          
+      - name: Get GollumCoreLib
+        run: |
+          rm -r GollumCoreLib; mkdir GollumCoreLib && wget --no-verbose https://github.com/GollumTeam/GollumCoreLib/archive/refs/heads/$GOLLUM_CORE_LIB_VERSION.tar.gz -O - | tar -xzf - -C GollumCoreLib --strip-components 1
+      
+      
+      - name: Build GollumCoreLib
+        run: |
+          cd GollumCoreLib;
+          ./gradlew genEclipseRuns;
+          ./gradlew build;
+        
       - name: Setup gradlew
         run: |
           ./gradlew genEclipseRuns;
@@ -32,7 +47,7 @@ jobs:
           echo "Build: $MOD_VERSION-$MC_VERSION";
           sed -i s/\"version\":\ \"[0-9]\.X\.XDEV/\"version\":\ \"$MOD_VERSION/ src/main/resources/mcmod.info;
           sed -i s/modversion\ =\ \"[0-9]\.X\.XDEV/modversion\ =\ \"$MOD_VERSION/ build.gradle;
-          sed -i s/VERSION\ =\ \"[0-9]\.X\.XDEV/VERSION\ =\ \"$MOD_VERSION/ src/main/java/com/gollum/core/ModGollumCoreLib.java;
+          sed -i s/VERSION\ =\ \"[0-9]\.X\.XDEV/VERSION\ =\ \"$MOD_VERSION/ $FILE_MOD_JAVA;
           
       - name: Build
         run: |
