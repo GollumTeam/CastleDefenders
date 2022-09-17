@@ -1,7 +1,7 @@
 Castle Defenders
 =============
 
-[![BUILD](https://github.com/GollumTeam/CastleDefenders/actions/workflows/build.yml/badge.svg?branch=3.X.X-1.12.2DEV)](https://github.com/GollumTeam/CastleDefenders/actions/workflows/build.yml)
+[![BUILD](https://github.com/GollumTeam/CastleDefenders/actions/workflows/build.yml/badge.svg?branch=4.X.X-1.12.2DEV)](https://github.com/GollumTeam/CastleDefenders/actions/workflows/build.yml)
 
 
 Castle Defenders Mod for Minecraft
